@@ -761,7 +761,7 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x060001B9 RID: 441 RVA: 0x000115E0 File Offset: 0x0000F9E0
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            if (Operators.CompareString(this.TextBox13.Text, "", false) == 0)
+            if (string.IsNullOrEmpty(this.TextBox13.Text))
             {
                 this.TextBox13.Text = "0";
             }
@@ -770,56 +770,32 @@ namespace GT5_Car_hack_workshop_2
             if (omax != 0.0)
             {
                 decimal lastgear = 0.1m;
-                if (Conversion.Val(this.TextBox11.Text) > 0.0)
+
+                // Group the TextBoxes in an array for iteration
+                TextBox[] textBoxes =
                 {
-                    lastgear = new decimal(Conversion.Val(this.TextBox11.Text));
-                }
-                else if (Conversion.Val(this.TextBox10.Text) > 0.0)
+                    this.TextBox11, this.TextBox10, this.TextBox9, this.TextBox8, this.TextBox7,
+                    this.TextBox6, this.TextBox5, this.TextBox4, this.TextBox3, this.TextBox2, this.TextBox1
+                };
+
+                // Find the first TextBox with a value > 0
+                foreach (var textBox in textBoxes)
                 {
-                    lastgear = new decimal(Conversion.Val(this.TextBox10.Text));
-                }
-                else if (Conversion.Val(this.TextBox9.Text) > 0.0)
-                {
-                    lastgear = new decimal(Conversion.Val(this.TextBox9.Text));
-                }
-                else if (Conversion.Val(this.TextBox8.Text) > 0.0)
-                {
-                    lastgear = new decimal(Conversion.Val(this.TextBox8.Text));
-                }
-                else if (Conversion.Val(this.TextBox7.Text) > 0.0)
-                {
-                    lastgear = new decimal(Conversion.Val(this.TextBox7.Text));
-                }
-                else if (Conversion.Val(this.TextBox6.Text) > 0.0)
-                {
-                    lastgear = new decimal(Conversion.Val(this.TextBox6.Text));
-                }
-                else if (Conversion.Val(this.TextBox5.Text) > 0.0)
-                {
-                    lastgear = new decimal(Conversion.Val(this.TextBox5.Text));
-                }
-                else if (Conversion.Val(this.TextBox4.Text) > 0.0)
-                {
-                    lastgear = new decimal(Conversion.Val(this.TextBox4.Text));
-                }
-                else if (Conversion.Val(this.TextBox3.Text) > 0.0)
-                {
-                    lastgear = new decimal(Conversion.Val(this.TextBox3.Text));
-                }
-                else if (Conversion.Val(this.TextBox2.Text) > 0.0)
-                {
-                    lastgear = new decimal(Conversion.Val(this.TextBox2.Text));
-                }
-                else if (Conversion.Val(this.TextBox1.Text) > 0.0)
-                {
-                    lastgear = new decimal(Conversion.Val(this.TextBox1.Text));
+                    if (Conversion.Val(textBox.Text) > 0.0)
+                    {
+                        lastgear = new decimal(Conversion.Val(textBox.Text));
+                        break;
+                    }
                 }
 
-                this.TextBox14.Text = Conversions.ToString(Convert.ToDouble(this.origfg) /
-                                                           Conversion.Val(this.TextBox12.Text) *
-                                                           Conversion.Val(this.TextBox13.Text) *
-                                                           Convert.ToDouble(decimal.Multiply(
-                                                               decimal.Divide(1m, lastgear), this.lastgearpre)));
+                this.TextBox14.Text = Conversions.ToString(
+                    Convert.ToDouble(this.origfg) /
+                    Conversion.Val(this.TextBox12.Text) *
+                    Conversion.Val(this.TextBox13.Text) *
+                    Convert.ToDouble(decimal.Multiply(
+                        decimal.Divide(1m, lastgear), this.lastgearpre
+                    ))
+                );
             }
         }
 
