@@ -2287,19 +2287,19 @@ namespace GT5_Car_hack_workshop_2
 				while (j <= num4)
 				{
 					int k = 0;
-					while (!Operators.ConditionalCompareObjectEqual(chararr[j], Strings.Chr(k), false))
+					while (!chararr[j].Equals((char)k))
 					{
 						k++;
 						if (k > 255)
 						{
-							IL_0105:
 							j++;
-							goto IL_0109;
+							continue;
 						}
 					}
 					charbyte[j] = (byte)k;
-					goto IL_0105;
+					j++;
 				}
+
 				this.moff = Operators.SubtractObject(loaddata.FindSequence(this.gt5save, charbyte), 306);
 				if (Operators.ConditionalCompareObjectLess(this.moff, 1, false))
 				{
@@ -2886,6 +2886,7 @@ namespace GT5_Car_hack_workshop_2
 		// Token: 0x06000151 RID: 337 RVA: 0x0000DA3C File Offset: 0x0000BE3C
 		private void Button12_Click(object sender, EventArgs e)
 		{
+			// Add current car to parts database
 			int num = 0;
 			checked
 			{
@@ -2893,7 +2894,7 @@ namespace GT5_Car_hack_workshop_2
 				object cpos;
 				for (int i = num; i <= num2; i++)
 				{
-					if (Operators.CompareString(this.carparts[i], " ", false) == 0)
+					if (carparts[i] == " ")
 					{
 						cpos = i;
 						break;
