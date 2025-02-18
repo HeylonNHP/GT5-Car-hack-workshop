@@ -2414,11 +2414,18 @@ namespace GT5_Car_hack_workshop_2
         }
 
         // Token: 0x06000151 RID: 337 RVA: 0x0000DA3C File Offset: 0x0000BE3C
+        /// <summary>
+        /// Add current car to parts database.
+        /// Handles the event triggered when button12 is clicked. This method is used to add the current car details
+        /// to the parts database. It validates for available space in the database and ensures no duplicate entries exist.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">An EventArgs object containing event data.</param>
         private void Button12_Click(object sender, EventArgs e)
         {
-            // Add current car to parts database
-            int cpos;
-            for (int i = 0; i <= this.carparts.Length - 1; i++)
+            // cpos is used to find the next empty slot in the car parts database to place the newly added car parts
+            int cpos = -1;
+            for (int i = 0; i <= carparts.Length - 1; i++)
             {
                 if (carparts[i] == " ")
                 {
@@ -2427,29 +2434,35 @@ namespace GT5_Car_hack_workshop_2
                 }
             }
 
-            this.carname = Interaction.InputBox("Car name:", "", Conversions.ToString(this.carname), -1, -1);
+            if (cpos == -1)
+            {
+                MessageBox.Show("No more space in the database, please delete some cars first");
+                return;
+            }
+
+            carname = Interaction.InputBox("Car name:", "", Conversions.ToString(carname), -1, -1);
             
             string linetoadd =
-                this.carname.ToString() + "," +
-                this.TextBox3.Text + "," +
-                this.TextBox6.Text + "," +
-                this.TextBox7.Text + "," +
-                this.TextBox8.Text + "," +
-                this.TextBox20.Text + "," +
-                this.TextBox21.Text + "," +
-                this.TextBox22.Text + "," +
-                this.TextBox23.Text;
+                carname.ToString() + "," +
+                TextBox3.Text + "," +
+                TextBox6.Text + "," +
+                TextBox7.Text + "," +
+                TextBox8.Text + "," +
+                TextBox20.Text + "," +
+                TextBox21.Text + "," +
+                TextBox22.Text + "," +
+                TextBox23.Text;
             
-            for (int j = 0; j <= this.carparts.Length - 1; j++)
+            for (int j = 0; j <= carparts.Length - 1; j++)
             {
-                if (this.carparts[j].Equals(linetoadd, StringComparison.OrdinalIgnoreCase))
+                if (carparts[j].Equals(linetoadd, StringComparison.OrdinalIgnoreCase))
                 {
                     MessageBox.Show("Car already exists", "", MessageBoxButtons.OK);
                 }
             }
 
-            this.carparts[cpos] = linetoadd;
-            this.LOADPARTS();
+            carparts[cpos] = linetoadd;
+            LOADPARTS();
         }
 
         // Token: 0x06000152 RID: 338 RVA: 0x0000DBD8 File Offset: 0x0000BFD8
@@ -3070,6 +3083,15 @@ namespace GT5_Car_hack_workshop_2
         [AccessedThroughProperty("Button23")] private Button _Button23;
 
         // Token: 0x04000098 RID: 152
+        /// <summary>
+        /// Represents an array of car parts, utilized for storing and managing saved car part values.
+        /// </summary>
+        /// <remarks>
+        /// This array has a capacity of up to 10,000 slots for car part data.
+        /// Users can add and update car part details within this array, which is persistently saved and loaded
+        /// from a database file ("partsdatabase.db") during program execution.
+        /// It is primarily used within the application to display and modify vehicle part information.
+        /// </remarks>
         public string[] carparts;
 
         // Token: 0x04000099 RID: 153
@@ -3082,6 +3104,6 @@ namespace GT5_Car_hack_workshop_2
         public object moff;
 
         // Token: 0x0400009C RID: 156
-        public object carname;
+        public string carname;
     }
 }
