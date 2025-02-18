@@ -2417,11 +2417,8 @@ namespace GT5_Car_hack_workshop_2
         private void Button12_Click(object sender, EventArgs e)
         {
             // Add current car to parts database
-            int num = 0;
-
-            int num2 = this.carparts.Length - 1;
-            object cpos;
-            for (int i = num; i <= num2; i++)
+            int cpos;
+            for (int i = 0; i <= this.carparts.Length - 1; i++)
             {
                 if (carparts[i] == " ")
                 {
@@ -2431,6 +2428,7 @@ namespace GT5_Car_hack_workshop_2
             }
 
             this.carname = Interaction.InputBox("Car name:", "", Conversions.ToString(this.carname), -1, -1);
+            
             string linetoadd =
                 this.carname.ToString() + "," +
                 this.TextBox3.Text + "," +
@@ -2441,17 +2439,16 @@ namespace GT5_Car_hack_workshop_2
                 this.TextBox21.Text + "," +
                 this.TextBox22.Text + "," +
                 this.TextBox23.Text;
-            int num3 = 0;
-            int num4 = this.carparts.Length - 1;
-            for (int j = num3; j <= num4; j++)
+            
+            for (int j = 0; j <= this.carparts.Length - 1; j++)
             {
-                if (Operators.CompareString(this.carparts[j], linetoadd, false) == 0)
+                if (this.carparts[j].Equals(linetoadd, StringComparison.OrdinalIgnoreCase))
                 {
-                    Interaction.MsgBox("Car already exists", MsgBoxStyle.OkOnly, null);
+                    MessageBox.Show("Car already exists", "", MessageBoxButtons.OK);
                 }
             }
 
-            this.carparts[Conversions.ToInteger(cpos)] = linetoadd;
+            this.carparts[cpos] = linetoadd;
             this.LOADPARTS();
         }
 
