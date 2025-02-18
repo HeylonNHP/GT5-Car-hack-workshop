@@ -2888,8 +2888,7 @@ namespace GT5_Car_hack_workshop_2
 		{
 			// Add current car to parts database
 			int num = 0;
-			checked
-			{
+	
 				int num2 = this.carparts.Length - 1;
 				object cpos;
 				for (int i = num; i <= num2; i++)
@@ -2932,7 +2931,7 @@ namespace GT5_Car_hack_workshop_2
 				}
 				this.carparts[Conversions.ToInteger(cpos)] = linetoadd;
 				this.LOADPARTS();
-			}
+			
 		}
 
 		// Token: 0x06000152 RID: 338 RVA: 0x0000DBD8 File Offset: 0x0000BFD8
