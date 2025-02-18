@@ -1,7 +1,6 @@
 ﻿namespace GT5_Car_hack_workshop_2
 {
 	// Token: 0x02000009 RID: 9
-	[global::Microsoft.VisualBasic.CompilerServices.DesignerGenerated]
 	public partial class Form1 : global::System.Windows.Forms.Form
 	{
 		// Token: 0x0600004D RID: 77 RVA: 0x00004FAC File Offset: 0x000033AC
