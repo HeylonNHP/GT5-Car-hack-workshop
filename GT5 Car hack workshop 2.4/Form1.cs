@@ -2431,26 +2431,16 @@ namespace GT5_Car_hack_workshop_2
             }
 
             this.carname = Interaction.InputBox("Car name:", "", Conversions.ToString(this.carname), -1, -1);
-            string linetoadd = string.Concat(new string[]
-            {
-                this.carname.ToString(),
-                ",",
-                this.TextBox3.Text,
-                ",",
-                this.TextBox6.Text,
-                ",",
-                this.TextBox7.Text,
-                ",",
-                this.TextBox8.Text,
-                ",",
-                this.TextBox20.Text,
-                ",",
-                this.TextBox21.Text,
-                ",",
-                this.TextBox22.Text,
-                ",",
-                this.TextBox23.Text
-            });
+            string linetoadd =
+                this.carname.ToString() + "," +
+                this.TextBox3.Text + "," +
+                this.TextBox6.Text + "," +
+                this.TextBox7.Text + "," +
+                this.TextBox8.Text + "," +
+                this.TextBox20.Text + "," +
+                this.TextBox21.Text + "," +
+                this.TextBox22.Text + "," +
+                this.TextBox23.Text;
             int num3 = 0;
             int num4 = this.carparts.Length - 1;
             for (int j = num3; j <= num4; j++)
