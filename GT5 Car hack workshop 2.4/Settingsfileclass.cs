@@ -47,34 +47,7 @@ namespace GT5_Car_hack_workshop_2
 			{
 				if (MyProject.Computer.FileSystem.FileExists(file))
 				{
-					byte[] f = File.ReadAllBytes(file);
-					int i = 0;
-					byte[] array = new byte[f.Length - 1 + 2 + 1];
-					int num = 0;
-					int num2 = f.Length - 1;
-					for (int j = num; j <= num2; j++)
-					{
-						array[j] = f[j];
-					}
-					array[array.Length - 2] = 13;
-					array[array.Length - 1] = 10;
-					while (i < f.Length - 3)
-					{
-						int num3 = Conversions.ToInteger(Operators.SubtractObject(Settingsfileclass.FindSequence(array, new byte[] { 13, 10 }, i), 1));
-						string text = "";
-						int num4 = i;
-						int num5 = num3;
-						object obj;
-						for (int k = num4; k <= num5; k++)
-						{
-							obj = Operators.AddObject(Operators.AddObject(obj, array[k].ToString()), ",");
-							text += Conversions.ToString(Strings.Chr((int)array[k]));
-						}
-						obj = obj.ToString().Replace(Conversions.ToString(10), "");
-						text = text.ToString().Replace("\n", "");
-						lines.Add(text);
-						i = num3 + 2;
-					}
+					lines = LoadFileToArrayList(file);
 					string[] array2 = new string[arrsize + 1];
 					int num6 = 0;
 					int num7 = lines.Count - 1;
@@ -98,6 +71,35 @@ namespace GT5_Car_hack_workshop_2
 				}
 				return settings;
 			}
+		}
+		
+		static ArrayList LoadFileToArrayList(string file)
+		{
+			ArrayList lines = new ArrayList();
+
+			if (File.Exists(file))
+			{
+				// Read the entire file as a byte array
+				byte[] fileBytes = File.ReadAllBytes(file);
+
+				// Convert the byte array to a string (assuming the file uses UTF-8 encoding)
+				string fileContent = System.Text.Encoding.UTF8.GetString(fileBytes);
+
+				// Split the string into lines using Windows-style line endings (\r\n)
+				string[] fileLines = fileContent.Split(new[] { "\r\n" }, StringSplitOptions.None);
+
+				// Add each line to the ArrayList
+				foreach (string line in fileLines)
+				{
+					lines.Add(line);
+				}
+			}
+			else
+			{
+				Console.WriteLine("File not found: " + file);
+			}
+
+			return lines;
 		}
 
 		// Token: 0x06000175 RID: 373 RVA: 0x0000282C File Offset: 0x00000C2C
