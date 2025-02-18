@@ -34,7 +34,7 @@ namespace GT5_Car_hack_workshop_2
 		}
 
 		// Token: 0x06000169 RID: 361 RVA: 0x00002428 File Offset: 0x00000828
-		public static object FindSequence(byte[] list, byte[] value)
+		public static int FindSequence(byte[] list, byte[] value)
 		{
 			int startIndex = Array.IndexOf<byte>(list, value[0]);
 			checked

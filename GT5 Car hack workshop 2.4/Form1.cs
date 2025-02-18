@@ -1708,7 +1708,7 @@ namespace GT5_Car_hack_workshop_2
                     j++;
                 }
 
-                this.moff = Operators.SubtractObject(loaddata.FindSequence(this.gt5save, charbyte), 306);
+                this.moff = loaddata.FindSequence(this.gt5save, charbyte) - 306;
                 if (Operators.ConditionalCompareObjectLess(this.moff, 1, false))
                 {
                     Interaction.MsgBox(
@@ -3101,7 +3101,7 @@ namespace GT5_Car_hack_workshop_2
         public byte[] gt5save;
 
         // Token: 0x0400009B RID: 155
-        public object moff;
+        public int moff;
 
         // Token: 0x0400009C RID: 156
         public string carname;
