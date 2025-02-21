@@ -46,22 +46,13 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x06000174 RID: 372 RVA: 0x0000264C File Offset: 0x00000A4C
         public static string[] loadsettings(string file, int arrsize)
         {
-            checked
+            if (File.Exists(file))
             {
-                if (MyProject.Computer.FileSystem.FileExists(file))
-                {
-                    var lines = LoadFileToArray(file);
-                    return lines.Take(arrsize + 1).ToArray();
-                }
-
-                string[] settings = new string[arrsize + 1];
-                for (int m = 0; m <= arrsize; m++)
-                {
-                    settings[m] = " ";
-                }
-
-                return settings;
+                var lines = LoadFileToArray(file);
+                return lines.Take(arrsize + 1).ToArray();
             }
+
+            return Enumerable.Repeat(" ", arrsize + 1).ToArray();
         }
 
         static string[] LoadFileToArray(string file)
