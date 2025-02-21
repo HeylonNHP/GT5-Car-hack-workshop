@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using GT5_Car_hack_workshop_2.My;
 using Microsoft.VisualBasic;
@@ -8,125 +10,117 @@ using Microsoft.VisualBasic.CompilerServices;
 
 namespace GT5_Car_hack_workshop_2
 {
-	// Token: 0x0200000E RID: 14
-	public class Settingsfileclass
-	{
-		// Token: 0x06000173 RID: 371 RVA: 0x000025C4 File Offset: 0x000009C4
-		[MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-		public static void savesettings(string[] settings, string file)
-		{
-			if (MyProject.Computer.FileSystem.FileExists(file))
-			{
-				FileSystem.Kill(file);
-			}
-			StreamWriter swr = new StreamWriter(file);
-			int num = 0;
-			checked
-			{
-				int num2 = (int)Math.Round(Conversion.Val(settings.Length - 1));
-				for (int i = num; i <= num2; i++)
-				{
-					try
-					{
-						swr.WriteLine(settings[i].ToString());
-					}
-					catch (Exception ex)
-					{
-					}
-				}
-				swr.Flush();
-				swr.Close();
-			}
-		}
+    // Token: 0x0200000E RID: 14
+    public class Settingsfileclass
+    {
+        // Token: 0x06000173 RID: 371 RVA: 0x000025C4 File Offset: 0x000009C4
+        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
+        public static void savesettings(string[] settings, string file)
+        {
+            if (MyProject.Computer.FileSystem.FileExists(file))
+            {
+                FileSystem.Kill(file);
+            }
 
-		// Token: 0x06000174 RID: 372 RVA: 0x0000264C File Offset: 0x00000A4C
-		public static string[] loadsettings(string file, int arrsize)
-		{
-			ArrayList lines = new ArrayList();
-			checked
-			{
-				if (MyProject.Computer.FileSystem.FileExists(file))
-				{
-					lines = LoadFileToArrayList(file);
-					string[] array2 = new string[arrsize + 1];
-					int num6 = 0;
-					int num7 = lines.Count - 1;
-					for (int l = num6; l <= num7; l++)
-					{
-						try
-						{
-							array2[l] = Conversions.ToString(lines[l]);
-						}
-						catch (Exception ex)
-						{
-							array2[l] = " ";
-						}
-					}
-					return array2;
-				}
-				string[] settings = new string[arrsize + 1];
-				for (int m = 0; m <= arrsize; m++)
-				{
-					settings[m] = " ";
-				}
-				return settings;
-			}
-		}
-		
-		static ArrayList LoadFileToArrayList(string file)
-		{
-			ArrayList lines = new ArrayList();
+            StreamWriter swr = new StreamWriter(file);
+            int num = 0;
+            checked
+            {
+                int num2 = (int)Math.Round(Conversion.Val(settings.Length - 1));
+                for (int i = num; i <= num2; i++)
+                {
+                    try
+                    {
+                        swr.WriteLine(settings[i].ToString());
+                    }
+                    catch (Exception ex)
+                    {
+                    }
+                }
 
-			if (File.Exists(file))
-			{
-				// Read the entire file as a byte array
-				byte[] fileBytes = File.ReadAllBytes(file);
+                swr.Flush();
+                swr.Close();
+            }
+        }
 
-				// Convert the byte array to a string (assuming the file uses UTF-8 encoding)
-				string fileContent = System.Text.Encoding.UTF8.GetString(fileBytes);
+        // Token: 0x06000174 RID: 372 RVA: 0x0000264C File Offset: 0x00000A4C
+        public static string[] loadsettings(string file, int arrsize)
+        {
+            checked
+            {
+                if (MyProject.Computer.FileSystem.FileExists(file))
+                {
+                    var lines = LoadFileToArrayList(file);
+                    return lines.Take(arrsize + 1).ToArray();
+                }
 
-				// Split the string into lines using Windows-style line endings (\r\n)
-				string[] fileLines = fileContent.Split(new[] { "\r\n" }, StringSplitOptions.None);
+                string[] settings = new string[arrsize + 1];
+                for (int m = 0; m <= arrsize; m++)
+                {
+                    settings[m] = " ";
+                }
 
-				// Add each line to the ArrayList
-				foreach (string line in fileLines)
-				{
-					lines.Add(line);
-				}
-			}
-			else
-			{
-				Console.WriteLine("File not found: " + file);
-			}
+                return settings;
+            }
+        }
 
-			return lines;
-		}
+        static string[] LoadFileToArrayList(string file)
+        {
+            var lines = new List<string>();
 
-		// Token: 0x06000175 RID: 373 RVA: 0x0000282C File Offset: 0x00000C2C
-		public static object FindSequence(byte[] list, byte[] value, int startindex1)
-		{
-			int startIndex = Array.IndexOf<byte>(list, value[0], startindex1);
-			checked
-			{
-				while (startIndex != -1 && list.Length - startIndex >= value.Length)
-				{
-					int runLength = 0;
-					int num = 0;
-					int num2 = value.Length - 1;
-					int index = num;
-					while (index <= num2 && value[index] == list[startIndex + index])
-					{
-						runLength++;
-						index++;
-					}
-					if (runLength == value.Length)
-					{
-						return startIndex;
-					}
-					startIndex = Array.IndexOf<byte>(list, value[0], startIndex + runLength);
-				}
-				return -1;
-			}
-		}
-	}
+            if (File.Exists(file))
+            {
+                // Read the entire file as a byte array
+                byte[] fileBytes = File.ReadAllBytes(file);
+
+                // Convert the byte array to a string (assuming the file uses UTF-8 encoding)
+                string fileContent = System.Text.Encoding.UTF8.GetString(fileBytes);
+
+                // Split the string into lines using Windows-style line endings (\r\n)
+                string[] fileLines = fileContent.Split(new[] { "\r\n" }, StringSplitOptions.None);
+
+                // Add each line to the ArrayList
+                foreach (string line in fileLines)
+                {
+                    lines.Add(line);
+                }
+            }
+            else
+            {
+                Console.WriteLine("File not found: " + file);
+            }
+
+            return lines.ToArray();
+        }
+
+        // Token: 0x06000175 RID: 373 RVA: 0x0000282C File Offset: 0x00000C2C
+        public static object FindSequence(byte[] list, byte[] value, int startindex1)
+        {
+            int startIndex = Array.IndexOf<byte>(list, value[0], startindex1);
+            checked
+            {
+                while (startIndex != -1 && list.Length - startIndex >= value.Length)
+                {
+                    int runLength = 0;
+                    int num = 0;
+                    int num2 = value.Length - 1;
+                    int index = num;
+                    while (index <= num2 && value[index] == list[startIndex + index])
+                    {
+                        runLength++;
+                        index++;
+                    }
+
+                    if (runLength == value.Length)
+                    {
+                        return startIndex;
+                    }
+
+                    startIndex = Array.IndexOf<byte>(list, value[0], startIndex + runLength);
+                }
+
+                return -1;
+            }
+        }
+    }
 }
