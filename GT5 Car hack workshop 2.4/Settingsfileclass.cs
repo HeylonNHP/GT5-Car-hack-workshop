@@ -50,7 +50,7 @@ namespace GT5_Car_hack_workshop_2
             {
                 if (MyProject.Computer.FileSystem.FileExists(file))
                 {
-                    var lines = LoadFileToArrayList(file);
+                    var lines = LoadFileToArray(file);
                     return lines.Take(arrsize + 1).ToArray();
                 }
 
@@ -64,7 +64,7 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        static string[] LoadFileToArrayList(string file)
+        static string[] LoadFileToArray(string file)
         {
             var lines = new List<string>();
 
