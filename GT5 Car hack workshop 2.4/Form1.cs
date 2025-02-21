@@ -2260,8 +2260,8 @@ namespace GT5_Car_hack_workshop_2
                 MyProject.Computer.FileSystem.CreateDirectory("Backups");
             }
 
-            progsettings = (string[])Settingsfileclass.loadsettings("GT5CHWsettings.ini", 1);
-            carparts = (string[])Settingsfileclass.loadsettings("partsdatabase.db", 9999);
+            progsettings = Settingsfileclass.loadsettings("GT5CHWsettings.ini", 1);
+            carparts = Settingsfileclass.loadsettings("partsdatabase.db", 9999);
             TextBox1.Text = progsettings[0];
             TextBox2.Text = progsettings[1];
             LOADPARTS();

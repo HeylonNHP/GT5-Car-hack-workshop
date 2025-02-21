@@ -40,7 +40,7 @@ namespace GT5_Car_hack_workshop_2
 		}
 
 		// Token: 0x06000174 RID: 372 RVA: 0x0000264C File Offset: 0x00000A4C
-		public static object loadsettings(string file, int arrsize)
+		public static string[] loadsettings(string file, int arrsize)
 		{
 			ArrayList lines = new ArrayList();
 			checked
