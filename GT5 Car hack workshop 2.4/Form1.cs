@@ -31,13 +31,10 @@ namespace GT5_Car_hack_workshop_2
             [MethodImpl(MethodImplOptions.Synchronized)]
             set { _GroupBox1 = value; }
         }
-
-        // Token: 0x1700001D RID: 29
-        // (get) Token: 0x06000051 RID: 81 RVA: 0x00009914 File Offset: 0x00007D14
-        // (set) Token: 0x06000052 RID: 82 RVA: 0x00009928 File Offset: 0x00007D28
-        internal virtual Button Button1
+        
+        private Button Button1
         {
-            get { return _Button1; }
+            get => _Button1;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -55,14 +52,13 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x1700001E RID: 30
-        // (get) Token: 0x06000053 RID: 83 RVA: 0x00009974 File Offset: 0x00007D74
-        // (set) Token: 0x06000054 RID: 84 RVA: 0x00009988 File Offset: 0x00007D88
-        internal virtual Label Label1
+
+        [field: AccessedThroughProperty("Label1")]
+        private Label Label1
         {
-            get { return _Label1; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label1 = value; }
+            set;
         }
 
         // Token: 0x1700001F RID: 31
@@ -2658,10 +2654,7 @@ namespace GT5_Car_hack_workshop_2
 
         // Token: 0x04000020 RID: 32
         [AccessedThroughProperty("Button1")] private Button _Button1;
-
-        // Token: 0x04000021 RID: 33
-        [AccessedThroughProperty("Label1")] private Label _Label1;
-
+        
         // Token: 0x04000022 RID: 34
         [AccessedThroughProperty("TextBox1")] private TextBox _TextBox1;
 
