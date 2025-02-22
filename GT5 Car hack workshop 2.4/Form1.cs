@@ -17,8 +17,8 @@ namespace GT5_Car_hack_workshop_2
         {
             Load += Form1_Load;
             FormClosing += Form1_FormClosing;
-            moff = 0;
-            carname = "";
+            Moff = 0;
+            Carname = "";
             InitializeComponent();
         }
 
@@ -1664,7 +1664,7 @@ namespace GT5_Car_hack_workshop_2
                 return;
             }
 
-            gt5save = (byte[])loaddata.load(TextBox1.Text);
+            Gt5Save = (byte[])loaddata.load(TextBox1.Text);
             object[] chararr;
             byte[] charbyte;
             int num4;
@@ -1703,8 +1703,8 @@ namespace GT5_Car_hack_workshop_2
                     j++;
                 }
 
-                moff = loaddata.FindSequence(gt5save, charbyte) - 306;
-                if (Operators.ConditionalCompareObjectLess(moff, 1, false))
+                Moff = loaddata.FindSequence(Gt5Save, charbyte) - 306;
+                if (Operators.ConditionalCompareObjectLess(Moff, 1, false))
                 {
                     Interaction.MsgBox(
                         "PSN name is incorrect or data is corrupt\rRemember, the PSN name is CASE sensitive.");
@@ -1717,7 +1717,7 @@ namespace GT5_Car_hack_workshop_2
                     RichTextBox rtf = new RichTextBox();
                     rtf.LoadFile(gt50file.Directory.FullName + "\\PARAM.SFO", RichTextBoxStreamType.PlainText);
                     Label7.Text = rtf.Lines[4];
-                    carname = Label7.Text.Substring(13, Label7.Text.Length - 13);
+                    Carname = Label7.Text.Substring(13, Label7.Text.Length - 13);
                 }
                 catch (Exception ex)
                 {
@@ -1725,80 +1725,80 @@ namespace GT5_Car_hack_workshop_2
                 }
 
                 TextBox3.Text =
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 213))].ToString("X2") + " " +
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 212))].ToString("X2");
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 213))].ToString("X2") + " " +
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 212))].ToString("X2");
                 TextBox4.Text = Conversions.ToString(Conversion.Val("&H" +
-                                                                    gt5save[
+                                                                    Gt5Save[
                                                                             Conversions.ToInteger(
-                                                                                Operators.SubtractObject(moff, 46))]
+                                                                                Operators.SubtractObject(Moff, 46))]
                                                                         .ToString("X2")));
                 TextBox6.Text =
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 209))].ToString("X2") + " " +
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 208))].ToString("X2");
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 209))].ToString("X2") + " " +
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 208))].ToString("X2");
                 TextBox7.Text =
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 217))].ToString("X2") + " " +
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 216))].ToString("X2");
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 217))].ToString("X2") + " " +
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 216))].ToString("X2");
                 TextBox8.Text =
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 205))].ToString("X2") + " " +
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 204))].ToString("X2");
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 205))].ToString("X2") + " " +
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 204))].ToString("X2");
                 TextBox9.Text =
-                    Conversions.ToString(gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 88))]);
+                    Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 88))]);
                 TextBox10.Text = string.Concat(
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 344))].ToString("X2"), " ",
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 343))].ToString("X2"), " ",
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 342))].ToString("X2"), " ",
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 341))].ToString("X2"));
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 344))].ToString("X2"), " ",
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 343))].ToString("X2"), " ",
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 342))].ToString("X2"), " ",
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 341))].ToString("X2"));
                 TextBox11.Text = string.Concat(
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 171))].ToString("X2"), " ",
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 170))].ToString("X2"), " ",
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 169))].ToString("X2"), " ",
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 168))].ToString("X2"));
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 171))].ToString("X2"), " ",
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 170))].ToString("X2"), " ",
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 169))].ToString("X2"), " ",
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 168))].ToString("X2"));
                 TextBox13.Text =
-                    Conversions.ToString(gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 43))]);
+                    Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 43))]);
                 TextBox12.Text =
-                    Conversions.ToString(gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 42))]);
+                    Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 42))]);
                 TextBox textBox = TextBox14;
                 string text = "&H";
-                byte b = gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 33))];
+                byte b = Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 33))];
                 string text2 = b.ToString("X2");
                 string text3 = " ";
-                byte b2 = gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 32))];
+                byte b2 = Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 32))];
                 textBox.Text = Conversions.ToString(Conversion.Val(text + text2 + text3 + b2.ToString("X2")));
                 TextBox textBox2 = TextBox15;
                 string text4 = "&H";
-                b2 = gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 31))];
+                b2 = Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 31))];
                 string text5 = b2.ToString("X2");
                 string text6 = " ";
-                b = gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 30))];
+                b = Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 30))];
                 textBox2.Text = Conversions.ToString(Conversion.Val(text4 + text5 + text6 + b.ToString("X2")));
                 TextBox16.Text =
-                    Conversions.ToString(gt5save[Conversions.ToInteger(Operators.AddObject(moff, 10))]);
+                    Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 10))]);
                 TextBox18.Text =
-                    Conversions.ToString(gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 27))]);
+                    Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 27))]);
                 TextBox17.Text =
-                    Conversions.ToString(gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 26))]);
+                    Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 26))]);
                 TextBox19.Text = string.Concat(
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 155))].ToString("X2"), " ",
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 154))].ToString("X2"), " ",
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 153))].ToString("X2"), " ",
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 152))].ToString("X2"));
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 155))].ToString("X2"), " ",
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 154))].ToString("X2"), " ",
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 153))].ToString("X2"), " ",
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 152))].ToString("X2"));
                 TextBox20.Text =
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 262))].ToString("X2") + " " +
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 261))].ToString("X2");
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 262))].ToString("X2") + " " +
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 261))].ToString("X2");
                 TextBox21.Text =
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 201))].ToString("X2") + " " +
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 200))].ToString("X2");
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 201))].ToString("X2") + " " +
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 200))].ToString("X2");
                 TextBox22.Text =
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 197))].ToString("X2") + " " +
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 196))].ToString("X2");
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 197))].ToString("X2") + " " +
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 196))].ToString("X2");
                 TextBox23.Text =
-                    gt5save[Conversions.ToInteger(Operators.AddObject(moff, 23))].ToString("X2") + " " +
-                    gt5save[Conversions.ToInteger(Operators.AddObject(moff, 24))].ToString("X2");
+                    Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 23))].ToString("X2") + " " +
+                    Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 24))].ToString("X2");
                 TextBox24.Text = string.Concat(
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 191))].ToString("X2"), " ",
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 190))].ToString("X2"), " ",
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 189))].ToString("X2"), " ",
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 188))].ToString("X2"));
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 191))].ToString("X2"), " ",
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 190))].ToString("X2"), " ",
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 189))].ToString("X2"), " ",
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 188))].ToString("X2"));
             }
         }
 
@@ -1820,9 +1820,9 @@ namespace GT5_Car_hack_workshop_2
                         bytes[i] = Conversion.Val(Operators.ConcatenateObject("&H", bytes[i]));
                     }
 
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 213))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 213))] =
                         Conversions.ToByte(bytes[0]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 212))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 212))] =
                         Conversions.ToByte(bytes[1]);
                 }
                 catch (Exception ex)
@@ -1838,7 +1838,7 @@ namespace GT5_Car_hack_workshop_2
                 try
                 {
                     string working2 = TextBox4.Text;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 46))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 46))] =
                         Conversions.ToByte(working2);
                 }
                 catch (Exception ex2)
@@ -1858,9 +1858,9 @@ namespace GT5_Car_hack_workshop_2
                         bytes2[j] = Conversion.Val(Operators.ConcatenateObject("&H", bytes2[j]));
                     }
 
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 209))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 209))] =
                         Conversions.ToByte(bytes2[0]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 208))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 208))] =
                         Conversions.ToByte(bytes2[1]);
                 }
                 catch (Exception ex3)
@@ -1880,9 +1880,9 @@ namespace GT5_Car_hack_workshop_2
                         bytes3[k] = Conversion.Val(Operators.ConcatenateObject("&H", bytes3[k]));
                     }
 
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 217))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 217))] =
                         Conversions.ToByte(bytes3[0]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 216))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 216))] =
                         Conversions.ToByte(bytes3[1]);
                 }
                 catch (Exception ex4)
@@ -1902,9 +1902,9 @@ namespace GT5_Car_hack_workshop_2
                         bytes4[l] = Conversion.Val(Operators.ConcatenateObject("&H", bytes4[l]));
                     }
 
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 205))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 205))] =
                         Conversions.ToByte(bytes4[0]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 204))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 204))] =
                         Conversions.ToByte(bytes4[1]);
                 }
                 catch (Exception ex5)
@@ -1918,7 +1918,7 @@ namespace GT5_Car_hack_workshop_2
                         "Remove wing value cannot be higher than 255 or lower than 0. Reverting back to 0");
                 }
 
-                gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 88))] =
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 88))] =
                     Conversions.ToByte(TextBox9.Text);
                 try
                 {
@@ -1933,13 +1933,13 @@ namespace GT5_Car_hack_workshop_2
                         bytes5[m] = Conversion.Val(Operators.ConcatenateObject("&H", bytes5[m]));
                     }
 
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 344))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 344))] =
                         Conversions.ToByte(bytes5[0]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 343))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 343))] =
                         Conversions.ToByte(bytes5[1]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 342))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 342))] =
                         Conversions.ToByte(bytes5[2]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 341))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 341))] =
                         Conversions.ToByte(bytes5[3]);
                 }
                 catch (Exception ex6)
@@ -1959,13 +1959,13 @@ namespace GT5_Car_hack_workshop_2
                         bytes6[n] = Conversion.Val(Operators.ConcatenateObject("&H", bytes6[n]));
                     }
 
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 171))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 171))] =
                         Conversions.ToByte(bytes6[0]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 170))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 170))] =
                         Conversions.ToByte(bytes6[1]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 169))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 169))] =
                         Conversions.ToByte(bytes6[2]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 168))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 168))] =
                         Conversions.ToByte(bytes6[3]);
                 }
                 catch (Exception ex7)
@@ -1974,43 +1974,43 @@ namespace GT5_Car_hack_workshop_2
 
                 if (CheckBox2.Checked)
                 {
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 332))] = 56;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 331))] = 9;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 330))] = 8;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 315))] = 80;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 314))] = 9;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 179))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 178))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 177))] = 5;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 176))] = 81;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 175))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 174))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 173))] = 14;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 172))] = 242;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 171))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 170))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 169))] = 21;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 168))] = 39;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 155))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 154))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 153))] = 20;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 152))] = 60;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 131))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 130))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 129))] = 3;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 128))] = 88;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 127))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 126))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 125))] = 3;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 124))] = 88;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 123))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 122))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 121))] = 3;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 120))] = 56;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 119))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 118))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 117))] = 3;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 116))] = 61;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 332))] = 56;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 331))] = 9;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 330))] = 8;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 315))] = 80;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 314))] = 9;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 179))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 178))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 177))] = 5;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 176))] = 81;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 175))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 174))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 173))] = 14;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 172))] = 242;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 171))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 170))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 169))] = 21;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 168))] = 39;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 155))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 154))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 153))] = 20;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 152))] = 60;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 131))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 130))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 129))] = 3;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 128))] = 88;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 127))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 126))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 125))] = 3;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 124))] = 88;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 123))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 122))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 121))] = 3;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 120))] = 56;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 119))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 118))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 117))] = 3;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 116))] = 61;
                 }
 
                 if ((Conversion.Val(TextBox13.Text) > 255.0) | (Conversion.Val(TextBox13.Text) < 0.0))
@@ -2025,18 +2025,18 @@ namespace GT5_Car_hack_workshop_2
                     Interaction.MsgBox("Rear Aero cannot be higher than 255 or lower than 0. Reverting back to 0");
                 }
 
-                gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 43))] =
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 43))] =
                     Conversions.ToByte(TextBox13.Text);
-                gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 42))] =
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 42))] =
                     Conversions.ToByte(TextBox12.Text);
                 try
                 {
                     string working8 = TextBox14.Text;
                     working8 = Conversions.ToString(Conversion.Val(working8));
                     int @int = Conversions.ToInteger(Conversion.Int(working8));
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 33))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 33))] =
                         (byte)Math.Round(Conversion.Val("&H" + @int.ToString("X4").Substring(0, 2)));
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 32))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 32))] =
                         (byte)Math.Round(Conversion.Val("&H" + @int.ToString("X4").Substring(2, 2)));
                 }
                 catch (Exception ex8)
@@ -2048,20 +2048,20 @@ namespace GT5_Car_hack_workshop_2
                     string working9 = TextBox15.Text;
                     working9 = Conversions.ToString(Conversion.Val(working9));
                     int int2 = Conversions.ToInteger(Conversion.Int(working9));
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 31))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 31))] =
                         (byte)Math.Round(Conversion.Val("&H" + int2.ToString("X4").Substring(0, 2)));
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 30))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 30))] =
                         (byte)Math.Round(Conversion.Val("&H" + int2.ToString("X4").Substring(2, 2)));
                 }
                 catch (Exception ex9)
                 {
                 }
 
-                gt5save[Conversions.ToInteger(Operators.AddObject(moff, 10))] =
+                Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 10))] =
                     Conversions.ToByte(TextBox16.Text);
-                gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 27))] =
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 27))] =
                     Conversions.ToByte(TextBox18.Text);
-                gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 26))] =
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 26))] =
                     Conversions.ToByte(TextBox17.Text);
                 try
                 {
@@ -2076,13 +2076,13 @@ namespace GT5_Car_hack_workshop_2
                         bytes7[i2] = Conversion.Val(Operators.ConcatenateObject("&H", bytes7[i2]));
                     }
 
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 155))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 155))] =
                         Conversions.ToByte(bytes7[0]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 154))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 154))] =
                         Conversions.ToByte(bytes7[1]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 153))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 153))] =
                         Conversions.ToByte(bytes7[2]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 152))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 152))] =
                         Conversions.ToByte(bytes7[3]);
                 }
                 catch (Exception ex10)
@@ -2102,9 +2102,9 @@ namespace GT5_Car_hack_workshop_2
                         bytes8[i3] = Conversion.Val(Operators.ConcatenateObject("&H", bytes8[i3]));
                     }
 
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 262))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 262))] =
                         Conversions.ToByte(bytes8[0]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 261))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 261))] =
                         Conversions.ToByte(bytes8[1]);
                 }
                 catch (Exception ex11)
@@ -2124,9 +2124,9 @@ namespace GT5_Car_hack_workshop_2
                         bytes9[i4] = Conversion.Val(Operators.ConcatenateObject("&H", bytes9[i4]));
                     }
 
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 201))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 201))] =
                         Conversions.ToByte(bytes9[0]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 200))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 200))] =
                         Conversions.ToByte(bytes9[1]);
                 }
                 catch (Exception ex12)
@@ -2146,9 +2146,9 @@ namespace GT5_Car_hack_workshop_2
                         bytes10[i5] = Conversion.Val(Operators.ConcatenateObject("&H", bytes10[i5]));
                     }
 
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 197))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 197))] =
                         Conversions.ToByte(bytes10[0]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 196))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 196))] =
                         Conversions.ToByte(bytes10[1]);
                 }
                 catch (Exception ex13)
@@ -2168,9 +2168,9 @@ namespace GT5_Car_hack_workshop_2
                         bytes11[i6] = Conversion.Val(Operators.ConcatenateObject("&H", bytes11[i6]));
                     }
 
-                    gt5save[Conversions.ToInteger(Operators.AddObject(moff, 23))] =
+                    Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 23))] =
                         Conversions.ToByte(bytes11[0]);
-                    gt5save[Conversions.ToInteger(Operators.AddObject(moff, 24))] =
+                    Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 24))] =
                         Conversions.ToByte(bytes11[1]);
                 }
                 catch (Exception ex14)
@@ -2190,13 +2190,13 @@ namespace GT5_Car_hack_workshop_2
                         bytes12[i7] = Conversion.Val(Operators.ConcatenateObject("&H", bytes12[i7]));
                     }
 
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 191))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 191))] =
                         Conversions.ToByte(bytes12[0]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 190))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 190))] =
                         Conversions.ToByte(bytes12[1]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 189))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 189))] =
                         Conversions.ToByte(bytes12[2]);
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 188))] =
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 188))] =
                         Conversions.ToByte(bytes12[3]);
                 }
                 catch (Exception ex15)
@@ -2205,60 +2205,60 @@ namespace GT5_Car_hack_workshop_2
 
                 if (CheckBox1.Checked)
                 {
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 260))] = 116;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 260))] = 116;
                 }
 
                 if (CheckBox3.Checked)
                 {
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 260))] = 76;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 259))] = 85;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 258))] = 67;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 257))] = 65;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 260))] = 76;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 259))] = 85;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 258))] = 67;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 257))] = 65;
                 }
 
                 if (CheckBox5.Checked)
                 {
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 313))] = byte.MaxValue;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 107))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 106))] = 52;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 105))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 104))] = 3;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 311))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 83))] = byte.MaxValue;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 82))] = byte.MaxValue;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 81))] = byte.MaxValue;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 80))] = byte.MaxValue;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 313))] = byte.MaxValue;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 107))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 106))] = 52;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 105))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 104))] = 3;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 311))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 83))] = byte.MaxValue;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 82))] = byte.MaxValue;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 81))] = byte.MaxValue;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 80))] = byte.MaxValue;
                 }
 
                 if (CheckBox7.Checked)
                 {
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 367))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 103))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 102))] = 52;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 101))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 100))] = 2;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 311))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 83))] = byte.MaxValue;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 82))] = byte.MaxValue;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 81))] = byte.MaxValue;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 80))] = byte.MaxValue;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 367))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 103))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 102))] = 52;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 101))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 100))] = 2;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 311))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 83))] = byte.MaxValue;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 82))] = byte.MaxValue;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 81))] = byte.MaxValue;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 80))] = byte.MaxValue;
                 }
 
                 if (CheckBox6.Checked)
                 {
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 367))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 99))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 98))] = 52;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 97))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 96))] = 2;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 311))] = 0;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 83))] = byte.MaxValue;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 82))] = byte.MaxValue;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 81))] = byte.MaxValue;
-                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 80))] = byte.MaxValue;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 367))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 99))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 98))] = 52;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 97))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 96))] = 2;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 311))] = 0;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 83))] = byte.MaxValue;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 82))] = byte.MaxValue;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 81))] = byte.MaxValue;
+                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 80))] = byte.MaxValue;
                 }
 
-                File.WriteAllBytes(TextBox1.Text, gt5save);
+                File.WriteAllBytes(TextBox1.Text, Gt5Save);
             }
         }
 
@@ -2281,20 +2281,20 @@ namespace GT5_Car_hack_workshop_2
                 MyProject.Computer.FileSystem.CreateDirectory("Backups");
             }
 
-            progsettings = Settingsfileclass.loadsettings("GT5CHWsettings.ini", 1);
-            carparts = Settingsfileclass.loadsettings("partsdatabase.db", 9999);
-            TextBox1.Text = progsettings[0];
-            TextBox2.Text = progsettings[1];
+            Progsettings = Settingsfileclass.loadsettings("GT5CHWsettings.ini", 1);
+            Carparts = Settingsfileclass.loadsettings("partsdatabase.db", 9999);
+            TextBox1.Text = Progsettings[0];
+            TextBox2.Text = Progsettings[1];
             LOADPARTS();
         }
 
         // Token: 0x06000145 RID: 325 RVA: 0x0000D7A4 File Offset: 0x0000BBA4
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            progsettings[0] = TextBox1.Text;
-            progsettings[1] = TextBox2.Text;
-            Settingsfileclass.savesettings(progsettings, "GT5CHWsettings.ini");
-            Settingsfileclass.savesettings(carparts, "partsdatabase.db");
+            Progsettings[0] = TextBox1.Text;
+            Progsettings[1] = TextBox2.Text;
+            Settingsfileclass.savesettings(Progsettings, "GT5CHWsettings.ini");
+            Settingsfileclass.savesettings(Carparts, "partsdatabase.db");
         }
 
         // Token: 0x06000146 RID: 326 RVA: 0x0000D7F8 File Offset: 0x0000BBF8
@@ -2338,12 +2338,12 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x0600014B RID: 331 RVA: 0x0000D8FC File Offset: 0x0000BCFC
         private void Button4_Click(object sender, EventArgs e)
         {
-            gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 355))] = 0;
-            gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 333))] = 88;
-            gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 211))] = 0;
-            gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 210))] = 0;
-            gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 209))] = 10;
-            gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 208))] = 84;
+            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 355))] = 0;
+            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 333))] = 88;
+            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 211))] = 0;
+            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 210))] = 0;
+            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 209))] = 10;
+            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 208))] = 84;
             Interaction.MsgBox("Torque split editor installed, don't forget to save");
         }
 
@@ -2393,9 +2393,9 @@ namespace GT5_Car_hack_workshop_2
         {
             // cpos is used to find the next empty slot in the car parts database to place the newly added car parts
             int cpos = -1;
-            for (int i = 0; i <= carparts.Length - 1; i++)
+            for (int i = 0; i <= Carparts.Length - 1; i++)
             {
-                if (carparts[i] == " ")
+                if (Carparts[i] == " ")
                 {
                     cpos = i;
                     break;
@@ -2408,10 +2408,10 @@ namespace GT5_Car_hack_workshop_2
                 return;
             }
 
-            carname = Interaction.InputBox("Car name:", "", Conversions.ToString(carname));
+            Carname = Interaction.InputBox("Car name:", "", Conversions.ToString(Carname));
 
             string linetoadd =
-                carname + "," +
+                Carname + "," +
                 TextBox3.Text + "," +
                 TextBox6.Text + "," +
                 TextBox7.Text + "," +
@@ -2421,15 +2421,15 @@ namespace GT5_Car_hack_workshop_2
                 TextBox22.Text + "," +
                 TextBox23.Text;
 
-            for (int j = 0; j <= carparts.Length - 1; j++)
+            for (int j = 0; j <= Carparts.Length - 1; j++)
             {
-                if (carparts[j].Equals(linetoadd, StringComparison.OrdinalIgnoreCase))
+                if (Carparts[j].Equals(linetoadd, StringComparison.OrdinalIgnoreCase))
                 {
                     MessageBox.Show("Car already exists", "", MessageBoxButtons.OK);
                 }
             }
 
-            carparts[cpos] = linetoadd;
+            Carparts[cpos] = linetoadd;
             LOADPARTS();
         }
 
@@ -2447,14 +2447,14 @@ namespace GT5_Car_hack_workshop_2
             int num = 0;
             checked
             {
-                int num2 = carparts.Length - 1;
+                int num2 = Carparts.Length - 1;
                 for (int i = num; i <= num2; i++)
                 {
-                    if (Operators.CompareString(carparts[i], " ", false) != 0)
+                    if (Operators.CompareString(Carparts[i], " ", false) != 0)
                     {
                         try
                         {
-                            string[] sparr = carparts[i].Split(',');
+                            string[] sparr = Carparts[i].Split(',');
                             ComboBox1.Items.Add(sparr[0] +
                                                 "                                                                                                                                            ," +
                                                 sparr[1]);
@@ -2608,7 +2608,7 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x0600015D RID: 349 RVA: 0x0000E114 File Offset: 0x0000C514
         private void Button15_Click(object sender, EventArgs e)
         {
-            gt5save[Conversions.ToInteger(Operators.AddObject(moff, 248))] = byte.MaxValue;
+            Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 248))] = byte.MaxValue;
             Interaction.MsgBox(
                 "The car is now yours, you can now either hack it, or click encrypt and save then return the data to the PS3");
             savedata();
@@ -2631,10 +2631,10 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x06000160 RID: 352 RVA: 0x0000E170 File Offset: 0x0000C570
         private void Button18_Click(object sender, EventArgs e)
         {
-            gt5save[moff + 2282] = byte.MaxValue;
-            gt5save[moff + 2283] = byte.MaxValue;
-            gt5save[moff + 2284] = byte.MaxValue;
-            gt5save[moff + 2285] = byte.MaxValue;
+            Gt5Save[Moff + 2282] = byte.MaxValue;
+            Gt5Save[Moff + 2283] = byte.MaxValue;
+            Gt5Save[Moff + 2284] = byte.MaxValue;
+            Gt5Save[Moff + 2285] = byte.MaxValue;
             Interaction.MsgBox("You now have 4,294,967,295 cr");
             savedata();
         }
@@ -2642,22 +2642,22 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x06000161 RID: 353 RVA: 0x0000E228 File Offset: 0x0000C628
         private void SlamCar_Button19_Click(object sender, EventArgs e)
         {
-            gt5save[moff - 25] = 0;
-            gt5save[moff - 24] = 0;
+            Gt5Save[Moff - 25] = 0;
+            Gt5Save[Moff - 24] = 0;
         }
 
         // Token: 0x06000162 RID: 354 RVA: 0x0000E268 File Offset: 0x0000C668
         private void Button20_Click(object sender, EventArgs e)
         {
-            gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 355))] = 0;
-            gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 332))] = 2;
+            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 355))] = 0;
+            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 332))] = 2;
         }
 
         // Token: 0x06000163 RID: 355 RVA: 0x0000E2BC File Offset: 0x0000C6BC
         private void Button21_Click(object sender, EventArgs e)
         {
-            gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 355))] = 1;
-            gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 332))] = 0;
+            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 355))] = 1;
+            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 332))] = 0;
         }
 
         // Token: 0x06000164 RID: 356 RVA: 0x0000E310 File Offset: 0x0000C710
@@ -3054,18 +3054,18 @@ namespace GT5_Car_hack_workshop_2
         /// from a database file ("partsdatabase.db") during program execution.
         /// It is primarily used within the application to display and modify vehicle part information.
         /// </remarks>
-        public string[] carparts;
+        public string[] Carparts;
 
         // Token: 0x04000099 RID: 153
-        public string[] progsettings;
+        public string[] Progsettings;
 
         // Token: 0x0400009A RID: 154
-        public byte[] gt5save;
+        public byte[] Gt5Save;
 
         // Token: 0x0400009B RID: 155
-        public int moff;
+        public int Moff;
 
         // Token: 0x0400009C RID: 156
-        public string carname;
+        public string Carname;
     }
 }

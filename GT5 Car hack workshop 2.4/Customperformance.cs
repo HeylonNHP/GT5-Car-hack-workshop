@@ -347,14 +347,14 @@ namespace GT5_Car_hack_workshop_2
 		{
 			if (!this.CheckBox1.Checked)
 			{
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 332))] = 56;
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 331))] = 9;
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 330))] = 8;
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 315))] = 80;
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 314))] = 9;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 332))] = 56;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 331))] = 9;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 330))] = 8;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 315))] = 80;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 314))] = 9;
 			}
-			MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 171))] = 0;
-			MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 170))] = 0;
+			MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 171))] = 0;
+			MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 170))] = 0;
 			checked
 			{
 				try
@@ -362,122 +362,122 @@ namespace GT5_Car_hack_workshop_2
 					string working = this.TextBox1.Text;
 					working = Conversions.ToString(Conversion.Val(working));
 					int @int = Conversions.ToInteger(Conversion.Int(working));
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 169))] = (byte)Math.Round(Conversion.Val("&H" + @int.ToString("X4").Substring(0, 2)));
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 168))] = (byte)Math.Round(Conversion.Val("&H" + @int.ToString("X4").Substring(2, 2)));
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 169))] = (byte)Math.Round(Conversion.Val("&H" + @int.ToString("X4").Substring(0, 2)));
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 168))] = (byte)Math.Round(Conversion.Val("&H" + @int.ToString("X4").Substring(2, 2)));
 				}
 				catch (Exception ex)
 				{
 				}
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 175))] = 0;
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 174))] = 0;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 175))] = 0;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 174))] = 0;
 				try
 				{
 					string working2 = this.TextBox2.Text;
 					working2 = Conversions.ToString(Conversion.Val(working2));
 					int int2 = Conversions.ToInteger(Conversion.Int(working2));
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 173))] = (byte)Math.Round(Conversion.Val("&H" + int2.ToString("X4").Substring(0, 2)));
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 172))] = (byte)Math.Round(Conversion.Val("&H" + int2.ToString("X4").Substring(2, 2)));
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 173))] = (byte)Math.Round(Conversion.Val("&H" + int2.ToString("X4").Substring(0, 2)));
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 172))] = (byte)Math.Round(Conversion.Val("&H" + int2.ToString("X4").Substring(2, 2)));
 				}
 				catch (Exception ex2)
 				{
 				}
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 155))] = 0;
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 154))] = 0;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 155))] = 0;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 154))] = 0;
 				try
 				{
 					string working3 = this.TextBox3.Text;
 					working3 = Conversions.ToString(Conversion.Val(working3));
 					int int3 = Conversions.ToInteger(Conversion.Int(working3));
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 153))] = (byte)Math.Round(Conversion.Val("&H" + int3.ToString("X4").Substring(0, 2)));
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 152))] = (byte)Math.Round(Conversion.Val("&H" + int3.ToString("X4").Substring(2, 2)));
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 153))] = (byte)Math.Round(Conversion.Val("&H" + int3.ToString("X4").Substring(0, 2)));
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 152))] = (byte)Math.Round(Conversion.Val("&H" + int3.ToString("X4").Substring(2, 2)));
 				}
 				catch (Exception ex3)
 				{
 				}
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 179))] = 0;
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 178))] = 0;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 179))] = 0;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 178))] = 0;
 				try
 				{
 					string working4 = this.TextBox4.Text;
 					working4 = Conversions.ToString(Conversion.Val(working4));
 					int int4 = Conversions.ToInteger(Conversion.Int(working4));
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 177))] = (byte)Math.Round(Conversion.Val("&H" + int4.ToString("X4").Substring(0, 2)));
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 176))] = (byte)Math.Round(Conversion.Val("&H" + int4.ToString("X4").Substring(2, 2)));
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 177))] = (byte)Math.Round(Conversion.Val("&H" + int4.ToString("X4").Substring(0, 2)));
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 176))] = (byte)Math.Round(Conversion.Val("&H" + int4.ToString("X4").Substring(2, 2)));
 				}
 				catch (Exception ex4)
 				{
 				}
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 131))] = 0;
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 130))] = 0;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 131))] = 0;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 130))] = 0;
 				try
 				{
 					string working5 = this.TextBox5.Text;
 					working5 = Conversions.ToString(Conversion.Val(working5));
 					int int5 = Conversions.ToInteger(Conversion.Int(working5));
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 129))] = (byte)Math.Round(Conversion.Val("&H" + int5.ToString("X4").Substring(0, 2)));
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 128))] = (byte)Math.Round(Conversion.Val("&H" + int5.ToString("X4").Substring(2, 2)));
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 129))] = (byte)Math.Round(Conversion.Val("&H" + int5.ToString("X4").Substring(0, 2)));
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 128))] = (byte)Math.Round(Conversion.Val("&H" + int5.ToString("X4").Substring(2, 2)));
 				}
 				catch (Exception ex5)
 				{
 				}
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 127))] = 0;
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 126))] = 0;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 127))] = 0;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 126))] = 0;
 				try
 				{
 					string working6 = this.TextBox6.Text;
 					working6 = Conversions.ToString(Conversion.Val(working6));
 					int int6 = Conversions.ToInteger(Conversion.Int(working6));
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 125))] = (byte)Math.Round(Conversion.Val("&H" + int6.ToString("X4").Substring(0, 2)));
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 124))] = (byte)Math.Round(Conversion.Val("&H" + int6.ToString("X4").Substring(2, 2)));
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 125))] = (byte)Math.Round(Conversion.Val("&H" + int6.ToString("X4").Substring(0, 2)));
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 124))] = (byte)Math.Round(Conversion.Val("&H" + int6.ToString("X4").Substring(2, 2)));
 				}
 				catch (Exception ex6)
 				{
 				}
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 123))] = 0;
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 122))] = 0;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 123))] = 0;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 122))] = 0;
 				try
 				{
 					string working7 = this.TextBox7.Text;
 					working7 = Conversions.ToString(Conversion.Val(working7));
 					int int7 = Conversions.ToInteger(Conversion.Int(working7));
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 121))] = (byte)Math.Round(Conversion.Val("&H" + int7.ToString("X4").Substring(0, 2)));
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 120))] = (byte)Math.Round(Conversion.Val("&H" + int7.ToString("X4").Substring(2, 2)));
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 121))] = (byte)Math.Round(Conversion.Val("&H" + int7.ToString("X4").Substring(0, 2)));
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 120))] = (byte)Math.Round(Conversion.Val("&H" + int7.ToString("X4").Substring(2, 2)));
 				}
 				catch (Exception ex7)
 				{
 				}
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 119))] = 0;
-				MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 118))] = 0;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 119))] = 0;
+				MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 118))] = 0;
 				try
 				{
 					string working8 = this.TextBox8.Text;
 					working8 = Conversions.ToString(Conversion.Val(working8));
 					int int8 = Conversions.ToInteger(Conversion.Int(working8));
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 117))] = (byte)Math.Round(Conversion.Val("&H" + int8.ToString("X4").Substring(0, 2)));
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 116))] = (byte)Math.Round(Conversion.Val("&H" + int8.ToString("X4").Substring(2, 2)));
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 117))] = (byte)Math.Round(Conversion.Val("&H" + int8.ToString("X4").Substring(0, 2)));
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 116))] = (byte)Math.Round(Conversion.Val("&H" + int8.ToString("X4").Substring(2, 2)));
 				}
 				catch (Exception ex8)
 				{
 				}
 				MyProject.Forms.Form1.TextBox11.Text = string.Concat(new string[]
 				{
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 171))].ToString("X2"),
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 171))].ToString("X2"),
 					" ",
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 170))].ToString("X2"),
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 170))].ToString("X2"),
 					" ",
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 169))].ToString("X2"),
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 169))].ToString("X2"),
 					" ",
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 168))].ToString("X2")
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 168))].ToString("X2")
 				});
 				MyProject.Forms.Form1.TextBox19.Text = string.Concat(new string[]
 				{
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 155))].ToString("X2"),
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 155))].ToString("X2"),
 					" ",
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 154))].ToString("X2"),
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 154))].ToString("X2"),
 					" ",
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 153))].ToString("X2"),
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 153))].ToString("X2"),
 					" ",
-					MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 152))].ToString("X2")
+					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 152))].ToString("X2")
 				});
 				this.Close();
 			}
@@ -488,59 +488,59 @@ namespace GT5_Car_hack_workshop_2
 		{
 			TextBox textBox = this.TextBox1;
 			string text = "&H";
-			byte b = MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 169))];
+			byte b = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 169))];
 			string text2 = b.ToString("X2");
 			string text3 = " ";
-			byte b2 = MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 168))];
+			byte b2 = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 168))];
 			textBox.Text = Conversions.ToString(Conversion.Val(text + text2 + text3 + b2.ToString("X2")));
 			TextBox textBox2 = this.TextBox2;
 			string text4 = "&H";
-			b2 = MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 173))];
+			b2 = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 173))];
 			string text5 = b2.ToString("X2");
 			string text6 = " ";
-			b = MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 172))];
+			b = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 172))];
 			textBox2.Text = Conversions.ToString(Conversion.Val(text4 + text5 + text6 + b.ToString("X2")));
 			TextBox textBox3 = this.TextBox3;
 			string text7 = "&H";
-			b2 = MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 153))];
+			b2 = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 153))];
 			string text8 = b2.ToString("X2");
 			string text9 = " ";
-			b = MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 152))];
+			b = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 152))];
 			textBox3.Text = Conversions.ToString(Conversion.Val(text7 + text8 + text9 + b.ToString("X2")));
 			TextBox textBox4 = this.TextBox4;
 			string text10 = "&H";
-			b2 = MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 177))];
+			b2 = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 177))];
 			string text11 = b2.ToString("X2");
 			string text12 = " ";
-			b = MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 176))];
+			b = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 176))];
 			textBox4.Text = Conversions.ToString(Conversion.Val(text10 + text11 + text12 + b.ToString("X2")));
 			TextBox textBox5 = this.TextBox5;
 			string text13 = "&H";
-			b2 = MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 129))];
+			b2 = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 129))];
 			string text14 = b2.ToString("X2");
 			string text15 = " ";
-			b = MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 128))];
+			b = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 128))];
 			textBox5.Text = Conversions.ToString(Conversion.Val(text13 + text14 + text15 + b.ToString("X2")));
 			TextBox textBox6 = this.TextBox6;
 			string text16 = "&H";
-			b2 = MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 125))];
+			b2 = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 125))];
 			string text17 = b2.ToString("X2");
 			string text18 = " ";
-			b = MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 124))];
+			b = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 124))];
 			textBox6.Text = Conversions.ToString(Conversion.Val(text16 + text17 + text18 + b.ToString("X2")));
 			TextBox textBox7 = this.TextBox7;
 			string text19 = "&H";
-			b2 = MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 121))];
+			b2 = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 121))];
 			string text20 = b2.ToString("X2");
 			string text21 = " ";
-			b = MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 120))];
+			b = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 120))];
 			textBox7.Text = Conversions.ToString(Conversion.Val(text19 + text20 + text21 + b.ToString("X2")));
 			TextBox textBox8 = this.TextBox8;
 			string text22 = "&H";
-			b2 = MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 117))];
+			b2 = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 117))];
 			string text23 = b2.ToString("X2");
 			string text24 = " ";
-			b = MyProject.Forms.Form1.gt5save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.moff, 116))];
+			b = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 116))];
 			textBox8.Text = Conversions.ToString(Conversion.Val(text22 + text23 + text24 + b.ToString("X2")));
 		}
 
