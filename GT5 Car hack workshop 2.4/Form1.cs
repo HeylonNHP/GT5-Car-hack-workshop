@@ -2285,7 +2285,7 @@ namespace GT5_Car_hack_workshop_2
             Carparts = Settingsfileclass.loadsettings("partsdatabase.db", 9999);
             TextBox1.Text = Progsettings[0];
             TextBox2.Text = Progsettings[1];
-            LOADPARTS();
+            LoadParts();
         }
 
         // Token: 0x06000145 RID: 325 RVA: 0x0000D7A4 File Offset: 0x0000BBA4
@@ -2430,59 +2430,38 @@ namespace GT5_Car_hack_workshop_2
             }
 
             Carparts[cpos] = linetoadd;
-            LOADPARTS();
+            LoadParts();
         }
 
-        // Token: 0x06000152 RID: 338 RVA: 0x0000DBD8 File Offset: 0x0000BFD8
-        private void LOADPARTS()
+        private void LoadParts()
         {
-            ComboBox1.Items.Clear();
-            ComboBox2.Items.Clear();
-            ComboBox3.Items.Clear();
-            ComboBox4.Items.Clear();
-            ComboBox5.Items.Clear();
-            ComboBox6.Items.Clear();
-            ComboBox7.Items.Clear();
-            ComboBox8.Items.Clear();
-            int num = 0;
-            checked
+            // Assuming all ComboBoxes are part of the same container (like the form or a group box)
+            foreach (var comboBox in new[] { ComboBox1, ComboBox2, ComboBox3, ComboBox4, ComboBox5, ComboBox6, ComboBox7, ComboBox8 })
             {
-                int num2 = Carparts.Length - 1;
-                for (int i = num; i <= num2; i++)
+                comboBox.Items.Clear();
+            }
+
+            // Spacer is used so that the hex value data after the comma doesn't show up in the GUI (Yep, terrible) TODO: Fix
+            var spacer = "                                                                                                                                            ,";
+            for (var i = 0; i <= Carparts.Length - 1; i++)
+            {
+                if (Carparts[i] != " ")
                 {
-                    if (Operators.CompareString(Carparts[i], " ", false) != 0)
+                    try
                     {
-                        try
-                        {
-                            string[] sparr = Carparts[i].Split(',');
-                            ComboBox1.Items.Add(sparr[0] +
-                                                "                                                                                                                                            ," +
-                                                sparr[1]);
-                            ComboBox2.Items.Add(sparr[0] +
-                                                "                                                                                                                                            ," +
-                                                sparr[2]);
-                            ComboBox3.Items.Add(sparr[0] +
-                                                "                                                                                                                                            ," +
-                                                sparr[3]);
-                            ComboBox4.Items.Add(sparr[0] +
-                                                "                                                                                                                                            ," +
-                                                sparr[4]);
-                            ComboBox5.Items.Add(sparr[0] +
-                                                "                                                                                                                                            ," +
-                                                sparr[6]);
-                            ComboBox6.Items.Add(sparr[0] +
-                                                "                                                                                                                                            ," +
-                                                sparr[5]);
-                            ComboBox7.Items.Add(sparr[0] +
-                                                "                                                                                                                                            ," +
-                                                sparr[7]);
-                            ComboBox8.Items.Add(sparr[0] +
-                                                "                                                                                                                                            ," +
-                                                sparr[8]);
-                        }
-                        catch (Exception ex)
-                        {
-                        }
+                        var sparr = Carparts[i].Split(',');
+                        ComboBox1.Items.Add(sparr[0] + spacer + sparr[1]);
+                        ComboBox2.Items.Add(sparr[0] + spacer + sparr[2]);
+                        ComboBox3.Items.Add(sparr[0] + spacer + sparr[3]);
+                        ComboBox4.Items.Add(sparr[0] + spacer + sparr[4]);
+                        ComboBox5.Items.Add(sparr[0] + spacer + sparr[6]);
+                        ComboBox6.Items.Add(sparr[0] + spacer + sparr[5]);
+                        ComboBox7.Items.Add(sparr[0] + spacer + sparr[7]);
+                        ComboBox8.Items.Add(sparr[0] + spacer + sparr[8]);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An issue occured while loading the parts database: {ex.Message}");
                     }
                 }
             }
