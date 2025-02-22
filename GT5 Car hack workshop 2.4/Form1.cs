@@ -57,22 +57,17 @@ namespace GT5_Car_hack_workshop_2
             set;
         }
 
-        // Token: 0x1700001F RID: 31
-        // (get) Token: 0x06000055 RID: 85 RVA: 0x00009994 File Offset: 0x00007D94
-        // (set) Token: 0x06000056 RID: 86 RVA: 0x000099A8 File Offset: 0x00007DA8
-        internal virtual TextBox TextBox1
+        [field: AccessedThroughProperty("TextBox1")]
+        private TextBox TextBox1
         {
-            get { return _TextBox1; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox1 = value; }
+            set;
         }
 
-        // Token: 0x17000020 RID: 32
-        // (get) Token: 0x06000057 RID: 87 RVA: 0x000099B4 File Offset: 0x00007DB4
-        // (set) Token: 0x06000058 RID: 88 RVA: 0x000099C8 File Offset: 0x00007DC8
-        internal virtual Button Button3
+        private Button Button3
         {
-            get { return _Button3; }
+            get => _Button3;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -2651,7 +2646,6 @@ namespace GT5_Car_hack_workshop_2
         [AccessedThroughProperty("Button1")] private Button _Button1;
         
         // Token: 0x04000022 RID: 34
-        [AccessedThroughProperty("TextBox1")] private TextBox _TextBox1;
 
         // Token: 0x04000023 RID: 35
         [AccessedThroughProperty("Button3")] private Button _Button3;
