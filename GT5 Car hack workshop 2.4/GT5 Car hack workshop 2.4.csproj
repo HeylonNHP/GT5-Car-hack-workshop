@@ -55,7 +55,7 @@
         <Compile Include="Form1.Designer.cs">
             <DependentUpon>Form1.cs</DependentUpon>
         </Compile>
-        <Compile Include="loaddata.cs"/>
+        <Compile Include="LoadData.cs" />
         <Compile Include="My\MyApplication.cs"/>
         <Compile Include="My\MyComputer.cs"/>
         <Compile Include="My\MyProject.cs"/>

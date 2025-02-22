@@ -1,12 +1,9 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.IO;
-using Microsoft.VisualBasic.CompilerServices;
 
 namespace GT5_Car_hack_workshop_2
 {
-	// Token: 0x0200000A RID: 10
-	public class loaddata
+	public static class LoadData
 	{
 		/// <summary>
 		/// Unencrypt and load GT5.0 file into byte array which is then returned
@@ -29,9 +26,9 @@ namespace GT5_Car_hack_workshop_2
 		/// Encrypt and save GT5.0 file.
 		/// </summary>
 		/// <param name="path">Path to the GT5.0 file to be encrypted</param>
-		public static void Encrypt(object path)
+		public static void Encrypt(string path)
 		{
-			var gt5File = new FileInfo(Conversions.ToString(path));
+			var gt5File = new FileInfo(path);
 			var proc = new Process();
 			proc.StartInfo.FileName = "pfdtool";
 			proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
