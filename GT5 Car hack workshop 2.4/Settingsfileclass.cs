@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using GT5_Car_hack_workshop_2.My;
-using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
+using System.Text;
 
 namespace GT5_Car_hack_workshop_2
 {
@@ -17,30 +14,12 @@ namespace GT5_Car_hack_workshop_2
         [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
         public static void savesettings(string[] settings, string file)
         {
-            if (MyProject.Computer.FileSystem.FileExists(file))
+            if (File.Exists(file))
             {
-                FileSystem.Kill(file);
+                File.Delete(file);
             }
 
-            StreamWriter swr = new StreamWriter(file);
-            int num = 0;
-            checked
-            {
-                int num2 = (int)Math.Round(Conversion.Val(settings.Length - 1));
-                for (int i = num; i <= num2; i++)
-                {
-                    try
-                    {
-                        swr.WriteLine(settings[i].ToString());
-                    }
-                    catch (Exception ex)
-                    {
-                    }
-                }
-
-                swr.Flush();
-                swr.Close();
-            }
+            File.WriteAllLines(file, settings);
         }
 
         // Token: 0x06000174 RID: 372 RVA: 0x0000264C File Offset: 0x00000A4C
@@ -67,7 +46,7 @@ namespace GT5_Car_hack_workshop_2
             if (File.Exists(file))
             {
                 byte[] fileBytes = File.ReadAllBytes(file);
-                string fileContent = System.Text.Encoding.UTF8.GetString(fileBytes);
+                string fileContent = Encoding.UTF8.GetString(fileBytes);
                 string[] fileLines = fileContent.Split(new[] { "\r\n" }, StringSplitOptions.None);
                 foreach (string line in fileLines)
                 {
