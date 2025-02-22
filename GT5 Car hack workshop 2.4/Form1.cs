@@ -1377,17 +1377,17 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        private void processdata()
+        private void ProcessData()
         {
-            if (!MyProject.Computer.FileSystem.FileExists(TextBox1.Text))
+            if (!File.Exists(TextBox1.Text))
             {
-                Interaction.MsgBox("GT5.0 file doesn't exist!");
+                MessageBox.Show("GT5.0 file doesn't exist!");
                 return;
             }
 
-            if (Operators.CompareString(TextBox2.Text, "", false) == 0)
+            if (string.IsNullOrWhiteSpace(TextBox2.Text))
             {
-                Interaction.MsgBox("You left the PSN name empty! We need this to load up your data!");
+                MessageBox.Show("You left the PSN name empty! We need this to load up your data!");
                 return;
             }
 
@@ -2032,7 +2032,7 @@ namespace GT5_Car_hack_workshop_2
             tad = tad.Replace("/", "-");
             tad = tad.Replace(":", ".");
             MyProject.Computer.FileSystem.CopyFile(TextBox1.Text, "Backups\\" + tad + " " + fi.Name);
-            processdata();
+            ProcessData();
         }
 
         // Token: 0x06000147 RID: 327 RVA: 0x0000D87C File Offset: 0x0000BC7C
