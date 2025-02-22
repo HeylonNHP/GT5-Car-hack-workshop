@@ -1483,16 +1483,17 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x1700008B RID: 139
-        // (get) Token: 0x0600012D RID: 301 RVA: 0x0000AD94 File Offset: 0x00009194
-        // (set) Token: 0x0600012E RID: 302 RVA: 0x0000ADA8 File Offset: 0x000091A8
+
+        /// <summary>
+        /// Slam car button
+        /// </summary>
         internal virtual Button Button19
         {
             get { return _Button19; }
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                EventHandler eventHandler = Button19_Click;
+                EventHandler eventHandler = SlamCar_Button19_Click;
                 if (_Button19 != null)
                 {
                     _Button19.Click -= eventHandler;
@@ -1726,7 +1727,11 @@ namespace GT5_Car_hack_workshop_2
                 TextBox3.Text =
                     gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 213))].ToString("X2") + " " +
                     gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 212))].ToString("X2");
-                TextBox4.Text = Conversions.ToString(Conversion.Val("&H" + gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 46))].ToString("X2")));
+                TextBox4.Text = Conversions.ToString(Conversion.Val("&H" +
+                                                                    gt5save[
+                                                                            Conversions.ToInteger(
+                                                                                Operators.SubtractObject(moff, 46))]
+                                                                        .ToString("X2")));
                 TextBox6.Text =
                     gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 209))].ToString("X2") + " " +
                     gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 208))].ToString("X2");
@@ -1738,8 +1743,16 @@ namespace GT5_Car_hack_workshop_2
                     gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 204))].ToString("X2");
                 TextBox9.Text =
                     Conversions.ToString(gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 88))]);
-                TextBox10.Text = string.Concat(gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 344))].ToString("X2"), " ", gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 343))].ToString("X2"), " ", gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 342))].ToString("X2"), " ", gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 341))].ToString("X2"));
-                TextBox11.Text = string.Concat(gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 171))].ToString("X2"), " ", gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 170))].ToString("X2"), " ", gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 169))].ToString("X2"), " ", gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 168))].ToString("X2"));
+                TextBox10.Text = string.Concat(
+                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 344))].ToString("X2"), " ",
+                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 343))].ToString("X2"), " ",
+                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 342))].ToString("X2"), " ",
+                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 341))].ToString("X2"));
+                TextBox11.Text = string.Concat(
+                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 171))].ToString("X2"), " ",
+                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 170))].ToString("X2"), " ",
+                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 169))].ToString("X2"), " ",
+                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 168))].ToString("X2"));
                 TextBox13.Text =
                     Conversions.ToString(gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 43))]);
                 TextBox12.Text =
@@ -1764,7 +1777,11 @@ namespace GT5_Car_hack_workshop_2
                     Conversions.ToString(gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 27))]);
                 TextBox17.Text =
                     Conversions.ToString(gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 26))]);
-                TextBox19.Text = string.Concat(gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 155))].ToString("X2"), " ", gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 154))].ToString("X2"), " ", gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 153))].ToString("X2"), " ", gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 152))].ToString("X2"));
+                TextBox19.Text = string.Concat(
+                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 155))].ToString("X2"), " ",
+                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 154))].ToString("X2"), " ",
+                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 153))].ToString("X2"), " ",
+                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 152))].ToString("X2"));
                 TextBox20.Text =
                     gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 262))].ToString("X2") + " " +
                     gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 261))].ToString("X2");
@@ -1777,7 +1794,11 @@ namespace GT5_Car_hack_workshop_2
                 TextBox23.Text =
                     gt5save[Conversions.ToInteger(Operators.AddObject(moff, 23))].ToString("X2") + " " +
                     gt5save[Conversions.ToInteger(Operators.AddObject(moff, 24))].ToString("X2");
-                TextBox24.Text = string.Concat(gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 191))].ToString("X2"), " ", gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 190))].ToString("X2"), " ", gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 189))].ToString("X2"), " ", gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 188))].ToString("X2"));
+                TextBox24.Text = string.Concat(
+                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 191))].ToString("X2"), " ",
+                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 190))].ToString("X2"), " ",
+                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 189))].ToString("X2"), " ",
+                    gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 188))].ToString("X2"));
             }
         }
 
@@ -2388,7 +2409,7 @@ namespace GT5_Car_hack_workshop_2
             }
 
             carname = Interaction.InputBox("Car name:", "", Conversions.ToString(carname));
-            
+
             string linetoadd =
                 carname + "," +
                 TextBox3.Text + "," +
@@ -2399,7 +2420,7 @@ namespace GT5_Car_hack_workshop_2
                 TextBox21.Text + "," +
                 TextBox22.Text + "," +
                 TextBox23.Text;
-            
+
             for (int j = 0; j <= carparts.Length - 1; j++)
             {
                 if (carparts[j].Equals(linetoadd, StringComparison.OrdinalIgnoreCase))
@@ -2435,29 +2456,29 @@ namespace GT5_Car_hack_workshop_2
                         {
                             string[] sparr = carparts[i].Split(',');
                             ComboBox1.Items.Add(sparr[0] +
-                                                     "                                                                                                                                            ," +
-                                                     sparr[1]);
+                                                "                                                                                                                                            ," +
+                                                sparr[1]);
                             ComboBox2.Items.Add(sparr[0] +
-                                                     "                                                                                                                                            ," +
-                                                     sparr[2]);
+                                                "                                                                                                                                            ," +
+                                                sparr[2]);
                             ComboBox3.Items.Add(sparr[0] +
-                                                     "                                                                                                                                            ," +
-                                                     sparr[3]);
+                                                "                                                                                                                                            ," +
+                                                sparr[3]);
                             ComboBox4.Items.Add(sparr[0] +
-                                                     "                                                                                                                                            ," +
-                                                     sparr[4]);
+                                                "                                                                                                                                            ," +
+                                                sparr[4]);
                             ComboBox5.Items.Add(sparr[0] +
-                                                     "                                                                                                                                            ," +
-                                                     sparr[6]);
+                                                "                                                                                                                                            ," +
+                                                sparr[6]);
                             ComboBox6.Items.Add(sparr[0] +
-                                                     "                                                                                                                                            ," +
-                                                     sparr[5]);
+                                                "                                                                                                                                            ," +
+                                                sparr[5]);
                             ComboBox7.Items.Add(sparr[0] +
-                                                     "                                                                                                                                            ," +
-                                                     sparr[7]);
+                                                "                                                                                                                                            ," +
+                                                sparr[7]);
                             ComboBox8.Items.Add(sparr[0] +
-                                                     "                                                                                                                                            ," +
-                                                     sparr[8]);
+                                                "                                                                                                                                            ," +
+                                                sparr[8]);
                         }
                         catch (Exception ex)
                         {
@@ -2619,10 +2640,10 @@ namespace GT5_Car_hack_workshop_2
         }
 
         // Token: 0x06000161 RID: 353 RVA: 0x0000E228 File Offset: 0x0000C628
-        private void Button19_Click(object sender, EventArgs e)
+        private void SlamCar_Button19_Click(object sender, EventArgs e)
         {
-            gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 25))] = 0;
-            gt5save[Conversions.ToInteger(Operators.SubtractObject(moff, 24))] = 0;
+            gt5save[moff - 25] = 0;
+            gt5save[moff - 24] = 0;
         }
 
         // Token: 0x06000162 RID: 354 RVA: 0x0000E268 File Offset: 0x0000C668
