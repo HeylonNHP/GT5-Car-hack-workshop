@@ -2345,25 +2345,22 @@ namespace GT5_Car_hack_workshop_2
             savedata();
         }
 
-        // Token: 0x06000161 RID: 353 RVA: 0x0000E228 File Offset: 0x0000C628
         private void SlamCar_Button19_Click(object sender, EventArgs e)
         {
             Gt5Save[Moff - 25] = 0;
             Gt5Save[Moff - 24] = 0;
         }
 
-        // Token: 0x06000162 RID: 354 RVA: 0x0000E268 File Offset: 0x0000C668
         private void Button20_Click(object sender, EventArgs e)
         {
-            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 355))] = 0;
-            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 332))] = 2;
+            Gt5Save[Moff - 355] = 0;
+            Gt5Save[Moff - 332] = 2;
         }
 
-        // Token: 0x06000163 RID: 355 RVA: 0x0000E2BC File Offset: 0x0000C6BC
         private void Button21_Click(object sender, EventArgs e)
         {
-            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 355))] = 1;
-            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 332))] = 0;
+            Gt5Save[Moff - 355] = 1;
+            Gt5Save[Moff - 332] = 0;
         }
 
         // Token: 0x06000164 RID: 356 RVA: 0x0000E310 File Offset: 0x0000C710
