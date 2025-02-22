@@ -16,7 +16,7 @@ namespace GT5_Car_hack_workshop_2
             Load += Form1_Load;
             FormClosing += Form1_FormClosing;
             Moff = 0;
-            Carname = "";
+            _CarName = "";
             InitializeComponent();
         }
 
@@ -1444,7 +1444,7 @@ namespace GT5_Car_hack_workshop_2
                     RichTextBox rtf = new RichTextBox();
                     rtf.LoadFile(gt50file.Directory.FullName + "\\PARAM.SFO", RichTextBoxStreamType.PlainText);
                     Label7.Text = rtf.Lines[4];
-                    Carname = Label7.Text.Substring(13, Label7.Text.Length - 13);
+                    _CarName = Label7.Text.Substring(13, Label7.Text.Length - 13);
                 }
                 catch (Exception ex)
                 {
@@ -2008,20 +2008,20 @@ namespace GT5_Car_hack_workshop_2
                 MyProject.Computer.FileSystem.CreateDirectory("Backups");
             }
 
-            Progsettings = SettingsFileClass.LoadSettings("GT5CHWsettings.ini", 1);
-            Carparts = SettingsFileClass.LoadSettings("partsdatabase.db", 9999);
-            TextBox1.Text = Progsettings[0];
-            TextBox2.Text = Progsettings[1];
+            _ProgramSettings = SettingsFileClass.LoadSettings("GT5CHWsettings.ini", 1);
+            _CarParts = SettingsFileClass.LoadSettings("partsdatabase.db", 9999);
+            TextBox1.Text = _ProgramSettings[0];
+            TextBox2.Text = _ProgramSettings[1];
             LoadParts();
         }
 
         // Token: 0x06000145 RID: 325 RVA: 0x0000D7A4 File Offset: 0x0000BBA4
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Progsettings[0] = TextBox1.Text;
-            Progsettings[1] = TextBox2.Text;
-            SettingsFileClass.SaveSettings(Progsettings, "GT5CHWsettings.ini");
-            SettingsFileClass.SaveSettings(Carparts, "partsdatabase.db");
+            _ProgramSettings[0] = TextBox1.Text;
+            _ProgramSettings[1] = TextBox2.Text;
+            SettingsFileClass.SaveSettings(_ProgramSettings, "GT5CHWsettings.ini");
+            SettingsFileClass.SaveSettings(_CarParts, "partsdatabase.db");
         }
 
         // Token: 0x06000146 RID: 326 RVA: 0x0000D7F8 File Offset: 0x0000BBF8
@@ -2120,9 +2120,9 @@ namespace GT5_Car_hack_workshop_2
         {
             // cpos is used to find the next empty slot in the car parts database to place the newly added car parts
             int cpos = -1;
-            for (int i = 0; i <= Carparts.Length - 1; i++)
+            for (int i = 0; i <= _CarParts.Length - 1; i++)
             {
-                if (Carparts[i] == " ")
+                if (_CarParts[i] == " ")
                 {
                     cpos = i;
                     break;
@@ -2135,10 +2135,10 @@ namespace GT5_Car_hack_workshop_2
                 return;
             }
 
-            Carname = Interaction.InputBox("Car name:", "", Conversions.ToString(Carname));
+            _CarName = Interaction.InputBox("Car name:", "", Conversions.ToString(_CarName));
 
             string linetoadd =
-                Carname + "," +
+                _CarName + "," +
                 TextBox3.Text + "," +
                 TextBox6.Text + "," +
                 TextBox7.Text + "," +
@@ -2148,15 +2148,15 @@ namespace GT5_Car_hack_workshop_2
                 TextBox22.Text + "," +
                 TextBox23.Text;
 
-            for (int j = 0; j <= Carparts.Length - 1; j++)
+            for (int j = 0; j <= _CarParts.Length - 1; j++)
             {
-                if (Carparts[j].Equals(linetoadd, StringComparison.OrdinalIgnoreCase))
+                if (_CarParts[j].Equals(linetoadd, StringComparison.OrdinalIgnoreCase))
                 {
                     MessageBox.Show("Car already exists", "", MessageBoxButtons.OK);
                 }
             }
 
-            Carparts[cpos] = linetoadd;
+            _CarParts[cpos] = linetoadd;
             LoadParts();
         }
 
@@ -2170,13 +2170,13 @@ namespace GT5_Car_hack_workshop_2
 
             // Spacer is used so that the hex value data after the comma doesn't show up in the GUI (Yep, terrible) TODO: Fix
             var spacer = "                                                                                                                                            ,";
-            for (var i = 0; i <= Carparts.Length - 1; i++)
+            for (var i = 0; i <= _CarParts.Length - 1; i++)
             {
-                if (Carparts[i] != " ")
+                if (_CarParts[i] != " ")
                 {
                     try
                     {
-                        var sparr = Carparts[i].Split(',');
+                        var sparr = _CarParts[i].Split(',');
                         ComboBox1.Items.Add(sparr[0] + spacer + sparr[1]);
                         ComboBox2.Items.Add(sparr[0] + spacer + sparr[2]);
                         ComboBox3.Items.Add(sparr[0] + spacer + sparr[3]);
@@ -2377,279 +2377,70 @@ namespace GT5_Car_hack_workshop_2
                 "When you tick this checkbox, you must buy the Rigidity Improvement right before doing anything after loading the hacked save, the Rigidity Improvement is found under Body/Chassis in the tuning shop. The hack wont take proper effect without buying this upgrade.\r\rIf you have already purchased this upgrade, it will be uninstalled when you apply this hack.");
         }
 
-        // Token: 0x0400001F RID: 31
-
-        // Token: 0x04000020 RID: 32
         [AccessedThroughProperty("Button1")] private Button _Button1;
-
-        // Token: 0x04000022 RID: 34
-
-        // Token: 0x04000023 RID: 35
+        
         [AccessedThroughProperty("Button3")] private Button _Button3;
 
-        // Token: 0x04000024 RID: 36
         [AccessedThroughProperty("Button2")] private Button _Button2;
-
-        // Token: 0x04000025 RID: 37
-
-        // Token: 0x04000026 RID: 38
-
-        // Token: 0x04000027 RID: 39
-
-        // Token: 0x04000028 RID: 40
-
-        // Token: 0x04000029 RID: 41
-
-        // Token: 0x0400002A RID: 42
-
-        // Token: 0x0400002B RID: 43
-
-        // Token: 0x0400002C RID: 44
-
-        // Token: 0x0400002D RID: 45
-
-        // Token: 0x0400002E RID: 46
-
-        // Token: 0x0400002F RID: 47
+        
         [AccessedThroughProperty("Button5")] private Button _Button5;
-
-        // Token: 0x04000030 RID: 48
-
-        // Token: 0x04000031 RID: 49
-
-        // Token: 0x04000032 RID: 50
+        
         [AccessedThroughProperty("TextBox4")] private TextBox _TextBox4;
-
-        // Token: 0x04000033 RID: 51
-
-        // Token: 0x04000034 RID: 52
-
-        // Token: 0x04000035 RID: 53
-
-        // Token: 0x04000036 RID: 54
+        
         [AccessedThroughProperty("Button6")] private Button _Button6;
-
-        // Token: 0x04000037 RID: 55
-
-        // Token: 0x04000038 RID: 56
-
-        // Token: 0x04000039 RID: 57
-
-        // Token: 0x0400003A RID: 58
-
-        // Token: 0x0400003B RID: 59
+        
         [AccessedThroughProperty("Button4")] private Button _Button4;
-
-        // Token: 0x0400003C RID: 60
+        
         [AccessedThroughProperty("Button7")] private Button _Button7;
 
-        // Token: 0x0400003D RID: 61
         [AccessedThroughProperty("Button8")] private Button _Button8;
 
-        // Token: 0x0400003E RID: 62
         [AccessedThroughProperty("Button9")] private Button _Button9;
-
-        // Token: 0x0400003F RID: 63
-
-        // Token: 0x04000040 RID: 64
-
-        // Token: 0x04000041 RID: 65
-
-        // Token: 0x04000042 RID: 66
-
-        // Token: 0x04000043 RID: 67
-
-        // Token: 0x04000044 RID: 68
-
-        // Token: 0x04000045 RID: 69
-
-        // Token: 0x04000046 RID: 70
+        
         [AccessedThroughProperty("Button10")] private Button _Button10;
-
-        // Token: 0x04000047 RID: 71
-
-        // Token: 0x04000048 RID: 72
-
-        // Token: 0x04000049 RID: 73
-
-        // Token: 0x0400004A RID: 74
+        
         [AccessedThroughProperty("Button11")] private Button _Button11;
 
-        // Token: 0x0400004B RID: 75
-
-        // Token: 0x0400004C RID: 76
-
-        // Token: 0x0400004D RID: 77
-
-        // Token: 0x0400004E RID: 78
-
-        // Token: 0x0400004F RID: 79
-
-        // Token: 0x04000050 RID: 80
-
-        // Token: 0x04000051 RID: 81
-
-        // Token: 0x04000052 RID: 82
-
-        // Token: 0x04000053 RID: 83
-
-        // Token: 0x04000054 RID: 84
-
-        // Token: 0x04000055 RID: 85
-
-        // Token: 0x04000056 RID: 86
-
-        // Token: 0x04000057 RID: 87
-
-        // Token: 0x04000058 RID: 88
-
-        // Token: 0x04000059 RID: 89
-
-        // Token: 0x0400005A RID: 90
-
-        // Token: 0x0400005B RID: 91
-
-        // Token: 0x0400005C RID: 92
-
-        // Token: 0x0400005D RID: 93
         [AccessedThroughProperty("ComboBox2")] private ComboBox _ComboBox2;
 
-        // Token: 0x0400005E RID: 94
-
-        // Token: 0x0400005F RID: 95
         [AccessedThroughProperty("ComboBox1")] private ComboBox _ComboBox1;
 
-        // Token: 0x04000060 RID: 96
-
-        // Token: 0x04000061 RID: 97
         [AccessedThroughProperty("ComboBox6")] private ComboBox _ComboBox6;
 
-        // Token: 0x04000062 RID: 98
-
-        // Token: 0x04000063 RID: 99
         [AccessedThroughProperty("ComboBox5")] private ComboBox _ComboBox5;
 
-        // Token: 0x04000064 RID: 100
-
-        // Token: 0x04000065 RID: 101
         [AccessedThroughProperty("ComboBox4")] private ComboBox _ComboBox4;
 
-        // Token: 0x04000066 RID: 102
-
-        // Token: 0x04000067 RID: 103
         [AccessedThroughProperty("ComboBox3")] private ComboBox _ComboBox3;
 
-        // Token: 0x04000068 RID: 104
-
-        // Token: 0x04000069 RID: 105
         [AccessedThroughProperty("ComboBox8")] private ComboBox _ComboBox8;
 
-        // Token: 0x0400006A RID: 106
-
-        // Token: 0x0400006B RID: 107
         [AccessedThroughProperty("ComboBox7")] private ComboBox _ComboBox7;
 
-        // Token: 0x0400006C RID: 108
         [AccessedThroughProperty("Button12")] private Button _Button12;
 
-        // Token: 0x0400006D RID: 109
-
-        // Token: 0x0400006E RID: 110
-
-        // Token: 0x0400006F RID: 111
-
-        // Token: 0x04000070 RID: 112
-
-        // Token: 0x04000071 RID: 113
-
-        // Token: 0x04000072 RID: 114
-
-        // Token: 0x04000073 RID: 115
-
-        // Token: 0x04000074 RID: 116
-
-        // Token: 0x04000075 RID: 117
-
-        // Token: 0x04000076 RID: 118
-
-        // Token: 0x04000077 RID: 119
-
-        // Token: 0x04000078 RID: 120
         [AccessedThroughProperty("Button13")] private Button _Button13;
 
-        // Token: 0x04000079 RID: 121
-
-        // Token: 0x0400007A RID: 122
         [AccessedThroughProperty("Button14")] private Button _Button14;
 
-        // Token: 0x0400007B RID: 123
-
-        // Token: 0x0400007C RID: 124
         [AccessedThroughProperty("Button15")] private Button _Button15;
 
-        // Token: 0x0400007D RID: 125
-
-        // Token: 0x0400007E RID: 126
-
-        // Token: 0x0400007F RID: 127
-
-        // Token: 0x04000080 RID: 128
-
-        // Token: 0x04000081 RID: 129
-
-        // Token: 0x04000082 RID: 130
-
-        // Token: 0x04000083 RID: 131
-
-        // Token: 0x04000084 RID: 132
-
-        // Token: 0x04000085 RID: 133
-
-        // Token: 0x04000086 RID: 134
         [AccessedThroughProperty("Button16")] private Button _Button16;
 
-        // Token: 0x04000087 RID: 135
         [AccessedThroughProperty("Button17")] private Button _Button17;
 
-        // Token: 0x04000088 RID: 136
-
-        // Token: 0x04000089 RID: 137
-
-        // Token: 0x0400008A RID: 138
-
-        // Token: 0x0400008B RID: 139
-
-        // Token: 0x0400008C RID: 140
-
-        // Token: 0x0400008D RID: 141
         [AccessedThroughProperty("Button18")] private Button _Button18;
 
-        // Token: 0x0400008E RID: 142
         [AccessedThroughProperty("Button19")] private Button _Button19;
 
-        // Token: 0x0400008F RID: 143
-
-        // Token: 0x04000090 RID: 144
         [AccessedThroughProperty("Button21")] private Button _Button21;
 
-        // Token: 0x04000091 RID: 145
         [AccessedThroughProperty("Button20")] private Button _Button20;
 
-        // Token: 0x04000092 RID: 146
-
-        // Token: 0x04000093 RID: 147
         [AccessedThroughProperty("Button22")] private Button _Button22;
 
-        // Token: 0x04000094 RID: 148
-
-        // Token: 0x04000095 RID: 149
-
-        // Token: 0x04000096 RID: 150
-
-        // Token: 0x04000097 RID: 151
         [AccessedThroughProperty("Button23")] private Button _Button23;
 
-        // Token: 0x04000098 RID: 152
         /// <summary>
         /// Represents an array of car parts, utilized for storing and managing saved car part values.
         /// </summary>
@@ -2659,18 +2450,14 @@ namespace GT5_Car_hack_workshop_2
         /// from a database file ("partsdatabase.db") during program execution.
         /// It is primarily used within the application to display and modify vehicle part information.
         /// </remarks>
-        public string[] Carparts;
+        private string[] _CarParts;
 
-        // Token: 0x04000099 RID: 153
-        public string[] Progsettings;
+        private string[] _ProgramSettings;
 
-        // Token: 0x0400009A RID: 154
         public byte[] Gt5Save;
 
-        // Token: 0x0400009B RID: 155
         public int Moff;
 
-        // Token: 0x0400009C RID: 156
-        public string Carname;
+        private string _CarName;
     }
 }
