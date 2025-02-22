@@ -19,7 +19,7 @@ namespace GT5_Car_hack_workshop_2
             Carname = "";
             InitializeComponent();
         }
-        
+
         [field: AccessedThroughProperty("GroupBox1")]
         private GroupBox GroupBox1
         {
@@ -85,12 +85,9 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x17000021 RID: 33
-        // (get) Token: 0x06000059 RID: 89 RVA: 0x00009A14 File Offset: 0x00007E14
-        // (set) Token: 0x0600005A RID: 90 RVA: 0x00009A28 File Offset: 0x00007E28
-        internal virtual Button Button2
+        private Button Button2
         {
-            get { return _Button2; }
+            get => _Button2;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -108,54 +105,44 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x17000022 RID: 34
-        // (get) Token: 0x0600005B RID: 91 RVA: 0x00009A74 File Offset: 0x00007E74
-        // (set) Token: 0x0600005C RID: 92 RVA: 0x00009A88 File Offset: 0x00007E88
-        internal virtual GroupBox GroupBox2
+        [field: AccessedThroughProperty("GroupBox2")]
+        private GroupBox GroupBox2
         {
-            get { return _GroupBox2; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _GroupBox2 = value; }
+            set;
         }
 
-        // Token: 0x17000023 RID: 35
-        // (get) Token: 0x0600005D RID: 93 RVA: 0x00009A94 File Offset: 0x00007E94
-        // (set) Token: 0x0600005E RID: 94 RVA: 0x00009AA8 File Offset: 0x00007EA8
-        internal virtual TabControl TabControl1
+        [field: AccessedThroughProperty("TabControl1")]
+        private TabControl TabControl1
         {
-            get { return _TabControl1; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TabControl1 = value; }
+            set;
         }
 
-        // Token: 0x17000024 RID: 36
-        // (get) Token: 0x0600005F RID: 95 RVA: 0x00009AB4 File Offset: 0x00007EB4
-        // (set) Token: 0x06000060 RID: 96 RVA: 0x00009AC8 File Offset: 0x00007EC8
-        internal virtual TabPage TabPage1
+        [field: AccessedThroughProperty("TabPage1")]
+        private TabPage TabPage1
         {
-            get { return _TabPage1; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TabPage1 = value; }
+            set;
         }
 
-        // Token: 0x17000025 RID: 37
-        // (get) Token: 0x06000061 RID: 97 RVA: 0x00009AD4 File Offset: 0x00007ED4
-        // (set) Token: 0x06000062 RID: 98 RVA: 0x00009AE8 File Offset: 0x00007EE8
-        internal virtual Label Label2
+        [field: AccessedThroughProperty("Label2")]
+        private Label Label2
         {
-            get { return _Label2; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label2 = value; }
+            set;
         }
 
-        // Token: 0x17000026 RID: 38
-        // (get) Token: 0x06000063 RID: 99 RVA: 0x00009AF4 File Offset: 0x00007EF4
-        // (set) Token: 0x06000064 RID: 100 RVA: 0x00009B08 File Offset: 0x00007F08
-        internal virtual TextBox TextBox2
+        [field: AccessedThroughProperty("TextBox2")]
+        private TextBox TextBox2
         {
-            get { return _TextBox2; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox2 = value; }
+            set;
         }
 
         // Token: 0x17000027 RID: 39
@@ -2644,7 +2631,7 @@ namespace GT5_Car_hack_workshop_2
 
         // Token: 0x04000020 RID: 32
         [AccessedThroughProperty("Button1")] private Button _Button1;
-        
+
         // Token: 0x04000022 RID: 34
 
         // Token: 0x04000023 RID: 35
@@ -2654,20 +2641,14 @@ namespace GT5_Car_hack_workshop_2
         [AccessedThroughProperty("Button2")] private Button _Button2;
 
         // Token: 0x04000025 RID: 37
-        [AccessedThroughProperty("GroupBox2")] private GroupBox _GroupBox2;
 
         // Token: 0x04000026 RID: 38
-        [AccessedThroughProperty("TabControl1")]
-        private TabControl _TabControl1;
 
         // Token: 0x04000027 RID: 39
-        [AccessedThroughProperty("TabPage1")] private TabPage _TabPage1;
 
         // Token: 0x04000028 RID: 40
-        [AccessedThroughProperty("Label2")] private Label _Label2;
 
         // Token: 0x04000029 RID: 41
-        [AccessedThroughProperty("TextBox2")] private TextBox _TextBox2;
 
         // Token: 0x0400002A RID: 42
         [AccessedThroughProperty("TabControl2")]
