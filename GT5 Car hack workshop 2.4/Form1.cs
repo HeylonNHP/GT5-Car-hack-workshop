@@ -2610,10 +2610,10 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x06000160 RID: 352 RVA: 0x0000E170 File Offset: 0x0000C570
         private void Button18_Click(object sender, EventArgs e)
         {
-            gt5save[Conversions.ToInteger(Operators.AddObject(moff, 2282))] = byte.MaxValue;
-            gt5save[Conversions.ToInteger(Operators.AddObject(moff, 2283))] = byte.MaxValue;
-            gt5save[Conversions.ToInteger(Operators.AddObject(moff, 2284))] = byte.MaxValue;
-            gt5save[Conversions.ToInteger(Operators.AddObject(moff, 2285))] = byte.MaxValue;
+            gt5save[moff + 2282] = byte.MaxValue;
+            gt5save[moff + 2283] = byte.MaxValue;
+            gt5save[moff + 2284] = byte.MaxValue;
+            gt5save[moff + 2285] = byte.MaxValue;
             Interaction.MsgBox("You now have 4,294,967,295 cr");
             savedata();
         }
