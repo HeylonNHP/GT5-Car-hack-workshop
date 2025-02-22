@@ -40,31 +40,43 @@ namespace GT5_Car_hack_workshop_2
 			proc.WaitForExit();
 		}
 
-		// Token: 0x06000169 RID: 361 RVA: 0x00002428 File Offset: 0x00000828
+		/// <summary>
+		/// Finds the first occurrence of a sequence of bytes within a byte array and returns the starting index.
+		/// </summary>
+		/// <param name="list">The byte array to search within.</param>
+		/// <param name="value">The sequence of bytes to search for.</param>
+		/// <returns>The starting index of the first occurrence of the sequence within the array, or -1 if the sequence is not found.</returns>
 		public static int FindSequence(byte[] list, byte[] value)
 		{
-			int startIndex = Array.IndexOf<byte>(list, value[0]);
-			checked
+			// If the value array is empty or longer than the list, return -1 immediately
+			if (value == null || value.Length == 0 || list == null || value.Length > list.Length)
 			{
-				while (startIndex != -1 && list.Length - startIndex >= value.Length)
-				{
-					int runLength = 0;
-					int num = 0;
-					int num2 = value.Length - 1;
-					int index = num;
-					while (index <= num2 && value[index] == list[startIndex + index])
-					{
-						runLength++;
-						index++;
-					}
-					if (runLength == value.Length)
-					{
-						return startIndex;
-					}
-					startIndex = Array.IndexOf<byte>(list, value[0], startIndex + runLength);
-				}
 				return -1;
 			}
+
+			// Iterate through the list, ensuring there's enough room for the value array to fit
+			for (var i = 0; i <= list.Length - value.Length; i++)
+			{
+				// Check if the subarray from the current position matches the value array
+				var match = true;
+				for (var j = 0; j < value.Length; j++)
+				{
+					if (list[i + j] != value[j])
+					{
+						match = false;
+						break;
+					}
+				}
+
+				// If a complete match is found, return the starting index
+				if (match)
+				{
+					return i;
+				}
+			}
+
+			// Return -1 if the sequence is not found
+			return -1;
 		}
 	}
 }
