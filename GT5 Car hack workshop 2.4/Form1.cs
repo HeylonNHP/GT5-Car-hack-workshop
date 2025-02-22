@@ -145,62 +145,49 @@ namespace GT5_Car_hack_workshop_2
             set;
         }
 
-        // Token: 0x17000027 RID: 39
-        // (get) Token: 0x06000065 RID: 101 RVA: 0x00009B14 File Offset: 0x00007F14
-        // (set) Token: 0x06000066 RID: 102 RVA: 0x00009B28 File Offset: 0x00007F28
-        internal virtual TabControl TabControl2
+        [field: AccessedThroughProperty("TabControl2")]
+        private TabControl TabControl2
         {
-            get { return _TabControl2; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TabControl2 = value; }
+            set;
         }
 
-        // Token: 0x17000028 RID: 40
-        // (get) Token: 0x06000067 RID: 103 RVA: 0x00009B34 File Offset: 0x00007F34
-        // (set) Token: 0x06000068 RID: 104 RVA: 0x00009B48 File Offset: 0x00007F48
-        internal virtual TabPage TabPage2
+        [field: AccessedThroughProperty("TabPage2")]
+        private TabPage TabPage2
         {
-            get { return _TabPage2; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TabPage2 = value; }
+            set;
         }
 
-        // Token: 0x17000029 RID: 41
-        // (get) Token: 0x06000069 RID: 105 RVA: 0x00009B54 File Offset: 0x00007F54
-        // (set) Token: 0x0600006A RID: 106 RVA: 0x00009B68 File Offset: 0x00007F68
-        internal virtual TabPage TabPage3
+        [field: AccessedThroughProperty("TabPage3")]
+        private TabPage TabPage3
         {
-            get { return _TabPage3; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TabPage3 = value; }
+            set;
         }
 
-        // Token: 0x1700002A RID: 42
-        // (get) Token: 0x0600006B RID: 107 RVA: 0x00009B74 File Offset: 0x00007F74
-        // (set) Token: 0x0600006C RID: 108 RVA: 0x00009B88 File Offset: 0x00007F88
-        internal virtual TextBox TextBox3
+        [field: AccessedThroughProperty("TextBox3")]
+        private TextBox TextBox3
         {
-            get { return _TextBox3; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox3 = value; }
+            set;
         }
 
-        // Token: 0x1700002B RID: 43
-        // (get) Token: 0x0600006D RID: 109 RVA: 0x00009B94 File Offset: 0x00007F94
-        // (set) Token: 0x0600006E RID: 110 RVA: 0x00009BA8 File Offset: 0x00007FA8
-        internal virtual Label Label3
+        [field: AccessedThroughProperty("Label3")]
+        private Label Label3
         {
-            get { return _Label3; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label3 = value; }
+            set;
         }
 
-        // Token: 0x1700002C RID: 44
-        // (get) Token: 0x0600006F RID: 111 RVA: 0x00009BB4 File Offset: 0x00007FB4
-        // (set) Token: 0x06000070 RID: 112 RVA: 0x00009BC8 File Offset: 0x00007FC8
-        internal virtual Button Button5
+        private Button Button5
         {
-            get { return _Button5; }
+            get => _Button5;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -218,32 +205,25 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x1700002D RID: 45
-        // (get) Token: 0x06000071 RID: 113 RVA: 0x00009C14 File Offset: 0x00008014
-        // (set) Token: 0x06000072 RID: 114 RVA: 0x00009C28 File Offset: 0x00008028
-        internal virtual Label Label5
+        [field: AccessedThroughProperty("Label5")]
+        private Label Label5
         {
-            get { return _Label5; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label5 = value; }
+            set;
         }
 
-        // Token: 0x1700002E RID: 46
-        // (get) Token: 0x06000073 RID: 115 RVA: 0x00009C34 File Offset: 0x00008034
-        // (set) Token: 0x06000074 RID: 116 RVA: 0x00009C48 File Offset: 0x00008048
-        internal virtual TextBox TextBox5
+        [field: AccessedThroughProperty("TextBox5")]
+        private TextBox TextBox5
         {
-            get { return _TextBox5; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox5 = value; }
+            set;
         }
 
-        // Token: 0x1700002F RID: 47
-        // (get) Token: 0x06000075 RID: 117 RVA: 0x00009C54 File Offset: 0x00008054
-        // (set) Token: 0x06000076 RID: 118 RVA: 0x00009C68 File Offset: 0x00008068
-        internal virtual TextBox TextBox4
+        private TextBox TextBox4
         {
-            get { return _TextBox4; }
+            get => _TextBox4;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -261,42 +241,33 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x17000030 RID: 48
-        // (get) Token: 0x06000077 RID: 119 RVA: 0x00009CB4 File Offset: 0x000080B4
-        // (set) Token: 0x06000078 RID: 120 RVA: 0x00009CC8 File Offset: 0x000080C8
-        internal virtual Label Label4
+        [field: AccessedThroughProperty("Label4")]
+        private Label Label4
         {
-            get { return _Label4; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label4 = value; }
+            set;
         }
 
-        // Token: 0x17000031 RID: 49
-        // (get) Token: 0x06000079 RID: 121 RVA: 0x00009CD4 File Offset: 0x000080D4
-        // (set) Token: 0x0600007A RID: 122 RVA: 0x00009CE8 File Offset: 0x000080E8
-        internal virtual Label Label6
+        [field: AccessedThroughProperty("Label6")]
+        private Label Label6
         {
-            get { return _Label6; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label6 = value; }
+            set;
         }
 
-        // Token: 0x17000032 RID: 50
-        // (get) Token: 0x0600007B RID: 123 RVA: 0x00009CF4 File Offset: 0x000080F4
-        // (set) Token: 0x0600007C RID: 124 RVA: 0x00009D08 File Offset: 0x00008108
-        internal virtual TextBox TextBox6
+        [field: AccessedThroughProperty("TextBox6")]
+        private TextBox TextBox6
         {
-            get { return _TextBox6; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox6 = value; }
+            set;
         }
 
-        // Token: 0x17000033 RID: 51
-        // (get) Token: 0x0600007D RID: 125 RVA: 0x00009D14 File Offset: 0x00008114
-        // (set) Token: 0x0600007E RID: 126 RVA: 0x00009D28 File Offset: 0x00008128
-        internal virtual Button Button6
+        private Button Button6
         {
-            get { return _Button6; }
+            get => _Button6;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -314,52 +285,41 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x17000034 RID: 52
-        // (get) Token: 0x0600007F RID: 127 RVA: 0x00009D74 File Offset: 0x00008174
-        // (set) Token: 0x06000080 RID: 128 RVA: 0x00009D88 File Offset: 0x00008188
-        internal virtual Label Label7
+        [field: AccessedThroughProperty("Label7")]
+        private Label Label7
         {
-            get { return _Label7; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label7 = value; }
+            set;
         }
 
-        // Token: 0x17000035 RID: 53
-        // (get) Token: 0x06000081 RID: 129 RVA: 0x00009D94 File Offset: 0x00008194
-        // (set) Token: 0x06000082 RID: 130 RVA: 0x00009DA8 File Offset: 0x000081A8
-        internal virtual Label Label8
+        [field: AccessedThroughProperty("Label8")]
+        private Label Label8
         {
-            get { return _Label8; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label8 = value; }
+            set;
         }
 
-        // Token: 0x17000036 RID: 54
-        // (get) Token: 0x06000083 RID: 131 RVA: 0x00009DB4 File Offset: 0x000081B4
-        // (set) Token: 0x06000084 RID: 132 RVA: 0x00009DC8 File Offset: 0x000081C8
-        internal virtual GroupBox GroupBox3
+        [field: AccessedThroughProperty("GroupBox3")]
+        private GroupBox GroupBox3
         {
-            get { return _GroupBox3; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _GroupBox3 = value; }
+            set;
         }
 
-        // Token: 0x17000037 RID: 55
-        // (get) Token: 0x06000085 RID: 133 RVA: 0x00009DD4 File Offset: 0x000081D4
-        // (set) Token: 0x06000086 RID: 134 RVA: 0x00009DE8 File Offset: 0x000081E8
-        internal virtual Label Label9
+        [field: AccessedThroughProperty("Label9")]
+        private Label Label9
         {
-            get { return _Label9; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label9 = value; }
+            set;
         }
 
-        // Token: 0x17000038 RID: 56
-        // (get) Token: 0x06000087 RID: 135 RVA: 0x00009DF4 File Offset: 0x000081F4
-        // (set) Token: 0x06000088 RID: 136 RVA: 0x00009E08 File Offset: 0x00008208
-        internal virtual Button Button4
+        private Button Button4
         {
-            get { return _Button4; }
+            get => _Button4;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -377,12 +337,9 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x17000039 RID: 57
-        // (get) Token: 0x06000089 RID: 137 RVA: 0x00009E54 File Offset: 0x00008254
-        // (set) Token: 0x0600008A RID: 138 RVA: 0x00009E68 File Offset: 0x00008268
-        internal virtual Button Button7
+        private Button Button7
         {
-            get { return _Button7; }
+            get => _Button7;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -400,12 +357,9 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x1700003A RID: 58
-        // (get) Token: 0x0600008B RID: 139 RVA: 0x00009EB4 File Offset: 0x000082B4
-        // (set) Token: 0x0600008C RID: 140 RVA: 0x00009EC8 File Offset: 0x000082C8
-        internal virtual Button Button8
+        private Button Button8
         {
-            get { return _Button8; }
+            get => _Button8;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -423,12 +377,9 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x1700003B RID: 59
-        // (get) Token: 0x0600008D RID: 141 RVA: 0x00009F14 File Offset: 0x00008314
-        // (set) Token: 0x0600008E RID: 142 RVA: 0x00009F28 File Offset: 0x00008328
-        internal virtual Button Button9
+        private Button Button9
         {
-            get { return _Button9; }
+            get => _Button9;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -446,82 +397,65 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x1700003C RID: 60
-        // (get) Token: 0x0600008F RID: 143 RVA: 0x00009F74 File Offset: 0x00008374
-        // (set) Token: 0x06000090 RID: 144 RVA: 0x00009F88 File Offset: 0x00008388
-        internal virtual CheckBox CheckBox1
+        [field: AccessedThroughProperty("CheckBox1")]
+        private CheckBox CheckBox1
         {
-            get { return _CheckBox1; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _CheckBox1 = value; }
+            set;
         }
 
-        // Token: 0x1700003D RID: 61
-        // (get) Token: 0x06000091 RID: 145 RVA: 0x00009F94 File Offset: 0x00008394
-        // (set) Token: 0x06000092 RID: 146 RVA: 0x00009FA8 File Offset: 0x000083A8
-        internal virtual TextBox TextBox8
+        [field: AccessedThroughProperty("TextBox8")]
+        private TextBox TextBox8
         {
-            get { return _TextBox8; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox8 = value; }
+            set;
         }
 
-        // Token: 0x1700003E RID: 62
-        // (get) Token: 0x06000093 RID: 147 RVA: 0x00009FB4 File Offset: 0x000083B4
-        // (set) Token: 0x06000094 RID: 148 RVA: 0x00009FC8 File Offset: 0x000083C8
-        internal virtual Label Label11
+        [field: AccessedThroughProperty("Label11")]
+        private Label Label11
         {
-            get { return _Label11; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label11 = value; }
+            set;
         }
 
-        // Token: 0x1700003F RID: 63
-        // (get) Token: 0x06000095 RID: 149 RVA: 0x00009FD4 File Offset: 0x000083D4
-        // (set) Token: 0x06000096 RID: 150 RVA: 0x00009FE8 File Offset: 0x000083E8
-        internal virtual Label Label10
+        [field: AccessedThroughProperty("Label10")]
+        private Label Label10
         {
-            get { return _Label10; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label10 = value; }
+            set;
         }
 
-        // Token: 0x17000040 RID: 64
-        // (get) Token: 0x06000097 RID: 151 RVA: 0x00009FF4 File Offset: 0x000083F4
-        // (set) Token: 0x06000098 RID: 152 RVA: 0x0000A008 File Offset: 0x00008408
-        internal virtual TextBox TextBox7
+        [field: AccessedThroughProperty("TextBox7")]
+        private TextBox TextBox7
         {
-            get { return _TextBox7; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox7 = value; }
+            set;
         }
 
-        // Token: 0x17000041 RID: 65
-        // (get) Token: 0x06000099 RID: 153 RVA: 0x0000A014 File Offset: 0x00008414
-        // (set) Token: 0x0600009A RID: 154 RVA: 0x0000A028 File Offset: 0x00008428
-        internal virtual Label Label12
+        [field: AccessedThroughProperty("Label12")]
+        private Label Label12
         {
-            get { return _Label12; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label12 = value; }
+            set;
         }
 
-        // Token: 0x17000042 RID: 66
-        // (get) Token: 0x0600009B RID: 155 RVA: 0x0000A034 File Offset: 0x00008434
-        // (set) Token: 0x0600009C RID: 156 RVA: 0x0000A048 File Offset: 0x00008448
-        internal virtual TextBox TextBox9
+        [field: AccessedThroughProperty("TextBox9")]
+        private TextBox TextBox9
         {
-            get { return _TextBox9; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox9 = value; }
+            set;
         }
 
-        // Token: 0x17000043 RID: 67
-        // (get) Token: 0x0600009D RID: 157 RVA: 0x0000A054 File Offset: 0x00008454
-        // (set) Token: 0x0600009E RID: 158 RVA: 0x0000A068 File Offset: 0x00008468
-        internal virtual Button Button10
+        private Button Button10
         {
-            get { return _Button10; }
+            get => _Button10;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -539,42 +473,33 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x17000044 RID: 68
-        // (get) Token: 0x0600009F RID: 159 RVA: 0x0000A0B4 File Offset: 0x000084B4
-        // (set) Token: 0x060000A0 RID: 160 RVA: 0x0000A0C8 File Offset: 0x000084C8
-        internal virtual Label Label13
+        [field: AccessedThroughProperty("Label13")]
+        private Label Label13
         {
-            get { return _Label13; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label13 = value; }
+            set;
         }
 
-        // Token: 0x17000045 RID: 69
-        // (get) Token: 0x060000A1 RID: 161 RVA: 0x0000A0D4 File Offset: 0x000084D4
-        // (set) Token: 0x060000A2 RID: 162 RVA: 0x0000A0E8 File Offset: 0x000084E8
-        internal virtual TextBox TextBox10
+        [field: AccessedThroughProperty("TextBox10")]
+        private TextBox TextBox10
         {
-            get { return _TextBox10; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox10 = value; }
+            set;
         }
 
-        // Token: 0x17000046 RID: 70
-        // (get) Token: 0x060000A3 RID: 163 RVA: 0x0000A0F4 File Offset: 0x000084F4
-        // (set) Token: 0x060000A4 RID: 164 RVA: 0x0000A108 File Offset: 0x00008508
-        internal virtual Label Label14
+        [field: AccessedThroughProperty("Label14")]
+        private Label Label14
         {
-            get { return _Label14; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label14 = value; }
+            set;
         }
 
-        // Token: 0x17000047 RID: 71
-        // (get) Token: 0x060000A5 RID: 165 RVA: 0x0000A114 File Offset: 0x00008514
-        // (set) Token: 0x060000A6 RID: 166 RVA: 0x0000A128 File Offset: 0x00008528
-        internal virtual Button Button11
+        private Button Button11
         {
-            get { return _Button11; }
+            get => _Button11;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -592,192 +517,153 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x17000048 RID: 72
-        // (get) Token: 0x060000A7 RID: 167 RVA: 0x0000A174 File Offset: 0x00008574
-        // (set) Token: 0x060000A8 RID: 168 RVA: 0x0000A188 File Offset: 0x00008588
-        internal virtual TextBox TextBox11
+        [field: AccessedThroughProperty("TextBox11")]
+        private TextBox TextBox11
         {
-            get { return _TextBox11; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox11 = value; }
+            set;
         }
 
-        // Token: 0x17000049 RID: 73
-        // (get) Token: 0x060000A9 RID: 169 RVA: 0x0000A194 File Offset: 0x00008594
-        // (set) Token: 0x060000AA RID: 170 RVA: 0x0000A1A8 File Offset: 0x000085A8
-        internal virtual Label Label15
+        [field: AccessedThroughProperty("Label15")]
+        private Label Label15
         {
-            get { return _Label15; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label15 = value; }
+            set;
         }
 
-        // Token: 0x1700004A RID: 74
-        // (get) Token: 0x060000AB RID: 171 RVA: 0x0000A1B4 File Offset: 0x000085B4
-        // (set) Token: 0x060000AC RID: 172 RVA: 0x0000A1C8 File Offset: 0x000085C8
-        internal virtual CheckBox CheckBox2
+        [field: AccessedThroughProperty("CheckBox2")]
+        private CheckBox CheckBox2
         {
-            get { return _CheckBox2; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _CheckBox2 = value; }
+            set;
         }
 
-        // Token: 0x1700004B RID: 75
-        // (get) Token: 0x060000AD RID: 173 RVA: 0x0000A1D4 File Offset: 0x000085D4
-        // (set) Token: 0x060000AE RID: 174 RVA: 0x0000A1E8 File Offset: 0x000085E8
-        internal virtual Label Label17
+        [field: AccessedThroughProperty("Label17")]
+        private Label Label17
         {
-            get { return _Label17; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label17 = value; }
+            set;
         }
 
-        // Token: 0x1700004C RID: 76
-        // (get) Token: 0x060000AF RID: 175 RVA: 0x0000A1F4 File Offset: 0x000085F4
-        // (set) Token: 0x060000B0 RID: 176 RVA: 0x0000A208 File Offset: 0x00008608
-        internal virtual TextBox TextBox12
+        [field: AccessedThroughProperty("TextBox12")]
+        private TextBox TextBox12
         {
-            get { return _TextBox12; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox12 = value; }
+            set;
         }
 
-        // Token: 0x1700004D RID: 77
-        // (get) Token: 0x060000B1 RID: 177 RVA: 0x0000A214 File Offset: 0x00008614
-        // (set) Token: 0x060000B2 RID: 178 RVA: 0x0000A228 File Offset: 0x00008628
-        internal virtual TextBox TextBox13
+        [field: AccessedThroughProperty("TextBox13")]
+        private TextBox TextBox13
         {
-            get { return _TextBox13; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox13 = value; }
+            set;
         }
 
-        // Token: 0x1700004E RID: 78
-        // (get) Token: 0x060000B3 RID: 179 RVA: 0x0000A234 File Offset: 0x00008634
-        // (set) Token: 0x060000B4 RID: 180 RVA: 0x0000A248 File Offset: 0x00008648
-        internal virtual Label Label16
+        [field: AccessedThroughProperty("Label16")]
+        private Label Label16
         {
-            get { return _Label16; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label16 = value; }
+            set;
         }
 
-        // Token: 0x1700004F RID: 79
-        // (get) Token: 0x060000B5 RID: 181 RVA: 0x0000A254 File Offset: 0x00008654
-        // (set) Token: 0x060000B6 RID: 182 RVA: 0x0000A268 File Offset: 0x00008668
-        internal virtual Label Label19
+        [field: AccessedThroughProperty("Label19")]
+        private Label Label19
         {
-            get { return _Label19; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label19 = value; }
+            set;
         }
 
-        // Token: 0x17000050 RID: 80
-        // (get) Token: 0x060000B7 RID: 183 RVA: 0x0000A274 File Offset: 0x00008674
-        // (set) Token: 0x060000B8 RID: 184 RVA: 0x0000A288 File Offset: 0x00008688
-        internal virtual TextBox TextBox15
+        [field: AccessedThroughProperty("TextBox15")]
+        private TextBox TextBox15
         {
-            get { return _TextBox15; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox15 = value; }
+            set;
         }
 
-        // Token: 0x17000051 RID: 81
-        // (get) Token: 0x060000B9 RID: 185 RVA: 0x0000A294 File Offset: 0x00008694
-        // (set) Token: 0x060000BA RID: 186 RVA: 0x0000A2A8 File Offset: 0x000086A8
-        internal virtual TextBox TextBox14
+        [field: AccessedThroughProperty("TextBox14")]
+        private TextBox TextBox14
         {
-            get { return _TextBox14; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox14 = value; }
+            set;
         }
 
-        // Token: 0x17000052 RID: 82
-        // (get) Token: 0x060000BB RID: 187 RVA: 0x0000A2B4 File Offset: 0x000086B4
-        // (set) Token: 0x060000BC RID: 188 RVA: 0x0000A2C8 File Offset: 0x000086C8
-        internal virtual Label Label18
+        [field: AccessedThroughProperty("Label18")]
+        private Label Label18
         {
-            get { return _Label18; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label18 = value; }
+            set;
         }
 
-        // Token: 0x17000053 RID: 83
-        // (get) Token: 0x060000BD RID: 189 RVA: 0x0000A2D4 File Offset: 0x000086D4
-        // (set) Token: 0x060000BE RID: 190 RVA: 0x0000A2E8 File Offset: 0x000086E8
-        internal virtual TextBox TextBox16
+        [field: AccessedThroughProperty("TextBox16")]
+        private TextBox TextBox16
         {
-            get { return _TextBox16; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox16 = value; }
+            set;
         }
 
-        // Token: 0x17000054 RID: 84
-        // (get) Token: 0x060000BF RID: 191 RVA: 0x0000A2F4 File Offset: 0x000086F4
-        // (set) Token: 0x060000C0 RID: 192 RVA: 0x0000A308 File Offset: 0x00008708
-        internal virtual Label Label20
+        [field: AccessedThroughProperty("Label20")]
+        private Label Label20
         {
-            get { return _Label20; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label20 = value; }
+            set;
         }
 
-        // Token: 0x17000055 RID: 85
-        // (get) Token: 0x060000C1 RID: 193 RVA: 0x0000A314 File Offset: 0x00008714
-        // (set) Token: 0x060000C2 RID: 194 RVA: 0x0000A328 File Offset: 0x00008728
-        internal virtual Label Label22
+        [field: AccessedThroughProperty("Label22")]
+        private Label Label22
         {
-            get { return _Label22; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label22 = value; }
+            set;
         }
 
-        // Token: 0x17000056 RID: 86
-        // (get) Token: 0x060000C3 RID: 195 RVA: 0x0000A334 File Offset: 0x00008734
-        // (set) Token: 0x060000C4 RID: 196 RVA: 0x0000A348 File Offset: 0x00008748
-        internal virtual TextBox TextBox17
+        [field: AccessedThroughProperty("TextBox17")]
+        private TextBox TextBox17
         {
-            get { return _TextBox17; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox17 = value; }
+            set;
         }
 
-        // Token: 0x17000057 RID: 87
-        // (get) Token: 0x060000C5 RID: 197 RVA: 0x0000A354 File Offset: 0x00008754
-        // (set) Token: 0x060000C6 RID: 198 RVA: 0x0000A368 File Offset: 0x00008768
-        internal virtual TextBox TextBox18
+        [field: AccessedThroughProperty("TextBox18")]
+        private TextBox TextBox18
         {
-            get { return _TextBox18; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox18 = value; }
+            set;
         }
 
-        // Token: 0x17000058 RID: 88
-        // (get) Token: 0x060000C7 RID: 199 RVA: 0x0000A374 File Offset: 0x00008774
-        // (set) Token: 0x060000C8 RID: 200 RVA: 0x0000A388 File Offset: 0x00008788
-        internal virtual Label Label21
+        [field: AccessedThroughProperty("Label21")]
+        private Label Label21
         {
-            get { return _Label21; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label21 = value; }
+            set;
         }
 
-        // Token: 0x17000059 RID: 89
-        // (get) Token: 0x060000C9 RID: 201 RVA: 0x0000A394 File Offset: 0x00008794
-        // (set) Token: 0x060000CA RID: 202 RVA: 0x0000A3A8 File Offset: 0x000087A8
-        internal virtual Label Label24
+        [field: AccessedThroughProperty("Label24")]
+        private Label Label24
         {
-            get { return _Label24; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label24 = value; }
+            set;
         }
 
-        // Token: 0x1700005A RID: 90
-        // (get) Token: 0x060000CB RID: 203 RVA: 0x0000A3B4 File Offset: 0x000087B4
-        // (set) Token: 0x060000CC RID: 204 RVA: 0x0000A3C8 File Offset: 0x000087C8
-        internal virtual ComboBox ComboBox2
+        private ComboBox ComboBox2
         {
-            get { return _ComboBox2; }
+            get => _ComboBox2;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -795,22 +681,17 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x1700005B RID: 91
-        // (get) Token: 0x060000CD RID: 205 RVA: 0x0000A414 File Offset: 0x00008814
-        // (set) Token: 0x060000CE RID: 206 RVA: 0x0000A428 File Offset: 0x00008828
-        internal virtual Label Label23
+        [field: AccessedThroughProperty("Label23")]
+        private Label Label23
         {
-            get { return _Label23; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label23 = value; }
+            set;
         }
 
-        // Token: 0x1700005C RID: 92
-        // (get) Token: 0x060000CF RID: 207 RVA: 0x0000A434 File Offset: 0x00008834
-        // (set) Token: 0x060000D0 RID: 208 RVA: 0x0000A448 File Offset: 0x00008848
-        internal virtual ComboBox ComboBox1
+        private ComboBox ComboBox1
         {
-            get { return _ComboBox1; }
+            get => _ComboBox1;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -828,22 +709,17 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x1700005D RID: 93
-        // (get) Token: 0x060000D1 RID: 209 RVA: 0x0000A494 File Offset: 0x00008894
-        // (set) Token: 0x060000D2 RID: 210 RVA: 0x0000A4A8 File Offset: 0x000088A8
-        internal virtual Label Label28
+        [field: AccessedThroughProperty("Label28")]
+        private Label Label28
         {
-            get { return _Label28; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label28 = value; }
+            set;
         }
 
-        // Token: 0x1700005E RID: 94
-        // (get) Token: 0x060000D3 RID: 211 RVA: 0x0000A4B4 File Offset: 0x000088B4
-        // (set) Token: 0x060000D4 RID: 212 RVA: 0x0000A4C8 File Offset: 0x000088C8
-        internal virtual ComboBox ComboBox6
+        private ComboBox ComboBox6
         {
-            get { return _ComboBox6; }
+            get => _ComboBox6;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -861,22 +737,17 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x1700005F RID: 95
-        // (get) Token: 0x060000D5 RID: 213 RVA: 0x0000A514 File Offset: 0x00008914
-        // (set) Token: 0x060000D6 RID: 214 RVA: 0x0000A528 File Offset: 0x00008928
-        internal virtual Label Label27
+        [field: AccessedThroughProperty("Label27")]
+        private Label Label27
         {
-            get { return _Label27; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label27 = value; }
+            set;
         }
 
-        // Token: 0x17000060 RID: 96
-        // (get) Token: 0x060000D7 RID: 215 RVA: 0x0000A534 File Offset: 0x00008934
-        // (set) Token: 0x060000D8 RID: 216 RVA: 0x0000A548 File Offset: 0x00008948
-        internal virtual ComboBox ComboBox5
+        private ComboBox ComboBox5
         {
-            get { return _ComboBox5; }
+            get => _ComboBox5;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -2651,56 +2522,41 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x04000029 RID: 41
 
         // Token: 0x0400002A RID: 42
-        [AccessedThroughProperty("TabControl2")]
-        private TabControl _TabControl2;
 
         // Token: 0x0400002B RID: 43
-        [AccessedThroughProperty("TabPage2")] private TabPage _TabPage2;
 
         // Token: 0x0400002C RID: 44
-        [AccessedThroughProperty("TabPage3")] private TabPage _TabPage3;
 
         // Token: 0x0400002D RID: 45
-        [AccessedThroughProperty("TextBox3")] private TextBox _TextBox3;
 
         // Token: 0x0400002E RID: 46
-        [AccessedThroughProperty("Label3")] private Label _Label3;
 
         // Token: 0x0400002F RID: 47
         [AccessedThroughProperty("Button5")] private Button _Button5;
 
         // Token: 0x04000030 RID: 48
-        [AccessedThroughProperty("Label5")] private Label _Label5;
 
         // Token: 0x04000031 RID: 49
-        [AccessedThroughProperty("TextBox5")] private TextBox _TextBox5;
 
         // Token: 0x04000032 RID: 50
         [AccessedThroughProperty("TextBox4")] private TextBox _TextBox4;
 
         // Token: 0x04000033 RID: 51
-        [AccessedThroughProperty("Label4")] private Label _Label4;
 
         // Token: 0x04000034 RID: 52
-        [AccessedThroughProperty("Label6")] private Label _Label6;
 
         // Token: 0x04000035 RID: 53
-        [AccessedThroughProperty("TextBox6")] private TextBox _TextBox6;
 
         // Token: 0x04000036 RID: 54
         [AccessedThroughProperty("Button6")] private Button _Button6;
 
         // Token: 0x04000037 RID: 55
-        [AccessedThroughProperty("Label7")] private Label _Label7;
 
         // Token: 0x04000038 RID: 56
-        [AccessedThroughProperty("Label8")] private Label _Label8;
 
         // Token: 0x04000039 RID: 57
-        [AccessedThroughProperty("GroupBox3")] private GroupBox _GroupBox3;
 
         // Token: 0x0400003A RID: 58
-        [AccessedThroughProperty("Label9")] private Label _Label9;
 
         // Token: 0x0400003B RID: 59
         [AccessedThroughProperty("Button4")] private Button _Button4;
@@ -2715,112 +2571,81 @@ namespace GT5_Car_hack_workshop_2
         [AccessedThroughProperty("Button9")] private Button _Button9;
 
         // Token: 0x0400003F RID: 63
-        [AccessedThroughProperty("CheckBox1")] private CheckBox _CheckBox1;
 
         // Token: 0x04000040 RID: 64
-        [AccessedThroughProperty("TextBox8")] private TextBox _TextBox8;
 
         // Token: 0x04000041 RID: 65
-        [AccessedThroughProperty("Label11")] private Label _Label11;
 
         // Token: 0x04000042 RID: 66
-        [AccessedThroughProperty("Label10")] private Label _Label10;
 
         // Token: 0x04000043 RID: 67
-        [AccessedThroughProperty("TextBox7")] private TextBox _TextBox7;
 
         // Token: 0x04000044 RID: 68
-        [AccessedThroughProperty("Label12")] private Label _Label12;
 
         // Token: 0x04000045 RID: 69
-        [AccessedThroughProperty("TextBox9")] private TextBox _TextBox9;
 
         // Token: 0x04000046 RID: 70
         [AccessedThroughProperty("Button10")] private Button _Button10;
 
         // Token: 0x04000047 RID: 71
-        [AccessedThroughProperty("Label13")] private Label _Label13;
 
         // Token: 0x04000048 RID: 72
-        [AccessedThroughProperty("TextBox10")] private TextBox _TextBox10;
 
         // Token: 0x04000049 RID: 73
-        [AccessedThroughProperty("Label14")] private Label _Label14;
 
         // Token: 0x0400004A RID: 74
         [AccessedThroughProperty("Button11")] private Button _Button11;
 
         // Token: 0x0400004B RID: 75
-        [AccessedThroughProperty("TextBox11")] private TextBox _TextBox11;
 
         // Token: 0x0400004C RID: 76
-        [AccessedThroughProperty("Label15")] private Label _Label15;
 
         // Token: 0x0400004D RID: 77
-        [AccessedThroughProperty("CheckBox2")] private CheckBox _CheckBox2;
 
         // Token: 0x0400004E RID: 78
-        [AccessedThroughProperty("Label17")] private Label _Label17;
 
         // Token: 0x0400004F RID: 79
-        [AccessedThroughProperty("TextBox12")] private TextBox _TextBox12;
 
         // Token: 0x04000050 RID: 80
-        [AccessedThroughProperty("TextBox13")] private TextBox _TextBox13;
 
         // Token: 0x04000051 RID: 81
-        [AccessedThroughProperty("Label16")] private Label _Label16;
 
         // Token: 0x04000052 RID: 82
-        [AccessedThroughProperty("Label19")] private Label _Label19;
 
         // Token: 0x04000053 RID: 83
-        [AccessedThroughProperty("TextBox15")] private TextBox _TextBox15;
 
         // Token: 0x04000054 RID: 84
-        [AccessedThroughProperty("TextBox14")] private TextBox _TextBox14;
 
         // Token: 0x04000055 RID: 85
-        [AccessedThroughProperty("Label18")] private Label _Label18;
 
         // Token: 0x04000056 RID: 86
-        [AccessedThroughProperty("TextBox16")] private TextBox _TextBox16;
 
         // Token: 0x04000057 RID: 87
-        [AccessedThroughProperty("Label20")] private Label _Label20;
 
         // Token: 0x04000058 RID: 88
-        [AccessedThroughProperty("Label22")] private Label _Label22;
 
         // Token: 0x04000059 RID: 89
-        [AccessedThroughProperty("TextBox17")] private TextBox _TextBox17;
 
         // Token: 0x0400005A RID: 90
-        [AccessedThroughProperty("TextBox18")] private TextBox _TextBox18;
 
         // Token: 0x0400005B RID: 91
-        [AccessedThroughProperty("Label21")] private Label _Label21;
 
         // Token: 0x0400005C RID: 92
-        [AccessedThroughProperty("Label24")] private Label _Label24;
 
         // Token: 0x0400005D RID: 93
         [AccessedThroughProperty("ComboBox2")] private ComboBox _ComboBox2;
 
         // Token: 0x0400005E RID: 94
-        [AccessedThroughProperty("Label23")] private Label _Label23;
 
         // Token: 0x0400005F RID: 95
         [AccessedThroughProperty("ComboBox1")] private ComboBox _ComboBox1;
 
         // Token: 0x04000060 RID: 96
-        [AccessedThroughProperty("Label28")] private Label _Label28;
 
         // Token: 0x04000061 RID: 97
         [AccessedThroughProperty("ComboBox6")] private ComboBox _ComboBox6;
 
         // Token: 0x04000062 RID: 98
-        [AccessedThroughProperty("Label27")] private Label _Label27;
 
         // Token: 0x04000063 RID: 99
         [AccessedThroughProperty("ComboBox5")] private ComboBox _ComboBox5;
