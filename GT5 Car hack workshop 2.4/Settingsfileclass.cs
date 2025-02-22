@@ -55,22 +55,20 @@ namespace GT5_Car_hack_workshop_2
             return Enumerable.Repeat(" ", arrsize + 1).ToArray();
         }
 
+        /// <summary>
+        /// Reads the contents of the specified file into a string array, with each line of the file being an element in the array.
+        /// </summary>
+        /// <param name="file">The path of the file to load.</param>
+        /// <returns>An array of strings where each element represents a line from the file. If the file does not exist, an empty array is returned.</returns>
         static string[] LoadFileToArray(string file)
         {
             var lines = new List<string>();
 
             if (File.Exists(file))
             {
-                // Read the entire file as a byte array
                 byte[] fileBytes = File.ReadAllBytes(file);
-
-                // Convert the byte array to a string (assuming the file uses UTF-8 encoding)
                 string fileContent = System.Text.Encoding.UTF8.GetString(fileBytes);
-
-                // Split the string into lines using Windows-style line endings (\r\n)
                 string[] fileLines = fileContent.Split(new[] { "\r\n" }, StringSplitOptions.None);
-
-                // Add each line to the ArrayList
                 foreach (string line in fileLines)
                 {
                     lines.Add(line);
