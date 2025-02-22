@@ -518,7 +518,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox11")]
-        private TextBox TextBox11
+        public TextBox TextBox11
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -898,7 +898,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox19")]
-        private TextBox TextBox19
+        public TextBox TextBox19
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
