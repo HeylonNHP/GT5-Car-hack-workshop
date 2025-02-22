@@ -8,11 +8,9 @@ using Microsoft.VisualBasic.CompilerServices;
 
 namespace GT5_Car_hack_workshop_2
 {
-    // Token: 0x02000009 RID: 9
     [DesignerGenerated]
     public partial class Form1 : Form
     {
-        // Token: 0x0600004C RID: 76 RVA: 0x00004F54 File Offset: 0x00003354
         public Form1()
         {
             Load += Form1_Load;
@@ -21,17 +19,15 @@ namespace GT5_Car_hack_workshop_2
             Carname = "";
             InitializeComponent();
         }
-
-        // Token: 0x1700001C RID: 28
-        // (get) Token: 0x0600004F RID: 79 RVA: 0x000098F4 File Offset: 0x00007CF4
-        // (set) Token: 0x06000050 RID: 80 RVA: 0x00009908 File Offset: 0x00007D08
-        internal virtual GroupBox GroupBox1
-        {
-            get { return _GroupBox1; }
-            [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _GroupBox1 = value; }
-        }
         
+        [field: AccessedThroughProperty("GroupBox1")]
+        private GroupBox GroupBox1
+        {
+            get;
+            [MethodImpl(MethodImplOptions.Synchronized)]
+            set;
+        }
+
         private Button Button1
         {
             get => _Button1;
@@ -2650,7 +2646,6 @@ namespace GT5_Car_hack_workshop_2
         }
 
         // Token: 0x0400001F RID: 31
-        [AccessedThroughProperty("GroupBox1")] private GroupBox _GroupBox1;
 
         // Token: 0x04000020 RID: 32
         [AccessedThroughProperty("Button1")] private Button _Button1;
