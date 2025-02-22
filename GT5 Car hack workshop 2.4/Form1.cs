@@ -1061,102 +1061,81 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x1700007A RID: 122
-        // (get) Token: 0x0600010B RID: 267 RVA: 0x0000AAB4 File Offset: 0x00008EB4
-        // (set) Token: 0x0600010C RID: 268 RVA: 0x0000AAC8 File Offset: 0x00008EC8
-        internal virtual GroupBox GroupBox5
+        [field: AccessedThroughProperty("GroupBox5")]
+        private GroupBox GroupBox5
         {
-            get { return _GroupBox5; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _GroupBox5 = value; }
+            set;
         }
 
-        // Token: 0x1700007B RID: 123
-        // (get) Token: 0x0600010D RID: 269 RVA: 0x0000AAD4 File Offset: 0x00008ED4
-        // (set) Token: 0x0600010E RID: 270 RVA: 0x0000AAE8 File Offset: 0x00008EE8
-        internal virtual GroupBox GroupBox4
+        [field: AccessedThroughProperty("GroupBox4")]
+        private GroupBox GroupBox4
         {
-            get { return _GroupBox4; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _GroupBox4 = value; }
+            set;
         }
 
-        // Token: 0x1700007C RID: 124
-        // (get) Token: 0x0600010F RID: 271 RVA: 0x0000AAF4 File Offset: 0x00008EF4
-        // (set) Token: 0x06000110 RID: 272 RVA: 0x0000AB08 File Offset: 0x00008F08
-        internal virtual GroupBox GroupBox7
+        [field: AccessedThroughProperty("GroupBox7")]
+        private GroupBox GroupBox7
         {
-            get { return _GroupBox7; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _GroupBox7 = value; }
+            set;
         }
 
-        // Token: 0x1700007D RID: 125
-        // (get) Token: 0x06000111 RID: 273 RVA: 0x0000AB14 File Offset: 0x00008F14
-        // (set) Token: 0x06000112 RID: 274 RVA: 0x0000AB28 File Offset: 0x00008F28
-        internal virtual GroupBox GroupBox6
+        [field: AccessedThroughProperty("GroupBox6")]
+        private GroupBox GroupBox6
         {
-            get { return _GroupBox6; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _GroupBox6 = value; }
+            set;
         }
 
-        // Token: 0x1700007E RID: 126
-        // (get) Token: 0x06000113 RID: 275 RVA: 0x0000AB34 File Offset: 0x00008F34
-        // (set) Token: 0x06000114 RID: 276 RVA: 0x0000AB48 File Offset: 0x00008F48
-        internal virtual GroupBox GroupBox10
+        [field: AccessedThroughProperty("GroupBox10")]
+        private GroupBox GroupBox10
         {
-            get { return _GroupBox10; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _GroupBox10 = value; }
+            set;
         }
 
-        // Token: 0x1700007F RID: 127
-        // (get) Token: 0x06000115 RID: 277 RVA: 0x0000AB54 File Offset: 0x00008F54
-        // (set) Token: 0x06000116 RID: 278 RVA: 0x0000AB68 File Offset: 0x00008F68
-        internal virtual GroupBox GroupBox9
+        [field: AccessedThroughProperty("GroupBox9")]
+        private GroupBox GroupBox9
         {
-            get { return _GroupBox9; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _GroupBox9 = value; }
+            set;
         }
 
-        // Token: 0x17000080 RID: 128
-        // (get) Token: 0x06000117 RID: 279 RVA: 0x0000AB74 File Offset: 0x00008F74
-        // (set) Token: 0x06000118 RID: 280 RVA: 0x0000AB88 File Offset: 0x00008F88
-        internal virtual GroupBox GroupBox8
+        [field: AccessedThroughProperty("GroupBox8")]
+        private GroupBox GroupBox8
         {
-            get { return _GroupBox8; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _GroupBox8 = value; }
+            set;
         }
 
-        // Token: 0x17000081 RID: 129
-        // (get) Token: 0x06000119 RID: 281 RVA: 0x0000AB94 File Offset: 0x00008F94
-        // (set) Token: 0x0600011A RID: 282 RVA: 0x0000ABA8 File Offset: 0x00008FA8
-        internal virtual GroupBox GroupBox12
+        [field: AccessedThroughProperty("GroupBox12")]
+        private GroupBox GroupBox12
         {
-            get { return _GroupBox12; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _GroupBox12 = value; }
+            set;
         }
 
-        // Token: 0x17000082 RID: 130
-        // (get) Token: 0x0600011B RID: 283 RVA: 0x0000ABB4 File Offset: 0x00008FB4
-        // (set) Token: 0x0600011C RID: 284 RVA: 0x0000ABC8 File Offset: 0x00008FC8
-        internal virtual GroupBox GroupBox11
+        [field: AccessedThroughProperty("GroupBox11")]
+        private GroupBox GroupBox11
         {
-            get { return _GroupBox11; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _GroupBox11 = value; }
+            set;
         }
 
-        // Token: 0x17000083 RID: 131
-        // (get) Token: 0x0600011D RID: 285 RVA: 0x0000ABD4 File Offset: 0x00008FD4
-        // (set) Token: 0x0600011E RID: 286 RVA: 0x0000ABE8 File Offset: 0x00008FE8
-        internal virtual Button Button16
+        private Button Button16
         {
-            get { return _Button16; }
+            get => _Button16;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -1174,12 +1153,9 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x17000084 RID: 132
-        // (get) Token: 0x0600011F RID: 287 RVA: 0x0000AC34 File Offset: 0x00009034
-        // (set) Token: 0x06000120 RID: 288 RVA: 0x0000AC48 File Offset: 0x00009048
-        internal virtual Button Button17
+        private Button Button17
         {
-            get { return _Button17; }
+            get => _Button17;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -1197,62 +1173,49 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x17000085 RID: 133
-        // (get) Token: 0x06000121 RID: 289 RVA: 0x0000AC94 File Offset: 0x00009094
-        // (set) Token: 0x06000122 RID: 290 RVA: 0x0000ACA8 File Offset: 0x000090A8
-        internal virtual Label Label37
+        [field: AccessedThroughProperty("Label37")]
+        private Label Label37
         {
-            get { return _Label37; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label37 = value; }
+            set;
         }
 
-        // Token: 0x17000086 RID: 134
-        // (get) Token: 0x06000123 RID: 291 RVA: 0x0000ACB4 File Offset: 0x000090B4
-        // (set) Token: 0x06000124 RID: 292 RVA: 0x0000ACC8 File Offset: 0x000090C8
-        internal virtual GroupBox GroupBox13
+        [field: AccessedThroughProperty("GroupBox13")]
+        private GroupBox GroupBox13
         {
-            get { return _GroupBox13; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _GroupBox13 = value; }
+            set;
         }
 
-        // Token: 0x17000087 RID: 135
-        // (get) Token: 0x06000125 RID: 293 RVA: 0x0000ACD4 File Offset: 0x000090D4
-        // (set) Token: 0x06000126 RID: 294 RVA: 0x0000ACE8 File Offset: 0x000090E8
-        internal virtual CheckBox CheckBox4
+        [field: AccessedThroughProperty("CheckBox4")]
+        private CheckBox CheckBox4
         {
-            get { return _CheckBox4; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _CheckBox4 = value; }
+            set;
         }
 
-        // Token: 0x17000088 RID: 136
-        // (get) Token: 0x06000127 RID: 295 RVA: 0x0000ACF4 File Offset: 0x000090F4
-        // (set) Token: 0x06000128 RID: 296 RVA: 0x0000AD08 File Offset: 0x00009108
-        internal virtual TextBox TextBox24
+        [field: AccessedThroughProperty("TextBox24")]
+        private TextBox TextBox24
         {
-            get { return _TextBox24; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _TextBox24 = value; }
+            set;
         }
 
-        // Token: 0x17000089 RID: 137
-        // (get) Token: 0x06000129 RID: 297 RVA: 0x0000AD14 File Offset: 0x00009114
-        // (set) Token: 0x0600012A RID: 298 RVA: 0x0000AD28 File Offset: 0x00009128
-        internal virtual Label Label38
+        [field: AccessedThroughProperty("Label38")]
+        private Label Label38
         {
-            get { return _Label38; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label38 = value; }
+            set;
         }
 
-        // Token: 0x1700008A RID: 138
-        // (get) Token: 0x0600012B RID: 299 RVA: 0x0000AD34 File Offset: 0x00009134
-        // (set) Token: 0x0600012C RID: 300 RVA: 0x0000AD48 File Offset: 0x00009148
-        internal virtual Button Button18
+        private Button Button18
         {
-            get { return _Button18; }
+            get => _Button18;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -1274,9 +1237,9 @@ namespace GT5_Car_hack_workshop_2
         /// <summary>
         /// Slam car button
         /// </summary>
-        internal virtual Button Button19
+        private Button Button19
         {
-            get { return _Button19; }
+            get => _Button19;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -1294,22 +1257,17 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x1700008C RID: 140
-        // (get) Token: 0x0600012F RID: 303 RVA: 0x0000ADF4 File Offset: 0x000091F4
-        // (set) Token: 0x06000130 RID: 304 RVA: 0x0000AE08 File Offset: 0x00009208
-        internal virtual GroupBox GroupBox14
+        [field: AccessedThroughProperty("GroupBox14")]
+        private GroupBox GroupBox14
         {
-            get { return _GroupBox14; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _GroupBox14 = value; }
+            set;
         }
 
-        // Token: 0x1700008D RID: 141
-        // (get) Token: 0x06000131 RID: 305 RVA: 0x0000AE14 File Offset: 0x00009214
-        // (set) Token: 0x06000132 RID: 306 RVA: 0x0000AE28 File Offset: 0x00009228
-        internal virtual Button Button21
+        private Button Button21
         {
-            get { return _Button21; }
+            get => _Button21;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -1327,12 +1285,9 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x1700008E RID: 142
-        // (get) Token: 0x06000133 RID: 307 RVA: 0x0000AE74 File Offset: 0x00009274
-        // (set) Token: 0x06000134 RID: 308 RVA: 0x0000AE88 File Offset: 0x00009288
-        internal virtual Button Button20
+        private Button Button20
         {
-            get { return _Button20; }
+            get => _Button20;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -1350,22 +1305,17 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x1700008F RID: 143
-        // (get) Token: 0x06000135 RID: 309 RVA: 0x0000AED4 File Offset: 0x000092D4
-        // (set) Token: 0x06000136 RID: 310 RVA: 0x0000AEE8 File Offset: 0x000092E8
-        internal virtual Label Label39
+        [field: AccessedThroughProperty("Label39")]
+        private Label Label39
         {
-            get { return _Label39; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _Label39 = value; }
+            set;
         }
 
-        // Token: 0x17000090 RID: 144
-        // (get) Token: 0x06000137 RID: 311 RVA: 0x0000AEF4 File Offset: 0x000092F4
-        // (set) Token: 0x06000138 RID: 312 RVA: 0x0000AF08 File Offset: 0x00009308
-        internal virtual Button Button22
+        private Button Button22
         {
-            get { return _Button22; }
+            get => _Button22;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -1383,42 +1333,33 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x17000091 RID: 145
-        // (get) Token: 0x06000139 RID: 313 RVA: 0x0000AF54 File Offset: 0x00009354
-        // (set) Token: 0x0600013A RID: 314 RVA: 0x0000AF68 File Offset: 0x00009368
-        internal virtual CheckBox CheckBox7
+        [field: AccessedThroughProperty("CheckBox7")]
+        private CheckBox CheckBox7
         {
-            get { return _CheckBox7; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _CheckBox7 = value; }
+            set;
         }
 
-        // Token: 0x17000092 RID: 146
-        // (get) Token: 0x0600013B RID: 315 RVA: 0x0000AF74 File Offset: 0x00009374
-        // (set) Token: 0x0600013C RID: 316 RVA: 0x0000AF88 File Offset: 0x00009388
-        internal virtual CheckBox CheckBox6
+        [field: AccessedThroughProperty("CheckBox6")]
+        private CheckBox CheckBox6
         {
-            get { return _CheckBox6; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _CheckBox6 = value; }
+            set;
         }
 
-        // Token: 0x17000093 RID: 147
-        // (get) Token: 0x0600013D RID: 317 RVA: 0x0000AF94 File Offset: 0x00009394
-        // (set) Token: 0x0600013E RID: 318 RVA: 0x0000AFA8 File Offset: 0x000093A8
-        internal virtual CheckBox CheckBox5
+        [field: AccessedThroughProperty("CheckBox5")]
+        private CheckBox CheckBox5
         {
-            get { return _CheckBox5; }
+            get;
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { _CheckBox5 = value; }
+            set;
         }
 
-        // Token: 0x17000094 RID: 148
-        // (get) Token: 0x0600013F RID: 319 RVA: 0x0000AFB4 File Offset: 0x000093B4
-        // (set) Token: 0x06000140 RID: 320 RVA: 0x0000AFC8 File Offset: 0x000093C8
-        internal virtual Button Button23
+        private Button Button23
         {
-            get { return _Button23; }
+            get => _Button23;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
@@ -1436,7 +1377,6 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x06000141 RID: 321 RVA: 0x0000B014 File Offset: 0x00009414
         private void processdata()
         {
             if (!MyProject.Computer.FileSystem.FileExists(TextBox1.Text))
@@ -2651,34 +2591,22 @@ namespace GT5_Car_hack_workshop_2
         [AccessedThroughProperty("Button15")] private Button _Button15;
 
         // Token: 0x0400007D RID: 125
-        [AccessedThroughProperty("GroupBox5")] private GroupBox _GroupBox5;
 
         // Token: 0x0400007E RID: 126
-        [AccessedThroughProperty("GroupBox4")] private GroupBox _GroupBox4;
 
         // Token: 0x0400007F RID: 127
-        [AccessedThroughProperty("GroupBox7")] private GroupBox _GroupBox7;
 
         // Token: 0x04000080 RID: 128
-        [AccessedThroughProperty("GroupBox6")] private GroupBox _GroupBox6;
 
         // Token: 0x04000081 RID: 129
-        [AccessedThroughProperty("GroupBox10")]
-        private GroupBox _GroupBox10;
 
         // Token: 0x04000082 RID: 130
-        [AccessedThroughProperty("GroupBox9")] private GroupBox _GroupBox9;
 
         // Token: 0x04000083 RID: 131
-        [AccessedThroughProperty("GroupBox8")] private GroupBox _GroupBox8;
 
         // Token: 0x04000084 RID: 132
-        [AccessedThroughProperty("GroupBox12")]
-        private GroupBox _GroupBox12;
 
         // Token: 0x04000085 RID: 133
-        [AccessedThroughProperty("GroupBox11")]
-        private GroupBox _GroupBox11;
 
         // Token: 0x04000086 RID: 134
         [AccessedThroughProperty("Button16")] private Button _Button16;
@@ -2687,20 +2615,14 @@ namespace GT5_Car_hack_workshop_2
         [AccessedThroughProperty("Button17")] private Button _Button17;
 
         // Token: 0x04000088 RID: 136
-        [AccessedThroughProperty("Label37")] private Label _Label37;
 
         // Token: 0x04000089 RID: 137
-        [AccessedThroughProperty("GroupBox13")]
-        private GroupBox _GroupBox13;
 
         // Token: 0x0400008A RID: 138
-        [AccessedThroughProperty("CheckBox4")] private CheckBox _CheckBox4;
 
         // Token: 0x0400008B RID: 139
-        [AccessedThroughProperty("TextBox24")] private TextBox _TextBox24;
 
         // Token: 0x0400008C RID: 140
-        [AccessedThroughProperty("Label38")] private Label _Label38;
 
         // Token: 0x0400008D RID: 141
         [AccessedThroughProperty("Button18")] private Button _Button18;
@@ -2709,8 +2631,6 @@ namespace GT5_Car_hack_workshop_2
         [AccessedThroughProperty("Button19")] private Button _Button19;
 
         // Token: 0x0400008F RID: 143
-        [AccessedThroughProperty("GroupBox14")]
-        private GroupBox _GroupBox14;
 
         // Token: 0x04000090 RID: 144
         [AccessedThroughProperty("Button21")] private Button _Button21;
@@ -2719,19 +2639,15 @@ namespace GT5_Car_hack_workshop_2
         [AccessedThroughProperty("Button20")] private Button _Button20;
 
         // Token: 0x04000092 RID: 146
-        [AccessedThroughProperty("Label39")] private Label _Label39;
 
         // Token: 0x04000093 RID: 147
         [AccessedThroughProperty("Button22")] private Button _Button22;
 
         // Token: 0x04000094 RID: 148
-        [AccessedThroughProperty("CheckBox7")] private CheckBox _CheckBox7;
 
         // Token: 0x04000095 RID: 149
-        [AccessedThroughProperty("CheckBox6")] private CheckBox _CheckBox6;
 
         // Token: 0x04000096 RID: 150
-        [AccessedThroughProperty("CheckBox5")] private CheckBox _CheckBox5;
 
         // Token: 0x04000097 RID: 151
         [AccessedThroughProperty("Button23")] private Button _Button23;
