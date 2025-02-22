@@ -1391,7 +1391,7 @@ namespace GT5_Car_hack_workshop_2
                 return;
             }
 
-            Gt5Save = (byte[])loaddata.load(TextBox1.Text);
+            Gt5Save = (byte[])loaddata.Load(TextBox1.Text);
             object[] chararr;
             byte[] charbyte;
             int num4;
@@ -2039,7 +2039,7 @@ namespace GT5_Car_hack_workshop_2
         private void Button3_Click(object sender, EventArgs e)
         {
             savedata();
-            loaddata.encrypt(TextBox1.Text);
+            loaddata.Encrypt(TextBox1.Text);
             Interaction.MsgBox("Data saved, immediately goto the GT Auto and change the cars oil to apply the hacks.");
         }
 
