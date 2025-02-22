@@ -2,17 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace GT5_Car_hack_workshop_2
 {
-    // Token: 0x0200000E RID: 14
-    public class Settingsfileclass
+    public static class SettingsFileClass
     {
-        // Token: 0x06000173 RID: 371 RVA: 0x000025C4 File Offset: 0x000009C4
-        [MethodImpl(MethodImplOptions.NoInlining | MethodImplOptions.NoOptimization)]
-        public static void savesettings(string[] settings, string file)
+        public static void SaveSettings(string[] settings, string file)
         {
             if (File.Exists(file))
             {
@@ -22,16 +18,15 @@ namespace GT5_Car_hack_workshop_2
             File.WriteAllLines(file, settings);
         }
 
-        // Token: 0x06000174 RID: 372 RVA: 0x0000264C File Offset: 0x00000A4C
-        public static string[] loadsettings(string file, int arrsize)
+        public static string[] LoadSettings(string file, int arraySize)
         {
             if (File.Exists(file))
             {
                 var lines = LoadFileToArray(file);
-                return lines.Take(arrsize + 1).ToArray();
+                return lines.Take(arraySize + 1).ToArray();
             }
 
-            return Enumerable.Repeat(" ", arrsize + 1).ToArray();
+            return Enumerable.Repeat(" ", arraySize + 1).ToArray();
         }
 
         /// <summary>
@@ -45,10 +40,10 @@ namespace GT5_Car_hack_workshop_2
 
             if (File.Exists(file))
             {
-                byte[] fileBytes = File.ReadAllBytes(file);
-                string fileContent = Encoding.UTF8.GetString(fileBytes);
-                string[] fileLines = fileContent.Split(new[] { "\r\n" }, StringSplitOptions.None);
-                foreach (string line in fileLines)
+                var fileBytes = File.ReadAllBytes(file);
+                var fileContent = Encoding.UTF8.GetString(fileBytes);
+                var fileLines = fileContent.Split(new[] { "\r\n" }, StringSplitOptions.None);
+                foreach (var line in fileLines)
                 {
                     lines.Add(line);
                 }

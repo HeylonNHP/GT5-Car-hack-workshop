@@ -2008,8 +2008,8 @@ namespace GT5_Car_hack_workshop_2
                 MyProject.Computer.FileSystem.CreateDirectory("Backups");
             }
 
-            Progsettings = Settingsfileclass.loadsettings("GT5CHWsettings.ini", 1);
-            Carparts = Settingsfileclass.loadsettings("partsdatabase.db", 9999);
+            Progsettings = SettingsFileClass.LoadSettings("GT5CHWsettings.ini", 1);
+            Carparts = SettingsFileClass.LoadSettings("partsdatabase.db", 9999);
             TextBox1.Text = Progsettings[0];
             TextBox2.Text = Progsettings[1];
             LoadParts();
@@ -2020,8 +2020,8 @@ namespace GT5_Car_hack_workshop_2
         {
             Progsettings[0] = TextBox1.Text;
             Progsettings[1] = TextBox2.Text;
-            Settingsfileclass.savesettings(Progsettings, "GT5CHWsettings.ini");
-            Settingsfileclass.savesettings(Carparts, "partsdatabase.db");
+            SettingsFileClass.SaveSettings(Progsettings, "GT5CHWsettings.ini");
+            SettingsFileClass.SaveSettings(Carparts, "partsdatabase.db");
         }
 
         // Token: 0x06000146 RID: 326 RVA: 0x0000D7F8 File Offset: 0x0000BBF8
