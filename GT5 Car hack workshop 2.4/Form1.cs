@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -1435,20 +1436,10 @@ namespace GT5_Car_hack_workshop_2
                 MessageBox.Show($"Can't get param.sfo for loading the current car's name.\n{ex.Message}");
             }
 
-            TextBox3.Text =
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 213))].ToString("X2") + " " +
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 212))].ToString("X2");
-            TextBox4.Text = Conversions.ToString(Conversion.Val("&H" +
-                                                                Gt5Save[
-                                                                        Conversions.ToInteger(
-                                                                            Operators.SubtractObject(Moff, 46))]
-                                                                    .ToString("X2")));
-            TextBox6.Text =
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 209))].ToString("X2") + " " +
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 208))].ToString("X2");
-            TextBox7.Text =
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 217))].ToString("X2") + " " +
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 216))].ToString("X2");
+            TextBox3.Text = Gt5Save[Moff - 213].ToString("X2") + " " + Gt5Save[Moff - 212].ToString("X2");
+            TextBox4.Text = Conversion.Val("&H" + Gt5Save[Moff - 46].ToString("X2")).ToString(CultureInfo.CurrentCulture);
+            TextBox6.Text = Gt5Save[Moff - 209].ToString("X2") + " " + Gt5Save[Moff - 208].ToString("X2");
+            TextBox7.Text = Gt5Save[Moff - 217].ToString("X2") + " " + Gt5Save[Moff - 216].ToString("X2");
             TextBox8.Text =
                 Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 205))].ToString("X2") + " " +
                 Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 204))].ToString("X2");
