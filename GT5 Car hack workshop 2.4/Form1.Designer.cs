@@ -1,10 +1,7 @@
 ﻿namespace GT5_Car_hack_workshop_2
 {
-	// Token: 0x02000009 RID: 9
 	public partial class Form1 : global::System.Windows.Forms.Form
 	{
-		// Token: 0x0600004D RID: 77 RVA: 0x00004FAC File Offset: 0x000033AC
-		[global::System.Diagnostics.DebuggerNonUserCode]
 		protected override void Dispose(bool disposing)
 		{
 			try
@@ -19,9 +16,7 @@
 				base.Dispose(disposing);
 			}
 		}
-
-		// Token: 0x0600004E RID: 78 RVA: 0x00004FEC File Offset: 0x000033EC
-		[global::System.Diagnostics.DebuggerStepThrough]
+		
 		private void InitializeComponent()
 		{
 			this.GroupBox1 = new global::System.Windows.Forms.GroupBox();

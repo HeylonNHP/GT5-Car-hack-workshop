@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using GT5_Car_hack_workshop_2.My;
@@ -1391,142 +1392,123 @@ namespace GT5_Car_hack_workshop_2
                 return;
             }
 
-            Gt5Save = (byte[])LoadData.Load(TextBox1.Text);
-            object[] chararr;
-            byte[] charbyte;
-            int num4;
-            int j;
-            checked
-            {
-                chararr = new object[TextBox2.Text.Length - 1 + 1];
-                int num = 0;
-                int num2 = TextBox2.Text.Length - 1;
-                for (int i = num; i <= num2; i++)
-                {
-                    chararr[i] = TextBox2.Text.Substring(i, 1);
-                }
+            Gt5Save = LoadData.Load(TextBox1.Text);
 
-                charbyte = new byte[chararr.Length - 1 + 1];
-                int num3 = 0;
-                num4 = chararr.Length - 1;
-                j = num3;
+            var psnUserCharacterArray = TextBox2.Text.ToCharArray();
+            var psnUserCharacterByteArray = psnUserCharacterArray.Select(c => (byte)c).ToArray();
+
+            Moff = LoadData.FindSequence(Gt5Save, psnUserCharacterByteArray) - 306;
+            if (Moff < 1)
+            {
+                MessageBox.Show("PSN name is incorrect or data is corrupt\rRemember, the PSN name is CASE sensitive.");
+                return;
             }
 
-            checked
+            try
             {
-                while (j <= num4)
+                FileInfo gt50file = new FileInfo(TextBox1.Text);
+
+                var paramSfoBytes = File.ReadAllBytes(gt50file.DirectoryName + "\\PARAM.SFO");
+                var currentCar = "Current Car: ";
+                var currentCarBytes = currentCar.ToCharArray().Select(c => (byte)c).ToArray();
+                var currentCarIndex = LoadData.FindSequence(paramSfoBytes, currentCarBytes) + currentCarBytes.Length;
+
+                // Find the index where the car's name string ends. 
+                var endIndex = 0;
+                for (var i = currentCarIndex; i < paramSfoBytes.Length; i++)
                 {
-                    int k = 0;
-                    while (!chararr[j].Equals((char)k))
+                    if (paramSfoBytes[i] == 0)
                     {
-                        k++;
-                        if (k > 255)
-                        {
-                            j++;
-                        }
+                        endIndex = i;
+                        break;
                     }
-
-                    charbyte[j] = (byte)k;
-                    j++;
                 }
 
-                Moff = LoadData.FindSequence(Gt5Save, charbyte) - 306;
-                if (Operators.ConditionalCompareObjectLess(Moff, 1, false))
-                {
-                    Interaction.MsgBox(
-                        "PSN name is incorrect or data is corrupt\rRemember, the PSN name is CASE sensitive.");
-                    return;
-                }
-
-                try
-                {
-                    FileInfo gt50file = new FileInfo(TextBox1.Text);
-                    RichTextBox rtf = new RichTextBox();
-                    rtf.LoadFile(gt50file.Directory.FullName + "\\PARAM.SFO", RichTextBoxStreamType.PlainText);
-                    Label7.Text = rtf.Lines[4];
-                    _CarName = Label7.Text.Substring(13, Label7.Text.Length - 13);
-                }
-                catch (Exception ex)
-                {
-                    Interaction.MsgBox("Can't get param.sfo for loading car name");
-                }
-
-                TextBox3.Text =
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 213))].ToString("X2") + " " +
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 212))].ToString("X2");
-                TextBox4.Text = Conversions.ToString(Conversion.Val("&H" +
-                                                                    Gt5Save[
-                                                                            Conversions.ToInteger(
-                                                                                Operators.SubtractObject(Moff, 46))]
-                                                                        .ToString("X2")));
-                TextBox6.Text =
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 209))].ToString("X2") + " " +
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 208))].ToString("X2");
-                TextBox7.Text =
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 217))].ToString("X2") + " " +
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 216))].ToString("X2");
-                TextBox8.Text =
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 205))].ToString("X2") + " " +
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 204))].ToString("X2");
-                TextBox9.Text =
-                    Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 88))]);
-                TextBox10.Text = string.Concat(
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 344))].ToString("X2"), " ",
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 343))].ToString("X2"), " ",
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 342))].ToString("X2"), " ",
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 341))].ToString("X2"));
-                TextBox11.Text = string.Concat(
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 171))].ToString("X2"), " ",
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 170))].ToString("X2"), " ",
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 169))].ToString("X2"), " ",
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 168))].ToString("X2"));
-                TextBox13.Text =
-                    Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 43))]);
-                TextBox12.Text =
-                    Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 42))]);
-                TextBox textBox = TextBox14;
-                string text = "&H";
-                byte b = Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 33))];
-                string text2 = b.ToString("X2");
-                string text3 = " ";
-                byte b2 = Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 32))];
-                textBox.Text = Conversions.ToString(Conversion.Val(text + text2 + text3 + b2.ToString("X2")));
-                TextBox textBox2 = TextBox15;
-                string text4 = "&H";
-                b2 = Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 31))];
-                string text5 = b2.ToString("X2");
-                string text6 = " ";
-                b = Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 30))];
-                textBox2.Text = Conversions.ToString(Conversion.Val(text4 + text5 + text6 + b.ToString("X2")));
-                TextBox16.Text =
-                    Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 10))]);
-                TextBox18.Text =
-                    Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 27))]);
-                TextBox17.Text =
-                    Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 26))]);
-                TextBox19.Text = string.Concat(
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 155))].ToString("X2"), " ",
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 154))].ToString("X2"), " ",
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 153))].ToString("X2"), " ",
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 152))].ToString("X2"));
-                TextBox20.Text =
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 262))].ToString("X2") + " " +
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 261))].ToString("X2");
-                TextBox21.Text =
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 201))].ToString("X2") + " " +
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 200))].ToString("X2");
-                TextBox22.Text =
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 197))].ToString("X2") + " " +
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 196))].ToString("X2");
-                TextBox23.Text =
-                    Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 23))].ToString("X2") + " " +
-                    Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 24))].ToString("X2");
-                TextBox24.Text = string.Concat(
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 191))].ToString("X2"), " ",
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 190))].ToString("X2"), " ",
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 189))].ToString("X2"), " ",
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 188))].ToString("X2"));
+                var currentCarNameBytes = paramSfoBytes.Skip(currentCarIndex).Take(endIndex - currentCarIndex).ToArray();
+                var currentCarString = new string(currentCarNameBytes.Select(s => (char)s).ToArray());
+                Label7.Text = currentCar + currentCarString;
+                _CarName = currentCarString;
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Can't get param.sfo for loading car name");
+            }
+
+            TextBox3.Text =
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 213))].ToString("X2") + " " +
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 212))].ToString("X2");
+            TextBox4.Text = Conversions.ToString(Conversion.Val("&H" +
+                                                                Gt5Save[
+                                                                        Conversions.ToInteger(
+                                                                            Operators.SubtractObject(Moff, 46))]
+                                                                    .ToString("X2")));
+            TextBox6.Text =
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 209))].ToString("X2") + " " +
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 208))].ToString("X2");
+            TextBox7.Text =
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 217))].ToString("X2") + " " +
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 216))].ToString("X2");
+            TextBox8.Text =
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 205))].ToString("X2") + " " +
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 204))].ToString("X2");
+            TextBox9.Text =
+                Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 88))]);
+            TextBox10.Text = string.Concat(
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 344))].ToString("X2"), " ",
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 343))].ToString("X2"), " ",
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 342))].ToString("X2"), " ",
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 341))].ToString("X2"));
+            TextBox11.Text = string.Concat(
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 171))].ToString("X2"), " ",
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 170))].ToString("X2"), " ",
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 169))].ToString("X2"), " ",
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 168))].ToString("X2"));
+            TextBox13.Text =
+                Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 43))]);
+            TextBox12.Text =
+                Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 42))]);
+            TextBox textBox = TextBox14;
+            string text = "&H";
+            byte b = Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 33))];
+            string text2 = b.ToString("X2");
+            string text3 = " ";
+            byte b2 = Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 32))];
+            textBox.Text = Conversions.ToString(Conversion.Val(text + text2 + text3 + b2.ToString("X2")));
+            TextBox textBox2 = TextBox15;
+            string text4 = "&H";
+            b2 = Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 31))];
+            string text5 = b2.ToString("X2");
+            string text6 = " ";
+            b = Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 30))];
+            textBox2.Text = Conversions.ToString(Conversion.Val(text4 + text5 + text6 + b.ToString("X2")));
+            TextBox16.Text =
+                Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 10))]);
+            TextBox18.Text =
+                Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 27))]);
+            TextBox17.Text =
+                Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 26))]);
+            TextBox19.Text = string.Concat(
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 155))].ToString("X2"), " ",
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 154))].ToString("X2"), " ",
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 153))].ToString("X2"), " ",
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 152))].ToString("X2"));
+            TextBox20.Text =
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 262))].ToString("X2") + " " +
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 261))].ToString("X2");
+            TextBox21.Text =
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 201))].ToString("X2") + " " +
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 200))].ToString("X2");
+            TextBox22.Text =
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 197))].ToString("X2") + " " +
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 196))].ToString("X2");
+            TextBox23.Text =
+                Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 23))].ToString("X2") + " " +
+                Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 24))].ToString("X2");
+            TextBox24.Text = string.Concat(
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 191))].ToString("X2"), " ",
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 190))].ToString("X2"), " ",
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 189))].ToString("X2"), " ",
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 188))].ToString("X2"));
         }
 
         // Token: 0x06000142 RID: 322 RVA: 0x0000BC04 File Offset: 0x0000A004
@@ -2378,27 +2360,27 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [AccessedThroughProperty("Button1")] private Button _Button1;
-        
+
         [AccessedThroughProperty("Button3")] private Button _Button3;
 
         [AccessedThroughProperty("Button2")] private Button _Button2;
-        
+
         [AccessedThroughProperty("Button5")] private Button _Button5;
-        
+
         [AccessedThroughProperty("TextBox4")] private TextBox _TextBox4;
-        
+
         [AccessedThroughProperty("Button6")] private Button _Button6;
-        
+
         [AccessedThroughProperty("Button4")] private Button _Button4;
-        
+
         [AccessedThroughProperty("Button7")] private Button _Button7;
 
         [AccessedThroughProperty("Button8")] private Button _Button8;
 
         [AccessedThroughProperty("Button9")] private Button _Button9;
-        
+
         [AccessedThroughProperty("Button10")] private Button _Button10;
-        
+
         [AccessedThroughProperty("Button11")] private Button _Button11;
 
         [AccessedThroughProperty("ComboBox2")] private ComboBox _ComboBox2;
