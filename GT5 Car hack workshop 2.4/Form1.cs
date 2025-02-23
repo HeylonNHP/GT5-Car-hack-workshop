@@ -1404,11 +1404,12 @@ namespace GT5_Car_hack_workshop_2
                 return;
             }
 
+            // Grab current car's name from PARAM.SFO
             try
             {
-                FileInfo gt50file = new FileInfo(TextBox1.Text);
+                FileInfo gt50File = new FileInfo(TextBox1.Text);
 
-                var paramSfoBytes = File.ReadAllBytes(gt50file.DirectoryName + "\\PARAM.SFO");
+                var paramSfoBytes = File.ReadAllBytes(gt50File.DirectoryName + "\\PARAM.SFO");
                 var currentCar = "Current Car: ";
                 var currentCarBytes = currentCar.ToCharArray().Select(c => (byte)c).ToArray();
                 var currentCarIndex = LoadData.FindSequence(paramSfoBytes, currentCarBytes) + currentCarBytes.Length;
@@ -1431,7 +1432,7 @@ namespace GT5_Car_hack_workshop_2
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Can't get param.sfo for loading car name");
+                MessageBox.Show($"Can't get param.sfo for loading the current car's name.\n{ex.Message}");
             }
 
             TextBox3.Text =
