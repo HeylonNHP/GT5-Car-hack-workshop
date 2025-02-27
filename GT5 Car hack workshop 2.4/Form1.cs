@@ -1440,67 +1440,35 @@ namespace GT5_Car_hack_workshop_2
             TextBox4.Text = Conversion.Val("&H" + Gt5Save[Moff - 46].ToString("X2")).ToString(CultureInfo.CurrentCulture);
             TextBox6.Text = Gt5Save[Moff - 209].ToString("X2") + " " + Gt5Save[Moff - 208].ToString("X2");
             TextBox7.Text = Gt5Save[Moff - 217].ToString("X2") + " " + Gt5Save[Moff - 216].ToString("X2");
-            TextBox8.Text =
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 205))].ToString("X2") + " " +
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 204))].ToString("X2");
-            TextBox9.Text =
-                Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 88))]);
-            TextBox10.Text = string.Concat(
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 344))].ToString("X2"), " ",
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 343))].ToString("X2"), " ",
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 342))].ToString("X2"), " ",
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 341))].ToString("X2"));
-            TextBox11.Text = string.Concat(
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 171))].ToString("X2"), " ",
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 170))].ToString("X2"), " ",
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 169))].ToString("X2"), " ",
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 168))].ToString("X2"));
-            TextBox13.Text =
-                Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 43))]);
-            TextBox12.Text =
-                Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 42))]);
-            TextBox textBox = TextBox14;
-            string text = "&H";
-            byte b = Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 33))];
-            string text2 = b.ToString("X2");
-            string text3 = " ";
-            byte b2 = Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 32))];
-            textBox.Text = Conversions.ToString(Conversion.Val(text + text2 + text3 + b2.ToString("X2")));
-            TextBox textBox2 = TextBox15;
-            string text4 = "&H";
-            b2 = Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 31))];
-            string text5 = b2.ToString("X2");
-            string text6 = " ";
-            b = Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 30))];
-            textBox2.Text = Conversions.ToString(Conversion.Val(text4 + text5 + text6 + b.ToString("X2")));
-            TextBox16.Text =
-                Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 10))]);
-            TextBox18.Text =
-                Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 27))]);
-            TextBox17.Text =
-                Conversions.ToString(Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 26))]);
-            TextBox19.Text = string.Concat(
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 155))].ToString("X2"), " ",
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 154))].ToString("X2"), " ",
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 153))].ToString("X2"), " ",
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 152))].ToString("X2"));
-            TextBox20.Text =
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 262))].ToString("X2") + " " +
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 261))].ToString("X2");
-            TextBox21.Text =
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 201))].ToString("X2") + " " +
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 200))].ToString("X2");
-            TextBox22.Text =
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 197))].ToString("X2") + " " +
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 196))].ToString("X2");
-            TextBox23.Text =
-                Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 23))].ToString("X2") + " " +
-                Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 24))].ToString("X2");
-            TextBox24.Text = string.Concat(
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 191))].ToString("X2"), " ",
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 190))].ToString("X2"), " ",
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 189))].ToString("X2"), " ",
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 188))].ToString("X2"));
+            TextBox8.Text = Gt5Save[Moff - 205].ToString("X2") + " " + Gt5Save[Moff - 204].ToString("X2");
+            TextBox9.Text = Gt5Save[Moff - 88].ToString();
+
+            TextBox10.Text = $"{Gt5Save[Moff - 344]:X2} {Gt5Save[Moff - 343]:X2} {Gt5Save[Moff - 342]:X2} {Gt5Save[Moff - 341]:X2}";
+
+            TextBox11.Text = $"{Gt5Save[Moff - 171]:X2} {Gt5Save[Moff - 170]:X2} {Gt5Save[Moff - 169]:X2} {Gt5Save[Moff - 168]:X2}";
+
+            TextBox13.Text = Gt5Save[Moff - 43].ToString();
+            TextBox12.Text = Gt5Save[Moff - 42].ToString();
+
+            TextBox14.Text = $"{Conversion.Val($"&H{Gt5Save[Moff - 33]:X2}")} {Conversion.Val($"&H{Gt5Save[Moff - 32]:X2}")}";
+            TextBox15.Text = $"{Conversion.Val($"&H{Gt5Save[Moff - 31]:X2}")} {Conversion.Val($"&H{Gt5Save[Moff - 30]:X2}")}";
+
+            TextBox16.Text = Gt5Save[Moff + 10].ToString();
+
+            TextBox18.Text = Gt5Save[Moff - 27].ToString();
+            TextBox17.Text = Gt5Save[Moff - 26].ToString();
+
+            TextBox19.Text = $"{Gt5Save[Moff - 155]:X2} {Gt5Save[Moff - 154]:X2} {Gt5Save[Moff - 153]:X2} {Gt5Save[Moff - 152]:X2}";
+
+            TextBox20.Text = $"{Gt5Save[Moff - 262]:X2} {Gt5Save[Moff - 261]:X2}";
+
+            TextBox21.Text = $"{Gt5Save[Moff - 201]:X2} {Gt5Save[Moff - 200]:X2}";
+
+            TextBox22.Text = $"{Gt5Save[Moff - 197]:X2} {Gt5Save[Moff - 196]:X2}";
+
+            TextBox23.Text = $"{Gt5Save[Moff + 23]:X2} {Gt5Save[Moff + 24]:X2}";
+
+            TextBox24.Text = $"{Gt5Save[Moff - 191]:X2} {Gt5Save[Moff - 190]:X2} {Gt5Save[Moff - 189]:X2} {Gt5Save[Moff - 188]:X2}";
         }
 
         // Token: 0x06000142 RID: 322 RVA: 0x0000BC04 File Offset: 0x0000A004
