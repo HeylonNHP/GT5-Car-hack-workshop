@@ -1,7 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Drawing;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using GT5_Car_hack_workshop_2.My;
@@ -15,10 +12,10 @@ namespace GT5_Car_hack_workshop_2
     {
         public Tranny()
         {
-            base.Load += this.Tranny_Load;
-            this.lastgearpre = 0.1m;
-            this.origfg = 0.1m;
-            this.InitializeComponent();
+            Load += Tranny_Load;
+            lastgearpre = 0.1m;
+            origfg = 0.1m;
+            InitializeComponent();
         }
 
         // Token: 0x17000099 RID: 153
@@ -26,9 +23,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x0600017A RID: 378 RVA: 0x0000FAD0 File Offset: 0x0000DED0
         internal virtual Label Label1
         {
-            get { return this._Label1; }
+            get { return _Label1; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._Label1 = value; }
+            set { _Label1 = value; }
         }
 
         // Token: 0x1700009A RID: 154
@@ -36,9 +33,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x0600017C RID: 380 RVA: 0x0000FAF0 File Offset: 0x0000DEF0
         internal virtual Label Label2
         {
-            get { return this._Label2; }
+            get { return _Label2; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._Label2 = value; }
+            set { _Label2 = value; }
         }
 
         // Token: 0x1700009B RID: 155
@@ -46,9 +43,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x0600017E RID: 382 RVA: 0x0000FB10 File Offset: 0x0000DF10
         internal virtual Label Label3
         {
-            get { return this._Label3; }
+            get { return _Label3; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._Label3 = value; }
+            set { _Label3 = value; }
         }
 
         // Token: 0x1700009C RID: 156
@@ -56,9 +53,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x06000180 RID: 384 RVA: 0x0000FB30 File Offset: 0x0000DF30
         internal virtual Label Label4
         {
-            get { return this._Label4; }
+            get { return _Label4; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._Label4 = value; }
+            set { _Label4 = value; }
         }
 
         // Token: 0x1700009D RID: 157
@@ -66,9 +63,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x06000182 RID: 386 RVA: 0x0000FB50 File Offset: 0x0000DF50
         internal virtual Label Label5
         {
-            get { return this._Label5; }
+            get { return _Label5; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._Label5 = value; }
+            set { _Label5 = value; }
         }
 
         // Token: 0x1700009E RID: 158
@@ -76,9 +73,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x06000184 RID: 388 RVA: 0x0000FB70 File Offset: 0x0000DF70
         internal virtual Label Label6
         {
-            get { return this._Label6; }
+            get { return _Label6; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._Label6 = value; }
+            set { _Label6 = value; }
         }
 
         // Token: 0x1700009F RID: 159
@@ -86,9 +83,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x06000186 RID: 390 RVA: 0x0000FB90 File Offset: 0x0000DF90
         internal virtual Label Label7
         {
-            get { return this._Label7; }
+            get { return _Label7; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._Label7 = value; }
+            set { _Label7 = value; }
         }
 
         // Token: 0x170000A0 RID: 160
@@ -96,9 +93,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x06000188 RID: 392 RVA: 0x0000FBB0 File Offset: 0x0000DFB0
         internal virtual Label Label8
         {
-            get { return this._Label8; }
+            get { return _Label8; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._Label8 = value; }
+            set { _Label8 = value; }
         }
 
         // Token: 0x170000A1 RID: 161
@@ -106,9 +103,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x0600018A RID: 394 RVA: 0x0000FBD0 File Offset: 0x0000DFD0
         internal virtual Label Label9
         {
-            get { return this._Label9; }
+            get { return _Label9; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._Label9 = value; }
+            set { _Label9 = value; }
         }
 
         // Token: 0x170000A2 RID: 162
@@ -116,9 +113,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x0600018C RID: 396 RVA: 0x0000FBF0 File Offset: 0x0000DFF0
         internal virtual Label Label10
         {
-            get { return this._Label10; }
+            get { return _Label10; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._Label10 = value; }
+            set { _Label10 = value; }
         }
 
         // Token: 0x170000A3 RID: 163
@@ -126,9 +123,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x0600018E RID: 398 RVA: 0x0000FC10 File Offset: 0x0000E010
         internal virtual Label Label11
         {
-            get { return this._Label11; }
+            get { return _Label11; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._Label11 = value; }
+            set { _Label11 = value; }
         }
 
         // Token: 0x170000A4 RID: 164
@@ -136,9 +133,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x06000190 RID: 400 RVA: 0x0000FC30 File Offset: 0x0000E030
         internal virtual TextBox TextBox1
         {
-            get { return this._TextBox1; }
+            get { return _TextBox1; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._TextBox1 = value; }
+            set { _TextBox1 = value; }
         }
 
         // Token: 0x170000A5 RID: 165
@@ -146,9 +143,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x06000192 RID: 402 RVA: 0x0000FC50 File Offset: 0x0000E050
         internal virtual TextBox TextBox2
         {
-            get { return this._TextBox2; }
+            get { return _TextBox2; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._TextBox2 = value; }
+            set { _TextBox2 = value; }
         }
 
         // Token: 0x170000A6 RID: 166
@@ -156,9 +153,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x06000194 RID: 404 RVA: 0x0000FC70 File Offset: 0x0000E070
         internal virtual TextBox TextBox3
         {
-            get { return this._TextBox3; }
+            get { return _TextBox3; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._TextBox3 = value; }
+            set { _TextBox3 = value; }
         }
 
         // Token: 0x170000A7 RID: 167
@@ -166,9 +163,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x06000196 RID: 406 RVA: 0x0000FC90 File Offset: 0x0000E090
         internal virtual TextBox TextBox4
         {
-            get { return this._TextBox4; }
+            get { return _TextBox4; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._TextBox4 = value; }
+            set { _TextBox4 = value; }
         }
 
         // Token: 0x170000A8 RID: 168
@@ -176,9 +173,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x06000198 RID: 408 RVA: 0x0000FCB0 File Offset: 0x0000E0B0
         internal virtual TextBox TextBox5
         {
-            get { return this._TextBox5; }
+            get { return _TextBox5; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._TextBox5 = value; }
+            set { _TextBox5 = value; }
         }
 
         // Token: 0x170000A9 RID: 169
@@ -186,9 +183,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x0600019A RID: 410 RVA: 0x0000FCD0 File Offset: 0x0000E0D0
         internal virtual TextBox TextBox6
         {
-            get { return this._TextBox6; }
+            get { return _TextBox6; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._TextBox6 = value; }
+            set { _TextBox6 = value; }
         }
 
         // Token: 0x170000AA RID: 170
@@ -196,9 +193,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x0600019C RID: 412 RVA: 0x0000FCF0 File Offset: 0x0000E0F0
         internal virtual TextBox TextBox7
         {
-            get { return this._TextBox7; }
+            get { return _TextBox7; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._TextBox7 = value; }
+            set { _TextBox7 = value; }
         }
 
         // Token: 0x170000AB RID: 171
@@ -206,9 +203,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x0600019E RID: 414 RVA: 0x0000FD10 File Offset: 0x0000E110
         internal virtual TextBox TextBox8
         {
-            get { return this._TextBox8; }
+            get { return _TextBox8; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._TextBox8 = value; }
+            set { _TextBox8 = value; }
         }
 
         // Token: 0x170000AC RID: 172
@@ -216,9 +213,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x060001A0 RID: 416 RVA: 0x0000FD30 File Offset: 0x0000E130
         internal virtual TextBox TextBox9
         {
-            get { return this._TextBox9; }
+            get { return _TextBox9; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._TextBox9 = value; }
+            set { _TextBox9 = value; }
         }
 
         // Token: 0x170000AD RID: 173
@@ -226,9 +223,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x060001A2 RID: 418 RVA: 0x0000FD50 File Offset: 0x0000E150
         internal virtual TextBox TextBox10
         {
-            get { return this._TextBox10; }
+            get { return _TextBox10; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._TextBox10 = value; }
+            set { _TextBox10 = value; }
         }
 
         // Token: 0x170000AE RID: 174
@@ -236,9 +233,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x060001A4 RID: 420 RVA: 0x0000FD70 File Offset: 0x0000E170
         internal virtual TextBox TextBox11
         {
-            get { return this._TextBox11; }
+            get { return _TextBox11; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._TextBox11 = value; }
+            set { _TextBox11 = value; }
         }
 
         // Token: 0x170000AF RID: 175
@@ -246,9 +243,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x060001A6 RID: 422 RVA: 0x0000FD90 File Offset: 0x0000E190
         internal virtual TextBox TextBox12
         {
-            get { return this._TextBox12; }
+            get { return _TextBox12; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._TextBox12 = value; }
+            set { _TextBox12 = value; }
         }
 
         // Token: 0x170000B0 RID: 176
@@ -256,9 +253,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x060001A8 RID: 424 RVA: 0x0000FDB0 File Offset: 0x0000E1B0
         internal virtual Label Label12
         {
-            get { return this._Label12; }
+            get { return _Label12; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._Label12 = value; }
+            set { _Label12 = value; }
         }
 
         // Token: 0x170000B1 RID: 177
@@ -266,20 +263,20 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x060001AA RID: 426 RVA: 0x0000FDD0 File Offset: 0x0000E1D0
         internal virtual Button Button1
         {
-            get { return this._Button1; }
+            get { return _Button1; }
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                EventHandler eventHandler = new EventHandler(this.Button1_Click);
-                if (this._Button1 != null)
+                EventHandler eventHandler = Button1_Click;
+                if (_Button1 != null)
                 {
-                    this._Button1.Click -= eventHandler;
+                    _Button1.Click -= eventHandler;
                 }
 
-                this._Button1 = value;
-                if (this._Button1 != null)
+                _Button1 = value;
+                if (_Button1 != null)
                 {
-                    this._Button1.Click += eventHandler;
+                    _Button1.Click += eventHandler;
                 }
             }
         }
@@ -289,9 +286,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x060001AC RID: 428 RVA: 0x0000FE30 File Offset: 0x0000E230
         internal virtual GroupBox GroupBox1
         {
-            get { return this._GroupBox1; }
+            get { return _GroupBox1; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._GroupBox1 = value; }
+            set { _GroupBox1 = value; }
         }
 
         // Token: 0x170000B3 RID: 179
@@ -299,9 +296,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x060001AE RID: 430 RVA: 0x0000FE50 File Offset: 0x0000E250
         internal virtual TextBox TextBox14
         {
-            get { return this._TextBox14; }
+            get { return _TextBox14; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._TextBox14 = value; }
+            set { _TextBox14 = value; }
         }
 
         // Token: 0x170000B4 RID: 180
@@ -309,9 +306,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x060001B0 RID: 432 RVA: 0x0000FE70 File Offset: 0x0000E270
         internal virtual Label Label14
         {
-            get { return this._Label14; }
+            get { return _Label14; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._Label14 = value; }
+            set { _Label14 = value; }
         }
 
         // Token: 0x170000B5 RID: 181
@@ -319,9 +316,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x060001B2 RID: 434 RVA: 0x0000FE90 File Offset: 0x0000E290
         internal virtual TextBox TextBox13
         {
-            get { return this._TextBox13; }
+            get { return _TextBox13; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._TextBox13 = value; }
+            set { _TextBox13 = value; }
         }
 
         // Token: 0x170000B6 RID: 182
@@ -329,9 +326,9 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x060001B4 RID: 436 RVA: 0x0000FEB0 File Offset: 0x0000E2B0
         internal virtual Label Label13
         {
-            get { return this._Label13; }
+            get { return _Label13; }
             [MethodImpl(MethodImplOptions.Synchronized)]
-            set { this._Label13 = value; }
+            set { _Label13 = value; }
         }
 
         // Token: 0x170000B7 RID: 183
@@ -339,20 +336,20 @@ namespace GT5_Car_hack_workshop_2
         // (set) Token: 0x060001B6 RID: 438 RVA: 0x0000FED0 File Offset: 0x0000E2D0
         internal virtual Timer Timer1
         {
-            get { return this._Timer1; }
+            get { return _Timer1; }
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
-                EventHandler eventHandler = new EventHandler(this.Timer1_Tick);
-                if (this._Timer1 != null)
+                EventHandler eventHandler = Timer1_Tick;
+                if (_Timer1 != null)
                 {
-                    this._Timer1.Tick -= eventHandler;
+                    _Timer1.Tick -= eventHandler;
                 }
 
-                this._Timer1 = value;
-                if (this._Timer1 != null)
+                _Timer1 = value;
+                if (_Timer1 != null)
                 {
-                    this._Timer1.Tick += eventHandler;
+                    _Timer1.Tick += eventHandler;
                 }
             }
         }
@@ -360,7 +357,7 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x060001B7 RID: 439 RVA: 0x0000FF1C File Offset: 0x0000E31C
         private void Tranny_Load(object sender, EventArgs e)
         {
-            TextBox textBox = this.TextBox1;
+            TextBox textBox = TextBox1;
             string text = "&H";
             byte b = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 73))];
@@ -369,7 +366,7 @@ namespace GT5_Car_hack_workshop_2
             byte b2 = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 72))];
             textBox.Text = Conversions.ToString(Conversion.Val(text + text2 + text3 + b2.ToString("X2")) / 1000.0);
-            TextBox textBox2 = this.TextBox2;
+            TextBox textBox2 = TextBox2;
             string text4 = "&H";
             b2 = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 71))];
@@ -378,7 +375,7 @@ namespace GT5_Car_hack_workshop_2
             b = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 70))];
             textBox2.Text = Conversions.ToString(Conversion.Val(text4 + text5 + text6 + b.ToString("X2")) / 1000.0);
-            TextBox textBox3 = this.TextBox3;
+            TextBox textBox3 = TextBox3;
             string text7 = "&H";
             b2 = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 69))];
@@ -387,7 +384,7 @@ namespace GT5_Car_hack_workshop_2
             b = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 68))];
             textBox3.Text = Conversions.ToString(Conversion.Val(text7 + text8 + text9 + b.ToString("X2")) / 1000.0);
-            TextBox textBox4 = this.TextBox4;
+            TextBox textBox4 = TextBox4;
             string text10 = "&H";
             b2 = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 67))];
@@ -396,7 +393,7 @@ namespace GT5_Car_hack_workshop_2
             b = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 66))];
             textBox4.Text = Conversions.ToString(Conversion.Val(text10 + text11 + text12 + b.ToString("X2")) / 1000.0);
-            TextBox textBox5 = this.TextBox5;
+            TextBox textBox5 = TextBox5;
             string text13 = "&H";
             b2 = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 65))];
@@ -405,7 +402,7 @@ namespace GT5_Car_hack_workshop_2
             b = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 64))];
             textBox5.Text = Conversions.ToString(Conversion.Val(text13 + text14 + text15 + b.ToString("X2")) / 1000.0);
-            TextBox textBox6 = this.TextBox6;
+            TextBox textBox6 = TextBox6;
             string text16 = "&H";
             b2 = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 63))];
@@ -414,7 +411,7 @@ namespace GT5_Car_hack_workshop_2
             b = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 62))];
             textBox6.Text = Conversions.ToString(Conversion.Val(text16 + text17 + text18 + b.ToString("X2")) / 1000.0);
-            TextBox textBox7 = this.TextBox7;
+            TextBox textBox7 = TextBox7;
             string text19 = "&H";
             b2 = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 61))];
@@ -423,7 +420,7 @@ namespace GT5_Car_hack_workshop_2
             b = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 60))];
             textBox7.Text = Conversions.ToString(Conversion.Val(text19 + text20 + text21 + b.ToString("X2")) / 1000.0);
-            TextBox textBox8 = this.TextBox8;
+            TextBox textBox8 = TextBox8;
             string text22 = "&H";
             b2 = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 59))];
@@ -432,7 +429,7 @@ namespace GT5_Car_hack_workshop_2
             b = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 58))];
             textBox8.Text = Conversions.ToString(Conversion.Val(text22 + text23 + text24 + b.ToString("X2")) / 1000.0);
-            TextBox textBox9 = this.TextBox9;
+            TextBox textBox9 = TextBox9;
             string text25 = "&H";
             b2 = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 57))];
@@ -441,7 +438,7 @@ namespace GT5_Car_hack_workshop_2
             b = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 56))];
             textBox9.Text = Conversions.ToString(Conversion.Val(text25 + text26 + text27 + b.ToString("X2")) / 1000.0);
-            TextBox textBox10 = this.TextBox10;
+            TextBox textBox10 = TextBox10;
             string text28 = "&H";
             b2 = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 55))];
@@ -450,7 +447,7 @@ namespace GT5_Car_hack_workshop_2
             b = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 54))];
             textBox10.Text = Conversions.ToString(Conversion.Val(text28 + text29 + text30 + b.ToString("X2")) / 1000.0);
-            TextBox textBox11 = this.TextBox11;
+            TextBox textBox11 = TextBox11;
             string text31 = "&H";
             b2 = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 53))];
@@ -459,7 +456,7 @@ namespace GT5_Car_hack_workshop_2
             b = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 52))];
             textBox11.Text = Conversions.ToString(Conversion.Val(text31 + text32 + text33 + b.ToString("X2")) / 1000.0);
-            TextBox textBox12 = this.TextBox12;
+            TextBox textBox12 = TextBox12;
             string text34 = "&H";
             b2 = MyProject.Forms.Form1.Gt5Save[
                 Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 51))];
@@ -470,56 +467,56 @@ namespace GT5_Car_hack_workshop_2
             textBox12.Text = Conversions.ToString(Conversion.Val(text34 + text35 + text36 + b.ToString("X2")) / 1000.0);
             try
             {
-                if (Conversion.Val(this.TextBox11.Text) > 0.0)
+                if (Conversion.Val(TextBox11.Text) > 0.0)
                 {
-                    this.lastgearpre = new decimal(Conversion.Val(this.TextBox11.Text));
+                    lastgearpre = new decimal(Conversion.Val(TextBox11.Text));
                 }
-                else if (Conversion.Val(this.TextBox10.Text) > 0.0)
+                else if (Conversion.Val(TextBox10.Text) > 0.0)
                 {
-                    this.lastgearpre = new decimal(Conversion.Val(this.TextBox10.Text));
+                    lastgearpre = new decimal(Conversion.Val(TextBox10.Text));
                 }
-                else if (Conversion.Val(this.TextBox9.Text) > 0.0)
+                else if (Conversion.Val(TextBox9.Text) > 0.0)
                 {
-                    this.lastgearpre = new decimal(Conversion.Val(this.TextBox9.Text));
+                    lastgearpre = new decimal(Conversion.Val(TextBox9.Text));
                 }
-                else if (Conversion.Val(this.TextBox8.Text) > 0.0)
+                else if (Conversion.Val(TextBox8.Text) > 0.0)
                 {
-                    this.lastgearpre = new decimal(Conversion.Val(this.TextBox8.Text));
+                    lastgearpre = new decimal(Conversion.Val(TextBox8.Text));
                 }
-                else if (Conversion.Val(this.TextBox7.Text) > 0.0)
+                else if (Conversion.Val(TextBox7.Text) > 0.0)
                 {
-                    this.lastgearpre = new decimal(Conversion.Val(this.TextBox7.Text));
+                    lastgearpre = new decimal(Conversion.Val(TextBox7.Text));
                 }
-                else if (Conversion.Val(this.TextBox6.Text) > 0.0)
+                else if (Conversion.Val(TextBox6.Text) > 0.0)
                 {
-                    this.lastgearpre = new decimal(Conversion.Val(this.TextBox6.Text));
+                    lastgearpre = new decimal(Conversion.Val(TextBox6.Text));
                 }
-                else if (Conversion.Val(this.TextBox5.Text) > 0.0)
+                else if (Conversion.Val(TextBox5.Text) > 0.0)
                 {
-                    this.lastgearpre = new decimal(Conversion.Val(this.TextBox5.Text));
+                    lastgearpre = new decimal(Conversion.Val(TextBox5.Text));
                 }
-                else if (Conversion.Val(this.TextBox4.Text) > 0.0)
+                else if (Conversion.Val(TextBox4.Text) > 0.0)
                 {
-                    this.lastgearpre = new decimal(Conversion.Val(this.TextBox4.Text));
+                    lastgearpre = new decimal(Conversion.Val(TextBox4.Text));
                 }
-                else if (Conversion.Val(this.TextBox3.Text) > 0.0)
+                else if (Conversion.Val(TextBox3.Text) > 0.0)
                 {
-                    this.lastgearpre = new decimal(Conversion.Val(this.TextBox3.Text));
+                    lastgearpre = new decimal(Conversion.Val(TextBox3.Text));
                 }
-                else if (Conversion.Val(this.TextBox2.Text) > 0.0)
+                else if (Conversion.Val(TextBox2.Text) > 0.0)
                 {
-                    this.lastgearpre = new decimal(Conversion.Val(this.TextBox2.Text));
+                    lastgearpre = new decimal(Conversion.Val(TextBox2.Text));
                 }
-                else if (Conversion.Val(this.TextBox1.Text) > 0.0)
+                else if (Conversion.Val(TextBox1.Text) > 0.0)
                 {
-                    this.lastgearpre = new decimal(Conversion.Val(this.TextBox1.Text));
+                    lastgearpre = new decimal(Conversion.Val(TextBox1.Text));
                 }
             }
             catch (Exception ex)
             {
             }
 
-            this.origfg = new decimal(Conversion.Val(this.TextBox12.Text));
+            origfg = new decimal(Conversion.Val(TextBox12.Text));
         }
 
         // Token: 0x060001B8 RID: 440 RVA: 0x000109D0 File Offset: 0x0000EDD0
@@ -527,7 +524,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                string working = this.TextBox1.Text;
+                string working = TextBox1.Text;
                 working = Conversions.ToString(Conversion.Val(working) * 1000.0);
                 int @int = Conversions.ToInteger(Conversion.Int(working));
                 checked
@@ -546,7 +543,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                string working2 = this.TextBox2.Text;
+                string working2 = TextBox2.Text;
                 working2 = Conversions.ToString(Conversion.Val(working2) * 1000.0);
                 int int2 = Conversions.ToInteger(Conversion.Int(working2));
                 checked
@@ -565,7 +562,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                string working3 = this.TextBox3.Text;
+                string working3 = TextBox3.Text;
                 working3 = Conversions.ToString(Conversion.Val(working3) * 1000.0);
                 int int3 = Conversions.ToInteger(Conversion.Int(working3));
                 checked
@@ -584,7 +581,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                string working4 = this.TextBox4.Text;
+                string working4 = TextBox4.Text;
                 working4 = Conversions.ToString(Conversion.Val(working4) * 1000.0);
                 int int4 = Conversions.ToInteger(Conversion.Int(working4));
                 checked
@@ -603,7 +600,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                string working5 = this.TextBox5.Text;
+                string working5 = TextBox5.Text;
                 working5 = Conversions.ToString(Conversion.Val(working5) * 1000.0);
                 int int5 = Conversions.ToInteger(Conversion.Int(working5));
                 checked
@@ -622,7 +619,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                string working6 = this.TextBox6.Text;
+                string working6 = TextBox6.Text;
                 working6 = Conversions.ToString(Conversion.Val(working6) * 1000.0);
                 int int6 = Conversions.ToInteger(Conversion.Int(working6));
                 checked
@@ -641,7 +638,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                string working7 = this.TextBox7.Text;
+                string working7 = TextBox7.Text;
                 working7 = Conversions.ToString(Conversion.Val(working7) * 1000.0);
                 int int7 = Conversions.ToInteger(Conversion.Int(working7));
                 checked
@@ -660,7 +657,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                string working8 = this.TextBox8.Text;
+                string working8 = TextBox8.Text;
                 working8 = Conversions.ToString(Conversion.Val(working8) * 1000.0);
                 int int8 = Conversions.ToInteger(Conversion.Int(working8));
                 checked
@@ -679,7 +676,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                string working9 = this.TextBox9.Text;
+                string working9 = TextBox9.Text;
                 working9 = Conversions.ToString(Conversion.Val(working9) * 1000.0);
                 int int9 = Conversions.ToInteger(Conversion.Int(working9));
                 checked
@@ -698,7 +695,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                string working10 = this.TextBox10.Text;
+                string working10 = TextBox10.Text;
                 working10 = Conversions.ToString(Conversion.Val(working10) * 1000.0);
                 int int10 = Conversions.ToInteger(Conversion.Int(working10));
                 checked
@@ -717,7 +714,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                string working11 = this.TextBox11.Text;
+                string working11 = TextBox11.Text;
                 working11 = Conversions.ToString(Conversion.Val(working11) * 1000.0);
                 int int11 = Conversions.ToInteger(Conversion.Int(working11));
                 checked
@@ -736,7 +733,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                string working12 = this.TextBox12.Text;
+                string working12 = TextBox12.Text;
                 working12 = Conversions.ToString(Conversion.Val(working12) * 1000.0);
                 int int12 = Conversions.ToInteger(Conversion.Int(working12));
                 checked
@@ -753,18 +750,18 @@ namespace GT5_Car_hack_workshop_2
             {
             }
 
-            this.Close();
+            Close();
         }
 
         // Token: 0x060001B9 RID: 441 RVA: 0x000115E0 File Offset: 0x0000F9E0
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(this.TextBox13.Text))
+            if (string.IsNullOrEmpty(TextBox13.Text))
             {
-                this.TextBox13.Text = "0";
+                TextBox13.Text = "0";
             }
 
-            double omax = Conversion.Val(this.TextBox13.Text);
+            double omax = Conversion.Val(TextBox13.Text);
             if (omax != 0.0)
             {
                 decimal lastgear = 0.1m;
@@ -772,8 +769,8 @@ namespace GT5_Car_hack_workshop_2
                 // Group the TextBoxes in an array for iteration
                 TextBox[] textBoxes =
                 {
-                    this.TextBox11, this.TextBox10, this.TextBox9, this.TextBox8, this.TextBox7,
-                    this.TextBox6, this.TextBox5, this.TextBox4, this.TextBox3, this.TextBox2, this.TextBox1
+                    TextBox11, TextBox10, TextBox9, TextBox8, TextBox7,
+                    TextBox6, TextBox5, TextBox4, TextBox3, TextBox2, TextBox1
                 };
 
                 // Find the first TextBox with a value > 0
@@ -786,12 +783,12 @@ namespace GT5_Car_hack_workshop_2
                     }
                 }
 
-                this.TextBox14.Text = Conversions.ToString(
-                    Convert.ToDouble(this.origfg) /
-                    Conversion.Val(this.TextBox12.Text) *
-                    Conversion.Val(this.TextBox13.Text) *
+                TextBox14.Text = Conversions.ToString(
+                    Convert.ToDouble(origfg) /
+                    Conversion.Val(TextBox12.Text) *
+                    Conversion.Val(TextBox13.Text) *
                     Convert.ToDouble(decimal.Multiply(
-                        decimal.Divide(1m, lastgear), this.lastgearpre
+                        decimal.Divide(1m, lastgear), lastgearpre
                     ))
                 );
             }
