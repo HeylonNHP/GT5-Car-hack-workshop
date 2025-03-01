@@ -10,10 +10,7 @@ namespace GT5_Car_hack_workshop_2
     {
         public static void SaveSettings(string[] settings, string file)
         {
-            if (File.Exists(file))
-            {
-                File.Delete(file);
-            }
+            if (File.Exists(file)) File.Delete(file);
 
             File.WriteAllLines(file, settings);
         }
@@ -30,11 +27,11 @@ namespace GT5_Car_hack_workshop_2
         }
 
         /// <summary>
-        /// Reads the contents of the specified file into a string array, with each line of the file being an element in the array.
+        ///     Reads the contents of the specified file into a string array, with each line of the file being an element in the array.
         /// </summary>
         /// <param name="file">The path of the file to load.</param>
         /// <returns>An array of strings where each element represents a line from the file. If the file does not exist, an empty array is returned.</returns>
-        static string[] LoadFileToArray(string file)
+        private static string[] LoadFileToArray(string file)
         {
             var lines = new List<string>();
 
@@ -43,10 +40,7 @@ namespace GT5_Car_hack_workshop_2
                 var fileBytes = File.ReadAllBytes(file);
                 var fileContent = Encoding.UTF8.GetString(fileBytes);
                 var fileLines = fileContent.Split(new[] { "\r\n" }, StringSplitOptions.None);
-                foreach (var line in fileLines)
-                {
-                    lines.Add(line);
-                }
+                foreach (var line in fileLines) lines.Add(line);
             }
             else
             {

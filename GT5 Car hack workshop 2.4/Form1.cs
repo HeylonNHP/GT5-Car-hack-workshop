@@ -14,6 +14,89 @@ namespace GT5_Car_hack_workshop_2
     [DesignerGenerated]
     public partial class Form1 : Form
     {
+        [AccessedThroughProperty("Button1")] private Button _Button1;
+
+        [AccessedThroughProperty("Button10")] private Button _Button10;
+
+        [AccessedThroughProperty("Button11")] private Button _Button11;
+
+        [AccessedThroughProperty("Button12")] private Button _Button12;
+
+        [AccessedThroughProperty("Button13")] private Button _Button13;
+
+        [AccessedThroughProperty("Button14")] private Button _Button14;
+
+        [AccessedThroughProperty("Button15")] private Button _Button15;
+
+        [AccessedThroughProperty("Button16")] private Button _Button16;
+
+        [AccessedThroughProperty("Button17")] private Button _Button17;
+
+        [AccessedThroughProperty("Button18")] private Button _Button18;
+
+        [AccessedThroughProperty("Button19")] private Button _Button19;
+
+        [AccessedThroughProperty("Button2")] private Button _Button2;
+
+        [AccessedThroughProperty("Button20")] private Button _Button20;
+
+        [AccessedThroughProperty("Button21")] private Button _Button21;
+
+        [AccessedThroughProperty("Button22")] private Button _Button22;
+
+        [AccessedThroughProperty("Button23")] private Button _Button23;
+
+        [AccessedThroughProperty("Button3")] private Button _Button3;
+
+        [AccessedThroughProperty("Button4")] private Button _Button4;
+
+        [AccessedThroughProperty("Button5")] private Button _Button5;
+
+        [AccessedThroughProperty("Button6")] private Button _Button6;
+
+        [AccessedThroughProperty("Button7")] private Button _Button7;
+
+        [AccessedThroughProperty("Button8")] private Button _Button8;
+
+        [AccessedThroughProperty("Button9")] private Button _Button9;
+
+        private string _CarName;
+
+        /// <summary>
+        ///     Represents an array of car parts, utilized for storing and managing saved car part values.
+        /// </summary>
+        /// <remarks>
+        ///     This array has a capacity of up to 10,000 slots for car part data.
+        ///     Users can add and update car part details within this array, which is persistently saved and loaded
+        ///     from a database file ("partsdatabase.db") during program execution.
+        ///     It is primarily used within the application to display and modify vehicle part information.
+        /// </remarks>
+        private string[] _CarParts;
+
+        [AccessedThroughProperty("ComboBox1")] private ComboBox _ComboBox1;
+
+        [AccessedThroughProperty("ComboBox2")] private ComboBox _ComboBox2;
+
+        [AccessedThroughProperty("ComboBox3")] private ComboBox _ComboBox3;
+
+        [AccessedThroughProperty("ComboBox4")] private ComboBox _ComboBox4;
+
+        [AccessedThroughProperty("ComboBox5")] private ComboBox _ComboBox5;
+
+        [AccessedThroughProperty("ComboBox6")] private ComboBox _ComboBox6;
+
+        [AccessedThroughProperty("ComboBox7")] private ComboBox _ComboBox7;
+
+        [AccessedThroughProperty("ComboBox8")] private ComboBox _ComboBox8;
+
+        private string[] _ProgramSettings;
+
+        [AccessedThroughProperty("TextBox4")] private TextBox _TorqueSplitTextBox;
+
+        public byte[] Gt5Save;
+
+        public int Moff;
+
         public Form1()
         {
             Load += Form1_Load;
@@ -38,16 +121,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button1_Click;
-                if (_Button1 != null)
-                {
-                    _Button1.Click -= eventHandler;
-                }
+                if (_Button1 != null) _Button1.Click -= eventHandler;
 
                 _Button1 = value;
-                if (_Button1 != null)
-                {
-                    _Button1.Click += eventHandler;
-                }
+                if (_Button1 != null) _Button1.Click += eventHandler;
             }
         }
 
@@ -75,16 +152,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button3_Click;
-                if (_Button3 != null)
-                {
-                    _Button3.Click -= eventHandler;
-                }
+                if (_Button3 != null) _Button3.Click -= eventHandler;
 
                 _Button3 = value;
-                if (_Button3 != null)
-                {
-                    _Button3.Click += eventHandler;
-                }
+                if (_Button3 != null) _Button3.Click += eventHandler;
             }
         }
 
@@ -95,16 +166,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button2_Click;
-                if (_Button2 != null)
-                {
-                    _Button2.Click -= eventHandler;
-                }
+                if (_Button2 != null) _Button2.Click -= eventHandler;
 
                 _Button2 = value;
-                if (_Button2 != null)
-                {
-                    _Button2.Click += eventHandler;
-                }
+                if (_Button2 != null) _Button2.Click += eventHandler;
             }
         }
 
@@ -195,16 +260,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button5_Click;
-                if (_Button5 != null)
-                {
-                    _Button5.Click -= eventHandler;
-                }
+                if (_Button5 != null) _Button5.Click -= eventHandler;
 
                 _Button5 = value;
-                if (_Button5 != null)
-                {
-                    _Button5.Click += eventHandler;
-                }
+                if (_Button5 != null) _Button5.Click += eventHandler;
             }
         }
 
@@ -231,16 +290,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = TextBox4_TextChanged;
-                if (_TorqueSplitTextBox != null)
-                {
-                    _TorqueSplitTextBox.TextChanged -= eventHandler;
-                }
+                if (_TorqueSplitTextBox != null) _TorqueSplitTextBox.TextChanged -= eventHandler;
 
                 _TorqueSplitTextBox = value;
-                if (_TorqueSplitTextBox != null)
-                {
-                    _TorqueSplitTextBox.TextChanged += eventHandler;
-                }
+                if (_TorqueSplitTextBox != null) _TorqueSplitTextBox.TextChanged += eventHandler;
             }
         }
 
@@ -275,16 +328,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button6_Click;
-                if (_Button6 != null)
-                {
-                    _Button6.Click -= eventHandler;
-                }
+                if (_Button6 != null) _Button6.Click -= eventHandler;
 
                 _Button6 = value;
-                if (_Button6 != null)
-                {
-                    _Button6.Click += eventHandler;
-                }
+                if (_Button6 != null) _Button6.Click += eventHandler;
             }
         }
 
@@ -327,16 +374,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button4_Click;
-                if (_Button4 != null)
-                {
-                    _Button4.Click -= eventHandler;
-                }
+                if (_Button4 != null) _Button4.Click -= eventHandler;
 
                 _Button4 = value;
-                if (_Button4 != null)
-                {
-                    _Button4.Click += eventHandler;
-                }
+                if (_Button4 != null) _Button4.Click += eventHandler;
             }
         }
 
@@ -347,16 +388,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button7_Click;
-                if (_Button7 != null)
-                {
-                    _Button7.Click -= eventHandler;
-                }
+                if (_Button7 != null) _Button7.Click -= eventHandler;
 
                 _Button7 = value;
-                if (_Button7 != null)
-                {
-                    _Button7.Click += eventHandler;
-                }
+                if (_Button7 != null) _Button7.Click += eventHandler;
             }
         }
 
@@ -367,16 +402,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button8_Click;
-                if (_Button8 != null)
-                {
-                    _Button8.Click -= eventHandler;
-                }
+                if (_Button8 != null) _Button8.Click -= eventHandler;
 
                 _Button8 = value;
-                if (_Button8 != null)
-                {
-                    _Button8.Click += eventHandler;
-                }
+                if (_Button8 != null) _Button8.Click += eventHandler;
             }
         }
 
@@ -387,16 +416,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button9_Click;
-                if (_Button9 != null)
-                {
-                    _Button9.Click -= eventHandler;
-                }
+                if (_Button9 != null) _Button9.Click -= eventHandler;
 
                 _Button9 = value;
-                if (_Button9 != null)
-                {
-                    _Button9.Click += eventHandler;
-                }
+                if (_Button9 != null) _Button9.Click += eventHandler;
             }
         }
 
@@ -463,16 +486,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button10_Click;
-                if (_Button10 != null)
-                {
-                    _Button10.Click -= eventHandler;
-                }
+                if (_Button10 != null) _Button10.Click -= eventHandler;
 
                 _Button10 = value;
-                if (_Button10 != null)
-                {
-                    _Button10.Click += eventHandler;
-                }
+                if (_Button10 != null) _Button10.Click += eventHandler;
             }
         }
 
@@ -507,16 +524,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button11_Click;
-                if (_Button11 != null)
-                {
-                    _Button11.Click -= eventHandler;
-                }
+                if (_Button11 != null) _Button11.Click -= eventHandler;
 
                 _Button11 = value;
-                if (_Button11 != null)
-                {
-                    _Button11.Click += eventHandler;
-                }
+                if (_Button11 != null) _Button11.Click += eventHandler;
             }
         }
 
@@ -671,16 +682,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = ComboBox2_SelectedIndexChanged;
-                if (_ComboBox2 != null)
-                {
-                    _ComboBox2.SelectedIndexChanged -= eventHandler;
-                }
+                if (_ComboBox2 != null) _ComboBox2.SelectedIndexChanged -= eventHandler;
 
                 _ComboBox2 = value;
-                if (_ComboBox2 != null)
-                {
-                    _ComboBox2.SelectedIndexChanged += eventHandler;
-                }
+                if (_ComboBox2 != null) _ComboBox2.SelectedIndexChanged += eventHandler;
             }
         }
 
@@ -699,16 +704,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = ComboBox1_SelectedIndexChanged;
-                if (_ComboBox1 != null)
-                {
-                    _ComboBox1.SelectedIndexChanged -= eventHandler;
-                }
+                if (_ComboBox1 != null) _ComboBox1.SelectedIndexChanged -= eventHandler;
 
                 _ComboBox1 = value;
-                if (_ComboBox1 != null)
-                {
-                    _ComboBox1.SelectedIndexChanged += eventHandler;
-                }
+                if (_ComboBox1 != null) _ComboBox1.SelectedIndexChanged += eventHandler;
             }
         }
 
@@ -727,16 +726,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = ComboBox6_SelectedIndexChanged;
-                if (_ComboBox6 != null)
-                {
-                    _ComboBox6.SelectedIndexChanged -= eventHandler;
-                }
+                if (_ComboBox6 != null) _ComboBox6.SelectedIndexChanged -= eventHandler;
 
                 _ComboBox6 = value;
-                if (_ComboBox6 != null)
-                {
-                    _ComboBox6.SelectedIndexChanged += eventHandler;
-                }
+                if (_ComboBox6 != null) _ComboBox6.SelectedIndexChanged += eventHandler;
             }
         }
 
@@ -755,16 +748,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = ComboBox5_SelectedIndexChanged;
-                if (_ComboBox5 != null)
-                {
-                    _ComboBox5.SelectedIndexChanged -= eventHandler;
-                }
+                if (_ComboBox5 != null) _ComboBox5.SelectedIndexChanged -= eventHandler;
 
                 _ComboBox5 = value;
-                if (_ComboBox5 != null)
-                {
-                    _ComboBox5.SelectedIndexChanged += eventHandler;
-                }
+                if (_ComboBox5 != null) _ComboBox5.SelectedIndexChanged += eventHandler;
             }
         }
 
@@ -783,16 +770,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = ComboBox4_SelectedIndexChanged;
-                if (_ComboBox4 != null)
-                {
-                    _ComboBox4.SelectedIndexChanged -= eventHandler;
-                }
+                if (_ComboBox4 != null) _ComboBox4.SelectedIndexChanged -= eventHandler;
 
                 _ComboBox4 = value;
-                if (_ComboBox4 != null)
-                {
-                    _ComboBox4.SelectedIndexChanged += eventHandler;
-                }
+                if (_ComboBox4 != null) _ComboBox4.SelectedIndexChanged += eventHandler;
             }
         }
 
@@ -811,16 +792,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = ComboBox3_SelectedIndexChanged;
-                if (_ComboBox3 != null)
-                {
-                    _ComboBox3.SelectedIndexChanged -= eventHandler;
-                }
+                if (_ComboBox3 != null) _ComboBox3.SelectedIndexChanged -= eventHandler;
 
                 _ComboBox3 = value;
-                if (_ComboBox3 != null)
-                {
-                    _ComboBox3.SelectedIndexChanged += eventHandler;
-                }
+                if (_ComboBox3 != null) _ComboBox3.SelectedIndexChanged += eventHandler;
             }
         }
 
@@ -839,16 +814,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = ComboBox8_SelectedIndexChanged;
-                if (_ComboBox8 != null)
-                {
-                    _ComboBox8.SelectedIndexChanged -= eventHandler;
-                }
+                if (_ComboBox8 != null) _ComboBox8.SelectedIndexChanged -= eventHandler;
 
                 _ComboBox8 = value;
-                if (_ComboBox8 != null)
-                {
-                    _ComboBox8.SelectedIndexChanged += eventHandler;
-                }
+                if (_ComboBox8 != null) _ComboBox8.SelectedIndexChanged += eventHandler;
             }
         }
 
@@ -867,16 +836,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = ComboBox7_SelectedIndexChanged;
-                if (_ComboBox7 != null)
-                {
-                    _ComboBox7.SelectedIndexChanged -= eventHandler;
-                }
+                if (_ComboBox7 != null) _ComboBox7.SelectedIndexChanged -= eventHandler;
 
                 _ComboBox7 = value;
-                if (_ComboBox7 != null)
-                {
-                    _ComboBox7.SelectedIndexChanged += eventHandler;
-                }
+                if (_ComboBox7 != null) _ComboBox7.SelectedIndexChanged += eventHandler;
             }
         }
 
@@ -887,16 +850,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button12_Click;
-                if (_Button12 != null)
-                {
-                    _Button12.Click -= eventHandler;
-                }
+                if (_Button12 != null) _Button12.Click -= eventHandler;
 
                 _Button12 = value;
-                if (_Button12 != null)
-                {
-                    _Button12.Click += eventHandler;
-                }
+                if (_Button12 != null) _Button12.Click += eventHandler;
             }
         }
 
@@ -995,16 +952,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button13_Click;
-                if (_Button13 != null)
-                {
-                    _Button13.Click -= eventHandler;
-                }
+                if (_Button13 != null) _Button13.Click -= eventHandler;
 
                 _Button13 = value;
-                if (_Button13 != null)
-                {
-                    _Button13.Click += eventHandler;
-                }
+                if (_Button13 != null) _Button13.Click += eventHandler;
             }
         }
 
@@ -1023,16 +974,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button14_Click;
-                if (_Button14 != null)
-                {
-                    _Button14.Click -= eventHandler;
-                }
+                if (_Button14 != null) _Button14.Click -= eventHandler;
 
                 _Button14 = value;
-                if (_Button14 != null)
-                {
-                    _Button14.Click += eventHandler;
-                }
+                if (_Button14 != null) _Button14.Click += eventHandler;
             }
         }
 
@@ -1051,16 +996,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button15_Click;
-                if (_Button15 != null)
-                {
-                    _Button15.Click -= eventHandler;
-                }
+                if (_Button15 != null) _Button15.Click -= eventHandler;
 
                 _Button15 = value;
-                if (_Button15 != null)
-                {
-                    _Button15.Click += eventHandler;
-                }
+                if (_Button15 != null) _Button15.Click += eventHandler;
             }
         }
 
@@ -1143,16 +1082,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button16_Click;
-                if (_Button16 != null)
-                {
-                    _Button16.Click -= eventHandler;
-                }
+                if (_Button16 != null) _Button16.Click -= eventHandler;
 
                 _Button16 = value;
-                if (_Button16 != null)
-                {
-                    _Button16.Click += eventHandler;
-                }
+                if (_Button16 != null) _Button16.Click += eventHandler;
             }
         }
 
@@ -1163,16 +1096,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button17_Click;
-                if (_Button17 != null)
-                {
-                    _Button17.Click -= eventHandler;
-                }
+                if (_Button17 != null) _Button17.Click -= eventHandler;
 
                 _Button17 = value;
-                if (_Button17 != null)
-                {
-                    _Button17.Click += eventHandler;
-                }
+                if (_Button17 != null) _Button17.Click += eventHandler;
             }
         }
 
@@ -1223,22 +1150,16 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button18_Click;
-                if (_Button18 != null)
-                {
-                    _Button18.Click -= eventHandler;
-                }
+                if (_Button18 != null) _Button18.Click -= eventHandler;
 
                 _Button18 = value;
-                if (_Button18 != null)
-                {
-                    _Button18.Click += eventHandler;
-                }
+                if (_Button18 != null) _Button18.Click += eventHandler;
             }
         }
 
 
         /// <summary>
-        /// Slam car button
+        ///     Slam car button
         /// </summary>
         private Button Button19
         {
@@ -1247,16 +1168,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = SlamCar_Button19_Click;
-                if (_Button19 != null)
-                {
-                    _Button19.Click -= eventHandler;
-                }
+                if (_Button19 != null) _Button19.Click -= eventHandler;
 
                 _Button19 = value;
-                if (_Button19 != null)
-                {
-                    _Button19.Click += eventHandler;
-                }
+                if (_Button19 != null) _Button19.Click += eventHandler;
             }
         }
 
@@ -1275,16 +1190,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button21_Click;
-                if (_Button21 != null)
-                {
-                    _Button21.Click -= eventHandler;
-                }
+                if (_Button21 != null) _Button21.Click -= eventHandler;
 
                 _Button21 = value;
-                if (_Button21 != null)
-                {
-                    _Button21.Click += eventHandler;
-                }
+                if (_Button21 != null) _Button21.Click += eventHandler;
             }
         }
 
@@ -1295,16 +1204,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button20_Click;
-                if (_Button20 != null)
-                {
-                    _Button20.Click -= eventHandler;
-                }
+                if (_Button20 != null) _Button20.Click -= eventHandler;
 
                 _Button20 = value;
-                if (_Button20 != null)
-                {
-                    _Button20.Click += eventHandler;
-                }
+                if (_Button20 != null) _Button20.Click += eventHandler;
             }
         }
 
@@ -1323,16 +1226,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button22_Click;
-                if (_Button22 != null)
-                {
-                    _Button22.Click -= eventHandler;
-                }
+                if (_Button22 != null) _Button22.Click -= eventHandler;
 
                 _Button22 = value;
-                if (_Button22 != null)
-                {
-                    _Button22.Click += eventHandler;
-                }
+                if (_Button22 != null) _Button22.Click += eventHandler;
             }
         }
 
@@ -1367,16 +1264,10 @@ namespace GT5_Car_hack_workshop_2
             set
             {
                 EventHandler eventHandler = Button23_Click;
-                if (_Button23 != null)
-                {
-                    _Button23.Click -= eventHandler;
-                }
+                if (_Button23 != null) _Button23.Click -= eventHandler;
 
                 _Button23 = value;
-                if (_Button23 != null)
-                {
-                    _Button23.Click += eventHandler;
-                }
+                if (_Button23 != null) _Button23.Click += eventHandler;
             }
         }
 
@@ -1409,7 +1300,7 @@ namespace GT5_Car_hack_workshop_2
             // Grab current car's name from PARAM.SFO
             try
             {
-                FileInfo gt50File = new FileInfo(TextBox1.Text);
+                var gt50File = new FileInfo(TextBox1.Text);
 
                 var paramSfoBytes = File.ReadAllBytes(gt50File.DirectoryName + "\\PARAM.SFO");
                 var currentCar = "Current Car: ";
@@ -1419,13 +1310,11 @@ namespace GT5_Car_hack_workshop_2
                 // Find the index where the car's name string ends. 
                 var endIndex = 0;
                 for (var i = currentCarIndex; i < paramSfoBytes.Length; i++)
-                {
                     if (paramSfoBytes[i] == 0)
                     {
                         endIndex = i;
                         break;
                     }
-                }
 
                 var currentCarNameBytes = paramSfoBytes.Skip(currentCarIndex).Take(endIndex - currentCarIndex).ToArray();
                 var currentCarString = new string(currentCarNameBytes.Select(s => (char)s).ToArray());
@@ -1479,35 +1368,26 @@ namespace GT5_Car_hack_workshop_2
             Array.Reverse(bytes); // Reverse the byte order
 
             var result = 0;
-            for (var i = 0; i < bytes.Length; i++)
-            {
-                result += bytes[i] << (i * 8);
-            }
+            for (var i = 0; i < bytes.Length; i++) result += bytes[i] << (i * 8);
 
             return result;
         }
 
         public static byte[] HexStringToByteArray(string hex)
         {
-            if (string.IsNullOrWhiteSpace(hex))
-            {
-                throw new ArgumentException("Input hex string cannot be null or empty.");
-            }
+            if (string.IsNullOrWhiteSpace(hex)) throw new ArgumentException("Input hex string cannot be null or empty.");
 
             // Remove any whitespace from the hex string
             hex = hex.Replace(" ", "");
 
             // Ensure the string contains an even number of characters
-            if (hex.Length % 2 != 0)
-            {
-                throw new FormatException("Hex string must have an even number of characters.");
-            }
+            if (hex.Length % 2 != 0) throw new FormatException("Hex string must have an even number of characters.");
 
             var byteList = new List<byte>();
 
-            for (int i = 0; i < hex.Length; i += 2)
+            for (var i = 0; i < hex.Length; i += 2)
             {
-                string byteString = hex.Substring(i, 2);
+                var byteString = hex.Substring(i, 2);
                 byteList.Add(byte.Parse(byteString, NumberStyles.HexNumber, CultureInfo.InvariantCulture));
             }
 
@@ -1521,7 +1401,7 @@ namespace GT5_Car_hack_workshop_2
                 throw new ArgumentOutOfRangeException(nameof(value), "Value must be non-negative.");
 
             // Create a list to store bytes
-            var byteList = new System.Collections.Generic.List<byte>();
+            var byteList = new List<byte>();
 
             // Extract the bytes from the integer
             while (value > 0)
@@ -1531,16 +1411,10 @@ namespace GT5_Car_hack_workshop_2
             }
 
             // If outputSize is greater than the current size, pad the array with leading zeros
-            while (byteList.Count < outputSize)
-            {
-                byteList.Insert(0, 0); // Add padding at the beginning
-            }
+            while (byteList.Count < outputSize) byteList.Insert(0, 0); // Add padding at the beginning
 
             // Validate if the array exceeds the outputSize and throw an error
-            if (outputSize != 0 && byteList.Count > outputSize)
-            {
-                throw new ArgumentOutOfRangeException(nameof(outputSize), "Output size is too small to represent the value.");
-            }
+            if (outputSize != 0 && byteList.Count > outputSize) throw new ArgumentOutOfRangeException(nameof(outputSize), "Output size is too small to represent the value.");
 
             // Convert the list to an array and return it
             return byteList.Count > 0 ? byteList.ToArray() : new byte[] { 0 };
@@ -1564,15 +1438,9 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                if (!int.TryParse(TorqueSplitTextBox.Text, out var value))
-                {
-                    throw new FormatException("Torque split value must be a number.");
-                }
+                if (!int.TryParse(TorqueSplitTextBox.Text, out var value)) throw new FormatException("Torque split value must be a number.");
 
-                if (value < 0 || value > 255)
-                {
-                    throw new FormatException("Torque split value must be between 0 and 255.");
-                }
+                if (value < 0 || value > 255) throw new FormatException("Torque split value must be between 0 and 255.");
 
                 Gt5Save[Moff - 46] = (byte)value;
             }
@@ -1623,15 +1491,9 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                if (!int.TryParse(RemoveSpoilerCodeTextBox.Text, out var value))
-                {
-                    throw new FormatException("Remove spoiler value must be a number.");
-                }
+                if (!int.TryParse(RemoveSpoilerCodeTextBox.Text, out var value)) throw new FormatException("Remove spoiler value must be a number.");
 
-                if (value < 0 || value > 255)
-                {
-                    throw new FormatException("Remove spoiler value must be between 0 and 255.");
-                }
+                if (value < 0 || value > 255) throw new FormatException("Remove spoiler value must be between 0 and 255.");
 
                 Gt5Save[Moff - 88] = (byte)value;
             }
@@ -1714,10 +1576,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                if (!byte.TryParse(AeroFrontTextBox.Text, out var AeroFront))
-                {
-                    throw new FormatException("Aero front value must be a byte value (0-255).");
-                }
+                if (!byte.TryParse(AeroFrontTextBox.Text, out var AeroFront)) throw new FormatException("Aero front value must be a byte value (0-255).");
 
                 Gt5Save[Moff - 43] = AeroFront;
             }
@@ -1729,10 +1588,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                if (!byte.TryParse(AeroRearTextBox.Text, out var AeroRear))
-                {
-                    throw new FormatException("Aero rear value must be a byte value (0-255).");
-                }
+                if (!byte.TryParse(AeroRearTextBox.Text, out var AeroRear)) throw new FormatException("Aero rear value must be a byte value (0-255).");
 
                 Gt5Save[Moff - 42] = AeroRear;
             }
@@ -1744,15 +1600,9 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                if (!int.TryParse(SuspensionHeightFrontTextBox.Text, out var suspensionHeightFront))
-                {
-                    throw new FormatException("Suspension height front value must be a number.");
-                }
+                if (!int.TryParse(SuspensionHeightFrontTextBox.Text, out var suspensionHeightFront)) throw new FormatException("Suspension height front value must be a number.");
 
-                if (suspensionHeightFront < 0 || suspensionHeightFront > (2 ^ 16) - 1)
-                {
-                    throw new FormatException("Suspension height front value must be between 0 and 65535.");
-                }
+                if (suspensionHeightFront < 0 || suspensionHeightFront > (2 ^ 16) - 1) throw new FormatException("Suspension height front value must be between 0 and 65535.");
 
                 var suspensionHeightFrontBytes = ConvertToByteArray(suspensionHeightFront, 2);
                 Gt5Save[Moff - 33] = suspensionHeightFrontBytes[0];
@@ -1766,15 +1616,9 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                if (!int.TryParse(SuspensionHeightRearTextBox.Text, out var suspensionHeightRear))
-                {
-                    throw new FormatException("Suspension height rear value must be a number.");
-                }
+                if (!int.TryParse(SuspensionHeightRearTextBox.Text, out var suspensionHeightRear)) throw new FormatException("Suspension height rear value must be a number.");
 
-                if (suspensionHeightRear < 0 || suspensionHeightRear > (2 ^ 16) - 1)
-                {
-                    throw new FormatException("Suspension height rear value must be between 0 and 65535.");
-                }
+                if (suspensionHeightRear < 0 || suspensionHeightRear > (2 ^ 16) - 1) throw new FormatException("Suspension height rear value must be between 0 and 65535.");
 
                 var suspensionHeightRearBytes = ConvertToByteArray(suspensionHeightRear, 2);
                 Gt5Save[Moff - 31] = suspensionHeightRearBytes[0];
@@ -1788,10 +1632,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                if (!byte.TryParse(GripTextBox.Text, out var grip))
-                {
-                    throw new FormatException("Grip value must be a byte value (0-255).");
-                }
+                if (!byte.TryParse(GripTextBox.Text, out var grip)) throw new FormatException("Grip value must be a byte value (0-255).");
 
                 Gt5Save[Moff + 10] = grip;
             }
@@ -1803,10 +1644,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                if (!byte.TryParse(SpringRateFrontTextBox.Text, out var springRateFront))
-                {
-                    throw new FormatException("Spring rate front value must be a byte value (0-255).");
-                }
+                if (!byte.TryParse(SpringRateFrontTextBox.Text, out var springRateFront)) throw new FormatException("Spring rate front value must be a byte value (0-255).");
 
                 Gt5Save[Moff - 27] = springRateFront;
             }
@@ -1818,10 +1656,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                if (!byte.TryParse(SpringRateRearTextBox.Text, out var springRateRear))
-                {
-                    throw new FormatException("Spring rate front value must be a byte value (0-255).");
-                }
+                if (!byte.TryParse(SpringRateRearTextBox.Text, out var springRateRear)) throw new FormatException("Spring rate front value must be a byte value (0-255).");
 
                 Gt5Save[Moff - 26] = springRateRear;
             }
@@ -1913,10 +1748,7 @@ namespace GT5_Car_hack_workshop_2
                 return;
             }
 
-            if (Add74ByteCheckBox.Checked)
-            {
-                Gt5Save[Moff - 260] = 116;
-            }
+            if (Add74ByteCheckBox.Checked) Gt5Save[Moff - 260] = 116;
 
             if (AddLucaBytesCheckBox.Checked)
             {
@@ -1974,21 +1806,15 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x06000143 RID: 323 RVA: 0x0000D6D8 File Offset: 0x0000BAD8
         private void Button1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
+            var ofd = new OpenFileDialog();
             ofd.Title = "Find your GT5.0 file";
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                TextBox1.Text = ofd.FileName;
-            }
+            if (ofd.ShowDialog() == DialogResult.OK) TextBox1.Text = ofd.FileName;
         }
 
         // Token: 0x06000144 RID: 324 RVA: 0x0000D710 File Offset: 0x0000BB10
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (!MyProject.Computer.FileSystem.DirectoryExists("Backups"))
-            {
-                MyProject.Computer.FileSystem.CreateDirectory("Backups");
-            }
+            if (!MyProject.Computer.FileSystem.DirectoryExists("Backups")) MyProject.Computer.FileSystem.CreateDirectory("Backups");
 
             _ProgramSettings = SettingsFileClass.LoadSettings("GT5CHWsettings.ini", 1);
             _CarParts = SettingsFileClass.LoadSettings("partsdatabase.db", 9999);
@@ -2009,8 +1835,8 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x06000146 RID: 326 RVA: 0x0000D7F8 File Offset: 0x0000BBF8
         private void Button2_Click(object sender, EventArgs e)
         {
-            FileInfo fi = new FileInfo(TextBox1.Text);
-            string tad = DateAndTime.Now.ToString();
+            var fi = new FileInfo(TextBox1.Text);
+            var tad = DateAndTime.Now.ToString();
             tad = tad.Replace("/", "-");
             tad = tad.Replace(":", ".");
             MyProject.Computer.FileSystem.CopyFile(TextBox1.Text, "Backups\\" + tad + " " + fi.Name);
@@ -2092,24 +1918,22 @@ namespace GT5_Car_hack_workshop_2
 
         // Token: 0x06000151 RID: 337 RVA: 0x0000DA3C File Offset: 0x0000BE3C
         /// <summary>
-        /// Add current car to parts database.
-        /// Handles the event triggered when button12 is clicked. This method is used to add the current car details
-        /// to the parts database. It validates for available space in the database and ensures no duplicate entries exist.
+        ///     Add current car to parts database.
+        ///     Handles the event triggered when button12 is clicked. This method is used to add the current car details
+        ///     to the parts database. It validates for available space in the database and ensures no duplicate entries exist.
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">An EventArgs object containing event data.</param>
         private void Button12_Click(object sender, EventArgs e)
         {
             // cpos is used to find the next empty slot in the car parts database to place the newly added car parts
-            int cpos = -1;
-            for (int i = 0; i <= _CarParts.Length - 1; i++)
-            {
+            var cpos = -1;
+            for (var i = 0; i <= _CarParts.Length - 1; i++)
                 if (_CarParts[i] == " ")
                 {
                     cpos = i;
                     break;
                 }
-            }
 
             if (cpos == -1)
             {
@@ -2119,7 +1943,7 @@ namespace GT5_Car_hack_workshop_2
 
             _CarName = Interaction.InputBox("Car name:", "", Conversions.ToString(_CarName));
 
-            string linetoadd =
+            var linetoadd =
                 _CarName + "," +
                 EngineCodeTextBox.Text + "," +
                 DrivetrainCodeTextBox.Text + "," +
@@ -2130,13 +1954,9 @@ namespace GT5_Car_hack_workshop_2
                 LsdCodeTextBox.Text + "," +
                 HornCodeTextBox.Text;
 
-            for (int j = 0; j <= _CarParts.Length - 1; j++)
-            {
+            for (var j = 0; j <= _CarParts.Length - 1; j++)
                 if (_CarParts[j].Equals(linetoadd, StringComparison.OrdinalIgnoreCase))
-                {
                     MessageBox.Show("Car already exists", "", MessageBoxButtons.OK);
-                }
-            }
 
             _CarParts[cpos] = linetoadd;
             LoadParts();
@@ -2145,17 +1965,12 @@ namespace GT5_Car_hack_workshop_2
         private void LoadParts()
         {
             // Assuming all ComboBoxes are part of the same container (like the form or a group box)
-            foreach (var comboBox in new[] { ComboBox1, ComboBox2, ComboBox3, ComboBox4, ComboBox5, ComboBox6, ComboBox7, ComboBox8 })
-            {
-                comboBox.Items.Clear();
-            }
+            foreach (var comboBox in new[] { ComboBox1, ComboBox2, ComboBox3, ComboBox4, ComboBox5, ComboBox6, ComboBox7, ComboBox8 }) comboBox.Items.Clear();
 
             // Spacer is used so that the hex value data after the comma doesn't show up in the GUI (Yep, terrible) TODO: Fix
             var spacer = "                                                                                                                                            ,";
             for (var i = 0; i <= _CarParts.Length - 1; i++)
-            {
                 if (_CarParts[i] != " ")
-                {
                     try
                     {
                         var sparr = _CarParts[i].Split(',');
@@ -2172,8 +1987,6 @@ namespace GT5_Car_hack_workshop_2
                     {
                         MessageBox.Show($"An issue occured while loading the parts database: {ex.Message}");
                     }
-                }
-            }
         }
 
         // Token: 0x06000153 RID: 339 RVA: 0x0000DDF0 File Offset: 0x0000C1F0
@@ -2181,7 +1994,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                string[] sparr = ComboBox1.SelectedItem.ToString().Split(',');
+                var sparr = ComboBox1.SelectedItem.ToString().Split(',');
                 EngineCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
@@ -2194,7 +2007,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                string[] sparr = ComboBox2.SelectedItem.ToString().Split(',');
+                var sparr = ComboBox2.SelectedItem.ToString().Split(',');
                 DrivetrainCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
@@ -2207,7 +2020,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                string[] sparr = ComboBox3.SelectedItem.ToString().Split(',');
+                var sparr = ComboBox3.SelectedItem.ToString().Split(',');
                 ChassisCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
@@ -2220,7 +2033,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                string[] sparr = ComboBox4.SelectedItem.ToString().Split(',');
+                var sparr = ComboBox4.SelectedItem.ToString().Split(',');
                 TransmissionCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
@@ -2233,7 +2046,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                string[] sparr = ComboBox5.SelectedItem.ToString().Split(',');
+                var sparr = ComboBox5.SelectedItem.ToString().Split(',');
                 SuspensionCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
@@ -2246,7 +2059,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                string[] sparr = ComboBox6.SelectedItem.ToString().Split(',');
+                var sparr = ComboBox6.SelectedItem.ToString().Split(',');
                 CarBodyCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
@@ -2259,7 +2072,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                string[] sparr = ComboBox7.SelectedItem.ToString().Split(',');
+                var sparr = ComboBox7.SelectedItem.ToString().Split(',');
                 LsdCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
@@ -2272,7 +2085,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                string[] sparr = ComboBox8.SelectedItem.ToString().Split(',');
+                var sparr = ComboBox8.SelectedItem.ToString().Split(',');
                 HornCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
@@ -2358,88 +2171,5 @@ namespace GT5_Car_hack_workshop_2
             Interaction.MsgBox(
                 "When you tick this checkbox, you must buy the Rigidity Improvement right before doing anything after loading the hacked save, the Rigidity Improvement is found under Body/Chassis in the tuning shop. The hack wont take proper effect without buying this upgrade.\r\rIf you have already purchased this upgrade, it will be uninstalled when you apply this hack.");
         }
-
-        [AccessedThroughProperty("Button1")] private Button _Button1;
-
-        [AccessedThroughProperty("Button3")] private Button _Button3;
-
-        [AccessedThroughProperty("Button2")] private Button _Button2;
-
-        [AccessedThroughProperty("Button5")] private Button _Button5;
-
-        [AccessedThroughProperty("TextBox4")] private TextBox _TorqueSplitTextBox;
-
-        [AccessedThroughProperty("Button6")] private Button _Button6;
-
-        [AccessedThroughProperty("Button4")] private Button _Button4;
-
-        [AccessedThroughProperty("Button7")] private Button _Button7;
-
-        [AccessedThroughProperty("Button8")] private Button _Button8;
-
-        [AccessedThroughProperty("Button9")] private Button _Button9;
-
-        [AccessedThroughProperty("Button10")] private Button _Button10;
-
-        [AccessedThroughProperty("Button11")] private Button _Button11;
-
-        [AccessedThroughProperty("ComboBox2")] private ComboBox _ComboBox2;
-
-        [AccessedThroughProperty("ComboBox1")] private ComboBox _ComboBox1;
-
-        [AccessedThroughProperty("ComboBox6")] private ComboBox _ComboBox6;
-
-        [AccessedThroughProperty("ComboBox5")] private ComboBox _ComboBox5;
-
-        [AccessedThroughProperty("ComboBox4")] private ComboBox _ComboBox4;
-
-        [AccessedThroughProperty("ComboBox3")] private ComboBox _ComboBox3;
-
-        [AccessedThroughProperty("ComboBox8")] private ComboBox _ComboBox8;
-
-        [AccessedThroughProperty("ComboBox7")] private ComboBox _ComboBox7;
-
-        [AccessedThroughProperty("Button12")] private Button _Button12;
-
-        [AccessedThroughProperty("Button13")] private Button _Button13;
-
-        [AccessedThroughProperty("Button14")] private Button _Button14;
-
-        [AccessedThroughProperty("Button15")] private Button _Button15;
-
-        [AccessedThroughProperty("Button16")] private Button _Button16;
-
-        [AccessedThroughProperty("Button17")] private Button _Button17;
-
-        [AccessedThroughProperty("Button18")] private Button _Button18;
-
-        [AccessedThroughProperty("Button19")] private Button _Button19;
-
-        [AccessedThroughProperty("Button21")] private Button _Button21;
-
-        [AccessedThroughProperty("Button20")] private Button _Button20;
-
-        [AccessedThroughProperty("Button22")] private Button _Button22;
-
-        [AccessedThroughProperty("Button23")] private Button _Button23;
-
-        /// <summary>
-        /// Represents an array of car parts, utilized for storing and managing saved car part values.
-        /// </summary>
-        /// <remarks>
-        /// This array has a capacity of up to 10,000 slots for car part data.
-        /// Users can add and update car part details within this array, which is persistently saved and loaded
-        /// from a database file ("partsdatabase.db") during program execution.
-        /// It is primarily used within the application to display and modify vehicle part information.
-        /// </remarks>
-        private string[] _CarParts;
-
-        private string[] _ProgramSettings;
-
-        public byte[] Gt5Save;
-
-        public int Moff;
-
-        private string _CarName;
     }
 }
