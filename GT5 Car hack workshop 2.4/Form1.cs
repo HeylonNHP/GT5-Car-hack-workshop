@@ -1517,452 +1517,449 @@ namespace GT5_Car_hack_workshop_2
 
         private void savedata()
         {
-            checked
+            try
             {
-                try
-                {
-                    var engineByteValues = HexStringToByteArray(EngineCodeTextBox.Text);
+                var engineByteValues = HexStringToByteArray(EngineCodeTextBox.Text);
 
-                    Gt5Save[Moff - 213] = engineByteValues[0];
-                    Gt5Save[Moff - 212] = engineByteValues[1];
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Can't save data to the save file.\n{ex.Message}");
-                    return;
-                }
-
-                if ((Conversion.Val(TextBox4.Text) > 255.0) | (Conversion.Val(TextBox4.Text) < 0.0))
-                {
-                    TextBox4.Text = Conversions.ToString(255);
-                    Interaction.MsgBox("Torque split cannot be higher than 255 or lower than 0. Reverting back to 255");
-                }
-
-                try
-                {
-                    string working2 = TextBox4.Text;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 46))] =
-                        Conversions.ToByte(working2);
-                }
-                catch (Exception ex2)
-                {
-                }
-
-                try
-                {
-                    string working3 = TextBox6.Text;
-                    working3 = working3.Replace(" ", "");
-                    object[] bytes2 = new object[2];
-                    int num3 = 0;
-                    int num4 = bytes2.Length - 1;
-                    for (int j = num3; j <= num4; j++)
-                    {
-                        bytes2[j] = working3.Substring(j * 2, 2);
-                        bytes2[j] = Conversion.Val(Operators.ConcatenateObject("&H", bytes2[j]));
-                    }
-
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 209))] =
-                        Conversions.ToByte(bytes2[0]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 208))] =
-                        Conversions.ToByte(bytes2[1]);
-                }
-                catch (Exception ex3)
-                {
-                }
-
-                try
-                {
-                    string working4 = TextBox7.Text;
-                    working4 = working4.Replace(" ", "");
-                    object[] bytes3 = new object[2];
-                    int num5 = 0;
-                    int num6 = bytes3.Length - 1;
-                    for (int k = num5; k <= num6; k++)
-                    {
-                        bytes3[k] = working4.Substring(k * 2, 2);
-                        bytes3[k] = Conversion.Val(Operators.ConcatenateObject("&H", bytes3[k]));
-                    }
-
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 217))] =
-                        Conversions.ToByte(bytes3[0]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 216))] =
-                        Conversions.ToByte(bytes3[1]);
-                }
-                catch (Exception ex4)
-                {
-                }
-
-                try
-                {
-                    string working5 = TextBox8.Text;
-                    working5 = working5.Replace(" ", "");
-                    object[] bytes4 = new object[2];
-                    int num7 = 0;
-                    int num8 = bytes4.Length - 1;
-                    for (int l = num7; l <= num8; l++)
-                    {
-                        bytes4[l] = working5.Substring(l * 2, 2);
-                        bytes4[l] = Conversion.Val(Operators.ConcatenateObject("&H", bytes4[l]));
-                    }
-
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 205))] =
-                        Conversions.ToByte(bytes4[0]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 204))] =
-                        Conversions.ToByte(bytes4[1]);
-                }
-                catch (Exception ex5)
-                {
-                }
-
-                if ((Conversion.Val(TextBox9.Text) > 255.0) | (Conversion.Val(TextBox9.Text) < 0.0))
-                {
-                    TextBox9.Text = Conversions.ToString(0);
-                    Interaction.MsgBox(
-                        "Remove wing value cannot be higher than 255 or lower than 0. Reverting back to 0");
-                }
-
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 88))] =
-                    Conversions.ToByte(TextBox9.Text);
-                try
-                {
-                    string working6 = TextBox10.Text;
-                    working6 = working6.Replace(" ", "");
-                    object[] bytes5 = new object[4];
-                    int num9 = 0;
-                    int num10 = bytes5.Length - 1;
-                    for (int m = num9; m <= num10; m++)
-                    {
-                        bytes5[m] = working6.Substring(m * 2, 2);
-                        bytes5[m] = Conversion.Val(Operators.ConcatenateObject("&H", bytes5[m]));
-                    }
-
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 344))] =
-                        Conversions.ToByte(bytes5[0]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 343))] =
-                        Conversions.ToByte(bytes5[1]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 342))] =
-                        Conversions.ToByte(bytes5[2]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 341))] =
-                        Conversions.ToByte(bytes5[3]);
-                }
-                catch (Exception ex6)
-                {
-                }
-
-                try
-                {
-                    string working7 = TextBox11.Text;
-                    working7 = working7.Replace(" ", "");
-                    object[] bytes6 = new object[4];
-                    int num11 = 0;
-                    int num12 = bytes6.Length - 1;
-                    for (int n = num11; n <= num12; n++)
-                    {
-                        bytes6[n] = working7.Substring(n * 2, 2);
-                        bytes6[n] = Conversion.Val(Operators.ConcatenateObject("&H", bytes6[n]));
-                    }
-
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 171))] =
-                        Conversions.ToByte(bytes6[0]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 170))] =
-                        Conversions.ToByte(bytes6[1]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 169))] =
-                        Conversions.ToByte(bytes6[2]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 168))] =
-                        Conversions.ToByte(bytes6[3]);
-                }
-                catch (Exception ex7)
-                {
-                }
-
-                if (CheckBox2.Checked)
-                {
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 332))] = 56;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 331))] = 9;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 330))] = 8;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 315))] = 80;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 314))] = 9;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 179))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 178))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 177))] = 5;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 176))] = 81;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 175))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 174))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 173))] = 14;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 172))] = 242;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 171))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 170))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 169))] = 21;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 168))] = 39;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 155))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 154))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 153))] = 20;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 152))] = 60;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 131))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 130))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 129))] = 3;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 128))] = 88;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 127))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 126))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 125))] = 3;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 124))] = 88;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 123))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 122))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 121))] = 3;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 120))] = 56;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 119))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 118))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 117))] = 3;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 116))] = 61;
-                }
-
-                if ((Conversion.Val(TextBox13.Text) > 255.0) | (Conversion.Val(TextBox13.Text) < 0.0))
-                {
-                    TextBox13.Text = Conversions.ToString(0);
-                    Interaction.MsgBox("Front Aero cannot be higher than 255 or lower than 0. Reverting back to 0");
-                }
-
-                if ((Conversion.Val(TextBox12.Text) > 255.0) | (Conversion.Val(TextBox12.Text) < 0.0))
-                {
-                    TextBox12.Text = Conversions.ToString(0);
-                    Interaction.MsgBox("Rear Aero cannot be higher than 255 or lower than 0. Reverting back to 0");
-                }
-
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 43))] =
-                    Conversions.ToByte(TextBox13.Text);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 42))] =
-                    Conversions.ToByte(TextBox12.Text);
-                try
-                {
-                    string working8 = TextBox14.Text;
-                    working8 = Conversions.ToString(Conversion.Val(working8));
-                    int @int = Conversions.ToInteger(Conversion.Int(working8));
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 33))] =
-                        (byte)Math.Round(Conversion.Val("&H" + @int.ToString("X4").Substring(0, 2)));
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 32))] =
-                        (byte)Math.Round(Conversion.Val("&H" + @int.ToString("X4").Substring(2, 2)));
-                }
-                catch (Exception ex8)
-                {
-                }
-
-                try
-                {
-                    string working9 = TextBox15.Text;
-                    working9 = Conversions.ToString(Conversion.Val(working9));
-                    int int2 = Conversions.ToInteger(Conversion.Int(working9));
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 31))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int2.ToString("X4").Substring(0, 2)));
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 30))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int2.ToString("X4").Substring(2, 2)));
-                }
-                catch (Exception ex9)
-                {
-                }
-
-                Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 10))] =
-                    Conversions.ToByte(TextBox16.Text);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 27))] =
-                    Conversions.ToByte(TextBox18.Text);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 26))] =
-                    Conversions.ToByte(TextBox17.Text);
-                try
-                {
-                    string working10 = TextBox19.Text;
-                    working10 = working10.Replace(" ", "");
-                    object[] bytes7 = new object[4];
-                    int num13 = 0;
-                    int num14 = bytes7.Length - 1;
-                    for (int i2 = num13; i2 <= num14; i2++)
-                    {
-                        bytes7[i2] = working10.Substring(i2 * 2, 2);
-                        bytes7[i2] = Conversion.Val(Operators.ConcatenateObject("&H", bytes7[i2]));
-                    }
-
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 155))] =
-                        Conversions.ToByte(bytes7[0]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 154))] =
-                        Conversions.ToByte(bytes7[1]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 153))] =
-                        Conversions.ToByte(bytes7[2]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 152))] =
-                        Conversions.ToByte(bytes7[3]);
-                }
-                catch (Exception ex10)
-                {
-                }
-
-                try
-                {
-                    string working11 = TextBox20.Text;
-                    working11 = working11.Replace(" ", "");
-                    object[] bytes8 = new object[2];
-                    int num15 = 0;
-                    int num16 = bytes8.Length - 1;
-                    for (int i3 = num15; i3 <= num16; i3++)
-                    {
-                        bytes8[i3] = working11.Substring(i3 * 2, 2);
-                        bytes8[i3] = Conversion.Val(Operators.ConcatenateObject("&H", bytes8[i3]));
-                    }
-
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 262))] =
-                        Conversions.ToByte(bytes8[0]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 261))] =
-                        Conversions.ToByte(bytes8[1]);
-                }
-                catch (Exception ex11)
-                {
-                }
-
-                try
-                {
-                    string working12 = TextBox21.Text;
-                    working12 = working12.Replace(" ", "");
-                    object[] bytes9 = new object[2];
-                    int num17 = 0;
-                    int num18 = bytes9.Length - 1;
-                    for (int i4 = num17; i4 <= num18; i4++)
-                    {
-                        bytes9[i4] = working12.Substring(i4 * 2, 2);
-                        bytes9[i4] = Conversion.Val(Operators.ConcatenateObject("&H", bytes9[i4]));
-                    }
-
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 201))] =
-                        Conversions.ToByte(bytes9[0]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 200))] =
-                        Conversions.ToByte(bytes9[1]);
-                }
-                catch (Exception ex12)
-                {
-                }
-
-                try
-                {
-                    string working13 = TextBox22.Text;
-                    working13 = working13.Replace(" ", "");
-                    object[] bytes10 = new object[2];
-                    int num19 = 0;
-                    int num20 = bytes10.Length - 1;
-                    for (int i5 = num19; i5 <= num20; i5++)
-                    {
-                        bytes10[i5] = working13.Substring(i5 * 2, 2);
-                        bytes10[i5] = Conversion.Val(Operators.ConcatenateObject("&H", bytes10[i5]));
-                    }
-
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 197))] =
-                        Conversions.ToByte(bytes10[0]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 196))] =
-                        Conversions.ToByte(bytes10[1]);
-                }
-                catch (Exception ex13)
-                {
-                }
-
-                try
-                {
-                    string working14 = TextBox23.Text;
-                    working14 = working14.Replace(" ", "");
-                    object[] bytes11 = new object[2];
-                    int num21 = 0;
-                    int num22 = bytes11.Length - 1;
-                    for (int i6 = num21; i6 <= num22; i6++)
-                    {
-                        bytes11[i6] = working14.Substring(i6 * 2, 2);
-                        bytes11[i6] = Conversion.Val(Operators.ConcatenateObject("&H", bytes11[i6]));
-                    }
-
-                    Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 23))] =
-                        Conversions.ToByte(bytes11[0]);
-                    Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 24))] =
-                        Conversions.ToByte(bytes11[1]);
-                }
-                catch (Exception ex14)
-                {
-                }
-
-                try
-                {
-                    string working15 = TextBox24.Text;
-                    working15 = working15.Replace(" ", "");
-                    object[] bytes12 = new object[4];
-                    int num23 = 0;
-                    int num24 = bytes12.Length - 1;
-                    for (int i7 = num23; i7 <= num24; i7++)
-                    {
-                        bytes12[i7] = working15.Substring(i7 * 2, 2);
-                        bytes12[i7] = Conversion.Val(Operators.ConcatenateObject("&H", bytes12[i7]));
-                    }
-
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 191))] =
-                        Conversions.ToByte(bytes12[0]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 190))] =
-                        Conversions.ToByte(bytes12[1]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 189))] =
-                        Conversions.ToByte(bytes12[2]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 188))] =
-                        Conversions.ToByte(bytes12[3]);
-                }
-                catch (Exception ex15)
-                {
-                }
-
-                if (CheckBox1.Checked)
-                {
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 260))] = 116;
-                }
-
-                if (CheckBox3.Checked)
-                {
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 260))] = 76;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 259))] = 85;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 258))] = 67;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 257))] = 65;
-                }
-
-                if (CheckBox5.Checked)
-                {
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 313))] = byte.MaxValue;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 107))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 106))] = 52;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 105))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 104))] = 3;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 311))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 83))] = byte.MaxValue;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 82))] = byte.MaxValue;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 81))] = byte.MaxValue;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 80))] = byte.MaxValue;
-                }
-
-                if (CheckBox7.Checked)
-                {
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 367))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 103))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 102))] = 52;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 101))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 100))] = 2;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 311))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 83))] = byte.MaxValue;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 82))] = byte.MaxValue;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 81))] = byte.MaxValue;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 80))] = byte.MaxValue;
-                }
-
-                if (CheckBox6.Checked)
-                {
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 367))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 99))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 98))] = 52;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 97))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 96))] = 2;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 311))] = 0;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 83))] = byte.MaxValue;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 82))] = byte.MaxValue;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 81))] = byte.MaxValue;
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 80))] = byte.MaxValue;
-                }
-
-                File.WriteAllBytes(TextBox1.Text, Gt5Save);
+                Gt5Save[Moff - 213] = engineByteValues[0];
+                Gt5Save[Moff - 212] = engineByteValues[1];
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Can't save engine code to the save file.\n{ex.Message}");
+                return;
+            }
+
+            if ((Conversion.Val(TextBox4.Text) > 255.0) | (Conversion.Val(TextBox4.Text) < 0.0))
+            {
+                TextBox4.Text = Conversions.ToString(255);
+                Interaction.MsgBox("Torque split cannot be higher than 255 or lower than 0. Reverting back to 255");
+            }
+
+            try
+            {
+                string working2 = TextBox4.Text;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 46))] =
+                    Conversions.ToByte(working2);
+            }
+            catch (Exception ex2)
+            {
+            }
+
+            try
+            {
+                string working3 = TextBox6.Text;
+                working3 = working3.Replace(" ", "");
+                object[] bytes2 = new object[2];
+                int num3 = 0;
+                int num4 = bytes2.Length - 1;
+                for (int j = num3; j <= num4; j++)
+                {
+                    bytes2[j] = working3.Substring(j * 2, 2);
+                    bytes2[j] = Conversion.Val(Operators.ConcatenateObject("&H", bytes2[j]));
+                }
+
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 209))] =
+                    Conversions.ToByte(bytes2[0]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 208))] =
+                    Conversions.ToByte(bytes2[1]);
+            }
+            catch (Exception ex3)
+            {
+            }
+
+            try
+            {
+                string working4 = TextBox7.Text;
+                working4 = working4.Replace(" ", "");
+                object[] bytes3 = new object[2];
+                int num5 = 0;
+                int num6 = bytes3.Length - 1;
+                for (int k = num5; k <= num6; k++)
+                {
+                    bytes3[k] = working4.Substring(k * 2, 2);
+                    bytes3[k] = Conversion.Val(Operators.ConcatenateObject("&H", bytes3[k]));
+                }
+
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 217))] =
+                    Conversions.ToByte(bytes3[0]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 216))] =
+                    Conversions.ToByte(bytes3[1]);
+            }
+            catch (Exception ex4)
+            {
+            }
+
+            try
+            {
+                string working5 = TextBox8.Text;
+                working5 = working5.Replace(" ", "");
+                object[] bytes4 = new object[2];
+                int num7 = 0;
+                int num8 = bytes4.Length - 1;
+                for (int l = num7; l <= num8; l++)
+                {
+                    bytes4[l] = working5.Substring(l * 2, 2);
+                    bytes4[l] = Conversion.Val(Operators.ConcatenateObject("&H", bytes4[l]));
+                }
+
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 205))] =
+                    Conversions.ToByte(bytes4[0]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 204))] =
+                    Conversions.ToByte(bytes4[1]);
+            }
+            catch (Exception ex5)
+            {
+            }
+
+            if ((Conversion.Val(TextBox9.Text) > 255.0) | (Conversion.Val(TextBox9.Text) < 0.0))
+            {
+                TextBox9.Text = Conversions.ToString(0);
+                Interaction.MsgBox(
+                    "Remove wing value cannot be higher than 255 or lower than 0. Reverting back to 0");
+            }
+
+            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 88))] =
+                Conversions.ToByte(TextBox9.Text);
+            try
+            {
+                string working6 = TextBox10.Text;
+                working6 = working6.Replace(" ", "");
+                object[] bytes5 = new object[4];
+                int num9 = 0;
+                int num10 = bytes5.Length - 1;
+                for (int m = num9; m <= num10; m++)
+                {
+                    bytes5[m] = working6.Substring(m * 2, 2);
+                    bytes5[m] = Conversion.Val(Operators.ConcatenateObject("&H", bytes5[m]));
+                }
+
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 344))] =
+                    Conversions.ToByte(bytes5[0]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 343))] =
+                    Conversions.ToByte(bytes5[1]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 342))] =
+                    Conversions.ToByte(bytes5[2]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 341))] =
+                    Conversions.ToByte(bytes5[3]);
+            }
+            catch (Exception ex6)
+            {
+            }
+
+            try
+            {
+                string working7 = TextBox11.Text;
+                working7 = working7.Replace(" ", "");
+                object[] bytes6 = new object[4];
+                int num11 = 0;
+                int num12 = bytes6.Length - 1;
+                for (int n = num11; n <= num12; n++)
+                {
+                    bytes6[n] = working7.Substring(n * 2, 2);
+                    bytes6[n] = Conversion.Val(Operators.ConcatenateObject("&H", bytes6[n]));
+                }
+
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 171))] =
+                    Conversions.ToByte(bytes6[0]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 170))] =
+                    Conversions.ToByte(bytes6[1]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 169))] =
+                    Conversions.ToByte(bytes6[2]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 168))] =
+                    Conversions.ToByte(bytes6[3]);
+            }
+            catch (Exception ex7)
+            {
+            }
+
+            if (CheckBox2.Checked)
+            {
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 332))] = 56;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 331))] = 9;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 330))] = 8;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 315))] = 80;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 314))] = 9;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 179))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 178))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 177))] = 5;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 176))] = 81;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 175))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 174))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 173))] = 14;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 172))] = 242;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 171))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 170))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 169))] = 21;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 168))] = 39;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 155))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 154))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 153))] = 20;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 152))] = 60;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 131))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 130))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 129))] = 3;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 128))] = 88;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 127))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 126))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 125))] = 3;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 124))] = 88;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 123))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 122))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 121))] = 3;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 120))] = 56;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 119))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 118))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 117))] = 3;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 116))] = 61;
+            }
+
+            if ((Conversion.Val(TextBox13.Text) > 255.0) | (Conversion.Val(TextBox13.Text) < 0.0))
+            {
+                TextBox13.Text = Conversions.ToString(0);
+                Interaction.MsgBox("Front Aero cannot be higher than 255 or lower than 0. Reverting back to 0");
+            }
+
+            if ((Conversion.Val(TextBox12.Text) > 255.0) | (Conversion.Val(TextBox12.Text) < 0.0))
+            {
+                TextBox12.Text = Conversions.ToString(0);
+                Interaction.MsgBox("Rear Aero cannot be higher than 255 or lower than 0. Reverting back to 0");
+            }
+
+            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 43))] =
+                Conversions.ToByte(TextBox13.Text);
+            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 42))] =
+                Conversions.ToByte(TextBox12.Text);
+            try
+            {
+                string working8 = TextBox14.Text;
+                working8 = Conversions.ToString(Conversion.Val(working8));
+                int @int = Conversions.ToInteger(Conversion.Int(working8));
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 33))] =
+                    (byte)Math.Round(Conversion.Val("&H" + @int.ToString("X4").Substring(0, 2)));
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 32))] =
+                    (byte)Math.Round(Conversion.Val("&H" + @int.ToString("X4").Substring(2, 2)));
+            }
+            catch (Exception ex8)
+            {
+            }
+
+            try
+            {
+                string working9 = TextBox15.Text;
+                working9 = Conversions.ToString(Conversion.Val(working9));
+                int int2 = Conversions.ToInteger(Conversion.Int(working9));
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 31))] =
+                    (byte)Math.Round(Conversion.Val("&H" + int2.ToString("X4").Substring(0, 2)));
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 30))] =
+                    (byte)Math.Round(Conversion.Val("&H" + int2.ToString("X4").Substring(2, 2)));
+            }
+            catch (Exception ex9)
+            {
+            }
+
+            Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 10))] =
+                Conversions.ToByte(TextBox16.Text);
+            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 27))] =
+                Conversions.ToByte(TextBox18.Text);
+            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 26))] =
+                Conversions.ToByte(TextBox17.Text);
+            try
+            {
+                string working10 = TextBox19.Text;
+                working10 = working10.Replace(" ", "");
+                object[] bytes7 = new object[4];
+                int num13 = 0;
+                int num14 = bytes7.Length - 1;
+                for (int i2 = num13; i2 <= num14; i2++)
+                {
+                    bytes7[i2] = working10.Substring(i2 * 2, 2);
+                    bytes7[i2] = Conversion.Val(Operators.ConcatenateObject("&H", bytes7[i2]));
+                }
+
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 155))] =
+                    Conversions.ToByte(bytes7[0]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 154))] =
+                    Conversions.ToByte(bytes7[1]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 153))] =
+                    Conversions.ToByte(bytes7[2]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 152))] =
+                    Conversions.ToByte(bytes7[3]);
+            }
+            catch (Exception ex10)
+            {
+            }
+
+            try
+            {
+                string working11 = TextBox20.Text;
+                working11 = working11.Replace(" ", "");
+                object[] bytes8 = new object[2];
+                int num15 = 0;
+                int num16 = bytes8.Length - 1;
+                for (int i3 = num15; i3 <= num16; i3++)
+                {
+                    bytes8[i3] = working11.Substring(i3 * 2, 2);
+                    bytes8[i3] = Conversion.Val(Operators.ConcatenateObject("&H", bytes8[i3]));
+                }
+
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 262))] =
+                    Conversions.ToByte(bytes8[0]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 261))] =
+                    Conversions.ToByte(bytes8[1]);
+            }
+            catch (Exception ex11)
+            {
+            }
+
+            try
+            {
+                string working12 = TextBox21.Text;
+                working12 = working12.Replace(" ", "");
+                object[] bytes9 = new object[2];
+                int num17 = 0;
+                int num18 = bytes9.Length - 1;
+                for (int i4 = num17; i4 <= num18; i4++)
+                {
+                    bytes9[i4] = working12.Substring(i4 * 2, 2);
+                    bytes9[i4] = Conversion.Val(Operators.ConcatenateObject("&H", bytes9[i4]));
+                }
+
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 201))] =
+                    Conversions.ToByte(bytes9[0]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 200))] =
+                    Conversions.ToByte(bytes9[1]);
+            }
+            catch (Exception ex12)
+            {
+            }
+
+            try
+            {
+                string working13 = TextBox22.Text;
+                working13 = working13.Replace(" ", "");
+                object[] bytes10 = new object[2];
+                int num19 = 0;
+                int num20 = bytes10.Length - 1;
+                for (int i5 = num19; i5 <= num20; i5++)
+                {
+                    bytes10[i5] = working13.Substring(i5 * 2, 2);
+                    bytes10[i5] = Conversion.Val(Operators.ConcatenateObject("&H", bytes10[i5]));
+                }
+
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 197))] =
+                    Conversions.ToByte(bytes10[0]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 196))] =
+                    Conversions.ToByte(bytes10[1]);
+            }
+            catch (Exception ex13)
+            {
+            }
+
+            try
+            {
+                string working14 = TextBox23.Text;
+                working14 = working14.Replace(" ", "");
+                object[] bytes11 = new object[2];
+                int num21 = 0;
+                int num22 = bytes11.Length - 1;
+                for (int i6 = num21; i6 <= num22; i6++)
+                {
+                    bytes11[i6] = working14.Substring(i6 * 2, 2);
+                    bytes11[i6] = Conversion.Val(Operators.ConcatenateObject("&H", bytes11[i6]));
+                }
+
+                Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 23))] =
+                    Conversions.ToByte(bytes11[0]);
+                Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 24))] =
+                    Conversions.ToByte(bytes11[1]);
+            }
+            catch (Exception ex14)
+            {
+            }
+
+            try
+            {
+                string working15 = TextBox24.Text;
+                working15 = working15.Replace(" ", "");
+                object[] bytes12 = new object[4];
+                int num23 = 0;
+                int num24 = bytes12.Length - 1;
+                for (int i7 = num23; i7 <= num24; i7++)
+                {
+                    bytes12[i7] = working15.Substring(i7 * 2, 2);
+                    bytes12[i7] = Conversion.Val(Operators.ConcatenateObject("&H", bytes12[i7]));
+                }
+
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 191))] =
+                    Conversions.ToByte(bytes12[0]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 190))] =
+                    Conversions.ToByte(bytes12[1]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 189))] =
+                    Conversions.ToByte(bytes12[2]);
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 188))] =
+                    Conversions.ToByte(bytes12[3]);
+            }
+            catch (Exception ex15)
+            {
+            }
+
+            if (CheckBox1.Checked)
+            {
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 260))] = 116;
+            }
+
+            if (CheckBox3.Checked)
+            {
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 260))] = 76;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 259))] = 85;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 258))] = 67;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 257))] = 65;
+            }
+
+            if (CheckBox5.Checked)
+            {
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 313))] = byte.MaxValue;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 107))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 106))] = 52;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 105))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 104))] = 3;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 311))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 83))] = byte.MaxValue;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 82))] = byte.MaxValue;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 81))] = byte.MaxValue;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 80))] = byte.MaxValue;
+            }
+
+            if (CheckBox7.Checked)
+            {
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 367))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 103))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 102))] = 52;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 101))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 100))] = 2;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 311))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 83))] = byte.MaxValue;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 82))] = byte.MaxValue;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 81))] = byte.MaxValue;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 80))] = byte.MaxValue;
+            }
+
+            if (CheckBox6.Checked)
+            {
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 367))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 99))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 98))] = 52;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 97))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 96))] = 2;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 311))] = 0;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 83))] = byte.MaxValue;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 82))] = byte.MaxValue;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 81))] = byte.MaxValue;
+                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 80))] = byte.MaxValue;
+            }
+
+            File.WriteAllBytes(TextBox1.Text, Gt5Save);
         }
 
         // Token: 0x06000143 RID: 323 RVA: 0x0000D6D8 File Offset: 0x0000BAD8
