@@ -1450,8 +1450,10 @@ namespace GT5_Car_hack_workshop_2
             TextBox13.Text = Gt5Save[Moff - 43].ToString();
             TextBox12.Text = Gt5Save[Moff - 42].ToString();
 
-            TextBox14.Text = $"{Conversion.Val($"&H{Gt5Save[Moff - 33]:X2}")} {Conversion.Val($"&H{Gt5Save[Moff - 32]:X2}")}";
-            TextBox15.Text = $"{Conversion.Val($"&H{Gt5Save[Moff - 31]:X2}")} {Conversion.Val($"&H{Gt5Save[Moff - 30]:X2}")}";
+            var suspensionHeightFront = ConvertBytesToUnsignedInt(new[] { Gt5Save[Moff - 33], Gt5Save[Moff - 32] });
+            TextBox14.Text = suspensionHeightFront.ToString();
+            var suspensionHeightRear = ConvertBytesToUnsignedInt(new[] { Gt5Save[Moff - 31], Gt5Save[Moff - 30] });
+            TextBox15.Text = suspensionHeightRear.ToString();
 
             TextBox16.Text = Gt5Save[Moff + 10].ToString();
 
@@ -1471,7 +1473,19 @@ namespace GT5_Car_hack_workshop_2
             TextBox24.Text = $"{Gt5Save[Moff - 191]:X2} {Gt5Save[Moff - 190]:X2} {Gt5Save[Moff - 189]:X2} {Gt5Save[Moff - 188]:X2}";
         }
 
-        // Token: 0x06000142 RID: 322 RVA: 0x0000BC04 File Offset: 0x0000A004
+        private int ConvertBytesToUnsignedInt(byte[] bytes)
+        {
+            Array.Reverse(bytes); // Reverse the byte order
+
+            var result = 0;
+            for (var i = 0; i < bytes.Length; i++)
+            {
+                result += bytes[i] << (i * 8);
+            }
+
+            return result;
+        }
+
         private void savedata()
         {
             checked
