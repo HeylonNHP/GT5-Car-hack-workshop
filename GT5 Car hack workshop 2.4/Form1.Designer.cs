@@ -52,7 +52,7 @@
 			this.Button7 = new global::System.Windows.Forms.Button();
 			this.Button4 = new global::System.Windows.Forms.Button();
 			this.Label3 = new global::System.Windows.Forms.Label();
-			this.TextBox3 = new global::System.Windows.Forms.TextBox();
+			this.EngineCodeTextBox = new global::System.Windows.Forms.TextBox();
 			this.TextBox20 = new global::System.Windows.Forms.TextBox();
 			this.Label33 = new global::System.Windows.Forms.Label();
 			this.Label32 = new global::System.Windows.Forms.Label();
@@ -393,7 +393,7 @@
 			this.GroupBox9.Controls.Add(this.Button7);
 			this.GroupBox9.Controls.Add(this.Button4);
 			this.GroupBox9.Controls.Add(this.Label3);
-			this.GroupBox9.Controls.Add(this.TextBox3);
+			this.GroupBox9.Controls.Add(this.EngineCodeTextBox);
 			this.GroupBox9.Controls.Add(this.TextBox20);
 			this.GroupBox9.Controls.Add(this.Label33);
 			this.GroupBox9.Controls.Add(this.Label32);
@@ -541,14 +541,14 @@
 			label18.Size = size;
 			this.Label3.TabIndex = 1;
 			this.Label3.Text = "Engine";
-			global::System.Windows.Forms.Control textBox19 = this.TextBox3;
+			global::System.Windows.Forms.Control textBox19 = this.EngineCodeTextBox;
 			point = new global::System.Drawing.Point(91, 113);
 			textBox19.Location = point;
-			this.TextBox3.Name = "TextBox3";
-			global::System.Windows.Forms.Control textBox20 = this.TextBox3;
+			this.EngineCodeTextBox.Name = "TextBox3";
+			global::System.Windows.Forms.Control textBox20 = this.EngineCodeTextBox;
 			size = new global::System.Drawing.Size(66, 20);
 			textBox20.Size = size;
-			this.TextBox3.TabIndex = 2;
+			this.EngineCodeTextBox.TabIndex = 2;
 			global::System.Windows.Forms.Control textBox21 = this.TextBox20;
 			point = new global::System.Drawing.Point(91, 9);
 			textBox21.Location = point;

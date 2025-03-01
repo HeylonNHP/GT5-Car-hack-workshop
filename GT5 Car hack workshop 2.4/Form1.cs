@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -172,7 +173,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox3")]
-        private TextBox TextBox3
+        private TextBox EngineCodeTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -1436,7 +1437,7 @@ namespace GT5_Car_hack_workshop_2
                 MessageBox.Show($"Can't get param.sfo for loading the current car's name.\n{ex.Message}");
             }
 
-            TextBox3.Text = Gt5Save[Moff - 213].ToString("X2") + " " + Gt5Save[Moff - 212].ToString("X2");
+            EngineCodeTextBox.Text = Gt5Save[Moff - 213].ToString("X2") + " " + Gt5Save[Moff - 212].ToString("X2");
             TextBox4.Text = Conversion.Val("&H" + Gt5Save[Moff - 46].ToString("X2")).ToString(CultureInfo.CurrentCulture);
             TextBox6.Text = Gt5Save[Moff - 209].ToString("X2") + " " + Gt5Save[Moff - 208].ToString("X2");
             TextBox7.Text = Gt5Save[Moff - 217].ToString("X2") + " " + Gt5Save[Moff - 216].ToString("X2");
@@ -1486,30 +1487,49 @@ namespace GT5_Car_hack_workshop_2
             return result;
         }
 
+        public static byte[] HexStringToByteArray(string hex)
+        {
+            if (string.IsNullOrWhiteSpace(hex))
+            {
+                throw new ArgumentException("Input hex string cannot be null or empty.");
+            }
+
+            // Remove any whitespace from the hex string
+            hex = hex.Replace(" ", "");
+
+            // Ensure the string contains an even number of characters
+            if (hex.Length % 2 != 0)
+            {
+                throw new FormatException("Hex string must have an even number of characters.");
+            }
+
+            var byteList = new List<byte>();
+
+            for (int i = 0; i < hex.Length; i += 2)
+            {
+                string byteString = hex.Substring(i, 2);
+                byteList.Add(byte.Parse(byteString, NumberStyles.HexNumber, CultureInfo.InvariantCulture));
+            }
+
+            return byteList.ToArray();
+        }
+
+
         private void savedata()
         {
             checked
             {
                 try
                 {
-                    string working = TextBox3.Text;
-                    working = working.Replace(" ", "");
-                    object[] bytes = new object[2];
-                    int num = 0;
-                    int num2 = bytes.Length - 1;
-                    for (int i = num; i <= num2; i++)
-                    {
-                        bytes[i] = working.Substring(i * 2, 2);
-                        bytes[i] = Conversion.Val(Operators.ConcatenateObject("&H", bytes[i]));
-                    }
+                    var engineByteValues = HexStringToByteArray(EngineCodeTextBox.Text);
 
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 213))] =
-                        Conversions.ToByte(bytes[0]);
-                    Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 212))] =
-                        Conversions.ToByte(bytes[1]);
+                    Gt5Save[Moff - 213] = engineByteValues[0];
+                    Gt5Save[Moff - 212] = engineByteValues[1];
                 }
                 catch (Exception ex)
                 {
+                    MessageBox.Show($"Can't save data to the save file.\n{ex.Message}");
+                    return;
                 }
 
                 if ((Conversion.Val(TextBox4.Text) > 255.0) | (Conversion.Val(TextBox4.Text) < 0.0))
@@ -2095,7 +2115,7 @@ namespace GT5_Car_hack_workshop_2
 
             string linetoadd =
                 _CarName + "," +
-                TextBox3.Text + "," +
+                EngineCodeTextBox.Text + "," +
                 TextBox6.Text + "," +
                 TextBox7.Text + "," +
                 TextBox8.Text + "," +
@@ -2156,7 +2176,7 @@ namespace GT5_Car_hack_workshop_2
             try
             {
                 string[] sparr = ComboBox1.SelectedItem.ToString().Split(',');
-                TextBox3.Text = sparr[1];
+                EngineCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
             {
