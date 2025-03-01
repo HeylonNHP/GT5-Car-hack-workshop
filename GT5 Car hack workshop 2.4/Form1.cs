@@ -1913,7 +1913,7 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x06000150 RID: 336 RVA: 0x0000DA28 File Offset: 0x0000BE28
         private void Button11_Click(object sender, EventArgs e)
         {
-            MyProject.Forms.Tranny.Show();
+            MyProject.Forms.TransmissionEditor.Show();
         }
 
         // Token: 0x06000151 RID: 337 RVA: 0x0000DA3C File Offset: 0x0000BE3C

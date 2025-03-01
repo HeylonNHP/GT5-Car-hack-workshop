@@ -90,7 +90,7 @@ namespace GT5_Car_hack_workshop_2.My
             public Form1 m_Form1;
 
             // Token: 0x04000008 RID: 8
-            public Tranny m_Tranny;
+            public TransmissionEditor MTransmissionEditor;
 
             // Token: 0x06000013 RID: 19 RVA: 0x00002BD8 File Offset: 0x00000FD8
             [DebuggerHidden]
@@ -138,18 +138,18 @@ namespace GT5_Car_hack_workshop_2.My
             // Token: 0x17000008 RID: 8
             // (get) Token: 0x0600000D RID: 13 RVA: 0x00002A08 File Offset: 0x00000E08
             // (set) Token: 0x06000010 RID: 16 RVA: 0x00002A7C File Offset: 0x00000E7C
-            public Tranny Tranny
+            public TransmissionEditor TransmissionEditor
             {
                 get
                 {
-                    m_Tranny = Create__Instance__(m_Tranny);
-                    return m_Tranny;
+                    MTransmissionEditor = Create__Instance__(MTransmissionEditor);
+                    return MTransmissionEditor;
                 }
                 set
                 {
-                    if (value == m_Tranny) return;
+                    if (value == MTransmissionEditor) return;
                     if (value != null) throw new ArgumentException("Property can only be set to Nothing");
-                    Dispose__Instance__(ref m_Tranny);
+                    Dispose__Instance__(ref MTransmissionEditor);
                 }
             }
 

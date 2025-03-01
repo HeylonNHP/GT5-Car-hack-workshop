@@ -8,7 +8,7 @@ using Microsoft.VisualBasic.CompilerServices;
 namespace GT5_Car_hack_workshop_2
 {
     [DesignerGenerated]
-    public partial class Tranny : Form
+    public partial class TransmissionEditor : Form
     {
         [AccessedThroughProperty("Button1")] private Button _Button1;
 
@@ -18,7 +18,7 @@ namespace GT5_Car_hack_workshop_2
 
         private decimal origfg;
 
-        public Tranny()
+        public TransmissionEditor()
         {
             Load += Tranny_Load;
             lastgearpre = 0.1m;

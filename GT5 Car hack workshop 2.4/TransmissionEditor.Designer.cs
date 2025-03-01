@@ -1,7 +1,7 @@
 ﻿namespace GT5_Car_hack_workshop_2
 {
 	// Token: 0x0200000F RID: 15
-	public partial class Tranny : global::System.Windows.Forms.Form
+	public partial class TransmissionEditor : global::System.Windows.Forms.Form
 	{
 		// Token: 0x06000177 RID: 375 RVA: 0x0000E3A4 File Offset: 0x0000C7A4
 		[global::System.Diagnostics.DebuggerNonUserCode]
@@ -442,7 +442,7 @@
 			this.FormBorderStyle = global::System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
-			this.Name = "Tranny";
+			this.Name = "TransmissionEditor";
 			this.StartPosition = global::System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Transmission editor";
 			this.GroupBox1.ResumeLayout(false);
