@@ -27,174 +27,174 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("Label1")]
-        internal virtual Label Label1
+        private Label Label1
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("Label2")]
-        internal virtual Label Label2
+        private Label Label2
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("Label3")]
-        internal virtual Label Label3
+        private Label Label3
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("Label4")]
-        internal virtual Label Label4
+        private Label Label4
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("Label5")]
-        internal virtual Label Label5
+        private Label Label5
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("Label6")]
-        internal virtual Label Label6
+        private Label Label6
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("Label7")]
-        internal virtual Label Label7
+        private Label Label7
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("Label8")]
-        internal virtual Label Label8
+        private Label Label8
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("Label9")]
-        internal virtual Label Label9
+        private Label Label9
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("Label10")]
-        internal virtual Label Label10
+        private Label Label10
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("Label11")]
-        internal virtual Label Label11
+        private Label Label11
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("TextBox1")]
-        internal virtual TextBox TextBox1
+        private TextBox TextBox1
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("TextBox2")]
-        internal virtual TextBox TextBox2
+        private TextBox TextBox2
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("TextBox3")]
-        internal virtual TextBox TextBox3
+        private TextBox TextBox3
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("TextBox4")]
-        internal virtual TextBox TextBox4
+        private TextBox TextBox4
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("TextBox5")]
-        internal virtual TextBox TextBox5
+        private TextBox TextBox5
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("TextBox6")]
-        internal virtual TextBox TextBox6
+        private TextBox TextBox6
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("TextBox7")]
-        internal virtual TextBox TextBox7
+        private TextBox TextBox7
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("TextBox8")]
-        internal virtual TextBox TextBox8
+        private TextBox TextBox8
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("TextBox9")]
-        internal virtual TextBox TextBox9
+        private TextBox TextBox9
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("TextBox10")]
-        internal virtual TextBox TextBox10
+        private TextBox TextBox10
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("TextBox11")]
-        internal virtual TextBox TextBox11
+        private TextBox TextBox11
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("TextBox12")]
-        internal virtual TextBox TextBox12
+        private TextBox TextBox12
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("Label12")]
-        internal virtual Label Label12
+        private Label Label12
         {
             get;
             set;
         }
 
-        internal virtual Button Button1
+        private Button Button1
         {
             get => _Button1;
             set
@@ -208,41 +208,41 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("GroupBox1")]
-        internal virtual GroupBox GroupBox1
+        private GroupBox GroupBox1
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("TextBox14")]
-        internal virtual TextBox TextBox14
+        private TextBox TextBox14
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("Label14")]
-        internal virtual Label Label14
+        private Label Label14
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("TextBox13")]
-        internal virtual TextBox TextBox13
+        private TextBox TextBox13
         {
             get;
             set;
         }
 
         [field: AccessedThroughProperty("Label13")]
-        internal virtual Label Label13
+        private Label Label13
         {
             get;
             set;
         }
 
-        internal virtual Timer Timer1
+        private Timer Timer1
         {
             get => _Timer1;
             set
