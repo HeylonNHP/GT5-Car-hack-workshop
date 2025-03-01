@@ -224,22 +224,22 @@ namespace GT5_Car_hack_workshop_2
             set;
         }
 
-        private TextBox TextBox4
+        private TextBox TorqueSplitTextBox
         {
-            get => _TextBox4;
+            get => _TorqueSplitTextBox;
             [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
                 EventHandler eventHandler = TextBox4_TextChanged;
-                if (_TextBox4 != null)
+                if (_TorqueSplitTextBox != null)
                 {
-                    _TextBox4.TextChanged -= eventHandler;
+                    _TorqueSplitTextBox.TextChanged -= eventHandler;
                 }
 
-                _TextBox4 = value;
-                if (_TextBox4 != null)
+                _TorqueSplitTextBox = value;
+                if (_TorqueSplitTextBox != null)
                 {
-                    _TextBox4.TextChanged += eventHandler;
+                    _TorqueSplitTextBox.TextChanged += eventHandler;
                 }
             }
         }
@@ -261,7 +261,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox6")]
-        private TextBox TextBox6
+        private TextBox DrivetrainCodeTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -433,7 +433,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox7")]
-        private TextBox TextBox7
+        private TextBox ChassisCodeTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -1438,9 +1438,9 @@ namespace GT5_Car_hack_workshop_2
             }
 
             EngineCodeTextBox.Text = Gt5Save[Moff - 213].ToString("X2") + " " + Gt5Save[Moff - 212].ToString("X2");
-            TextBox4.Text = Conversion.Val("&H" + Gt5Save[Moff - 46].ToString("X2")).ToString(CultureInfo.CurrentCulture);
-            TextBox6.Text = Gt5Save[Moff - 209].ToString("X2") + " " + Gt5Save[Moff - 208].ToString("X2");
-            TextBox7.Text = Gt5Save[Moff - 217].ToString("X2") + " " + Gt5Save[Moff - 216].ToString("X2");
+            TorqueSplitTextBox.Text = Conversion.Val("&H" + Gt5Save[Moff - 46].ToString("X2")).ToString(CultureInfo.CurrentCulture);
+            DrivetrainCodeTextBox.Text = Gt5Save[Moff - 209].ToString("X2") + " " + Gt5Save[Moff - 208].ToString("X2");
+            ChassisCodeTextBox.Text = Gt5Save[Moff - 217].ToString("X2") + " " + Gt5Save[Moff - 216].ToString("X2");
             TextBox8.Text = Gt5Save[Moff - 205].ToString("X2") + " " + Gt5Save[Moff - 204].ToString("X2");
             TextBox9.Text = Gt5Save[Moff - 88].ToString();
 
@@ -1530,64 +1530,50 @@ namespace GT5_Car_hack_workshop_2
                 return;
             }
 
-            if ((Conversion.Val(TextBox4.Text) > 255.0) | (Conversion.Val(TextBox4.Text) < 0.0))
-            {
-                TextBox4.Text = Conversions.ToString(255);
-                Interaction.MsgBox("Torque split cannot be higher than 255 or lower than 0. Reverting back to 255");
-            }
-
             try
             {
-                string working2 = TextBox4.Text;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 46))] =
-                    Conversions.ToByte(working2);
-            }
-            catch (Exception ex2)
-            {
-            }
-
-            try
-            {
-                string working3 = TextBox6.Text;
-                working3 = working3.Replace(" ", "");
-                object[] bytes2 = new object[2];
-                int num3 = 0;
-                int num4 = bytes2.Length - 1;
-                for (int j = num3; j <= num4; j++)
+                if (!int.TryParse(TorqueSplitTextBox.Text, out var value))
                 {
-                    bytes2[j] = working3.Substring(j * 2, 2);
-                    bytes2[j] = Conversion.Val(Operators.ConcatenateObject("&H", bytes2[j]));
+                    throw new FormatException("Torque split value must be a number.");
                 }
 
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 209))] =
-                    Conversions.ToByte(bytes2[0]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 208))] =
-                    Conversions.ToByte(bytes2[1]);
+                if (value < 0 || value > 255)
+                {
+                    throw new FormatException("Torque split value must be between 0 and 255.");
+                }
+
+                Gt5Save[Moff - 46] = (byte)value;
             }
-            catch (Exception ex3)
+            catch (Exception e)
             {
+                MessageBox.Show($"Can't save Torque split to the save file.\n{e.Message}");
+                return;
             }
 
             try
             {
-                string working4 = TextBox7.Text;
-                working4 = working4.Replace(" ", "");
-                object[] bytes3 = new object[2];
-                int num5 = 0;
-                int num6 = bytes3.Length - 1;
-                for (int k = num5; k <= num6; k++)
-                {
-                    bytes3[k] = working4.Substring(k * 2, 2);
-                    bytes3[k] = Conversion.Val(Operators.ConcatenateObject("&H", bytes3[k]));
-                }
+                var drivetrainByteValues = HexStringToByteArray(DrivetrainCodeTextBox.Text);
 
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 217))] =
-                    Conversions.ToByte(bytes3[0]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 216))] =
-                    Conversions.ToByte(bytes3[1]);
+                Gt5Save[Moff - 209] = drivetrainByteValues[0];
+                Gt5Save[Moff - 208] = drivetrainByteValues[1];
             }
-            catch (Exception ex4)
+            catch (Exception ex)
             {
+                MessageBox.Show($"Can't save drivetrain code to the save file.\n{ex.Message}");
+                return;
+            }
+
+            try
+            {
+                var chassisByteValues = HexStringToByteArray(ChassisCodeTextBox.Text);
+                
+                Gt5Save[Moff - 217] = chassisByteValues[0];
+                Gt5Save[Moff - 216] = chassisByteValues[1];
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Can't save chassis code to the save file.\n{e.Message}");
+                return;
             }
 
             try
@@ -2025,14 +2011,14 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x06000149 RID: 329 RVA: 0x0000D8AC File Offset: 0x0000BCAC
         private void TextBox4_TextChanged(object sender, EventArgs e)
         {
-            TextBox5.Text = Conversions.ToString(100.0 - Conversion.Val(TextBox4.Text));
+            TextBox5.Text = Conversions.ToString(100.0 - Conversion.Val(TorqueSplitTextBox.Text));
         }
 
         // Token: 0x0600014A RID: 330 RVA: 0x0000D8D8 File Offset: 0x0000BCD8
         private void Button6_Click(object sender, EventArgs e)
         {
-            TextBox4.Text = Conversions.ToString(50);
-            TextBox6.Text = "0A 1E";
+            TorqueSplitTextBox.Text = Conversions.ToString(50);
+            DrivetrainCodeTextBox.Text = "0A 1E";
         }
 
         // Token: 0x0600014B RID: 331 RVA: 0x0000D8FC File Offset: 0x0000BCFC
@@ -2113,8 +2099,8 @@ namespace GT5_Car_hack_workshop_2
             string linetoadd =
                 _CarName + "," +
                 EngineCodeTextBox.Text + "," +
-                TextBox6.Text + "," +
-                TextBox7.Text + "," +
+                DrivetrainCodeTextBox.Text + "," +
+                ChassisCodeTextBox.Text + "," +
                 TextBox8.Text + "," +
                 TextBox20.Text + "," +
                 TextBox21.Text + "," +
@@ -2186,7 +2172,7 @@ namespace GT5_Car_hack_workshop_2
             try
             {
                 string[] sparr = ComboBox2.SelectedItem.ToString().Split(',');
-                TextBox6.Text = sparr[1];
+                DrivetrainCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
             {
@@ -2199,7 +2185,7 @@ namespace GT5_Car_hack_workshop_2
             try
             {
                 string[] sparr = ComboBox3.SelectedItem.ToString().Split(',');
-                TextBox7.Text = sparr[1];
+                ChassisCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
             {
@@ -2358,7 +2344,7 @@ namespace GT5_Car_hack_workshop_2
 
         [AccessedThroughProperty("Button5")] private Button _Button5;
 
-        [AccessedThroughProperty("TextBox4")] private TextBox _TextBox4;
+        [AccessedThroughProperty("TextBox4")] private TextBox _TorqueSplitTextBox;
 
         [AccessedThroughProperty("Button6")] private Button _Button6;
 
