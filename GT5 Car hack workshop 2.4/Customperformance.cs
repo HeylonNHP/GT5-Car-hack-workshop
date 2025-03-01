@@ -469,7 +469,7 @@ namespace GT5_Car_hack_workshop_2
 					" ",
 					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 168))].ToString("X2")
 				});
-				MyProject.Forms.Form1.TextBox19.Text = string.Concat(new string[]
+				MyProject.Forms.Form1.ExhauseMultiplierTextBox.Text = string.Concat(new string[]
 				{
 					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 155))].ToString("X2"),
 					" ",

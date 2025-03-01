@@ -401,7 +401,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("CheckBox1")]
-        private CheckBox CheckBox1
+        private CheckBox Add74ByteCheckBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -553,7 +553,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox12")]
-        private TextBox TextBox12
+        private TextBox AeroRearTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -561,7 +561,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox13")]
-        private TextBox TextBox13
+        private TextBox AeroFrontTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -585,7 +585,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox15")]
-        private TextBox TextBox15
+        private TextBox SuspensionHeightRearTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -593,7 +593,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox14")]
-        private TextBox TextBox14
+        private TextBox SuspensionHeightFrontTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -609,7 +609,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox16")]
-        private TextBox TextBox16
+        private TextBox GripTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -633,7 +633,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox17")]
-        private TextBox TextBox17
+        private TextBox SpringRateRearTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -641,7 +641,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox18")]
-        private TextBox TextBox18
+        private TextBox SpringRateFrontTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -901,7 +901,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox19")]
-        public TextBox TextBox19
+        public TextBox ExhauseMultiplierTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -917,7 +917,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox20")]
-        private TextBox TextBox20
+        private TextBox CarBodyCodeTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -933,7 +933,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox21")]
-        private TextBox TextBox21
+        private TextBox SuspensionCodeTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -949,7 +949,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox22")]
-        private TextBox TextBox22
+        private TextBox LsdCodeTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -965,7 +965,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox23")]
-        private TextBox TextBox23
+        private TextBox HornCodeTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -1201,7 +1201,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox24")]
-        private TextBox TextBox24
+        private TextBox WeightMultiplierTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -1448,30 +1448,30 @@ namespace GT5_Car_hack_workshop_2
 
             TurboModifierTextBox.Text = $"{Gt5Save[Moff - 171]:X2} {Gt5Save[Moff - 170]:X2} {Gt5Save[Moff - 169]:X2} {Gt5Save[Moff - 168]:X2}";
 
-            TextBox13.Text = Gt5Save[Moff - 43].ToString();
-            TextBox12.Text = Gt5Save[Moff - 42].ToString();
+            AeroFrontTextBox.Text = Gt5Save[Moff - 43].ToString();
+            AeroRearTextBox.Text = Gt5Save[Moff - 42].ToString();
 
             var suspensionHeightFront = ConvertBytesToUnsignedInt(new[] { Gt5Save[Moff - 33], Gt5Save[Moff - 32] });
-            TextBox14.Text = suspensionHeightFront.ToString();
+            SuspensionHeightFrontTextBox.Text = suspensionHeightFront.ToString();
             var suspensionHeightRear = ConvertBytesToUnsignedInt(new[] { Gt5Save[Moff - 31], Gt5Save[Moff - 30] });
-            TextBox15.Text = suspensionHeightRear.ToString();
+            SuspensionHeightRearTextBox.Text = suspensionHeightRear.ToString();
 
-            TextBox16.Text = Gt5Save[Moff + 10].ToString();
+            GripTextBox.Text = Gt5Save[Moff + 10].ToString();
 
-            TextBox18.Text = Gt5Save[Moff - 27].ToString();
-            TextBox17.Text = Gt5Save[Moff - 26].ToString();
+            SpringRateFrontTextBox.Text = Gt5Save[Moff - 27].ToString();
+            SpringRateRearTextBox.Text = Gt5Save[Moff - 26].ToString();
 
-            TextBox19.Text = $"{Gt5Save[Moff - 155]:X2} {Gt5Save[Moff - 154]:X2} {Gt5Save[Moff - 153]:X2} {Gt5Save[Moff - 152]:X2}";
+            ExhauseMultiplierTextBox.Text = $"{Gt5Save[Moff - 155]:X2} {Gt5Save[Moff - 154]:X2} {Gt5Save[Moff - 153]:X2} {Gt5Save[Moff - 152]:X2}";
 
-            TextBox20.Text = $"{Gt5Save[Moff - 262]:X2} {Gt5Save[Moff - 261]:X2}";
+            CarBodyCodeTextBox.Text = $"{Gt5Save[Moff - 262]:X2} {Gt5Save[Moff - 261]:X2}";
 
-            TextBox21.Text = $"{Gt5Save[Moff - 201]:X2} {Gt5Save[Moff - 200]:X2}";
+            SuspensionCodeTextBox.Text = $"{Gt5Save[Moff - 201]:X2} {Gt5Save[Moff - 200]:X2}";
 
-            TextBox22.Text = $"{Gt5Save[Moff - 197]:X2} {Gt5Save[Moff - 196]:X2}";
+            LsdCodeTextBox.Text = $"{Gt5Save[Moff - 197]:X2} {Gt5Save[Moff - 196]:X2}";
 
-            TextBox23.Text = $"{Gt5Save[Moff + 23]:X2} {Gt5Save[Moff + 24]:X2}";
+            HornCodeTextBox.Text = $"{Gt5Save[Moff + 23]:X2} {Gt5Save[Moff + 24]:X2}";
 
-            TextBox24.Text = $"{Gt5Save[Moff - 191]:X2} {Gt5Save[Moff - 190]:X2} {Gt5Save[Moff - 189]:X2} {Gt5Save[Moff - 188]:X2}";
+            WeightMultiplierTextBox.Text = $"{Gt5Save[Moff - 191]:X2} {Gt5Save[Moff - 190]:X2} {Gt5Save[Moff - 189]:X2} {Gt5Save[Moff - 188]:X2}";
         }
 
         private int ConvertBytesToUnsignedInt(byte[] bytes)
@@ -1512,6 +1512,38 @@ namespace GT5_Car_hack_workshop_2
             }
 
             return byteList.ToArray();
+        }
+
+        public static byte[] ConvertToByteArray(int value, int outputSize = 0)
+        {
+            // Throws an exception if the value is negative
+            if (value < 0)
+                throw new ArgumentOutOfRangeException(nameof(value), "Value must be non-negative.");
+
+            // Create a list to store bytes
+            var byteList = new System.Collections.Generic.List<byte>();
+
+            // Extract the bytes from the integer
+            while (value > 0)
+            {
+                byteList.Insert(0, (byte)(value & 0xFF)); // Get the least significant byte
+                value >>= 8; // Shift right by 8 bits (1 byte)
+            }
+
+            // If outputSize is greater than the current size, pad the array with leading zeros
+            while (byteList.Count < outputSize)
+            {
+                byteList.Insert(0, 0); // Add padding at the beginning
+            }
+
+            // Validate if the array exceeds the outputSize and throw an error
+            if (outputSize != 0 && byteList.Count > outputSize)
+            {
+                throw new ArgumentOutOfRangeException(nameof(outputSize), "Output size is too small to represent the value.");
+            }
+
+            // Convert the list to an array and return it
+            return byteList.Count > 0 ? byteList.ToArray() : new byte[] { 0 };
         }
 
 
@@ -1680,199 +1712,210 @@ namespace GT5_Car_hack_workshop_2
                 Gt5Save[Moff - 116] = 61;
             }
 
-            if ((Conversion.Val(TextBox13.Text) > 255.0) | (Conversion.Val(TextBox13.Text) < 0.0))
-            {
-                TextBox13.Text = Conversions.ToString(0);
-                Interaction.MsgBox("Front Aero cannot be higher than 255 or lower than 0. Reverting back to 0");
-            }
-
-            if ((Conversion.Val(TextBox12.Text) > 255.0) | (Conversion.Val(TextBox12.Text) < 0.0))
-            {
-                TextBox12.Text = Conversions.ToString(0);
-                Interaction.MsgBox("Rear Aero cannot be higher than 255 or lower than 0. Reverting back to 0");
-            }
-
-            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 43))] =
-                Conversions.ToByte(TextBox13.Text);
-            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 42))] =
-                Conversions.ToByte(TextBox12.Text);
             try
             {
-                string working8 = TextBox14.Text;
-                working8 = Conversions.ToString(Conversion.Val(working8));
-                int @int = Conversions.ToInteger(Conversion.Int(working8));
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 33))] =
-                    (byte)Math.Round(Conversion.Val("&H" + @int.ToString("X4").Substring(0, 2)));
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 32))] =
-                    (byte)Math.Round(Conversion.Val("&H" + @int.ToString("X4").Substring(2, 2)));
-            }
-            catch (Exception ex8)
-            {
-            }
-
-            try
-            {
-                string working9 = TextBox15.Text;
-                working9 = Conversions.ToString(Conversion.Val(working9));
-                int int2 = Conversions.ToInteger(Conversion.Int(working9));
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 31))] =
-                    (byte)Math.Round(Conversion.Val("&H" + int2.ToString("X4").Substring(0, 2)));
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 30))] =
-                    (byte)Math.Round(Conversion.Val("&H" + int2.ToString("X4").Substring(2, 2)));
-            }
-            catch (Exception ex9)
-            {
-            }
-
-            Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 10))] =
-                Conversions.ToByte(TextBox16.Text);
-            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 27))] =
-                Conversions.ToByte(TextBox18.Text);
-            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 26))] =
-                Conversions.ToByte(TextBox17.Text);
-            try
-            {
-                string working10 = TextBox19.Text;
-                working10 = working10.Replace(" ", "");
-                object[] bytes7 = new object[4];
-                int num13 = 0;
-                int num14 = bytes7.Length - 1;
-                for (int i2 = num13; i2 <= num14; i2++)
+                if (!byte.TryParse(AeroFrontTextBox.Text, out var AeroFront))
                 {
-                    bytes7[i2] = working10.Substring(i2 * 2, 2);
-                    bytes7[i2] = Conversion.Val(Operators.ConcatenateObject("&H", bytes7[i2]));
+                    throw new FormatException("Aero front value must be a byte value (0-255).");
                 }
 
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 155))] =
-                    Conversions.ToByte(bytes7[0]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 154))] =
-                    Conversions.ToByte(bytes7[1]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 153))] =
-                    Conversions.ToByte(bytes7[2]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 152))] =
-                    Conversions.ToByte(bytes7[3]);
+                Gt5Save[Moff - 43] = AeroFront;
             }
-            catch (Exception ex10)
+            catch (Exception e)
             {
+                MessageBox.Show($"Can't save aero front to the save file.\n{e.Message}");
+                return;
             }
 
             try
             {
-                string working11 = TextBox20.Text;
-                working11 = working11.Replace(" ", "");
-                object[] bytes8 = new object[2];
-                int num15 = 0;
-                int num16 = bytes8.Length - 1;
-                for (int i3 = num15; i3 <= num16; i3++)
+                if (!byte.TryParse(AeroRearTextBox.Text, out var AeroRear))
                 {
-                    bytes8[i3] = working11.Substring(i3 * 2, 2);
-                    bytes8[i3] = Conversion.Val(Operators.ConcatenateObject("&H", bytes8[i3]));
+                    throw new FormatException("Aero rear value must be a byte value (0-255).");
                 }
 
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 262))] =
-                    Conversions.ToByte(bytes8[0]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 261))] =
-                    Conversions.ToByte(bytes8[1]);
+                Gt5Save[Moff - 42] = AeroRear;
             }
-            catch (Exception ex11)
+            catch (Exception e)
             {
+                MessageBox.Show($"Can't save aero rear to the save file.\n{e.Message}");
+                return;
             }
 
             try
             {
-                string working12 = TextBox21.Text;
-                working12 = working12.Replace(" ", "");
-                object[] bytes9 = new object[2];
-                int num17 = 0;
-                int num18 = bytes9.Length - 1;
-                for (int i4 = num17; i4 <= num18; i4++)
+                if (!int.TryParse(SuspensionHeightFrontTextBox.Text, out var suspensionHeightFront))
                 {
-                    bytes9[i4] = working12.Substring(i4 * 2, 2);
-                    bytes9[i4] = Conversion.Val(Operators.ConcatenateObject("&H", bytes9[i4]));
+                    throw new FormatException("Suspension height front value must be a number.");
                 }
 
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 201))] =
-                    Conversions.ToByte(bytes9[0]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 200))] =
-                    Conversions.ToByte(bytes9[1]);
+                if (suspensionHeightFront < 0 || suspensionHeightFront > (2 ^ 16) - 1)
+                {
+                    throw new FormatException("Suspension height front value must be between 0 and 65535.");
+                }
+
+                var suspensionHeightFrontBytes = ConvertToByteArray(suspensionHeightFront, 2);
+                Gt5Save[Moff - 33] = suspensionHeightFrontBytes[0];
+                Gt5Save[Moff - 32] = suspensionHeightFrontBytes[1];
             }
-            catch (Exception ex12)
+            catch (Exception e)
             {
+                MessageBox.Show($"Can't save suspension height front to the save file.\n{e.Message}");
+                return;
             }
 
             try
             {
-                string working13 = TextBox22.Text;
-                working13 = working13.Replace(" ", "");
-                object[] bytes10 = new object[2];
-                int num19 = 0;
-                int num20 = bytes10.Length - 1;
-                for (int i5 = num19; i5 <= num20; i5++)
+                if (!int.TryParse(SuspensionHeightRearTextBox.Text, out var suspensionHeightRear))
                 {
-                    bytes10[i5] = working13.Substring(i5 * 2, 2);
-                    bytes10[i5] = Conversion.Val(Operators.ConcatenateObject("&H", bytes10[i5]));
+                    throw new FormatException("Suspension height rear value must be a number.");
                 }
 
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 197))] =
-                    Conversions.ToByte(bytes10[0]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 196))] =
-                    Conversions.ToByte(bytes10[1]);
+                if (suspensionHeightRear < 0 || suspensionHeightRear > (2 ^ 16) - 1)
+                {
+                    throw new FormatException("Suspension height rear value must be between 0 and 65535.");
+                }
+
+                var suspensionHeightRearBytes = ConvertToByteArray(suspensionHeightRear, 2);
+                Gt5Save[Moff - 31] = suspensionHeightRearBytes[0];
+                Gt5Save[Moff - 30] = suspensionHeightRearBytes[1];
             }
-            catch (Exception ex13)
+            catch (Exception e)
             {
+                MessageBox.Show($"Can't save suspension height rear to the save file.\n{e.Message}");
+                return;
             }
 
             try
             {
-                string working14 = TextBox23.Text;
-                working14 = working14.Replace(" ", "");
-                object[] bytes11 = new object[2];
-                int num21 = 0;
-                int num22 = bytes11.Length - 1;
-                for (int i6 = num21; i6 <= num22; i6++)
+                if (!byte.TryParse(GripTextBox.Text, out var grip))
                 {
-                    bytes11[i6] = working14.Substring(i6 * 2, 2);
-                    bytes11[i6] = Conversion.Val(Operators.ConcatenateObject("&H", bytes11[i6]));
+                    throw new FormatException("Grip value must be a byte value (0-255).");
                 }
 
-                Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 23))] =
-                    Conversions.ToByte(bytes11[0]);
-                Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 24))] =
-                    Conversions.ToByte(bytes11[1]);
+                Gt5Save[Moff + 10] = grip;
             }
-            catch (Exception ex14)
+            catch (Exception e)
             {
+                MessageBox.Show($"Can't save grip to the save file.\n{e.Message}");
+                return;
             }
 
             try
             {
-                string working15 = TextBox24.Text;
-                working15 = working15.Replace(" ", "");
-                object[] bytes12 = new object[4];
-                int num23 = 0;
-                int num24 = bytes12.Length - 1;
-                for (int i7 = num23; i7 <= num24; i7++)
+                if (!byte.TryParse(SpringRateFrontTextBox.Text, out var springRateFront))
                 {
-                    bytes12[i7] = working15.Substring(i7 * 2, 2);
-                    bytes12[i7] = Conversion.Val(Operators.ConcatenateObject("&H", bytes12[i7]));
+                    throw new FormatException("Spring rate front value must be a byte value (0-255).");
                 }
 
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 191))] =
-                    Conversions.ToByte(bytes12[0]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 190))] =
-                    Conversions.ToByte(bytes12[1]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 189))] =
-                    Conversions.ToByte(bytes12[2]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 188))] =
-                    Conversions.ToByte(bytes12[3]);
+                Gt5Save[Moff - 27] = springRateFront;
             }
-            catch (Exception ex15)
+            catch (Exception e)
             {
+                MessageBox.Show($"Can't save spring rate front to the save file.\n{e.Message}");
+                return;
             }
 
-            if (CheckBox1.Checked)
+            try
             {
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 260))] = 116;
+                if (!byte.TryParse(SpringRateRearTextBox.Text, out var springRateRear))
+                {
+                    throw new FormatException("Spring rate front value must be a byte value (0-255).");
+                }
+
+                Gt5Save[Moff - 26] = springRateRear;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Can't save spring rate rear to the save file.\n{e.Message}");
+                return;
+            }
+
+            try
+            {
+                var exhauseMultiplier = HexStringToByteArray(ExhauseMultiplierTextBox.Text);
+
+                Gt5Save[Moff - 155] = exhauseMultiplier[0];
+                Gt5Save[Moff - 154] = exhauseMultiplier[1];
+                Gt5Save[Moff - 153] = exhauseMultiplier[2];
+                Gt5Save[Moff - 152] = exhauseMultiplier[3];
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Can't save exhause multiplier to the save file.\n{e.Message}");
+                return;
+            }
+
+            try
+            {
+                var carBodyCode = HexStringToByteArray(CarBodyCodeTextBox.Text);
+
+                Gt5Save[Moff - 262] = carBodyCode[0];
+                Gt5Save[Moff - 261] = carBodyCode[1];
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Can't save car body code to the save file.\n{e.Message}");
+                return;
+            }
+
+            try
+            {
+                var suspensionCode = HexStringToByteArray(SuspensionCodeTextBox.Text);
+
+                Gt5Save[Moff - 201] = suspensionCode[0];
+                Gt5Save[Moff - 200] = suspensionCode[1];
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Can't save suspension code to the save file.\n{e.Message}");
+                return;
+            }
+
+            try
+            {
+                var lsdCode = HexStringToByteArray(LsdCodeTextBox.Text);
+
+                Gt5Save[Moff - 197] = lsdCode[0];
+                Gt5Save[Moff - 196] = lsdCode[1];
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Can't save LSD code to the save file.\n{e.Message}");
+                return;
+            }
+
+            try
+            {
+                var hornCode = HexStringToByteArray(HornCodeTextBox.Text);
+
+                Gt5Save[Moff + 23] = hornCode[0];
+                Gt5Save[Moff + 24] = hornCode[1];
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Can't save Horn code to the save file.\n{e.Message}");
+                return;
+            }
+
+            try
+            {
+                var weightMultiplier = HexStringToByteArray(WeightMultiplierTextBox.Text);
+
+                Gt5Save[Moff - 191] = weightMultiplier[0];
+                Gt5Save[Moff - 190] = weightMultiplier[1];
+                Gt5Save[Moff - 189] = weightMultiplier[2];
+                Gt5Save[Moff - 188] = weightMultiplier[3];
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Can't save weight multiplier to the save file.\n{e.Message}");
+                return;
+            }
+
+            if (Add74ByteCheckBox.Checked)
+            {
+                Gt5Save[Moff-260] = 116;
             }
 
             if (CheckBox3.Checked)
@@ -2082,10 +2125,10 @@ namespace GT5_Car_hack_workshop_2
                 DrivetrainCodeTextBox.Text + "," +
                 ChassisCodeTextBox.Text + "," +
                 TransmissionCodeTextBox.Text + "," +
-                TextBox20.Text + "," +
-                TextBox21.Text + "," +
-                TextBox22.Text + "," +
-                TextBox23.Text;
+                CarBodyCodeTextBox.Text + "," +
+                SuspensionCodeTextBox.Text + "," +
+                LsdCodeTextBox.Text + "," +
+                HornCodeTextBox.Text;
 
             for (int j = 0; j <= _CarParts.Length - 1; j++)
             {
@@ -2191,7 +2234,7 @@ namespace GT5_Car_hack_workshop_2
             try
             {
                 string[] sparr = ComboBox5.SelectedItem.ToString().Split(',');
-                TextBox21.Text = sparr[1];
+                SuspensionCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
             {
@@ -2204,7 +2247,7 @@ namespace GT5_Car_hack_workshop_2
             try
             {
                 string[] sparr = ComboBox6.SelectedItem.ToString().Split(',');
-                TextBox20.Text = sparr[1];
+                CarBodyCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
             {
@@ -2217,7 +2260,7 @@ namespace GT5_Car_hack_workshop_2
             try
             {
                 string[] sparr = ComboBox7.SelectedItem.ToString().Split(',');
-                TextBox22.Text = sparr[1];
+                LsdCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
             {
@@ -2230,7 +2273,7 @@ namespace GT5_Car_hack_workshop_2
             try
             {
                 string[] sparr = ComboBox8.SelectedItem.ToString().Split(',');
-                TextBox23.Text = sparr[1];
+                HornCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
             {
