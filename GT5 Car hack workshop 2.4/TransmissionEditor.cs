@@ -30,7 +30,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual Label Label1
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -38,7 +37,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual Label Label2
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -46,7 +44,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual Label Label3
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -54,7 +51,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual Label Label4
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -62,7 +58,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual Label Label5
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -70,7 +65,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual Label Label6
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -78,7 +72,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual Label Label7
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -86,7 +79,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual Label Label8
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -94,7 +86,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual Label Label9
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -102,7 +93,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual Label Label10
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -110,7 +100,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual Label Label11
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -118,7 +107,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual TextBox TextBox1
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -126,7 +114,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual TextBox TextBox2
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -134,7 +121,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual TextBox TextBox3
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -142,7 +128,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual TextBox TextBox4
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -150,7 +135,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual TextBox TextBox5
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -158,7 +142,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual TextBox TextBox6
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -166,7 +149,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual TextBox TextBox7
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -174,7 +156,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual TextBox TextBox8
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -182,7 +163,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual TextBox TextBox9
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -190,7 +170,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual TextBox TextBox10
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -198,7 +177,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual TextBox TextBox11
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -206,7 +184,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual TextBox TextBox12
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -214,14 +191,12 @@ namespace GT5_Car_hack_workshop_2
         internal virtual Label Label12
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
         internal virtual Button Button1
         {
             get => _Button1;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
                 EventHandler eventHandler = Button1_Click;
@@ -236,7 +211,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual GroupBox GroupBox1
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -244,7 +218,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual TextBox TextBox14
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -252,7 +225,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual Label Label14
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -260,7 +232,6 @@ namespace GT5_Car_hack_workshop_2
         internal virtual TextBox TextBox13
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
@@ -268,14 +239,12 @@ namespace GT5_Car_hack_workshop_2
         internal virtual Label Label13
         {
             get;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
 
         internal virtual Timer Timer1
         {
             get => _Timer1;
-            [MethodImpl(MethodImplOptions.Synchronized)]
             set
             {
                 EventHandler eventHandler = Timer1_Tick;
