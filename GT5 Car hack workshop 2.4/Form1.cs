@@ -1515,7 +1515,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
 
-        private void savedata()
+        private void SaveData()
         {
             try
             {
@@ -2011,7 +2011,7 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x06000147 RID: 327 RVA: 0x0000D87C File Offset: 0x0000BC7C
         private void Button3_Click(object sender, EventArgs e)
         {
-            savedata();
+            SaveData();
             LoadData.Encrypt(TextBox1.Text);
             Interaction.MsgBox("Data saved, immediately goto the GT Auto and change the cars oil to apply the hacks.");
         }
@@ -2019,7 +2019,7 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x06000148 RID: 328 RVA: 0x0000D8A4 File Offset: 0x0000BCA4
         private void Button5_Click(object sender, EventArgs e)
         {
-            savedata();
+            SaveData();
         }
 
         // Token: 0x06000149 RID: 329 RVA: 0x0000D8AC File Offset: 0x0000BCAC
@@ -2290,7 +2290,7 @@ namespace GT5_Car_hack_workshop_2
             Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 248))] = byte.MaxValue;
             Interaction.MsgBox(
                 "The car is now yours, you can now either hack it, or click encrypt and save then return the data to the PS3");
-            savedata();
+            SaveData();
         }
 
         // Token: 0x0600015E RID: 350 RVA: 0x0000E150 File Offset: 0x0000C550
@@ -2315,7 +2315,7 @@ namespace GT5_Car_hack_workshop_2
             Gt5Save[Moff + 2284] = byte.MaxValue;
             Gt5Save[Moff + 2285] = byte.MaxValue;
             Interaction.MsgBox("You now have 4,294,967,295 cr");
-            savedata();
+            SaveData();
         }
 
         private void SlamCar_Button19_Click(object sender, EventArgs e)
