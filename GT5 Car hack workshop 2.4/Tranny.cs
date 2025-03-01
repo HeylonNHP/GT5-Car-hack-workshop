@@ -10,11 +10,9 @@ using Microsoft.VisualBasic.CompilerServices;
 
 namespace GT5_Car_hack_workshop_2
 {
-    // Token: 0x0200000F RID: 15
     [DesignerGenerated]
     public partial class Tranny : Form
     {
-        // Token: 0x06000176 RID: 374 RVA: 0x0000E330 File Offset: 0x0000C730
         public Tranny()
         {
             base.Load += this.Tranny_Load;
