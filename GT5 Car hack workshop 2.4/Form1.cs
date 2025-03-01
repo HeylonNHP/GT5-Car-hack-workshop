@@ -409,7 +409,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox8")]
-        private TextBox TextBox8
+        private TextBox TransmissionCodeTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -449,7 +449,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox9")]
-        private TextBox TextBox9
+        private TextBox RemoveSpoilerCodeTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -485,7 +485,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox10")]
-        private TextBox TextBox10
+        private TextBox PaintCodesTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -521,7 +521,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("TextBox11")]
-        public TextBox TextBox11
+        public TextBox TurboModifierTextBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -537,7 +537,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("CheckBox2")]
-        private CheckBox CheckBox2
+        private CheckBox SambaLikePerformanceCheckbox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -1441,12 +1441,12 @@ namespace GT5_Car_hack_workshop_2
             TorqueSplitTextBox.Text = Conversion.Val("&H" + Gt5Save[Moff - 46].ToString("X2")).ToString(CultureInfo.CurrentCulture);
             DrivetrainCodeTextBox.Text = Gt5Save[Moff - 209].ToString("X2") + " " + Gt5Save[Moff - 208].ToString("X2");
             ChassisCodeTextBox.Text = Gt5Save[Moff - 217].ToString("X2") + " " + Gt5Save[Moff - 216].ToString("X2");
-            TextBox8.Text = Gt5Save[Moff - 205].ToString("X2") + " " + Gt5Save[Moff - 204].ToString("X2");
-            TextBox9.Text = Gt5Save[Moff - 88].ToString();
+            TransmissionCodeTextBox.Text = Gt5Save[Moff - 205].ToString("X2") + " " + Gt5Save[Moff - 204].ToString("X2");
+            RemoveSpoilerCodeTextBox.Text = Gt5Save[Moff - 88].ToString();
 
-            TextBox10.Text = $"{Gt5Save[Moff - 344]:X2} {Gt5Save[Moff - 343]:X2} {Gt5Save[Moff - 342]:X2} {Gt5Save[Moff - 341]:X2}";
+            PaintCodesTextBox.Text = $"{Gt5Save[Moff - 344]:X2} {Gt5Save[Moff - 343]:X2} {Gt5Save[Moff - 342]:X2} {Gt5Save[Moff - 341]:X2}";
 
-            TextBox11.Text = $"{Gt5Save[Moff - 171]:X2} {Gt5Save[Moff - 170]:X2} {Gt5Save[Moff - 169]:X2} {Gt5Save[Moff - 168]:X2}";
+            TurboModifierTextBox.Text = $"{Gt5Save[Moff - 171]:X2} {Gt5Save[Moff - 170]:X2} {Gt5Save[Moff - 169]:X2} {Gt5Save[Moff - 168]:X2}";
 
             TextBox13.Text = Gt5Save[Moff - 43].ToString();
             TextBox12.Text = Gt5Save[Moff - 42].ToString();
@@ -1566,7 +1566,7 @@ namespace GT5_Car_hack_workshop_2
             try
             {
                 var chassisByteValues = HexStringToByteArray(ChassisCodeTextBox.Text);
-                
+
                 Gt5Save[Moff - 217] = chassisByteValues[0];
                 Gt5Save[Moff - 216] = chassisByteValues[1];
             }
@@ -1578,126 +1578,106 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                string working5 = TextBox8.Text;
-                working5 = working5.Replace(" ", "");
-                object[] bytes4 = new object[2];
-                int num7 = 0;
-                int num8 = bytes4.Length - 1;
-                for (int l = num7; l <= num8; l++)
-                {
-                    bytes4[l] = working5.Substring(l * 2, 2);
-                    bytes4[l] = Conversion.Val(Operators.ConcatenateObject("&H", bytes4[l]));
-                }
+                var transmissionByteValues = HexStringToByteArray(TransmissionCodeTextBox.Text);
 
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 205))] =
-                    Conversions.ToByte(bytes4[0]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 204))] =
-                    Conversions.ToByte(bytes4[1]);
+                Gt5Save[Moff - 205] = transmissionByteValues[0];
+                Gt5Save[Moff - 204] = transmissionByteValues[1];
             }
-            catch (Exception ex5)
+            catch (Exception e)
             {
-            }
-
-            if ((Conversion.Val(TextBox9.Text) > 255.0) | (Conversion.Val(TextBox9.Text) < 0.0))
-            {
-                TextBox9.Text = Conversions.ToString(0);
-                Interaction.MsgBox(
-                    "Remove wing value cannot be higher than 255 or lower than 0. Reverting back to 0");
-            }
-
-            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 88))] =
-                Conversions.ToByte(TextBox9.Text);
-            try
-            {
-                string working6 = TextBox10.Text;
-                working6 = working6.Replace(" ", "");
-                object[] bytes5 = new object[4];
-                int num9 = 0;
-                int num10 = bytes5.Length - 1;
-                for (int m = num9; m <= num10; m++)
-                {
-                    bytes5[m] = working6.Substring(m * 2, 2);
-                    bytes5[m] = Conversion.Val(Operators.ConcatenateObject("&H", bytes5[m]));
-                }
-
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 344))] =
-                    Conversions.ToByte(bytes5[0]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 343))] =
-                    Conversions.ToByte(bytes5[1]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 342))] =
-                    Conversions.ToByte(bytes5[2]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 341))] =
-                    Conversions.ToByte(bytes5[3]);
-            }
-            catch (Exception ex6)
-            {
+                MessageBox.Show($"Can't save transmission code to the save file.\n{e.Message}");
+                return;
             }
 
             try
             {
-                string working7 = TextBox11.Text;
-                working7 = working7.Replace(" ", "");
-                object[] bytes6 = new object[4];
-                int num11 = 0;
-                int num12 = bytes6.Length - 1;
-                for (int n = num11; n <= num12; n++)
+                if (!int.TryParse(RemoveSpoilerCodeTextBox.Text, out var value))
                 {
-                    bytes6[n] = working7.Substring(n * 2, 2);
-                    bytes6[n] = Conversion.Val(Operators.ConcatenateObject("&H", bytes6[n]));
+                    throw new FormatException("Remove spoiler value must be a number.");
                 }
 
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 171))] =
-                    Conversions.ToByte(bytes6[0]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 170))] =
-                    Conversions.ToByte(bytes6[1]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 169))] =
-                    Conversions.ToByte(bytes6[2]);
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 168))] =
-                    Conversions.ToByte(bytes6[3]);
+                if (value < 0 || value > 255)
+                {
+                    throw new FormatException("Remove spoiler value must be between 0 and 255.");
+                }
+
+                Gt5Save[Moff - 88] = (byte)value;
             }
-            catch (Exception ex7)
+            catch (Exception e)
             {
+                MessageBox.Show($"Can't save remove spoiler to the save file.\n{e.Message}");
+                return;
             }
 
-            if (CheckBox2.Checked)
+            try
             {
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 332))] = 56;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 331))] = 9;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 330))] = 8;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 315))] = 80;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 314))] = 9;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 179))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 178))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 177))] = 5;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 176))] = 81;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 175))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 174))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 173))] = 14;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 172))] = 242;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 171))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 170))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 169))] = 21;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 168))] = 39;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 155))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 154))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 153))] = 20;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 152))] = 60;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 131))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 130))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 129))] = 3;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 128))] = 88;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 127))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 126))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 125))] = 3;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 124))] = 88;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 123))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 122))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 121))] = 3;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 120))] = 56;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 119))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 118))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 117))] = 3;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 116))] = 61;
+                var paintCodes = HexStringToByteArray(PaintCodesTextBox.Text);
+
+                Gt5Save[Moff - 344] = paintCodes[0];
+                Gt5Save[Moff - 343] = paintCodes[1];
+                Gt5Save[Moff - 342] = paintCodes[2];
+                Gt5Save[Moff - 341] = paintCodes[3];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Can't save paint codes to the save file.\n{ex.Message}");
+                return;
+            }
+
+            try
+            {
+                var turboModifier = HexStringToByteArray(TurboModifierTextBox.Text);
+
+                Gt5Save[Moff - 171] = turboModifier[0];
+                Gt5Save[Moff - 170] = turboModifier[1];
+                Gt5Save[Moff - 169] = turboModifier[2];
+                Gt5Save[Moff - 168] = turboModifier[3];
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"Can't save turbo modifier to the save file.\n{e.Message}");
+                return;
+            }
+
+            if (SambaLikePerformanceCheckbox.Checked)
+            {
+                Gt5Save[Moff - 332] = 56;
+                Gt5Save[Moff - 331] = 9;
+                Gt5Save[Moff - 330] = 8;
+                Gt5Save[Moff - 315] = 80;
+                Gt5Save[Moff - 314] = 9;
+                Gt5Save[Moff - 179] = 0;
+                Gt5Save[Moff - 178] = 0;
+                Gt5Save[Moff - 177] = 5;
+                Gt5Save[Moff - 176] = 81;
+                Gt5Save[Moff - 175] = 0;
+                Gt5Save[Moff - 174] = 0;
+                Gt5Save[Moff - 173] = 14;
+                Gt5Save[Moff - 172] = 242;
+                Gt5Save[Moff - 171] = 0;
+                Gt5Save[Moff - 170] = 0;
+                Gt5Save[Moff - 169] = 21;
+                Gt5Save[Moff - 168] = 39;
+                Gt5Save[Moff - 155] = 0;
+                Gt5Save[Moff - 154] = 0;
+                Gt5Save[Moff - 153] = 20;
+                Gt5Save[Moff - 152] = 60;
+                Gt5Save[Moff - 131] = 0;
+                Gt5Save[Moff - 130] = 0;
+                Gt5Save[Moff - 129] = 3;
+                Gt5Save[Moff - 128] = 88;
+                Gt5Save[Moff - 127] = 0;
+                Gt5Save[Moff - 126] = 0;
+                Gt5Save[Moff - 125] = 3;
+                Gt5Save[Moff - 124] = 88;
+                Gt5Save[Moff - 123] = 0;
+                Gt5Save[Moff - 122] = 0;
+                Gt5Save[Moff - 121] = 3;
+                Gt5Save[Moff - 120] = 56;
+                Gt5Save[Moff - 119] = 0;
+                Gt5Save[Moff - 118] = 0;
+                Gt5Save[Moff - 117] = 3;
+                Gt5Save[Moff - 116] = 61;
             }
 
             if ((Conversion.Val(TextBox13.Text) > 255.0) | (Conversion.Val(TextBox13.Text) < 0.0))
@@ -2101,7 +2081,7 @@ namespace GT5_Car_hack_workshop_2
                 EngineCodeTextBox.Text + "," +
                 DrivetrainCodeTextBox.Text + "," +
                 ChassisCodeTextBox.Text + "," +
-                TextBox8.Text + "," +
+                TransmissionCodeTextBox.Text + "," +
                 TextBox20.Text + "," +
                 TextBox21.Text + "," +
                 TextBox22.Text + "," +
@@ -2198,7 +2178,7 @@ namespace GT5_Car_hack_workshop_2
             try
             {
                 string[] sparr = ComboBox4.SelectedItem.ToString().Split(',');
-                TextBox8.Text = sparr[1];
+                TransmissionCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
             {

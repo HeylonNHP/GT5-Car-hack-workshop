@@ -459,7 +459,7 @@ namespace GT5_Car_hack_workshop_2
 				catch (Exception ex8)
 				{
 				}
-				MyProject.Forms.Form1.TextBox11.Text = string.Concat(new string[]
+				MyProject.Forms.Form1.TurboModifierTextBox.Text = string.Concat(new string[]
 				{
 					MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 171))].ToString("X2"),
 					" ",
