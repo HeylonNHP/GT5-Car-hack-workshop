@@ -1037,7 +1037,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("CheckBox3")]
-        private CheckBox CheckBox3
+        private CheckBox AddLucaBytesCheckBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -1353,7 +1353,7 @@ namespace GT5_Car_hack_workshop_2
         }
 
         [field: AccessedThroughProperty("CheckBox5")]
-        private CheckBox CheckBox5
+        private CheckBox RemoveHoodCheckBox
         {
             get;
             [MethodImpl(MethodImplOptions.Synchronized)]
@@ -1915,29 +1915,29 @@ namespace GT5_Car_hack_workshop_2
 
             if (Add74ByteCheckBox.Checked)
             {
-                Gt5Save[Moff-260] = 116;
+                Gt5Save[Moff - 260] = 116;
             }
 
-            if (CheckBox3.Checked)
+            if (AddLucaBytesCheckBox.Checked)
             {
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 260))] = 76;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 259))] = 85;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 258))] = 67;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 257))] = 65;
+                Gt5Save[Moff - 260] = 76;
+                Gt5Save[Moff - 259] = 85;
+                Gt5Save[Moff - 258] = 67;
+                Gt5Save[Moff - 257] = 65;
             }
 
-            if (CheckBox5.Checked)
+            if (RemoveHoodCheckBox.Checked)
             {
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 313))] = byte.MaxValue;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 107))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 106))] = 52;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 105))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 104))] = 3;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 311))] = 0;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 83))] = byte.MaxValue;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 82))] = byte.MaxValue;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 81))] = byte.MaxValue;
-                Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 80))] = byte.MaxValue;
+                Gt5Save[Moff - 313] = byte.MaxValue;
+                Gt5Save[Moff - 107] = 0;
+                Gt5Save[Moff - 106] = 52;
+                Gt5Save[Moff - 105] = 0;
+                Gt5Save[Moff - 104] = 3;
+                Gt5Save[Moff - 311] = 0;
+                Gt5Save[Moff - 83] = byte.MaxValue;
+                Gt5Save[Moff - 82] = byte.MaxValue;
+                Gt5Save[Moff - 81] = byte.MaxValue;
+                Gt5Save[Moff - 80] = byte.MaxValue;
             }
 
             if (CheckBox7.Checked)
