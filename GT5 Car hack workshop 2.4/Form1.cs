@@ -1602,7 +1602,7 @@ namespace GT5_Car_hack_workshop_2
             {
                 if (!int.TryParse(SuspensionHeightFrontTextBox.Text, out var suspensionHeightFront)) throw new FormatException("Suspension height front value must be a number.");
 
-                if (suspensionHeightFront < 0 || suspensionHeightFront > (2 ^ 16) - 1) throw new FormatException("Suspension height front value must be between 0 and 65535.");
+                if (suspensionHeightFront < 0 || suspensionHeightFront > 65535) throw new FormatException("Suspension height front value must be between 0 and 65535.");
 
                 var suspensionHeightFrontBytes = ConvertToByteArray(suspensionHeightFront, 2);
                 Gt5Save[Moff - 33] = suspensionHeightFrontBytes[0];
@@ -1618,7 +1618,7 @@ namespace GT5_Car_hack_workshop_2
             {
                 if (!int.TryParse(SuspensionHeightRearTextBox.Text, out var suspensionHeightRear)) throw new FormatException("Suspension height rear value must be a number.");
 
-                if (suspensionHeightRear < 0 || suspensionHeightRear > (2 ^ 16) - 1) throw new FormatException("Suspension height rear value must be between 0 and 65535.");
+                if (suspensionHeightRear < 0 || suspensionHeightRear > 65535) throw new FormatException("Suspension height rear value must be between 0 and 65535.");
 
                 var suspensionHeightRearBytes = ConvertToByteArray(suspensionHeightRear, 2);
                 Gt5Save[Moff - 31] = suspensionHeightRearBytes[0];
