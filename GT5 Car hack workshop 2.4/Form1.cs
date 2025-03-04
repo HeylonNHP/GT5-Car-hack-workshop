@@ -14,8 +14,6 @@ namespace GT5_Car_hack_workshop_2
     [DesignerGenerated]
     public partial class Form1 : Form
     {
-        [AccessedThroughProperty("Button1")] private Button _Button1;
-
         [AccessedThroughProperty("Button10")] private Button _Button10;
 
         [AccessedThroughProperty("Button11")] private Button _Button11;
@@ -111,21 +109,6 @@ namespace GT5_Car_hack_workshop_2
             [MethodImpl(MethodImplOptions.Synchronized)]
             set;
         }
-
-        private Button Button1
-        {
-            get => _Button1;
-            [MethodImpl(MethodImplOptions.Synchronized)]
-            set
-            {
-                EventHandler eventHandler = Button1_Click;
-                if (_Button1 != null) _Button1.Click -= eventHandler;
-
-                _Button1 = value;
-                if (_Button1 != null) _Button1.Click += eventHandler;
-            }
-        }
-
 
         [field: AccessedThroughProperty("Label1")]
         private Label Label1

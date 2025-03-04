@@ -259,6 +259,7 @@
 			this.Button1.TabIndex = 2;
 			this.Button1.Text = "Browse";
 			this.Button1.UseVisualStyleBackColor = false;
+			this.Button1.Click += new System.EventHandler(this.Button1_Click);
 			this.Label1.AutoSize = true;
 			global::System.Windows.Forms.Control label3 = this.Label1;
 			point = new global::System.Drawing.Point(6, 20);
@@ -1600,6 +1601,7 @@
 			this.ResumeLayout(false);
 		}
 		
+		private System.Windows.Forms.Button Button1;
 		private System.Windows.Forms.Button Button22;
 
 	}
