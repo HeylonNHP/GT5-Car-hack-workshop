@@ -1219,20 +1219,6 @@ namespace GT5_Car_hack_workshop_2
             set;
         }
 
-        private Button Button22
-        {
-            get => _Button22;
-            [MethodImpl(MethodImplOptions.Synchronized)]
-            set
-            {
-                EventHandler eventHandler = Button22_Click;
-                if (_Button22 != null) _Button22.Click -= eventHandler;
-
-                _Button22 = value;
-                if (_Button22 != null) _Button22.Click += eventHandler;
-            }
-        }
-
         [field: AccessedThroughProperty("CheckBox7")]
         private CheckBox RemoveFrontBumperCheckBox
         {
@@ -1970,7 +1956,7 @@ namespace GT5_Car_hack_workshop_2
             // Spacer is used so that the hex value data after the comma doesn't show up in the GUI (Yep, terrible) TODO: Fix
             var spacer = "                                                                                                                                            ,";
             for (var i = 0; i <= _CarParts.Length - 1; i++)
-                if (_CarParts[i] != " ")
+                if (_CarParts[i].Contains(','))
                     try
                     {
                         var sparr = _CarParts[i].Split(',');
@@ -2161,7 +2147,7 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x06000164 RID: 356 RVA: 0x0000E310 File Offset: 0x0000C710
         private void Button22_Click(object sender, EventArgs e)
         {
-            Interaction.MsgBox(
+            MessageBox.Show(
                 "-----------------GT5 car hack workshop-----------------\rCreated by HeylonNHP\rSpecial thanks to:\rflatz for the pfdtool\raldotools.org for games.conf/global.conf\rTo the guys at http://gt5dragracing.com/ for daring to beta test my first version");
         }
 

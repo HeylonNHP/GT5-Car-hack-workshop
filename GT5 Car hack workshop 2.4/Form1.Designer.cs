@@ -2,19 +2,23 @@
 {
 	public partial class Form1 : global::System.Windows.Forms.Form
 	{
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
+		
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
 		protected override void Dispose(bool disposing)
 		{
-			try
+			if (disposing && (components != null))
 			{
-				if (disposing && this.components != null)
-				{
-					this.components.Dispose();
-				}
+				components.Dispose();
 			}
-			finally
-			{
-				base.Dispose(disposing);
-			}
+
+			base.Dispose(disposing);
 		}
 		
 		private void InitializeComponent()
@@ -192,6 +196,7 @@
 			this.Button22.TabIndex = 8;
 			this.Button22.Text = "About";
 			this.Button22.UseVisualStyleBackColor = false;
+			this.Button22.Click += new System.EventHandler(this.Button22_Click);
 			this.Button5.BackColor = global::System.Drawing.Color.FromArgb(192, 192, 255);
 			global::System.Windows.Forms.Control button3 = this.Button5;
 			point = new global::System.Drawing.Point(183, 70);
@@ -1594,8 +1599,8 @@
 			this.TabPage4.PerformLayout();
 			this.ResumeLayout(false);
 		}
+		
+		private System.Windows.Forms.Button Button22;
 
-		// Token: 0x0400001E RID: 30
-		private global::System.ComponentModel.IContainer components;
 	}
 }
