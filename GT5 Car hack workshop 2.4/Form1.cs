@@ -42,8 +42,6 @@ namespace GT5_Car_hack_workshop_2
 
         [AccessedThroughProperty("Button21")] private Button _Button21;
 
-        [AccessedThroughProperty("Button22")] private Button _Button22;
-
         [AccessedThroughProperty("Button23")] private Button _Button23;
 
         [AccessedThroughProperty("Button3")] private Button _Button3;
@@ -1157,7 +1155,6 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-
         /// <summary>
         ///     Slam car button
         /// </summary>
@@ -1405,7 +1402,6 @@ namespace GT5_Car_hack_workshop_2
             // Convert the list to an array and return it
             return byteList.Count > 0 ? byteList.ToArray() : new byte[] { 0 };
         }
-
 
         private void SaveData()
         {
@@ -1789,7 +1785,6 @@ namespace GT5_Car_hack_workshop_2
             File.WriteAllBytes(TextBox1.Text, Gt5Save);
         }
 
-        // Token: 0x06000143 RID: 323 RVA: 0x0000D6D8 File Offset: 0x0000BAD8
         private void Button1_Click(object sender, EventArgs e)
         {
             var ofd = new OpenFileDialog();
@@ -1797,7 +1792,6 @@ namespace GT5_Car_hack_workshop_2
             if (ofd.ShowDialog() == DialogResult.OK) TextBox1.Text = ofd.FileName;
         }
 
-        // Token: 0x06000144 RID: 324 RVA: 0x0000D710 File Offset: 0x0000BB10
         private void Form1_Load(object sender, EventArgs e)
         {
             if (!MyProject.Computer.FileSystem.DirectoryExists("Backups")) MyProject.Computer.FileSystem.CreateDirectory("Backups");
@@ -1809,7 +1803,6 @@ namespace GT5_Car_hack_workshop_2
             LoadParts();
         }
 
-        // Token: 0x06000145 RID: 325 RVA: 0x0000D7A4 File Offset: 0x0000BBA4
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             _ProgramSettings[0] = TextBox1.Text;
@@ -1818,7 +1811,6 @@ namespace GT5_Car_hack_workshop_2
             SettingsFileClass.SaveSettings(_CarParts, "partsdatabase.db");
         }
 
-        // Token: 0x06000146 RID: 326 RVA: 0x0000D7F8 File Offset: 0x0000BBF8
         private void Button2_Click(object sender, EventArgs e)
         {
             var fi = new FileInfo(TextBox1.Text);
@@ -1829,7 +1821,6 @@ namespace GT5_Car_hack_workshop_2
             ProcessData();
         }
 
-        // Token: 0x06000147 RID: 327 RVA: 0x0000D87C File Offset: 0x0000BC7C
         private void Button3_Click(object sender, EventArgs e)
         {
             SaveData();
@@ -1837,26 +1828,22 @@ namespace GT5_Car_hack_workshop_2
             Interaction.MsgBox("Data saved, immediately goto the GT Auto and change the cars oil to apply the hacks.");
         }
 
-        // Token: 0x06000148 RID: 328 RVA: 0x0000D8A4 File Offset: 0x0000BCA4
         private void Button5_Click(object sender, EventArgs e)
         {
             SaveData();
         }
 
-        // Token: 0x06000149 RID: 329 RVA: 0x0000D8AC File Offset: 0x0000BCAC
         private void TextBox4_TextChanged(object sender, EventArgs e)
         {
             TextBox5.Text = Conversions.ToString(100.0 - Conversion.Val(TorqueSplitTextBox.Text));
         }
 
-        // Token: 0x0600014A RID: 330 RVA: 0x0000D8D8 File Offset: 0x0000BCD8
         private void Button6_Click(object sender, EventArgs e)
         {
             TorqueSplitTextBox.Text = Conversions.ToString(50);
             DrivetrainCodeTextBox.Text = "0A 1E";
         }
 
-        // Token: 0x0600014B RID: 331 RVA: 0x0000D8FC File Offset: 0x0000BCFC
         private void Button4_Click(object sender, EventArgs e)
         {
             Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 355))] = 0;
@@ -1868,41 +1855,35 @@ namespace GT5_Car_hack_workshop_2
             Interaction.MsgBox("Torque split editor installed, don't forget to save");
         }
 
-        // Token: 0x0600014C RID: 332 RVA: 0x0000D9E8 File Offset: 0x0000BDE8
         private void Button7_Click(object sender, EventArgs e)
         {
             Interaction.MsgBox(
                 "Copy the hex values in this box, this is your current cars engine\r\rIf you paste your copied engine values back in while editing another car, that car will have the engine of the car you copied it from.");
         }
 
-        // Token: 0x0600014D RID: 333 RVA: 0x0000D9F8 File Offset: 0x0000BDF8
         private void Button8_Click(object sender, EventArgs e)
         {
             Interaction.MsgBox(
                 "This directly controls the torque that is sent to the front wheels, EG: if you typed in 10 the torque split would then be 10:90, if you typed in 50 the split would be 50:50\rYou could be really tricky and type 101, then the split would be 101:-1, which I reccomend in combination with added grip for high HP cars");
         }
 
-        // Token: 0x0600014E RID: 334 RVA: 0x0000DA08 File Offset: 0x0000BE08
         private void Button9_Click(object sender, EventArgs e)
         {
             Interaction.MsgBox(
                 "This is what gives hackers all the freedom to swap chassis, engine etc. in update 2.14.\rUntick this and you will find that most hacks won't work");
         }
 
-        // Token: 0x0600014F RID: 335 RVA: 0x0000DA18 File Offset: 0x0000BE18
         private void Button10_Click(object sender, EventArgs e)
         {
             Interaction.MsgBox(
                 "Make sure the highest stage spoiler in GT Auto is installed. EG Type B or Type C (which ever one is the highest available).\rThen increase the value here by 1. EG: 2 to 3 or 3 to 4 etc.");
         }
 
-        // Token: 0x06000150 RID: 336 RVA: 0x0000DA28 File Offset: 0x0000BE28
         private void Button11_Click(object sender, EventArgs e)
         {
             MyProject.Forms.TransmissionEditor.Show();
         }
 
-        // Token: 0x06000151 RID: 337 RVA: 0x0000DA3C File Offset: 0x0000BE3C
         /// <summary>
         ///     Add current car to parts database.
         ///     Handles the event triggered when button12 is clicked. This method is used to add the current car details
@@ -1975,7 +1956,6 @@ namespace GT5_Car_hack_workshop_2
                     }
         }
 
-        // Token: 0x06000153 RID: 339 RVA: 0x0000DDF0 File Offset: 0x0000C1F0
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -1988,7 +1968,6 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x06000154 RID: 340 RVA: 0x0000DE50 File Offset: 0x0000C250
         private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -2001,7 +1980,6 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x06000155 RID: 341 RVA: 0x0000DEB0 File Offset: 0x0000C2B0
         private void ComboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -2014,7 +1992,6 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x06000156 RID: 342 RVA: 0x0000DF10 File Offset: 0x0000C310
         private void ComboBox4_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -2027,7 +2004,6 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x06000157 RID: 343 RVA: 0x0000DF70 File Offset: 0x0000C370
         private void ComboBox5_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -2040,7 +2016,6 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x06000158 RID: 344 RVA: 0x0000DFD0 File Offset: 0x0000C3D0
         private void ComboBox6_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -2053,7 +2028,6 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x06000159 RID: 345 RVA: 0x0000E030 File Offset: 0x0000C430
         private void ComboBox7_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -2066,7 +2040,6 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x0600015A RID: 346 RVA: 0x0000E090 File Offset: 0x0000C490
         private void ComboBox8_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -2079,20 +2052,17 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x0600015B RID: 347 RVA: 0x0000E0F0 File Offset: 0x0000C4F0
         private void Button13_Click(object sender, EventArgs e)
         {
             MyProject.Forms.Customperformance.ShowDialog();
         }
 
-        // Token: 0x0600015C RID: 348 RVA: 0x0000E104 File Offset: 0x0000C504
         private void Button14_Click(object sender, EventArgs e)
         {
             Interaction.MsgBox(
                 "This will override the 74 byte checkbox\rGT5 Editor 1.6 uses this method instead of the 74 byte, I have no idea whether it's more effective. So I've added in this function for testing purposes.");
         }
 
-        // Token: 0x0600015D RID: 349 RVA: 0x0000E114 File Offset: 0x0000C514
         private void Button15_Click(object sender, EventArgs e)
         {
             Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 248))] = byte.MaxValue;
@@ -2101,21 +2071,18 @@ namespace GT5_Car_hack_workshop_2
             SaveData();
         }
 
-        // Token: 0x0600015E RID: 350 RVA: 0x0000E150 File Offset: 0x0000C550
         private void Button16_Click(object sender, EventArgs e)
         {
             Interaction.MsgBox(
                 "This is the performance multiplier of the exhaust and turbo. Increasing these will increase the effectiveness of these performance parts on the engines performance");
         }
 
-        // Token: 0x0600015F RID: 351 RVA: 0x0000E160 File Offset: 0x0000C560
         private void Button17_Click(object sender, EventArgs e)
         {
             Interaction.MsgBox(
                 "Samba like performance installs the performance parts out of a samba bus onto your current car.\rThe samba bus parts increase the engines performance a lot more than the performance parts for most other cars.\rEG: a 300hp (When stock) engine with samba bus parts installed can increase to about 1,000 - 1,800hp");
         }
 
-        // Token: 0x06000160 RID: 352 RVA: 0x0000E170 File Offset: 0x0000C570
         private void Button18_Click(object sender, EventArgs e)
         {
             Gt5Save[Moff + 2282] = byte.MaxValue;
@@ -2144,14 +2111,12 @@ namespace GT5_Car_hack_workshop_2
             Gt5Save[Moff - 332] = 0;
         }
 
-        // Token: 0x06000164 RID: 356 RVA: 0x0000E310 File Offset: 0x0000C710
         private void Button22_Click(object sender, EventArgs e)
         {
             MessageBox.Show(
                 "-----------------GT5 car hack workshop-----------------\rCreated by HeylonNHP\rSpecial thanks to:\rflatz for the pfdtool\raldotools.org for games.conf/global.conf\rTo the guys at http://gt5dragracing.com/ for daring to beta test my first version");
         }
 
-        // Token: 0x06000165 RID: 357 RVA: 0x0000E320 File Offset: 0x0000C720
         private void Button23_Click(object sender, EventArgs e)
         {
             Interaction.MsgBox(
