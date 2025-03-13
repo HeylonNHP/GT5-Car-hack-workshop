@@ -16,13 +16,13 @@ namespace GT5_Car_hack_workshop_2
 
         private decimal lastgearpre;
 
-        private decimal origfg;
+        private decimal originalFinalDrive;
 
         public TransmissionEditor()
         {
-            Load += Tranny_Load;
+            Load += TransmissionLoadValues;
             lastgearpre = 0.1m;
-            origfg = 0.1m;
+            originalFinalDrive = 0.1m;
             InitializeComponent();
         }
 
@@ -139,145 +139,87 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        private void Tranny_Load(object sender, EventArgs e)
+        private void TransmissionLoadValues(object sender, EventArgs e)
         {
-            var textBox = TextBox1;
-            var text = "&H";
-            var b = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 73))];
-            var text2 = b.ToString("X2");
-            var text3 = " ";
-            var b2 = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 72))];
-            textBox.Text = Conversions.ToString(Conversion.Val(text + text2 + text3 + b2.ToString("X2")) / 1000.0);
-            var textBox2 = TextBox2;
-            var text4 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 71))];
-            var text5 = b2.ToString("X2");
-            var text6 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 70))];
-            textBox2.Text = Conversions.ToString(Conversion.Val(text4 + text5 + text6 + b.ToString("X2")) / 1000.0);
-            var textBox3 = TextBox3;
-            var text7 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 69))];
-            var text8 = b2.ToString("X2");
-            var text9 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 68))];
-            textBox3.Text = Conversions.ToString(Conversion.Val(text7 + text8 + text9 + b.ToString("X2")) / 1000.0);
-            var textBox4 = TextBox4;
-            var text10 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 67))];
-            var text11 = b2.ToString("X2");
-            var text12 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 66))];
-            textBox4.Text = Conversions.ToString(Conversion.Val(text10 + text11 + text12 + b.ToString("X2")) / 1000.0);
-            var textBox5 = TextBox5;
-            var text13 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 65))];
-            var text14 = b2.ToString("X2");
-            var text15 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 64))];
-            textBox5.Text = Conversions.ToString(Conversion.Val(text13 + text14 + text15 + b.ToString("X2")) / 1000.0);
-            var textBox6 = TextBox6;
-            var text16 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 63))];
-            var text17 = b2.ToString("X2");
-            var text18 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 62))];
-            textBox6.Text = Conversions.ToString(Conversion.Val(text16 + text17 + text18 + b.ToString("X2")) / 1000.0);
-            var textBox7 = TextBox7;
-            var text19 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 61))];
-            var text20 = b2.ToString("X2");
-            var text21 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 60))];
-            textBox7.Text = Conversions.ToString(Conversion.Val(text19 + text20 + text21 + b.ToString("X2")) / 1000.0);
-            var textBox8 = TextBox8;
-            var text22 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 59))];
-            var text23 = b2.ToString("X2");
-            var text24 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 58))];
-            textBox8.Text = Conversions.ToString(Conversion.Val(text22 + text23 + text24 + b.ToString("X2")) / 1000.0);
-            var textBox9 = TextBox9;
-            var text25 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 57))];
-            var text26 = b2.ToString("X2");
-            var text27 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 56))];
-            textBox9.Text = Conversions.ToString(Conversion.Val(text25 + text26 + text27 + b.ToString("X2")) / 1000.0);
-            var textBox10 = TextBox10;
-            var text28 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 55))];
-            var text29 = b2.ToString("X2");
-            var text30 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 54))];
-            textBox10.Text = Conversions.ToString(Conversion.Val(text28 + text29 + text30 + b.ToString("X2")) / 1000.0);
-            var textBox11 = TextBox11;
-            var text31 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 53))];
-            var text32 = b2.ToString("X2");
-            var text33 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 52))];
-            textBox11.Text = Conversions.ToString(Conversion.Val(text31 + text32 + text33 + b.ToString("X2")) / 1000.0);
-            var textBox12 = TextBox12;
-            var text34 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 51))];
-            var text35 = b2.ToString("X2");
-            var text36 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[
-                Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 50))];
-            textBox12.Text = Conversions.ToString(Conversion.Val(text34 + text35 + text36 + b.ToString("X2")) / 1000.0);
+            // Load gear ratios from save data into text boxes
+            // Each gear ratio is stored as 2 bytes in hex format, divided by 1000 for display
+
+            // Gear 1
+            var firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 73];
+            var secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 72];
+            TextBox1.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+
+            // Gear 2
+            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 71];
+            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 70];
+            TextBox2.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+
+            // Gear 3
+            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 69];
+            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 68];
+            TextBox3.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+
+            // Gear 4
+            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 67];
+            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 66];
+            TextBox4.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+
+            // Gear 5
+            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 65];
+            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 64];
+            TextBox5.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+
+            // Gear 6
+            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 63];
+            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 62];
+            TextBox6.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+
+            // Gear 7
+            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 61];
+            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 60];
+            TextBox7.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+
+            // Gear 8
+            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 59];
+            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 58];
+            TextBox8.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+
+            // Gear 9
+            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 57];
+            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 56];
+            TextBox9.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+
+            // Gear 10
+            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 55];
+            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 54];
+            TextBox10.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+
+            // Gear 11
+            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 53];
+            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 52];
+            TextBox11.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+
+            // Final Drive
+            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 51];
+            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 50];
+            TextBox12.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
             try
             {
-                if (Conversion.Val(TextBox11.Text) > 0.0)
-                    lastgearpre = new decimal(Conversion.Val(TextBox11.Text));
-                else if (Conversion.Val(TextBox10.Text) > 0.0)
-                    lastgearpre = new decimal(Conversion.Val(TextBox10.Text));
-                else if (Conversion.Val(TextBox9.Text) > 0.0)
-                    lastgearpre = new decimal(Conversion.Val(TextBox9.Text));
-                else if (Conversion.Val(TextBox8.Text) > 0.0)
-                    lastgearpre = new decimal(Conversion.Val(TextBox8.Text));
-                else if (Conversion.Val(TextBox7.Text) > 0.0)
-                    lastgearpre = new decimal(Conversion.Val(TextBox7.Text));
-                else if (Conversion.Val(TextBox6.Text) > 0.0)
-                    lastgearpre = new decimal(Conversion.Val(TextBox6.Text));
-                else if (Conversion.Val(TextBox5.Text) > 0.0)
-                    lastgearpre = new decimal(Conversion.Val(TextBox5.Text));
-                else if (Conversion.Val(TextBox4.Text) > 0.0)
-                    lastgearpre = new decimal(Conversion.Val(TextBox4.Text));
-                else if (Conversion.Val(TextBox3.Text) > 0.0)
-                    lastgearpre = new decimal(Conversion.Val(TextBox3.Text));
-                else if (Conversion.Val(TextBox2.Text) > 0.0)
-                    lastgearpre = new decimal(Conversion.Val(TextBox2.Text));
-                else if (Conversion.Val(TextBox1.Text) > 0.0) lastgearpre = new decimal(Conversion.Val(TextBox1.Text));
+                var textBoxes = new[] { TextBox11, TextBox10, TextBox9, TextBox8, TextBox7, TextBox6, TextBox5, TextBox4, TextBox3, TextBox2, TextBox1 };
+                foreach (var textBox in textBoxes)
+                {
+                    if (Conversion.Val(textBox.Text) > 0.0)
+                    {
+                        lastgearpre = new decimal(Conversion.Val(textBox.Text));
+                        break;
+                    }
+                }
             }
             catch (Exception ex)
             {
             }
 
-            origfg = new decimal(Conversion.Val(TextBox12.Text));
+            originalFinalDrive = new decimal(Conversion.Val(TextBox12.Text));
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -538,7 +480,7 @@ namespace GT5_Car_hack_workshop_2
                     }
 
                 TextBox14.Text = Conversions.ToString(
-                    Convert.ToDouble(origfg) /
+                    Convert.ToDouble(originalFinalDrive) /
                     Conversion.Val(TextBox12.Text) *
                     Conversion.Val(TextBox13.Text) *
                     Convert.ToDouble(decimal.Multiply(
