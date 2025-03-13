@@ -459,12 +459,11 @@ namespace GT5_Car_hack_workshop_2
         {
             if (string.IsNullOrEmpty(TextBox13.Text)) TextBox13.Text = "0";
 
-            var omax = Conversion.Val(TextBox13.Text);
-            if (omax != 0.0)
+            var omax = float.Parse(TextBox13.Text);
+            if (omax != 0f)
             {
-                var lastgear = 0.1m;
-
-                // Group the TextBoxes in an array for iteration
+                var lastGear = 0.1f;
+                
                 TextBox[] textBoxes =
                 {
                     TextBox11, TextBox10, TextBox9, TextBox8, TextBox7,
@@ -473,16 +472,18 @@ namespace GT5_Car_hack_workshop_2
 
                 // Find the first TextBox with a value > 0
                 foreach (var textBox in textBoxes)
-                    if (Conversion.Val(textBox.Text) > 0.0)
+                {
+                    if (float.Parse(textBox.Text) > 0f)
                     {
-                        lastgear = new decimal(Conversion.Val(textBox.Text));
+                        lastGear = float.Parse(textBox.Text);
                         break;
                     }
+                }
 
                 TextBox14.Text = Math.Round((float)originalFinalDrive /
-                  float.Parse(TextBox12.Text) *
-                  float.Parse(TextBox13.Text) *
-                  (1f / (float)lastgear * (float)lastgearpre), 1).ToString();
+                                            float.Parse(TextBox12.Text) *
+                                            float.Parse(TextBox13.Text) *
+                                            (1f / lastGear * (float)lastgearpre), 1).ToString();
             }
         }
     }
