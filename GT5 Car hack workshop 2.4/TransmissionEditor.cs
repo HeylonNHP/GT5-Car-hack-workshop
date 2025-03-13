@@ -479,14 +479,10 @@ namespace GT5_Car_hack_workshop_2
                         break;
                     }
 
-                TextBox14.Text = Conversions.ToString(
-                    Convert.ToDouble(originalFinalDrive) /
-                    Conversion.Val(TextBox12.Text) *
-                    Conversion.Val(TextBox13.Text) *
-                    Convert.ToDouble(decimal.Multiply(
-                        decimal.Divide(1m, lastgear), lastgearpre
-                    ))
-                );
+                TextBox14.Text = Math.Round((float)originalFinalDrive /
+                  float.Parse(TextBox12.Text) *
+                  float.Parse(TextBox13.Text) *
+                  (1f / (float)lastgear * (float)lastgearpre), 1).ToString();
             }
         }
     }
