@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GT5 Car hack workshop 2.4", "GT5 Car hack workshop 2.4.csproj", "{9721E515-7168-2181-8B15-CD69D15B9917}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9721E515-7168-2181-8B15-CD69D15B9917}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9721E515-7168-2181-8B15-CD69D15B9917}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9721E515-7168-2181-8B15-CD69D15B9917}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9721E515-7168-2181-8B15-CD69D15B9917}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5AE2E701-20E6-4119-9C70-5B97B72A0707}
+	EndGlobalSection
+EndGlobal
