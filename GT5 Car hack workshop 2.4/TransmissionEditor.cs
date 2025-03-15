@@ -98,19 +98,6 @@ namespace GT5_Car_hack_workshop_2
         [field: AccessedThroughProperty("Label12")]
         private Label Label12 { get; set; }
 
-        private Button Button1
-        {
-            get => _Button1;
-            set
-            {
-                EventHandler eventHandler = Button1_Click;
-                if (_Button1 != null) _Button1.Click -= eventHandler;
-
-                _Button1 = value;
-                if (_Button1 != null) _Button1.Click += eventHandler;
-            }
-        }
-
         [field: AccessedThroughProperty("GroupBox1")]
         private GroupBox GroupBox1 { get; set; }
 
@@ -222,7 +209,7 @@ namespace GT5_Car_hack_workshop_2
             originalFinalDrive = new decimal(Conversion.Val(TextBox12.Text));
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void OkayButtonClick(object sender, EventArgs e)
         {
             try
             {

@@ -49,7 +49,7 @@
 			this.TextBox11 = new global::System.Windows.Forms.TextBox();
 			this.TextBox12 = new global::System.Windows.Forms.TextBox();
 			this.Label12 = new global::System.Windows.Forms.Label();
-			this.Button1 = new global::System.Windows.Forms.Button();
+			this.OkayButton = new global::System.Windows.Forms.Button();
 			this.GroupBox1 = new global::System.Windows.Forms.GroupBox();
 			this.Label13 = new global::System.Windows.Forms.Label();
 			this.TextBox13 = new global::System.Windows.Forms.TextBox();
@@ -334,17 +334,18 @@
 			label24.Size = size;
 			this.Label12.TabIndex = 23;
 			this.Label12.Text = "Final Gear";
-			this.Button1.BackColor = global::System.Drawing.Color.FromArgb(192, 255, 255);
-			global::System.Windows.Forms.Control button = this.Button1;
+			this.OkayButton.BackColor = global::System.Drawing.Color.FromArgb(192, 255, 255);
+			global::System.Windows.Forms.Control button = this.OkayButton;
 			point = new global::System.Drawing.Point(1, 327);
 			button.Location = point;
-			this.Button1.Name = "Button1";
-			global::System.Windows.Forms.Control button2 = this.Button1;
+			this.OkayButton.Name = "OkayButton";
+			global::System.Windows.Forms.Control button2 = this.OkayButton;
 			size = new global::System.Drawing.Size(210, 26);
 			button2.Size = size;
-			this.Button1.TabIndex = 24;
-			this.Button1.Text = "Okay";
-			this.Button1.UseVisualStyleBackColor = false;
+			this.OkayButton.TabIndex = 24;
+			this.OkayButton.Text = "Okay";
+			this.OkayButton.UseVisualStyleBackColor = false;
+			this.OkayButton.Click += new System.EventHandler(this.OkayButtonClick);
 			this.GroupBox1.Controls.Add(this.TextBox14);
 			this.GroupBox1.Controls.Add(this.Label14);
 			this.GroupBox1.Controls.Add(this.TextBox13);
@@ -414,7 +415,7 @@
 			size = new global::System.Drawing.Size(365, 354);
 			this.ClientSize = size;
 			this.Controls.Add(this.GroupBox1);
-			this.Controls.Add(this.Button1);
+			this.Controls.Add(this.OkayButton);
 			this.Controls.Add(this.Label12);
 			this.Controls.Add(this.TextBox12);
 			this.Controls.Add(this.TextBox11);
@@ -450,6 +451,8 @@
 			this.ResumeLayout(false);
 			this.PerformLayout();
 		}
+		
+		private System.Windows.Forms.Button OkayButton;
 
 		// Token: 0x040000A2 RID: 162
 		private global::System.ComponentModel.IContainer components;
