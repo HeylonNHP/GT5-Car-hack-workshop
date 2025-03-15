@@ -190,20 +190,21 @@ namespace GT5_Car_hack_workshop_2
             firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 51];
             secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 50];
             TextBox12.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
-            try
+
+            // Cache the gear ratio of the highest gear
+            var textBoxes = new[] { TextBox11, TextBox10, TextBox9, TextBox8, TextBox7, TextBox6, TextBox5, TextBox4, TextBox3, TextBox2, TextBox1 };
+            foreach (var textBox in textBoxes)
             {
-                var textBoxes = new[] { TextBox11, TextBox10, TextBox9, TextBox8, TextBox7, TextBox6, TextBox5, TextBox4, TextBox3, TextBox2, TextBox1 };
-                foreach (var textBox in textBoxes)
+                if (!decimal.TryParse(textBox.Text, out var value))
                 {
-                    if (Conversion.Val(textBox.Text) > 0.0)
-                    {
-                        lastgearpre = new decimal(Conversion.Val(textBox.Text));
-                        break;
-                    }
+                    continue;
                 }
-            }
-            catch (Exception ex)
-            {
+
+                if (value > 0.0m)
+                {
+                    lastgearpre = value;
+                    break;
+                }
             }
 
             originalFinalDrive = new decimal(Conversion.Val(TextBox12.Text));
@@ -450,7 +451,7 @@ namespace GT5_Car_hack_workshop_2
             if (omax != 0f)
             {
                 var lastGear = 0.1f;
-                
+
                 TextBox[] textBoxes =
                 {
                     TextBox11, TextBox10, TextBox9, TextBox8, TextBox7,
