@@ -195,19 +195,23 @@ namespace GT5_Car_hack_workshop_2
             var textBoxes = new[] { TextBox11, TextBox10, TextBox9, TextBox8, TextBox7, TextBox6, TextBox5, TextBox4, TextBox3, TextBox2, TextBox1 };
             foreach (var textBox in textBoxes)
             {
-                if (!decimal.TryParse(textBox.Text, out var value))
+                if (!decimal.TryParse(textBox.Text, out var parsedHighestGearRatio))
                 {
                     continue;
                 }
 
-                if (value > 0.0m)
+                if (parsedHighestGearRatio > 0.0m)
                 {
-                    lastgearpre = value;
+                    lastgearpre = parsedHighestGearRatio;
                     break;
                 }
             }
 
-            originalFinalDrive = new decimal(Conversion.Val(TextBox12.Text));
+            // Cache the final drive ratio
+            if (decimal.TryParse(TextBox12.Text, out var parsedFinalDriveRatio))
+            {
+                originalFinalDrive = parsedFinalDriveRatio;
+            }
         }
 
         private void OkayButtonClick(object sender, EventArgs e)
