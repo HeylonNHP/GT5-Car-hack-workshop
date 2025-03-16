@@ -78,7 +78,7 @@
         <EmbeddedResource Include="Resources\Customperformance.resources" />
         <EmbeddedResource Include="Resources\Form1.resources" />
         <EmbeddedResource Include="Resources\Resources.resources" />
-        <EmbeddedResource Include="Tranny.resources"/>
+        <EmbeddedResource Include="Resources\Tranny.resources" />
     </ItemGroup>
     <ItemGroup>
         <None Include="app.manifest"/>
