@@ -2,9 +2,13 @@
 
 namespace GT5_Car_hack_workshop_2
 {
-	// Token: 0x0200000F RID: 15
 	public partial class TransmissionEditor : global::System.Windows.Forms.Form
 	{
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
+		
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
@@ -18,9 +22,7 @@ namespace GT5_Car_hack_workshop_2
 
 			base.Dispose(disposing);
 		}
-
-		// Token: 0x06000178 RID: 376 RVA: 0x0000E3E4 File Offset: 0x0000C7E4
-		[global::System.Diagnostics.DebuggerStepThrough]
+		
 		private void InitializeComponent()
 		{
 			this.components = new global::System.ComponentModel.Container();
@@ -481,8 +483,5 @@ namespace GT5_Car_hack_workshop_2
 		private System.Windows.Forms.TextBox TextBox14;
 		
 		private System.Windows.Forms.GroupBox GroupBox1;
-
-		// Token: 0x040000A2 RID: 162
-		private global::System.ComponentModel.IContainer components;
 	}
 }

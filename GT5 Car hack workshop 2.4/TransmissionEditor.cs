@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Globalization;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using GT5_Car_hack_workshop_2.My;
-using Microsoft.VisualBasic.CompilerServices;
 
 namespace GT5_Car_hack_workshop_2
 {
-    [DesignerGenerated]
     public partial class TransmissionEditor : Form
     {
-        private Timer _Timer1;
+        private readonly Timer _Timer1;
 
         private decimal _Lastgearpre;
 
