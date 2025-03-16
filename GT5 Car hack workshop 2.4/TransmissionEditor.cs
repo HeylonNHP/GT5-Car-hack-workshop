@@ -186,10 +186,16 @@ namespace GT5_Car_hack_workshop_2
                     }
                 }
 
-                TextBox14.Text = Math.Round((float)_OriginalFinalDrive /
-                                            float.Parse(TextBox12.Text) *
-                                            float.Parse(TextBox13.Text) *
-                                            (1f / lastGear * (float)_Lastgearpre), 1).ToString();
+                // Calculate the adjusted ratio based on original final drive, current final drive,
+                // max speed, and last gear ratio
+                float finalDriveRatio = float.Parse(TextBox12.Text);
+                float maxSpeed = float.Parse(TextBox13.Text);
+                float adjustedRatio = (float)_OriginalFinalDrive / finalDriveRatio * 
+                                     maxSpeed * 
+                                     (1f / lastGear * (float)_Lastgearpre);
+                
+                // Round to 1 decimal place and display
+                TextBox14.Text = Math.Round(adjustedRatio, 1).ToString();
             }
         }
     }
