@@ -25,39 +25,6 @@ namespace GT5_Car_hack_workshop_2
             InitializeComponent();
         }
 
-        [field: AccessedThroughProperty("Label1")]
-        private Label Label1 { get; set; }
-
-        [field: AccessedThroughProperty("Label2")]
-        private Label Label2 { get; set; }
-
-        [field: AccessedThroughProperty("Label3")]
-        private Label Label3 { get; set; }
-
-        [field: AccessedThroughProperty("Label4")]
-        private Label Label4 { get; set; }
-
-        [field: AccessedThroughProperty("Label5")]
-        private Label Label5 { get; set; }
-
-        [field: AccessedThroughProperty("Label6")]
-        private Label Label6 { get; set; }
-
-        [field: AccessedThroughProperty("Label7")]
-        private Label Label7 { get; set; }
-
-        [field: AccessedThroughProperty("Label8")]
-        private Label Label8 { get; set; }
-
-        [field: AccessedThroughProperty("Label9")]
-        private Label Label9 { get; set; }
-
-        [field: AccessedThroughProperty("Label10")]
-        private Label Label10 { get; set; }
-
-        [field: AccessedThroughProperty("Label11")]
-        private Label Label11 { get; set; }
-
         [field: AccessedThroughProperty("TextBox1")]
         private TextBox TextBox1 { get; set; }
 

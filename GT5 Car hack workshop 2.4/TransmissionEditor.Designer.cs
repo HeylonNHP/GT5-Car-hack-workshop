@@ -1,4 +1,6 @@
-﻿namespace GT5_Car_hack_workshop_2
+﻿using System.Windows.Forms;
+
+namespace GT5_Car_hack_workshop_2
 {
 	// Token: 0x0200000F RID: 15
 	public partial class TransmissionEditor : global::System.Windows.Forms.Form
@@ -453,6 +455,17 @@
 		}
 		
 		private System.Windows.Forms.Button OkayButton;
+		private System.Windows.Forms.Label Label1;
+		private System.Windows.Forms.Label Label2;
+		private System.Windows.Forms.Label Label3;
+		private System.Windows.Forms.Label Label4;
+		private System.Windows.Forms.Label Label5;
+		private System.Windows.Forms.Label Label6;
+		private System.Windows.Forms.Label Label7;
+		private System.Windows.Forms.Label Label8;
+		private System.Windows.Forms.Label Label9;
+		private System.Windows.Forms.Label Label10;
+		private System.Windows.Forms.Label Label11;
 
 		// Token: 0x040000A2 RID: 162
 		private global::System.ComponentModel.IContainer components;
