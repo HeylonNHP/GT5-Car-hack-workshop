@@ -126,70 +126,53 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
+        private string LoadGearRatioToGt5Save(int moffOffset1, int moffOffset2)
+        {
+            var firstByte = MyProject.Forms.Form1.Gt5Save[moffOffset1];
+            var secondByte = MyProject.Forms.Form1.Gt5Save[moffOffset2];
+            return (((firstByte << 8) | secondByte) / 1000.0f).ToString(CultureInfo.CurrentCulture);
+        }
+
         private void TransmissionLoadValues(object sender, EventArgs e)
         {
             // Load gear ratios from save data into text boxes
             // Each gear ratio is stored as 2 bytes in hex format, divided by 1000 for display
 
             // Gear 1
-            var firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 73];
-            var secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 72];
-            TextBox1.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+            TextBox1.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 73, MyProject.Forms.Form1.Moff - 72);
 
             // Gear 2
-            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 71];
-            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 70];
-            TextBox2.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+            TextBox2.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 71, MyProject.Forms.Form1.Moff - 70);
 
             // Gear 3
-            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 69];
-            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 68];
-            TextBox3.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+            TextBox3.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 69, MyProject.Forms.Form1.Moff - 68);
 
             // Gear 4
-            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 67];
-            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 66];
-            TextBox4.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+            TextBox4.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 67, MyProject.Forms.Form1.Moff - 66);
 
             // Gear 5
-            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 65];
-            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 64];
-            TextBox5.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+            TextBox5.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 65, MyProject.Forms.Form1.Moff - 64);
 
             // Gear 6
-            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 63];
-            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 62];
-            TextBox6.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+            TextBox6.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 63, MyProject.Forms.Form1.Moff - 62);
 
             // Gear 7
-            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 61];
-            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 60];
-            TextBox7.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+            TextBox7.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 61, MyProject.Forms.Form1.Moff - 60);
 
             // Gear 8
-            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 59];
-            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 58];
-            TextBox8.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+            TextBox8.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 59, MyProject.Forms.Form1.Moff - 58);
 
             // Gear 9
-            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 57];
-            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 56];
-            TextBox9.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+            TextBox9.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 57, MyProject.Forms.Form1.Moff - 56);
 
             // Gear 10
-            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 55];
-            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 54];
-            TextBox10.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+            TextBox10.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 55, MyProject.Forms.Form1.Moff - 54);
 
             // Gear 11
-            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 53];
-            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 52];
-            TextBox11.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+            TextBox11.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 53, MyProject.Forms.Form1.Moff - 52);
 
             // Final Drive
-            firstByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 51];
-            secondByte = MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 50];
-            TextBox12.Text = ((Convert.ToInt32(firstByte.ToString("X2") + secondByte.ToString("X2"), 16)) / 1000.0).ToString();
+            TextBox12.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 51, MyProject.Forms.Form1.Moff - 50);
 
             // Cache the gear ratio of the highest gear
             var textBoxes = new[] { TextBox11, TextBox10, TextBox9, TextBox8, TextBox7, TextBox6, TextBox5, TextBox4, TextBox3, TextBox2, TextBox1 };
