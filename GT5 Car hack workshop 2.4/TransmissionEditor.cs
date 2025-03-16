@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Globalization;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using GT5_Car_hack_workshop_2.My;
-using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 
 namespace GT5_Car_hack_workshop_2
@@ -214,235 +214,63 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        private void OkayButtonClick(object sender, EventArgs e)
+        private void SaveGearRatioToGt5Save(string textBoxValue, int moffOffset1, int moffOffset2)
         {
             try
             {
-                var working = TextBox1.Text;
-                working = Conversions.ToString(Conversion.Val(working) * 1000.0);
-                var @int = Conversions.ToInteger(Conversion.Int(working));
+                var working = (int)(float.Parse(textBoxValue) * 1000);
                 checked
                 {
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 73))] =
-                        (byte)Math.Round(Conversion.Val("&H" + @int.ToString("X4").Substring(0, 2)));
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 72))] =
-                        (byte)Math.Round(Conversion.Val("&H" + @int.ToString("X4").Substring(2, 2)));
+                    MyProject.Forms.Form1.Gt5Save[moffOffset1] =
+                        byte.Parse(working.ToString("X4").Substring(0, 2), NumberStyles.HexNumber);
+                    MyProject.Forms.Form1.Gt5Save[moffOffset2] =
+                        byte.Parse(working.ToString("X4").Substring(2, 2), NumberStyles.HexNumber);
                 }
             }
             catch (Exception ex)
             {
+                // Handle the exception appropriately, e.g., log it or display an error message.
             }
+        }
 
-            try
-            {
-                var working2 = TextBox2.Text;
-                working2 = Conversions.ToString(Conversion.Val(working2) * 1000.0);
-                var int2 = Conversions.ToInteger(Conversion.Int(working2));
-                checked
-                {
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 71))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int2.ToString("X4").Substring(0, 2)));
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 70))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int2.ToString("X4").Substring(2, 2)));
-                }
-            }
-            catch (Exception ex2)
-            {
-            }
 
-            try
-            {
-                var working3 = TextBox3.Text;
-                working3 = Conversions.ToString(Conversion.Val(working3) * 1000.0);
-                var int3 = Conversions.ToInteger(Conversion.Int(working3));
-                checked
-                {
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 69))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int3.ToString("X4").Substring(0, 2)));
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 68))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int3.ToString("X4").Substring(2, 2)));
-                }
-            }
-            catch (Exception ex3)
-            {
-            }
-
-            try
-            {
-                var working4 = TextBox4.Text;
-                working4 = Conversions.ToString(Conversion.Val(working4) * 1000.0);
-                var int4 = Conversions.ToInteger(Conversion.Int(working4));
-                checked
-                {
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 67))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int4.ToString("X4").Substring(0, 2)));
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 66))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int4.ToString("X4").Substring(2, 2)));
-                }
-            }
-            catch (Exception ex4)
-            {
-            }
-
-            try
-            {
-                var working5 = TextBox5.Text;
-                working5 = Conversions.ToString(Conversion.Val(working5) * 1000.0);
-                var int5 = Conversions.ToInteger(Conversion.Int(working5));
-                checked
-                {
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 65))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int5.ToString("X4").Substring(0, 2)));
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 64))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int5.ToString("X4").Substring(2, 2)));
-                }
-            }
-            catch (Exception ex5)
-            {
-            }
-
-            try
-            {
-                var working6 = TextBox6.Text;
-                working6 = Conversions.ToString(Conversion.Val(working6) * 1000.0);
-                var int6 = Conversions.ToInteger(Conversion.Int(working6));
-                checked
-                {
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 63))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int6.ToString("X4").Substring(0, 2)));
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 62))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int6.ToString("X4").Substring(2, 2)));
-                }
-            }
-            catch (Exception ex6)
-            {
-            }
-
-            try
-            {
-                var working7 = TextBox7.Text;
-                working7 = Conversions.ToString(Conversion.Val(working7) * 1000.0);
-                var int7 = Conversions.ToInteger(Conversion.Int(working7));
-                checked
-                {
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 61))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int7.ToString("X4").Substring(0, 2)));
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 60))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int7.ToString("X4").Substring(2, 2)));
-                }
-            }
-            catch (Exception ex7)
-            {
-            }
-
-            try
-            {
-                var working8 = TextBox8.Text;
-                working8 = Conversions.ToString(Conversion.Val(working8) * 1000.0);
-                var int8 = Conversions.ToInteger(Conversion.Int(working8));
-                checked
-                {
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 59))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int8.ToString("X4").Substring(0, 2)));
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 58))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int8.ToString("X4").Substring(2, 2)));
-                }
-            }
-            catch (Exception ex8)
-            {
-            }
-
-            try
-            {
-                var working9 = TextBox9.Text;
-                working9 = Conversions.ToString(Conversion.Val(working9) * 1000.0);
-                var int9 = Conversions.ToInteger(Conversion.Int(working9));
-                checked
-                {
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 57))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int9.ToString("X4").Substring(0, 2)));
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 56))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int9.ToString("X4").Substring(2, 2)));
-                }
-            }
-            catch (Exception ex9)
-            {
-            }
-
-            try
-            {
-                var working10 = TextBox10.Text;
-                working10 = Conversions.ToString(Conversion.Val(working10) * 1000.0);
-                var int10 = Conversions.ToInteger(Conversion.Int(working10));
-                checked
-                {
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 55))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int10.ToString("X4").Substring(0, 2)));
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 54))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int10.ToString("X4").Substring(2, 2)));
-                }
-            }
-            catch (Exception ex10)
-            {
-            }
-
-            try
-            {
-                var working11 = TextBox11.Text;
-                working11 = Conversions.ToString(Conversion.Val(working11) * 1000.0);
-                var int11 = Conversions.ToInteger(Conversion.Int(working11));
-                checked
-                {
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 53))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int11.ToString("X4").Substring(0, 2)));
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 52))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int11.ToString("X4").Substring(2, 2)));
-                }
-            }
-            catch (Exception ex11)
-            {
-            }
-
-            try
-            {
-                var working12 = TextBox12.Text;
-                working12 = Conversions.ToString(Conversion.Val(working12) * 1000.0);
-                var int12 = Conversions.ToInteger(Conversion.Int(working12));
-                checked
-                {
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 51))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int12.ToString("X4").Substring(0, 2)));
-                    MyProject.Forms.Form1.Gt5Save[
-                            Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 50))] =
-                        (byte)Math.Round(Conversion.Val("&H" + int12.ToString("X4").Substring(2, 2)));
-                }
-            }
-            catch (Exception ex12)
-            {
-            }
+        private void OkayButtonClick(object sender, EventArgs e)
+        {
+            // Gear 1
+            SaveGearRatioToGt5Save(TextBox1.Text, MyProject.Forms.Form1.Moff - 73, MyProject.Forms.Form1.Moff - 72);
+            
+            // Gear 2
+            SaveGearRatioToGt5Save(TextBox2.Text, MyProject.Forms.Form1.Moff - 71, MyProject.Forms.Form1.Moff - 70);
+            
+            // Gear 3
+            SaveGearRatioToGt5Save(TextBox3.Text, MyProject.Forms.Form1.Moff - 69, MyProject.Forms.Form1.Moff - 68);
+            
+            // Gear 4
+            SaveGearRatioToGt5Save(TextBox4.Text, MyProject.Forms.Form1.Moff - 67, MyProject.Forms.Form1.Moff - 66);
+            
+            // Gear 5
+            SaveGearRatioToGt5Save(TextBox5.Text, MyProject.Forms.Form1.Moff - 65, MyProject.Forms.Form1.Moff - 64);
+            
+            // Gear 6
+            SaveGearRatioToGt5Save(TextBox6.Text, MyProject.Forms.Form1.Moff - 63, MyProject.Forms.Form1.Moff - 62);
+            
+            // Gear 7
+            SaveGearRatioToGt5Save(TextBox7.Text, MyProject.Forms.Form1.Moff - 61, MyProject.Forms.Form1.Moff - 60);
+            
+            // Gear 8
+            SaveGearRatioToGt5Save(TextBox8.Text, MyProject.Forms.Form1.Moff - 59, MyProject.Forms.Form1.Moff - 58);
+            
+            // Gear 9
+            SaveGearRatioToGt5Save(TextBox9.Text, MyProject.Forms.Form1.Moff - 57, MyProject.Forms.Form1.Moff - 56);
+            
+            // Gear 10
+            SaveGearRatioToGt5Save(TextBox10.Text, MyProject.Forms.Form1.Moff - 55, MyProject.Forms.Form1.Moff - 54);
+            
+            // Gear 11
+            SaveGearRatioToGt5Save(TextBox11.Text, MyProject.Forms.Form1.Moff - 53, MyProject.Forms.Form1.Moff - 52);
+            
+            // Final drive
+            SaveGearRatioToGt5Save(TextBox12.Text, MyProject.Forms.Form1.Moff - 51, MyProject.Forms.Form1.Moff - 50);
 
             Close();
         }
