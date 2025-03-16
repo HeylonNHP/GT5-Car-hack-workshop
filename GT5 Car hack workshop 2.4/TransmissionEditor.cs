@@ -14,15 +14,15 @@ namespace GT5_Car_hack_workshop_2
 
         [AccessedThroughProperty("Timer1")] private Timer _Timer1;
 
-        private decimal lastgearpre;
+        private decimal _Lastgearpre;
 
-        private decimal originalFinalDrive;
+        private decimal _OriginalFinalDrive;
 
         public TransmissionEditor()
         {
             Load += TransmissionLoadValues;
-            lastgearpre = 0.1m;
-            originalFinalDrive = 0.1m;
+            _Lastgearpre = 0.1m;
+            _OriginalFinalDrive = 0.1m;
             InitializeComponent();
         }
 
@@ -185,7 +185,7 @@ namespace GT5_Car_hack_workshop_2
 
                 if (parsedHighestGearRatio > 0.0m)
                 {
-                    lastgearpre = parsedHighestGearRatio;
+                    _Lastgearpre = parsedHighestGearRatio;
                     break;
                 }
             }
@@ -193,7 +193,7 @@ namespace GT5_Car_hack_workshop_2
             // Cache the final drive ratio
             if (decimal.TryParse(TextBox12.Text, out var parsedFinalDriveRatio))
             {
-                originalFinalDrive = parsedFinalDriveRatio;
+                _OriginalFinalDrive = parsedFinalDriveRatio;
             }
         }
 
@@ -279,10 +279,10 @@ namespace GT5_Car_hack_workshop_2
                     }
                 }
 
-                TextBox14.Text = Math.Round((float)originalFinalDrive /
+                TextBox14.Text = Math.Round((float)_OriginalFinalDrive /
                                             float.Parse(TextBox12.Text) *
                                             float.Parse(TextBox13.Text) *
-                                            (1f / lastGear * (float)lastgearpre), 1).ToString();
+                                            (1f / lastGear * (float)_Lastgearpre), 1).ToString();
             }
         }
     }
