@@ -455,6 +455,7 @@ namespace GT5_Car_hack_workshop_2
 		}
 		
 		private System.Windows.Forms.Button OkayButton;
+		
 		private System.Windows.Forms.Label Label1;
 		private System.Windows.Forms.Label Label2;
 		private System.Windows.Forms.Label Label3;
@@ -466,6 +467,20 @@ namespace GT5_Car_hack_workshop_2
 		private System.Windows.Forms.Label Label9;
 		private System.Windows.Forms.Label Label10;
 		private System.Windows.Forms.Label Label11;
+		private System.Windows.Forms.Label Label12;
+		
+		private System.Windows.Forms.TextBox TextBox1;
+		private System.Windows.Forms.TextBox TextBox2;
+		private System.Windows.Forms.TextBox TextBox3;
+		private System.Windows.Forms.TextBox TextBox4;
+		private System.Windows.Forms.TextBox TextBox5;
+		private System.Windows.Forms.TextBox TextBox6;
+		private System.Windows.Forms.TextBox TextBox7;
+		private System.Windows.Forms.TextBox TextBox8;
+		private System.Windows.Forms.TextBox TextBox9;
+		private System.Windows.Forms.TextBox TextBox10;
+		private System.Windows.Forms.TextBox TextBox11;
+		private System.Windows.Forms.TextBox TextBox12;
 
 		// Token: 0x040000A2 RID: 162
 		private global::System.ComponentModel.IContainer components;
