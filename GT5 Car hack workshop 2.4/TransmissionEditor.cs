@@ -10,7 +10,6 @@ namespace GT5_Car_hack_workshop_2
     [DesignerGenerated]
     public partial class TransmissionEditor : Form
     {
-        [AccessedThroughProperty("Button1")] private Button _Button1;
 
         [AccessedThroughProperty("Timer1")] private Timer _Timer1;
 
