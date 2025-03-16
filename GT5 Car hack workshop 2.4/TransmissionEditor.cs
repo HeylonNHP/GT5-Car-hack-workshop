@@ -20,10 +20,12 @@ namespace GT5_Car_hack_workshop_2
             _OriginalFinalDrive = 0.1m;
             InitializeComponent();
 
-            _Timer1 = new Timer();
+            _Timer1 = new Timer
+            {
+                Interval = 100,
+                Enabled = true
+            };
             _Timer1.Tick += Timer1_Tick;
-            _Timer1.Interval = 100;
-            _Timer1.Enabled = true;
             _Timer1.Start();
 
             FormClosing += (s, e) =>
@@ -163,10 +165,12 @@ namespace GT5_Car_hack_workshop_2
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(TextBox13.Text)) TextBox13.Text = "0";
+            if (string.IsNullOrEmpty(TextBox13.Text))
+            {
+                TextBox13.Text = "0";
+            }
 
-            var omax = float.Parse(TextBox13.Text);
-            if (omax != 0f)
+            if (float.TryParse(TextBox13.Text, out float maxSpeed) && maxSpeed != 0f)
             {
                 var lastGear = 0.1f;
 
@@ -189,11 +193,10 @@ namespace GT5_Car_hack_workshop_2
                 // Calculate the adjusted ratio based on original final drive, current final drive,
                 // max speed, and last gear ratio
                 float finalDriveRatio = float.Parse(TextBox12.Text);
-                float maxSpeed = float.Parse(TextBox13.Text);
-                float adjustedRatio = (float)_OriginalFinalDrive / finalDriveRatio * 
-                                     maxSpeed * 
+                float adjustedRatio = (float)_OriginalFinalDrive / finalDriveRatio *
+                                     maxSpeed *
                                      (1f / lastGear * (float)_Lastgearpre);
-                
+
                 // Round to 1 decimal place and display
                 TextBox14.Text = Math.Round(adjustedRatio, 1).ToString();
             }
