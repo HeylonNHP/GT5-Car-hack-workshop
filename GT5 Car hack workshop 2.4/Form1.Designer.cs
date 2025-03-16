@@ -6,7 +6,7 @@
 		/// Required designer variable.
 		/// </summary>
 		private System.ComponentModel.IContainer components = null;
-		
+
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
@@ -20,7 +20,7 @@
 
 			base.Dispose(disposing);
 		}
-		
+
 		private void InitializeComponent()
 		{
 			this.GroupBox1 = new global::System.Windows.Forms.GroupBox();
@@ -208,6 +208,7 @@
 			this.Button5.TabIndex = 7;
 			this.Button5.Text = "Save only";
 			this.Button5.UseVisualStyleBackColor = false;
+			this.Button5.Click += new System.EventHandler(this.Button5_Click);
 			this.Label2.AutoSize = true;
 			global::System.Windows.Forms.Control label = this.Label2;
 			point = new global::System.Drawing.Point(185, 20);
@@ -237,6 +238,7 @@
 			this.Button3.TabIndex = 4;
 			this.Button3.Text = "Save and encrypt";
 			this.Button3.UseVisualStyleBackColor = false;
+			this.Button3.Click += new System.EventHandler(this.Button3_Click);
 			this.Button2.BackColor = global::System.Drawing.Color.FromArgb(255, 192, 192);
 			global::System.Windows.Forms.Control button7 = this.Button2;
 			point = new global::System.Drawing.Point(6, 70);
@@ -248,6 +250,7 @@
 			this.Button2.TabIndex = 3;
 			this.Button2.Text = "Load data";
 			this.Button2.UseVisualStyleBackColor = false;
+			this.Button2.Click += new System.EventHandler(this.Button2_Click);
 			this.Button1.BackColor = global::System.Drawing.Color.FromArgb(255, 224, 192);
 			global::System.Windows.Forms.Control button9 = this.Button1;
 			point = new global::System.Drawing.Point(104, 15);
@@ -357,6 +360,7 @@
 			size = new global::System.Drawing.Size(38, 20);
 			textBox6.Size = size;
 			this.TorqueSplitTextBox.TabIndex = 4;
+			this.TorqueSplitTextBox.TextChanged += new System.EventHandler(this.TextBox4_TextChanged);
 			global::System.Windows.Forms.Control textBox7 = this.TextBox5;
 			point = new global::System.Drawing.Point(127, 13);
 			textBox7.Location = point;
@@ -386,6 +390,7 @@
 			this.Button8.TabIndex = 14;
 			this.Button8.Text = "?";
 			this.Button8.UseVisualStyleBackColor = true;
+			this.Button8.Click += new System.EventHandler(this.Button8_Click);
 			this.GroupBox9.Controls.Add(this.HornCodeTextBox);
 			this.GroupBox9.Controls.Add(this.Label11);
 			this.GroupBox9.Controls.Add(this.TransmissionCodeTextBox);
@@ -486,6 +491,7 @@
 			this.Button6.TabIndex = 9;
 			this.Button6.Text = "Make 4WD";
 			this.Button6.UseVisualStyleBackColor = false;
+			this.Button6.Click += new System.EventHandler(this.Button6_Click);
 			global::System.Windows.Forms.Control textBox15 = this.DrivetrainCodeTextBox;
 			point = new global::System.Drawing.Point(91, 191);
 			textBox15.Location = point;
@@ -524,6 +530,7 @@
 			this.Button7.TabIndex = 13;
 			this.Button7.Text = "?";
 			this.Button7.UseVisualStyleBackColor = true;
+			this.Button7.Click += new System.EventHandler(this.Button7_Click);
 			this.Button4.BackColor = global::System.Drawing.Color.FromArgb(255, 255, 192);
 			global::System.Windows.Forms.Control button17 = this.Button4;
 			point = new global::System.Drawing.Point(44, 243);
@@ -535,6 +542,7 @@
 			this.Button4.TabIndex = 12;
 			this.Button4.Text = "Force torque split editor install";
 			this.Button4.UseVisualStyleBackColor = false;
+			this.Button4.Click += new System.EventHandler(this.Button4_Click);
 			this.Label3.AutoSize = true;
 			this.Label3.Font = new global::System.Drawing.Font("Microsoft Sans Serif", 8.25f, global::System.Drawing.FontStyle.Bold, global::System.Drawing.GraphicsUnit.Point, 0);
 			this.Label3.ForeColor = global::System.Drawing.Color.Blue;
@@ -643,6 +651,7 @@
 			this.Button11.TabIndex = 27;
 			this.Button11.Text = "Open";
 			this.Button11.UseVisualStyleBackColor = false;
+			this.Button11.Click += new System.EventHandler(this.Button11_Click);
 			this.GroupBox7.Controls.Add(this.AeroFrontTextBox);
 			this.GroupBox7.Controls.Add(this.Label16);
 			this.GroupBox7.Controls.Add(this.AeroRearTextBox);
@@ -742,6 +751,7 @@
 			this.Button10.TabIndex = 23;
 			this.Button10.Text = "?";
 			this.Button10.UseVisualStyleBackColor = true;
+			this.Button10.Click += new System.EventHandler(this.Button10_Click);
 			this.GroupBox5.Controls.Add(this.Button17);
 			this.GroupBox5.Controls.Add(this.Button16);
 			this.GroupBox5.Controls.Add(this.Label15);
@@ -769,6 +779,7 @@
 			this.Button17.TabIndex = 53;
 			this.Button17.Text = "?";
 			this.Button17.UseVisualStyleBackColor = true;
+			this.Button17.Click += new System.EventHandler(this.Button17_Click);
 			global::System.Windows.Forms.Control button25 = this.Button16;
 			point = new global::System.Drawing.Point(165, 13);
 			button25.Location = point;
@@ -779,6 +790,7 @@
 			this.Button16.TabIndex = 37;
 			this.Button16.Text = "?";
 			this.Button16.UseVisualStyleBackColor = true;
+			this.Button16.Click += new System.EventHandler(this.Button16_Click);
 			this.Label15.AutoSize = true;
 			this.Label15.Font = new global::System.Drawing.Font("Microsoft Sans Serif", 8.25f, global::System.Drawing.FontStyle.Bold, global::System.Drawing.GraphicsUnit.Point, 0);
 			this.Label15.ForeColor = global::System.Drawing.Color.Blue;
@@ -867,6 +879,7 @@
 			this.Button14.TabIndex = 38;
 			this.Button14.Text = "?";
 			this.Button14.UseVisualStyleBackColor = true;
+			this.Button14.Click += new System.EventHandler(this.Button14_Click);
 			this.Add74ByteCheckBox.AutoSize = true;
 			this.Add74ByteCheckBox.Checked = true;
 			this.Add74ByteCheckBox.CheckState = global::System.Windows.Forms.CheckState.Checked;
@@ -890,6 +903,7 @@
 			this.Button9.TabIndex = 16;
 			this.Button9.Text = "?";
 			this.Button9.UseVisualStyleBackColor = true;
+			this.Button9.Click += new System.EventHandler(this.Button9_Click);
 			this.GroupBox3.Controls.Add(this.Label9);
 			this.GroupBox3.Controls.Add(this.Label8);
 			this.GroupBox3.Font = new global::System.Drawing.Font("Microsoft Sans Serif", 8.25f, global::System.Drawing.FontStyle.Bold, global::System.Drawing.GraphicsUnit.Point, 0);
@@ -980,6 +994,7 @@
 			this.Button21.TabIndex = 2;
 			this.Button21.Text = "Uninstall";
 			this.Button21.UseVisualStyleBackColor = false;
+			this.Button21.Click += new System.EventHandler(this.Button21_Click);
 			this.Button20.BackColor = global::System.Drawing.Color.FromArgb(192, 255, 192);
 			this.Button20.ForeColor = global::System.Drawing.SystemColors.ControlText;
 			global::System.Windows.Forms.Control button33 = this.Button20;
@@ -992,6 +1007,7 @@
 			this.Button20.TabIndex = 1;
 			this.Button20.Text = "Install";
 			this.Button20.UseVisualStyleBackColor = false;
+			this.Button20.Click += new System.EventHandler(this.Button20_Click);
 			this.Label39.AutoSize = true;
 			global::System.Windows.Forms.Control label43 = this.Label39;
 			point = new global::System.Drawing.Point(6, 16);
@@ -1132,6 +1148,7 @@
 			this.Button19.TabIndex = 42;
 			this.Button19.Text = "Slam car";
 			this.Button19.UseVisualStyleBackColor = false;
+			this.Button19.Click += new System.EventHandler(this.SlamCar_Button19_Click);
 			this.Label18.AutoSize = true;
 			this.Label18.Font = new global::System.Drawing.Font("Microsoft Sans Serif", 8.25f, global::System.Drawing.FontStyle.Bold, global::System.Drawing.GraphicsUnit.Point, 0);
 			this.Label18.ForeColor = global::System.Drawing.Color.Red;
@@ -1272,6 +1289,7 @@
 			this.Button12.TabIndex = 16;
 			this.Button12.Text = "Add current car to parts database";
 			this.Button12.UseVisualStyleBackColor = false;
+			this.Button12.Click += new System.EventHandler(this.Button12_Click);
 			this.Label30.AutoSize = true;
 			global::System.Windows.Forms.Control label61 = this.Label30;
 			point = new global::System.Drawing.Point(41, 199);
@@ -1293,6 +1311,7 @@
 			comboBox2.Size = size;
 			this.ComboBox8.Sorted = true;
 			this.ComboBox8.TabIndex = 14;
+			this.ComboBox8.SelectedIndexChanged += new System.EventHandler(this.ComboBox8_SelectedIndexChanged);
 			this.Label29.AutoSize = true;
 			global::System.Windows.Forms.Control label63 = this.Label29;
 			point = new global::System.Drawing.Point(43, 171);
@@ -1314,6 +1333,7 @@
 			comboBox4.Size = size;
 			this.ComboBox7.Sorted = true;
 			this.ComboBox7.TabIndex = 12;
+			this.ComboBox7.SelectedIndexChanged += new System.EventHandler(this.ComboBox7_SelectedIndexChanged);
 			this.Label28.AutoSize = true;
 			global::System.Windows.Forms.Control label65 = this.Label28;
 			point = new global::System.Drawing.Point(40, 144);
@@ -1335,6 +1355,7 @@
 			comboBox6.Size = size;
 			this.ComboBox6.Sorted = true;
 			this.ComboBox6.TabIndex = 10;
+			this.ComboBox6.SelectedIndexChanged += new System.EventHandler(this.ComboBox6_SelectedIndexChanged);
 			this.Label27.AutoSize = true;
 			global::System.Windows.Forms.Control label67 = this.Label27;
 			point = new global::System.Drawing.Point(9, 117);
@@ -1356,6 +1377,7 @@
 			comboBox8.Size = size;
 			this.ComboBox5.Sorted = true;
 			this.ComboBox5.TabIndex = 8;
+			this.ComboBox5.SelectedIndexChanged += new System.EventHandler(this.ComboBox5_SelectedIndexChanged);
 			this.Label26.AutoSize = true;
 			global::System.Windows.Forms.Control label69 = this.Label26;
 			point = new global::System.Drawing.Point(3, 90);
@@ -1377,6 +1399,7 @@
 			comboBox10.Size = size;
 			this.ComboBox4.Sorted = true;
 			this.ComboBox4.TabIndex = 6;
+			this.ComboBox4.SelectedIndexChanged += new System.EventHandler(this.ComboBox4_SelectedIndexChanged);
 			this.Label25.AutoSize = true;
 			global::System.Windows.Forms.Control label71 = this.Label25;
 			point = new global::System.Drawing.Point(28, 63);
@@ -1398,6 +1421,7 @@
 			comboBox12.Size = size;
 			this.ComboBox3.Sorted = true;
 			this.ComboBox3.TabIndex = 4;
+			this.ComboBox3.SelectedIndexChanged += new System.EventHandler(this.ComboBox3_SelectedIndexChanged);
 			this.Label24.AutoSize = true;
 			global::System.Windows.Forms.Control label73 = this.Label24;
 			point = new global::System.Drawing.Point(19, 36);
@@ -1419,6 +1443,7 @@
 			comboBox14.Size = size;
 			this.ComboBox2.Sorted = true;
 			this.ComboBox2.TabIndex = 2;
+			this.ComboBox2.SelectedIndexChanged += new System.EventHandler(this.ComboBox2_SelectedIndexChanged);
 			this.Label23.AutoSize = true;
 			global::System.Windows.Forms.Control label75 = this.Label23;
 			point = new global::System.Drawing.Point(31, 9);
@@ -1440,6 +1465,7 @@
 			comboBox16.Size = size;
 			this.ComboBox1.Sorted = true;
 			this.ComboBox1.TabIndex = 0;
+			this.ComboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
 			this.TabPage4.Controls.Add(this.Button18);
 			this.TabPage4.Controls.Add(this.Button15);
 			this.TabPage4.Controls.Add(this.Button13);
@@ -1467,6 +1493,7 @@
 			this.Button18.TabIndex = 3;
 			this.Button18.Text = "Get 4.2 billion credits ($$$)";
 			this.Button18.UseVisualStyleBackColor = true;
+			this.Button18.Click += new System.EventHandler(this.Button18_Click);
 			this.Button15.Font = new global::System.Drawing.Font("Microsoft Sans Serif", 8.25f, global::System.Drawing.FontStyle.Bold | global::System.Drawing.FontStyle.Italic, global::System.Drawing.GraphicsUnit.Point, 0);
 			global::System.Windows.Forms.Control button41 = this.Button15;
 			point = new global::System.Drawing.Point(3, 31);
@@ -1478,6 +1505,7 @@
 			this.Button15.TabIndex = 2;
 			this.Button15.Text = "Borrow glitch (Steal car)";
 			this.Button15.UseVisualStyleBackColor = true;
+			this.Button15.Click += new System.EventHandler(this.Button15_Click);
 			this.Button13.BackColor = global::System.Drawing.Color.Red;
 			this.Button13.ForeColor = global::System.Drawing.Color.White;
 			global::System.Windows.Forms.Control button43 = this.Button13;
@@ -1490,6 +1518,7 @@
 			this.Button13.TabIndex = 1;
 			this.Button13.Text = "Open";
 			this.Button13.UseVisualStyleBackColor = false;
+			this.Button13.Click += new System.EventHandler(this.Button13_Click);
 			this.Label36.AutoSize = true;
 			global::System.Windows.Forms.Control label77 = this.Label36;
 			point = new global::System.Drawing.Point(6, 7);
@@ -1549,6 +1578,7 @@
 			this.Button23.TabIndex = 27;
 			this.Button23.Text = "?";
 			this.Button23.UseVisualStyleBackColor = true;
+			this.Button23.Click += new System.EventHandler(this.Button23_Click);
 			global::System.Drawing.SizeF sizeF = new global::System.Drawing.SizeF(6f, 13f);
 			this.AutoScaleDimensions = sizeF;
 			this.AutoScaleMode = global::System.Windows.Forms.AutoScaleMode.Font;
@@ -1600,9 +1630,128 @@
 			this.TabPage4.PerformLayout();
 			this.ResumeLayout(false);
 		}
-		
-		private System.Windows.Forms.Button Button1;
+
+		private System.Windows.Forms.GroupBox GroupBox1;
 		private System.Windows.Forms.Button Button22;
+		private System.Windows.Forms.Button Button5;
+		private System.Windows.Forms.Label Label2;
+		private System.Windows.Forms.TextBox TextBox2;
+		private System.Windows.Forms.Button Button3;
+		private System.Windows.Forms.Button Button2;
+		private System.Windows.Forms.Button Button1;
+		private System.Windows.Forms.Label Label1;
+		private System.Windows.Forms.TextBox TextBox1;
+		private System.Windows.Forms.GroupBox GroupBox2;
+		private System.Windows.Forms.TabControl TabControl2;
+		private System.Windows.Forms.TabPage TabPage2;
+		private System.Windows.Forms.GroupBox GroupBox10;
+		private System.Windows.Forms.Label Label4;
+		private System.Windows.Forms.TextBox TorqueSplitTextBox;
+		private System.Windows.Forms.TextBox TextBox5;
+		private System.Windows.Forms.Label Label5;
+		private System.Windows.Forms.Button Button8;
+		private System.Windows.Forms.GroupBox GroupBox9;
+		private System.Windows.Forms.TextBox HornCodeTextBox;
+		private System.Windows.Forms.Label Label11;
+		private System.Windows.Forms.TextBox TransmissionCodeTextBox;
+		private System.Windows.Forms.Label Label10;
+		private System.Windows.Forms.Label Label35;
+		private System.Windows.Forms.TextBox ChassisCodeTextBox;
+		private System.Windows.Forms.Button Button6;
+		private System.Windows.Forms.TextBox DrivetrainCodeTextBox;
+		private System.Windows.Forms.Label Label6;
+		private System.Windows.Forms.TextBox LsdCodeTextBox;
+		private System.Windows.Forms.Button Button7;
+		private System.Windows.Forms.Button Button4;
+		private System.Windows.Forms.Label Label3;
+		private System.Windows.Forms.TextBox EngineCodeTextBox;
+		private System.Windows.Forms.TextBox CarBodyCodeTextBox;
+		private System.Windows.Forms.Label Label33;
+		private System.Windows.Forms.Label Label32;
+		private System.Windows.Forms.TextBox SuspensionCodeTextBox;
+		private System.Windows.Forms.Label Label34;
+		private System.Windows.Forms.GroupBox GroupBox8;
+		private System.Windows.Forms.Label Label14;
+		private System.Windows.Forms.Button Button11;
+		private System.Windows.Forms.GroupBox GroupBox7;
+		private System.Windows.Forms.TextBox AeroFrontTextBox;
+		private System.Windows.Forms.Label Label16;
+		private System.Windows.Forms.TextBox AeroRearTextBox;
+		private System.Windows.Forms.Label Label17;
+		private System.Windows.Forms.GroupBox GroupBox6;
+		private System.Windows.Forms.Button Button23;
+		private System.Windows.Forms.CheckBox RemoveFrontBumperCheckBox;
+		private System.Windows.Forms.CheckBox RemoveRearBumperCheckBox;
+		private System.Windows.Forms.CheckBox RemoveHoodCheckBox;
+		private System.Windows.Forms.Label Label12;
+		private System.Windows.Forms.TextBox RemoveSpoilerCodeTextBox;
+		private System.Windows.Forms.Button Button10;
+		private System.Windows.Forms.GroupBox GroupBox5;
+		private System.Windows.Forms.Button Button17;
+		private System.Windows.Forms.Button Button16;
+		private System.Windows.Forms.Label Label15;
+		public System.Windows.Forms.TextBox TurboModifierTextBox;
+		public System.Windows.Forms.TextBox ExhauseMultiplierTextBox;
+		private System.Windows.Forms.Label Label31;
+		private System.Windows.Forms.CheckBox SambaLikePerformanceCheckbox;
+		private System.Windows.Forms.GroupBox GroupBox4;
+		private System.Windows.Forms.CheckBox AddLucaBytesCheckBox;
+		private System.Windows.Forms.Button Button14;
+		private System.Windows.Forms.CheckBox Add74ByteCheckBox;
+		private System.Windows.Forms.Button Button9;
+		private System.Windows.Forms.GroupBox GroupBox3;
+		private System.Windows.Forms.Label Label9;
+		private System.Windows.Forms.Label Label8;
+		private System.Windows.Forms.Label Label7;
+		private System.Windows.Forms.TabPage TabPage3;
+		private System.Windows.Forms.GroupBox GroupBox14;
+		private System.Windows.Forms.Button Button21;
+		private System.Windows.Forms.Button Button20;
+		private System.Windows.Forms.Label Label39;
+		private System.Windows.Forms.GroupBox GroupBox13;
+		private System.Windows.Forms.CheckBox CheckBox4;
+		private System.Windows.Forms.TextBox WeightMultiplierTextBox;
+		private System.Windows.Forms.Label Label38;
+		private System.Windows.Forms.GroupBox GroupBox12;
+		private System.Windows.Forms.Label Label13;
+		private System.Windows.Forms.TextBox PaintCodesTextBox;
+		private System.Windows.Forms.TextBox GripTextBox;
+		private System.Windows.Forms.Label Label20;
+		private System.Windows.Forms.GroupBox GroupBox11;
+		private System.Windows.Forms.Button Button19;
+		private System.Windows.Forms.Label Label18;
+		private System.Windows.Forms.TextBox SuspensionHeightFrontTextBox;
+		private System.Windows.Forms.Label Label22;
+		private System.Windows.Forms.TextBox SuspensionHeightRearTextBox;
+		private System.Windows.Forms.TextBox SpringRateRearTextBox;
+		private System.Windows.Forms.Label Label19;
+		private System.Windows.Forms.TextBox SpringRateFrontTextBox;
+		private System.Windows.Forms.Label Label21;
+		private System.Windows.Forms.TabControl TabControl1;
+		private System.Windows.Forms.TabPage TabPage1;
+		private System.Windows.Forms.Label Label37;
+		private System.Windows.Forms.Button Button12;
+		private System.Windows.Forms.Label Label30;
+		private System.Windows.Forms.ComboBox ComboBox8;
+		private System.Windows.Forms.Label Label29;
+		private System.Windows.Forms.ComboBox ComboBox7;
+		private System.Windows.Forms.Label Label28;
+		private System.Windows.Forms.ComboBox ComboBox6;
+		private System.Windows.Forms.Label Label27;
+		private System.Windows.Forms.ComboBox ComboBox5;
+		private System.Windows.Forms.Label Label26;
+		private System.Windows.Forms.ComboBox ComboBox4;
+		private System.Windows.Forms.Label Label25;
+		private System.Windows.Forms.ComboBox ComboBox3;
+		private System.Windows.Forms.Label Label24;
+		private System.Windows.Forms.ComboBox ComboBox2;
+		private System.Windows.Forms.Label Label23;
+		private System.Windows.Forms.ComboBox ComboBox1;
+		private System.Windows.Forms.TabPage TabPage4;
+		private System.Windows.Forms.Button Button18;
+		private System.Windows.Forms.Button Button15;
+		private System.Windows.Forms.Button Button13;
+		private System.Windows.Forms.Label Label36;
 
 	}
 }
