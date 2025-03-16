@@ -15,10 +15,11 @@ namespace GT5_Car_hack_workshop_2
 
         public TransmissionEditor()
         {
+            InitializeComponent();
+            
             Load += TransmissionLoadValues;
             _Lastgearpre = 0.1m;
             _OriginalFinalDrive = 0.1m;
-            InitializeComponent();
 
             _Timer1 = new Timer
             {
