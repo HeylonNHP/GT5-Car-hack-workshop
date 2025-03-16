@@ -15,7 +15,7 @@
         <StartupObject>GT5_Car_hack_workshop_2.My.MyApplication</StartupObject>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-        <PlatformTarget>x86</PlatformTarget>
+        <PlatformTarget>AnyCPU</PlatformTarget>
         <DebugSymbols>true</DebugSymbols>
         <DebugType>full</DebugType>
         <Optimize>false</Optimize>
@@ -25,7 +25,7 @@
         <WarningLevel>4</WarningLevel>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-        <PlatformTarget>x86</PlatformTarget>
+        <PlatformTarget>AnyCPU</PlatformTarget>
         <DebugType>pdbonly</DebugType>
         <Optimize>true</Optimize>
         <OutputPath>bin\Release\</OutputPath>
@@ -75,9 +75,9 @@
         </Compile>
     </ItemGroup>
     <ItemGroup>
-        <EmbeddedResource Include="Customperformance.resources"/>
-        <EmbeddedResource Include="Form1.resources"/>
-        <EmbeddedResource Include="Resources.resources"/>
+        <EmbeddedResource Include="Resources\Customperformance.resources" />
+        <EmbeddedResource Include="Resources\Form1.resources" />
+        <EmbeddedResource Include="Resources\Resources.resources" />
         <EmbeddedResource Include="Tranny.resources"/>
     </ItemGroup>
     <ItemGroup>
