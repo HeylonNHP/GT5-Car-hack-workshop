@@ -5,21 +5,18 @@ namespace GT5_Car_hack_workshop_2
 	// Token: 0x0200000F RID: 15
 	public partial class TransmissionEditor : global::System.Windows.Forms.Form
 	{
-		// Token: 0x06000177 RID: 375 RVA: 0x0000E3A4 File Offset: 0x0000C7A4
-		[global::System.Diagnostics.DebuggerNonUserCode]
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
 		protected override void Dispose(bool disposing)
 		{
-			try
+			if (disposing && (components != null))
 			{
-				if (disposing && this.components != null)
-				{
-					this.components.Dispose();
-				}
+				components.Dispose();
 			}
-			finally
-			{
-				base.Dispose(disposing);
-			}
+
+			base.Dispose(disposing);
 		}
 
 		// Token: 0x06000178 RID: 376 RVA: 0x0000E3E4 File Offset: 0x0000C7E4
@@ -57,7 +54,6 @@ namespace GT5_Car_hack_workshop_2
 			this.TextBox13 = new global::System.Windows.Forms.TextBox();
 			this.Label14 = new global::System.Windows.Forms.Label();
 			this.TextBox14 = new global::System.Windows.Forms.TextBox();
-			this.Timer1 = new global::System.Windows.Forms.Timer(this.components);
 			this.GroupBox1.SuspendLayout();
 			this.SuspendLayout();
 			this.Label1.AutoSize = true;
@@ -408,8 +404,6 @@ namespace GT5_Car_hack_workshop_2
 			textBox28.Size = size;
 			this.TextBox14.TabIndex = 28;
 			this.TextBox14.Text = "???";
-			this.Timer1.Enabled = true;
-			this.Timer1.Interval = 1000;
 			global::System.Drawing.SizeF sizeF = new global::System.Drawing.SizeF(6f, 13f);
 			this.AutoScaleDimensions = sizeF;
 			this.AutoScaleMode = global::System.Windows.Forms.AutoScaleMode.Font;
@@ -468,6 +462,8 @@ namespace GT5_Car_hack_workshop_2
 		private System.Windows.Forms.Label Label10;
 		private System.Windows.Forms.Label Label11;
 		private System.Windows.Forms.Label Label12;
+		private System.Windows.Forms.Label Label13;
+		private System.Windows.Forms.Label Label14;
 		
 		private System.Windows.Forms.TextBox TextBox1;
 		private System.Windows.Forms.TextBox TextBox2;
@@ -481,6 +477,10 @@ namespace GT5_Car_hack_workshop_2
 		private System.Windows.Forms.TextBox TextBox10;
 		private System.Windows.Forms.TextBox TextBox11;
 		private System.Windows.Forms.TextBox TextBox12;
+		private System.Windows.Forms.TextBox TextBox13;
+		private System.Windows.Forms.TextBox TextBox14;
+		
+		private System.Windows.Forms.GroupBox GroupBox1;
 
 		// Token: 0x040000A2 RID: 162
 		private global::System.ComponentModel.IContainer components;

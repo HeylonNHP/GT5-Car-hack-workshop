@@ -10,8 +10,7 @@ namespace GT5_Car_hack_workshop_2
     [DesignerGenerated]
     public partial class TransmissionEditor : Form
     {
-
-        [AccessedThroughProperty("Timer1")] private Timer _Timer1;
+        private Timer _Timer1;
 
         private decimal _Lastgearpre;
 
@@ -23,34 +22,18 @@ namespace GT5_Car_hack_workshop_2
             _Lastgearpre = 0.1m;
             _OriginalFinalDrive = 0.1m;
             InitializeComponent();
-        }
 
-        [field: AccessedThroughProperty("GroupBox1")]
-        private GroupBox GroupBox1 { get; set; }
+            _Timer1 = new Timer();
+            _Timer1.Tick += Timer1_Tick;
+            _Timer1.Interval = 100;
+            _Timer1.Enabled = true;
+            _Timer1.Start();
 
-        [field: AccessedThroughProperty("TextBox14")]
-        private TextBox TextBox14 { get; set; }
-
-        [field: AccessedThroughProperty("Label14")]
-        private Label Label14 { get; set; }
-
-        [field: AccessedThroughProperty("TextBox13")]
-        private TextBox TextBox13 { get; set; }
-
-        [field: AccessedThroughProperty("Label13")]
-        private Label Label13 { get; set; }
-
-        private Timer Timer1
-        {
-            get => _Timer1;
-            set
+            FormClosing += (s, e) =>
             {
-                EventHandler eventHandler = Timer1_Tick;
-                if (_Timer1 != null) _Timer1.Tick -= eventHandler;
-
-                _Timer1 = value;
-                if (_Timer1 != null) _Timer1.Tick += eventHandler;
-            }
+                _Timer1.Stop();
+                _Timer1.Dispose();
+            };
         }
 
         private string LoadGearRatioToGt5Save(int moffOffset1, int moffOffset2)
