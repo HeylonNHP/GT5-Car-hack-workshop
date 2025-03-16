@@ -218,7 +218,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                var working = (int)(float.Parse(textBoxValue) * 1000);
+                var working = (int)(decimal.Parse(textBoxValue) * 1000);
                 checked
                 {
                     MyProject.Forms.Form1.Gt5Save[moffOffset1] =
