@@ -61,9 +61,9 @@ namespace GT5_Car_hack_workshop_2
 			this.Label1.AutoSize = true;
 			this.Label1.Font = new System.Drawing.Font("Arial", 12f, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 0);
 			this.Label1.ForeColor = System.Drawing.Color.FromArgb(128, 255, 255);
-			System.Windows.Forms.Control label = this.Label1;
+
 			System.Drawing.Point point = new System.Drawing.Point(18, 13);
-			label.Location = point;
+			Label1.Location = point;
 			this.Label1.Name = "Label1";
 			System.Windows.Forms.Control label2 = this.Label1;
 			System.Drawing.Size size = new System.Drawing.Size(72, 19);
