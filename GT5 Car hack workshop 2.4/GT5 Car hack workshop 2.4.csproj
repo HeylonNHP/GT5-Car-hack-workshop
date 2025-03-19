@@ -85,6 +85,9 @@
         <EmbeddedResource Include="Resources\Form1.resources" />
         <EmbeddedResource Include="Resources\Resources.resources" />
         <EmbeddedResource Include="Resources\Tranny.resources" />
+        <EmbeddedResource Include="TransmissionEditor.resx">
+          <DependentUpon>TransmissionEditor.cs</DependentUpon>
+        </EmbeddedResource>
     </ItemGroup>
     <ItemGroup>
         <None Include="app.manifest"/>
