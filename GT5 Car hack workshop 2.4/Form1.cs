@@ -601,11 +601,11 @@ namespace GT5_Car_hack_workshop_2
 
         private void LoadButton_Click(object sender, EventArgs e)
         {
-            var fi = new FileInfo(TextBox1.Text);
-            var tad = DateAndTime.Now.ToString();
-            tad = tad.Replace("/", "-");
-            tad = tad.Replace(":", ".");
-            MyProject.Computer.FileSystem.CopyFile(TextBox1.Text, "Backups\\" + tad + " " + fi.Name);
+            var fileInfo = new FileInfo(TextBox1.Text);
+            var currentDate = DateAndTime.Now.ToString();
+            currentDate = currentDate.Replace("/", "-");
+            currentDate = currentDate.Replace(":", ".");
+            File.Copy(TextBox1.Text, $"Backups\\{currentDate} {fileInfo.Name}");
             ProcessData();
         }
 
