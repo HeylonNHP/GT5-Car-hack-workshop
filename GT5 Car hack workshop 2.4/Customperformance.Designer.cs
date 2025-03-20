@@ -7,7 +7,7 @@
 		internal System.Windows.Forms.Label Label1;
 		internal System.Windows.Forms.Label Label2;
 		internal System.Windows.Forms.Label Label3;
-		internal System.Windows.Forms.TextBox TextBox1;
+		internal System.Windows.Forms.TextBox TurboTextBox;
 		internal System.Windows.Forms.TextBox TextBox2;
 		internal System.Windows.Forms.TextBox TextBox3;
 		internal System.Windows.Forms.TextBox TextBox4;
@@ -43,7 +43,7 @@
 			this.Label1 = new System.Windows.Forms.Label();
 			this.Label2 = new System.Windows.Forms.Label();
 			this.Label3 = new System.Windows.Forms.Label();
-			this.TextBox1 = new System.Windows.Forms.TextBox();
+			this.TurboTextBox = new System.Windows.Forms.TextBox();
 			this.TextBox2 = new System.Windows.Forms.TextBox();
 			this.TextBox3 = new System.Windows.Forms.TextBox();
 			this.TextBox4 = new System.Windows.Forms.TextBox();
@@ -96,14 +96,14 @@
 			this.Label3.TabIndex = 2;
 			this.Label3.Text = "Other";
 			// 
-			// TextBox1
+			// TurboTextBox
 			// 
-			this.TextBox1.Location = new System.Drawing.Point(79, 12);
-			this.TextBox1.Margin = new System.Windows.Forms.Padding(4);
-			this.TextBox1.Name = "TextBox1";
-			this.TextBox1.Size = new System.Drawing.Size(132, 22);
-			this.TextBox1.TabIndex = 3;
-			this.TextBox1.Text = "5415";
+			this.TurboTextBox.Location = new System.Drawing.Point(79, 12);
+			this.TurboTextBox.Margin = new System.Windows.Forms.Padding(4);
+			this.TurboTextBox.Name = "TurboTextBox";
+			this.TurboTextBox.Size = new System.Drawing.Size(132, 22);
+			this.TurboTextBox.TabIndex = 3;
+			this.TurboTextBox.Text = "5415";
 			// 
 			// TextBox2
 			// 
@@ -271,7 +271,7 @@
 			this.Controls.Add(this.TextBox4);
 			this.Controls.Add(this.TextBox3);
 			this.Controls.Add(this.TextBox2);
-			this.Controls.Add(this.TextBox1);
+			this.Controls.Add(this.TurboTextBox);
 			this.Controls.Add(this.Label3);
 			this.Controls.Add(this.Label2);
 			this.Controls.Add(this.Label1);
