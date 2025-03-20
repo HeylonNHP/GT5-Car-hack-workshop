@@ -609,7 +609,7 @@ namespace GT5_Car_hack_workshop_2
             ProcessData();
         }
 
-        private void Button3_Click(object sender, EventArgs e)
+        private void SaveAndEncrypt_Click(object sender, EventArgs e)
         {
             SaveData();
             LoadData.Encrypt(TextBox1.Text);
