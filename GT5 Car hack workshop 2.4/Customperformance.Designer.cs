@@ -21,7 +21,7 @@
 		internal System.Windows.Forms.TextBox TextBox7;
 		internal System.Windows.Forms.TextBox TextBox8;
 		internal System.Windows.Forms.Label Label6;
-		internal System.Windows.Forms.CheckBox CheckBox1;
+		internal System.Windows.Forms.CheckBox NoPartInstallCheckBox;
 
 		// Token: 0x06000022 RID: 34 RVA: 0x00002D2C File Offset: 0x0000112C
 		protected override void Dispose(bool disposing)
@@ -57,7 +57,7 @@
 			this.TextBox7 = new System.Windows.Forms.TextBox();
 			this.TextBox8 = new System.Windows.Forms.TextBox();
 			this.Label6 = new System.Windows.Forms.Label();
-			this.CheckBox1 = new System.Windows.Forms.CheckBox();
+			this.NoPartInstallCheckBox = new System.Windows.Forms.CheckBox();
 			this.SuspendLayout();
 			// 
 			// Label1
@@ -99,7 +99,7 @@
 			// TextBox1
 			// 
 			this.TextBox1.Location = new System.Drawing.Point(79, 12);
-			this.TextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox1.Name = "TextBox1";
 			this.TextBox1.Size = new System.Drawing.Size(132, 22);
 			this.TextBox1.TabIndex = 3;
@@ -108,7 +108,7 @@
 			// TextBox2
 			// 
 			this.TextBox2.Location = new System.Drawing.Point(79, 44);
-			this.TextBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox2.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox2.Name = "TextBox2";
 			this.TextBox2.Size = new System.Drawing.Size(132, 22);
 			this.TextBox2.TabIndex = 4;
@@ -117,7 +117,7 @@
 			// TextBox3
 			// 
 			this.TextBox3.Location = new System.Drawing.Point(79, 103);
-			this.TextBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox3.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox3.Name = "TextBox3";
 			this.TextBox3.Size = new System.Drawing.Size(132, 22);
 			this.TextBox3.TabIndex = 5;
@@ -126,7 +126,7 @@
 			// TextBox4
 			// 
 			this.TextBox4.Location = new System.Drawing.Point(79, 135);
-			this.TextBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox4.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox4.Name = "TextBox4";
 			this.TextBox4.Size = new System.Drawing.Size(132, 22);
 			this.TextBox4.TabIndex = 6;
@@ -135,7 +135,7 @@
 			// TextBox5
 			// 
 			this.TextBox5.Location = new System.Drawing.Point(79, 167);
-			this.TextBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox5.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox5.Name = "TextBox5";
 			this.TextBox5.Size = new System.Drawing.Size(132, 22);
 			this.TextBox5.TabIndex = 7;
@@ -156,7 +156,7 @@
 			this.Button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.Button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
 			this.Button1.Location = new System.Drawing.Point(243, 337);
-			this.Button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button1.Margin = new System.Windows.Forms.Padding(4);
 			this.Button1.Name = "Button1";
 			this.Button1.Size = new System.Drawing.Size(76, 28);
 			this.Button1.TabIndex = 9;
@@ -169,7 +169,7 @@
 			this.Button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.Button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
 			this.Button2.Location = new System.Drawing.Point(161, 337);
-			this.Button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button2.Margin = new System.Windows.Forms.Padding(4);
 			this.Button2.Name = "Button2";
 			this.Button2.Size = new System.Drawing.Size(73, 28);
 			this.Button2.TabIndex = 10;
@@ -182,7 +182,7 @@
 			this.Button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.Button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
 			this.Button3.Location = new System.Drawing.Point(0, 324);
-			this.Button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button3.Margin = new System.Windows.Forms.Padding(4);
 			this.Button3.Name = "Button3";
 			this.Button3.Size = new System.Drawing.Size(153, 42);
 			this.Button3.TabIndex = 11;
@@ -205,7 +205,7 @@
 			// TextBox6
 			// 
 			this.TextBox6.Location = new System.Drawing.Point(79, 199);
-			this.TextBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox6.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox6.Name = "TextBox6";
 			this.TextBox6.Size = new System.Drawing.Size(132, 22);
 			this.TextBox6.TabIndex = 13;
@@ -214,7 +214,7 @@
 			// TextBox7
 			// 
 			this.TextBox7.Location = new System.Drawing.Point(79, 231);
-			this.TextBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox7.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox7.Name = "TextBox7";
 			this.TextBox7.Size = new System.Drawing.Size(132, 22);
 			this.TextBox7.TabIndex = 14;
@@ -223,7 +223,7 @@
 			// TextBox8
 			// 
 			this.TextBox8.Location = new System.Drawing.Point(79, 263);
-			this.TextBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox8.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox8.Name = "TextBox8";
 			this.TextBox8.Size = new System.Drawing.Size(132, 22);
 			this.TextBox8.TabIndex = 15;
@@ -241,23 +241,23 @@
 			this.Label6.TabIndex = 16;
 			this.Label6.Text = "The values in these boxes must not exceed\r\n65535";
 			// 
-			// CheckBox1
+			// NoPartInstallCheckBox
 			// 
-			this.CheckBox1.AutoSize = true;
-			this.CheckBox1.Location = new System.Drawing.Point(221, 16);
-			this.CheckBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			this.CheckBox1.Name = "CheckBox1";
-			this.CheckBox1.Size = new System.Drawing.Size(146, 20);
-			this.CheckBox1.TabIndex = 17;
-			this.CheckBox1.Text = "Don\'t install any part";
-			this.CheckBox1.UseVisualStyleBackColor = true;
+			this.NoPartInstallCheckBox.AutoSize = true;
+			this.NoPartInstallCheckBox.Location = new System.Drawing.Point(221, 16);
+			this.NoPartInstallCheckBox.Margin = new System.Windows.Forms.Padding(4);
+			this.NoPartInstallCheckBox.Name = "NoPartInstallCheckBox";
+			this.NoPartInstallCheckBox.Size = new System.Drawing.Size(146, 20);
+			this.NoPartInstallCheckBox.TabIndex = 17;
+			this.NoPartInstallCheckBox.Text = "Don\'t install any part";
+			this.NoPartInstallCheckBox.UseVisualStyleBackColor = true;
 			// 
 			// Customperformance
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(377, 368);
-			this.Controls.Add(this.CheckBox1);
+			this.Controls.Add(this.NoPartInstallCheckBox);
 			this.Controls.Add(this.Label6);
 			this.Controls.Add(this.TextBox8);
 			this.Controls.Add(this.TextBox7);
@@ -276,7 +276,7 @@
 			this.Controls.Add(this.Label2);
 			this.Controls.Add(this.Label1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "Customperformance";

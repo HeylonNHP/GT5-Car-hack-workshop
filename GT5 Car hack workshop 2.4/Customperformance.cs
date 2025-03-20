@@ -26,7 +26,7 @@ namespace GT5_Car_hack_workshop_2
         // Token: 0x06000049 RID: 73 RVA: 0x00003B6C File Offset: 0x00001F6C
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (!CheckBox1.Checked)
+            if (!NoPartInstallCheckBox.Checked)
             {
                 MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 332))] = 56;
                 MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 331))] = 9;
