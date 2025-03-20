@@ -63,18 +63,16 @@ namespace GT5_Car_hack_workshop_2
             }
 
 
-            MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 155))] = 0;
-            MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 154))] = 0;
-            try
+            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 155] = 0;
+            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 154] = 0;
+            if (ushort.TryParse(TextBox3.Text, out var number3))
             {
-                var working3 = TextBox3.Text;
-                working3 = Conversions.ToString(Conversion.Val(working3));
-                var int3 = Conversions.ToInteger(Conversion.Int(working3));
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 153))] = (byte)Math.Round(Conversion.Val("&H" + int3.ToString("X4").Substring(0, 2)));
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 152))] = (byte)Math.Round(Conversion.Val("&H" + int3.ToString("X4").Substring(2, 2)));
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 153] = (byte)(number3 >> 8);
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 152] = (byte)(number3 & 0xFF);
             }
-            catch (Exception ex3)
+            else
             {
+                MessageBox.Show(@"Please enter a valid number for the Exhaust Multiplier");
             }
 
             MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 179))] = 0;
