@@ -602,9 +602,7 @@ namespace GT5_Car_hack_workshop_2
         private void LoadButton_Click(object sender, EventArgs e)
         {
             var fileInfo = new FileInfo(TextBox1.Text);
-            var currentDate = DateAndTime.Now.ToString();
-            currentDate = currentDate.Replace("/", "-");
-            currentDate = currentDate.Replace(":", ".");
+            var currentDate = DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss");
             File.Copy(TextBox1.Text, $"Backups\\{currentDate} {fileInfo.Name}");
             ProcessData();
         }
