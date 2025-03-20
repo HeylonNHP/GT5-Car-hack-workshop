@@ -62,7 +62,7 @@ namespace GT5_Car_hack_workshop_2
                 MessageBox.Show(@"Please enter a valid number for the Engine");
             }
 
-
+            // Exhaust
             MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 155] = 0;
             MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 154] = 0;
             if (ushort.TryParse(TextBox3.Text, out var number3))
@@ -75,74 +75,69 @@ namespace GT5_Car_hack_workshop_2
                 MessageBox.Show(@"Please enter a valid number for the Exhaust Multiplier");
             }
 
-            MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 179))] = 0;
-            MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 178))] = 0;
-            try
+            // Transmission
+            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 179] = 0;
+            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 178] = 0;
+            if (ushort.TryParse(TextBox4.Text, out var number4))
             {
-                var working4 = TextBox4.Text;
-                working4 = Conversions.ToString(Conversion.Val(working4));
-                var int4 = Conversions.ToInteger(Conversion.Int(working4));
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 177))] = (byte)Math.Round(Conversion.Val("&H" + int4.ToString("X4").Substring(0, 2)));
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 176))] = (byte)Math.Round(Conversion.Val("&H" + int4.ToString("X4").Substring(2, 2)));
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 177] = (byte)(number4 >> 8);
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 176] = (byte)(number4 & 0xFF);
             }
-            catch (Exception ex4)
+            else
             {
-            }
-
-            MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 131))] = 0;
-            MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 130))] = 0;
-            try
-            {
-                var working5 = TextBox5.Text;
-                working5 = Conversions.ToString(Conversion.Val(working5));
-                var int5 = Conversions.ToInteger(Conversion.Int(working5));
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 129))] = (byte)Math.Round(Conversion.Val("&H" + int5.ToString("X4").Substring(0, 2)));
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 128))] = (byte)Math.Round(Conversion.Val("&H" + int5.ToString("X4").Substring(2, 2)));
-            }
-            catch (Exception ex5)
-            {
+                MessageBox.Show(@"Please enter a valid number for the ???Transmission???"); // TODO: Fix these
             }
 
-            MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 127))] = 0;
-            MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 126))] = 0;
-            try
+            // Suspension
+            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 131] = 0;
+            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 130] = 0;
+            if (ushort.TryParse(TextBox5.Text, out var number5))
             {
-                var working6 = TextBox6.Text;
-                working6 = Conversions.ToString(Conversion.Val(working6));
-                var int6 = Conversions.ToInteger(Conversion.Int(working6));
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 125))] = (byte)Math.Round(Conversion.Val("&H" + int6.ToString("X4").Substring(0, 2)));
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 124))] = (byte)Math.Round(Conversion.Val("&H" + int6.ToString("X4").Substring(2, 2)));
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 129] = (byte)(number5 >> 8);
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 128] = (byte)(number5 & 0xFF);
             }
-            catch (Exception ex6)
+            else
             {
-            }
-
-            MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 123))] = 0;
-            MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 122))] = 0;
-            try
-            {
-                var working7 = TextBox7.Text;
-                working7 = Conversions.ToString(Conversion.Val(working7));
-                var int7 = Conversions.ToInteger(Conversion.Int(working7));
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 121))] = (byte)Math.Round(Conversion.Val("&H" + int7.ToString("X4").Substring(0, 2)));
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 120))] = (byte)Math.Round(Conversion.Val("&H" + int7.ToString("X4").Substring(2, 2)));
-            }
-            catch (Exception ex7)
-            {
+                MessageBox.Show(@"Please enter a valid number for the ???Suspension???");
             }
 
-            MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 119))] = 0;
-            MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 118))] = 0;
-            try
+            // Drivetrain
+            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 127] = 0;
+            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 126] = 0;
+            if (ushort.TryParse(TextBox6.Text, out var number6))
             {
-                var working8 = TextBox8.Text;
-                working8 = Conversions.ToString(Conversion.Val(working8));
-                var int8 = Conversions.ToInteger(Conversion.Int(working8));
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 117))] = (byte)Math.Round(Conversion.Val("&H" + int8.ToString("X4").Substring(0, 2)));
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 116))] = (byte)Math.Round(Conversion.Val("&H" + int8.ToString("X4").Substring(2, 2)));
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 125] = (byte)(number6 >> 8);
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 124] = (byte)(number6 & 0xFF);
             }
-            catch (Exception ex8)
+            else
             {
+                MessageBox.Show(@"Please enter a valid number for the ???Drivetrain???");
+            }
+
+            // Brakes
+            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 123] = 0;
+            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 122] = 0;
+            if (ushort.TryParse(TextBox7.Text, out var number7))
+            {
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 121] = (byte)(number7 >> 8);
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 120] = (byte)(number7 & 0xFF);
+            }
+            else
+            {
+                MessageBox.Show(@"Please enter a valid number for the ???Brakes???");
+            }
+
+            // Chassis
+            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 119] = 0;
+            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 118] = 0;
+            if (ushort.TryParse(TextBox8.Text, out var number8))
+            {
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 117] = (byte)(number8 >> 8);
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 116] = (byte)(number8 & 0xFF);
+            }
+            else
+            {
+                MessageBox.Show(@"Please enter a valid number for the ???Chassis???");
             }
 
             MyProject.Forms.Form1.TurboModifierTextBox.Text = string.Concat(MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 171))].ToString("X2"), " ",

@@ -599,7 +599,7 @@ namespace GT5_Car_hack_workshop_2
             SettingsFileClass.SaveSettings(_CarParts, "partsdatabase.db");
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void LoadButton_Click(object sender, EventArgs e)
         {
             var fi = new FileInfo(TextBox1.Text);
             var tad = DateAndTime.Now.ToString();

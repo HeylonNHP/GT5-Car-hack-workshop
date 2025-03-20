@@ -200,7 +200,7 @@ namespace GT5_Car_hack_workshop_2
 			this.TextBox1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.TextBox1.Location = new System.Drawing.Point(128, 17);
-			this.TextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox1.Name = "TextBox1";
 			this.TextBox1.Size = new System.Drawing.Size(137, 20);
 			this.TextBox1.TabIndex = 11;
@@ -211,7 +211,7 @@ namespace GT5_Car_hack_workshop_2
 			this.TextBox2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.TextBox2.Location = new System.Drawing.Point(128, 49);
-			this.TextBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox2.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox2.Name = "TextBox2";
 			this.TextBox2.Size = new System.Drawing.Size(137, 20);
 			this.TextBox2.TabIndex = 12;
@@ -222,7 +222,7 @@ namespace GT5_Car_hack_workshop_2
 			this.TextBox3.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TextBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.TextBox3.Location = new System.Drawing.Point(128, 81);
-			this.TextBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox3.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox3.Name = "TextBox3";
 			this.TextBox3.Size = new System.Drawing.Size(137, 20);
 			this.TextBox3.TabIndex = 13;
@@ -233,7 +233,7 @@ namespace GT5_Car_hack_workshop_2
 			this.TextBox4.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TextBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.TextBox4.Location = new System.Drawing.Point(128, 113);
-			this.TextBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox4.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox4.Name = "TextBox4";
 			this.TextBox4.Size = new System.Drawing.Size(137, 20);
 			this.TextBox4.TabIndex = 14;
@@ -244,7 +244,7 @@ namespace GT5_Car_hack_workshop_2
 			this.TextBox5.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TextBox5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.TextBox5.Location = new System.Drawing.Point(128, 145);
-			this.TextBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox5.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox5.Name = "TextBox5";
 			this.TextBox5.Size = new System.Drawing.Size(137, 20);
 			this.TextBox5.TabIndex = 15;
@@ -255,7 +255,7 @@ namespace GT5_Car_hack_workshop_2
 			this.TextBox6.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TextBox6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.TextBox6.Location = new System.Drawing.Point(128, 177);
-			this.TextBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox6.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox6.Name = "TextBox6";
 			this.TextBox6.Size = new System.Drawing.Size(137, 20);
 			this.TextBox6.TabIndex = 16;
@@ -266,7 +266,7 @@ namespace GT5_Car_hack_workshop_2
 			this.TextBox7.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TextBox7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.TextBox7.Location = new System.Drawing.Point(128, 209);
-			this.TextBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox7.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox7.Name = "TextBox7";
 			this.TextBox7.Size = new System.Drawing.Size(137, 20);
 			this.TextBox7.TabIndex = 17;
@@ -277,7 +277,7 @@ namespace GT5_Car_hack_workshop_2
 			this.TextBox8.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TextBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.TextBox8.Location = new System.Drawing.Point(128, 241);
-			this.TextBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox8.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox8.Name = "TextBox8";
 			this.TextBox8.Size = new System.Drawing.Size(137, 20);
 			this.TextBox8.TabIndex = 18;
@@ -288,7 +288,7 @@ namespace GT5_Car_hack_workshop_2
 			this.TextBox9.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TextBox9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.TextBox9.Location = new System.Drawing.Point(128, 273);
-			this.TextBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox9.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox9.Name = "TextBox9";
 			this.TextBox9.Size = new System.Drawing.Size(137, 20);
 			this.TextBox9.TabIndex = 19;
@@ -299,7 +299,7 @@ namespace GT5_Car_hack_workshop_2
 			this.TextBox10.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TextBox10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.TextBox10.Location = new System.Drawing.Point(128, 305);
-			this.TextBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox10.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox10.Name = "TextBox10";
 			this.TextBox10.Size = new System.Drawing.Size(137, 20);
 			this.TextBox10.TabIndex = 20;
@@ -310,7 +310,7 @@ namespace GT5_Car_hack_workshop_2
 			this.TextBox11.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TextBox11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.TextBox11.Location = new System.Drawing.Point(128, 337);
-			this.TextBox11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox11.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox11.Name = "TextBox11";
 			this.TextBox11.Size = new System.Drawing.Size(137, 20);
 			this.TextBox11.TabIndex = 21;
@@ -321,7 +321,7 @@ namespace GT5_Car_hack_workshop_2
 			this.TextBox12.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TextBox12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.TextBox12.Location = new System.Drawing.Point(128, 369);
-			this.TextBox12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox12.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox12.Name = "TextBox12";
 			this.TextBox12.Size = new System.Drawing.Size(137, 20);
 			this.TextBox12.TabIndex = 22;
@@ -342,7 +342,7 @@ namespace GT5_Car_hack_workshop_2
 			// 
 			this.OkayButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.OkayButton.Location = new System.Drawing.Point(1, 402);
-			this.OkayButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.OkayButton.Margin = new System.Windows.Forms.Padding(4);
 			this.OkayButton.Name = "OkayButton";
 			this.OkayButton.Size = new System.Drawing.Size(280, 32);
 			this.OkayButton.TabIndex = 24;
@@ -357,9 +357,9 @@ namespace GT5_Car_hack_workshop_2
 			this.GroupBox1.Controls.Add(this.TextBox13);
 			this.GroupBox1.Controls.Add(this.Label13);
 			this.GroupBox1.Location = new System.Drawing.Point(289, 15);
-			this.GroupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox1.Name = "GroupBox1";
-			this.GroupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox1.Padding = new System.Windows.Forms.Padding(4);
 			this.GroupBox1.Size = new System.Drawing.Size(181, 406);
 			this.GroupBox1.TabIndex = 25;
 			this.GroupBox1.TabStop = false;
@@ -371,7 +371,7 @@ namespace GT5_Car_hack_workshop_2
 			this.TextBox14.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TextBox14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.TextBox14.Location = new System.Drawing.Point(8, 92);
-			this.TextBox14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox14.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox14.Name = "TextBox14";
 			this.TextBox14.Size = new System.Drawing.Size(164, 20);
 			this.TextBox14.TabIndex = 28;
@@ -394,7 +394,7 @@ namespace GT5_Car_hack_workshop_2
 			this.TextBox13.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.TextBox13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.TextBox13.Location = new System.Drawing.Point(8, 44);
-			this.TextBox13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox13.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox13.Name = "TextBox13";
 			this.TextBox13.Size = new System.Drawing.Size(164, 20);
 			this.TextBox13.TabIndex = 26;
@@ -444,7 +444,7 @@ namespace GT5_Car_hack_workshop_2
 			this.Controls.Add(this.Label2);
 			this.Controls.Add(this.Label1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "TransmissionEditor";

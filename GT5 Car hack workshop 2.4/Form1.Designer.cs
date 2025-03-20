@@ -33,7 +33,7 @@
 			this.Label2 = new System.Windows.Forms.Label();
 			this.TextBox2 = new System.Windows.Forms.TextBox();
 			this.Button3 = new System.Windows.Forms.Button();
-			this.Button2 = new System.Windows.Forms.Button();
+			this.LoadButton = new System.Windows.Forms.Button();
 			this.Button1 = new System.Windows.Forms.Button();
 			this.Label1 = new System.Windows.Forms.Label();
 			this.TextBox1 = new System.Windows.Forms.TextBox();
@@ -177,7 +177,7 @@
 			this.GroupBox1.Controls.Add(this.Label2);
 			this.GroupBox1.Controls.Add(this.TextBox2);
 			this.GroupBox1.Controls.Add(this.Button3);
-			this.GroupBox1.Controls.Add(this.Button2);
+			this.GroupBox1.Controls.Add(this.LoadButton);
 			this.GroupBox1.Controls.Add(this.Button1);
 			this.GroupBox1.Controls.Add(this.Label1);
 			this.GroupBox1.Controls.Add(this.TextBox1);
@@ -247,15 +247,15 @@
 			// 
 			// Button2
 			// 
-			this.Button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-			this.Button2.Location = new System.Drawing.Point(8, 86);
-			this.Button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			this.Button2.Name = "Button2";
-			this.Button2.Size = new System.Drawing.Size(100, 28);
-			this.Button2.TabIndex = 3;
-			this.Button2.Text = "Load data";
-			this.Button2.UseVisualStyleBackColor = false;
-			this.Button2.Click += new System.EventHandler(this.Button2_Click);
+			this.LoadButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+			this.LoadButton.Location = new System.Drawing.Point(8, 86);
+			this.LoadButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.LoadButton.Name = "LoadButton";
+			this.LoadButton.Size = new System.Drawing.Size(100, 28);
+			this.LoadButton.TabIndex = 3;
+			this.LoadButton.Text = "Load data";
+			this.LoadButton.UseVisualStyleBackColor = false;
+			this.LoadButton.Click += new System.EventHandler(this.LoadButton_Click);
 			// 
 			// Button1
 			// 
@@ -1657,7 +1657,7 @@
 		private System.Windows.Forms.Label Label2;
 		private System.Windows.Forms.TextBox TextBox2;
 		private System.Windows.Forms.Button Button3;
-		private System.Windows.Forms.Button Button2;
+		private System.Windows.Forms.Button LoadButton;
 		private System.Windows.Forms.Button Button1;
 		private System.Windows.Forms.Label Label1;
 		private System.Windows.Forms.TextBox TextBox1;
