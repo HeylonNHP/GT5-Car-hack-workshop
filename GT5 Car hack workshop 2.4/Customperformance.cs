@@ -35,11 +35,10 @@ namespace GT5_Car_hack_workshop_2
                 MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 314] = 9;
             }
 
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 171] = 0;
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 170] = 0;
-
 
             // Turbo
+            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 171] = 0;
+            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 170] = 0;
             if (ushort.TryParse(TurboTextBox.Text, out var number))
             {
                 MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 169] = (byte)(number >> 8);
@@ -50,20 +49,19 @@ namespace GT5_Car_hack_workshop_2
                 MessageBox.Show(@"Please enter a valid number for the Turbo");
             }
 
+            // Engine
+            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 175] = 0;
+            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 174] = 0;
+            if (ushort.TryParse(TextBox2.Text, out var number2))
+            {
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 173] = (byte)(number2 >> 8);
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 172] = (byte)(number2 & 0xFF);
+            }
+            else
+            {
+                MessageBox.Show(@"Please enter a valid number for the Engine");
+            }
 
-            MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 175))] = 0;
-            MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 174))] = 0;
-            try
-            {
-                var working2 = TextBox2.Text;
-                working2 = Conversions.ToString(Conversion.Val(working2));
-                var int2 = Conversions.ToInteger(Conversion.Int(working2));
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 173))] = (byte)Math.Round(Conversion.Val("&H" + int2.ToString("X4").Substring(0, 2)));
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 172))] = (byte)Math.Round(Conversion.Val("&H" + int2.ToString("X4").Substring(2, 2)));
-            }
-            catch (Exception ex2)
-            {
-            }
 
             MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 155))] = 0;
             MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 154))] = 0;
