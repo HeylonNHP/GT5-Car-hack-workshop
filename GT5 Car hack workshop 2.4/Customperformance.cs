@@ -161,65 +161,24 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        // Token: 0x0600004A RID: 74 RVA: 0x00004A34 File Offset: 0x00002E34
+        ushort GetCombinedValue(int offsetHigh, int offsetLow)
+        {
+            var form = MyProject.Forms.Form1;
+            // Shift the high byte left by 8 bits and then OR with the low byte.
+            return (ushort)((form.Gt5Save[form.Moff - offsetHigh] << 8) |
+                            form.Gt5Save[form.Moff - offsetLow]);
+        }
+
         private void Button3_Click(object sender, EventArgs e)
         {
-            var textBox = TextBox1;
-            var text = "&H";
-            var b = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 169))];
-            var text2 = b.ToString("X2");
-            var text3 = " ";
-            var b2 = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 168))];
-            textBox.Text = Conversions.ToString(Conversion.Val(text + text2 + text3 + b2.ToString("X2")));
-            var textBox2 = TextBox2;
-            var text4 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 173))];
-            var text5 = b2.ToString("X2");
-            var text6 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 172))];
-            textBox2.Text = Conversions.ToString(Conversion.Val(text4 + text5 + text6 + b.ToString("X2")));
-            var textBox3 = TextBox3;
-            var text7 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 153))];
-            var text8 = b2.ToString("X2");
-            var text9 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 152))];
-            textBox3.Text = Conversions.ToString(Conversion.Val(text7 + text8 + text9 + b.ToString("X2")));
-            var textBox4 = TextBox4;
-            var text10 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 177))];
-            var text11 = b2.ToString("X2");
-            var text12 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 176))];
-            textBox4.Text = Conversions.ToString(Conversion.Val(text10 + text11 + text12 + b.ToString("X2")));
-            var textBox5 = TextBox5;
-            var text13 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 129))];
-            var text14 = b2.ToString("X2");
-            var text15 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 128))];
-            textBox5.Text = Conversions.ToString(Conversion.Val(text13 + text14 + text15 + b.ToString("X2")));
-            var textBox6 = TextBox6;
-            var text16 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 125))];
-            var text17 = b2.ToString("X2");
-            var text18 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 124))];
-            textBox6.Text = Conversions.ToString(Conversion.Val(text16 + text17 + text18 + b.ToString("X2")));
-            var textBox7 = TextBox7;
-            var text19 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 121))];
-            var text20 = b2.ToString("X2");
-            var text21 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 120))];
-            textBox7.Text = Conversions.ToString(Conversion.Val(text19 + text20 + text21 + b.ToString("X2")));
-            var textBox8 = TextBox8;
-            var text22 = "&H";
-            b2 = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 117))];
-            var text23 = b2.ToString("X2");
-            var text24 = " ";
-            b = MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 116))];
-            textBox8.Text = Conversions.ToString(Conversion.Val(text22 + text23 + text24 + b.ToString("X2")));
+            TextBox1.Text = GetCombinedValue(169, 168).ToString();
+            TextBox2.Text = GetCombinedValue(173, 172).ToString();
+            TextBox3.Text = GetCombinedValue(153, 152).ToString();
+            TextBox4.Text = GetCombinedValue(177, 176).ToString();
+            TextBox5.Text = GetCombinedValue(129, 128).ToString();
+            TextBox6.Text = GetCombinedValue(125, 124).ToString();
+            TextBox7.Text = GetCombinedValue(121, 120).ToString();
+            TextBox8.Text = GetCombinedValue(117, 116).ToString();
         }
 
         // Token: 0x0600004B RID: 75 RVA: 0x00004F50 File Offset: 0x00003350
