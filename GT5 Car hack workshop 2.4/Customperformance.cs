@@ -28,11 +28,11 @@ namespace GT5_Car_hack_workshop_2
         {
             if (!NoPartInstallCheckBox.Checked)
             {
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 332))] = 56;
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 331))] = 9;
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 330))] = 8;
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 315))] = 80;
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 314))] = 9;
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 332] = 56;
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 331] = 9;
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 330] = 8;
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 315] = 80;
+                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 314] = 9;
             }
 
             MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 171))] = 0;
