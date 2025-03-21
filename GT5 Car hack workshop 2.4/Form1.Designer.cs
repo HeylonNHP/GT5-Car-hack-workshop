@@ -128,19 +128,19 @@
 			this.Label37 = new System.Windows.Forms.Label();
 			this.Button12 = new System.Windows.Forms.Button();
 			this.Label30 = new System.Windows.Forms.Label();
-			this.ComboBox8 = new System.Windows.Forms.ComboBox();
+			this.HornCodeComboBox = new System.Windows.Forms.ComboBox();
 			this.Label29 = new System.Windows.Forms.Label();
-			this.ComboBox7 = new System.Windows.Forms.ComboBox();
+			this.LsdCodeComboBox = new System.Windows.Forms.ComboBox();
 			this.Label28 = new System.Windows.Forms.Label();
-			this.ComboBox6 = new System.Windows.Forms.ComboBox();
+			this.BodyCodeComboBox = new System.Windows.Forms.ComboBox();
 			this.Label27 = new System.Windows.Forms.Label();
-			this.ComboBox5 = new System.Windows.Forms.ComboBox();
+			this.SuspensionCodeComboBox = new System.Windows.Forms.ComboBox();
 			this.Label26 = new System.Windows.Forms.Label();
-			this.ComboBox4 = new System.Windows.Forms.ComboBox();
+			this.TransmissionCodeComboBox = new System.Windows.Forms.ComboBox();
 			this.Label25 = new System.Windows.Forms.Label();
-			this.ComboBox3 = new System.Windows.Forms.ComboBox();
+			this.ChassisCodeComboBox = new System.Windows.Forms.ComboBox();
 			this.Label24 = new System.Windows.Forms.Label();
-			this.ComboBox2 = new System.Windows.Forms.ComboBox();
+			this.DrivetrainCodeComboBox = new System.Windows.Forms.ComboBox();
 			this.Label23 = new System.Windows.Forms.Label();
 			this.EngineCodeComboBox = new System.Windows.Forms.ComboBox();
 			this.TabPage4 = new System.Windows.Forms.TabPage();
@@ -1322,19 +1322,19 @@
 			this.TabPage1.Controls.Add(this.Label37);
 			this.TabPage1.Controls.Add(this.Button12);
 			this.TabPage1.Controls.Add(this.Label30);
-			this.TabPage1.Controls.Add(this.ComboBox8);
+			this.TabPage1.Controls.Add(this.HornCodeComboBox);
 			this.TabPage1.Controls.Add(this.Label29);
-			this.TabPage1.Controls.Add(this.ComboBox7);
+			this.TabPage1.Controls.Add(this.LsdCodeComboBox);
 			this.TabPage1.Controls.Add(this.Label28);
-			this.TabPage1.Controls.Add(this.ComboBox6);
+			this.TabPage1.Controls.Add(this.BodyCodeComboBox);
 			this.TabPage1.Controls.Add(this.Label27);
-			this.TabPage1.Controls.Add(this.ComboBox5);
+			this.TabPage1.Controls.Add(this.SuspensionCodeComboBox);
 			this.TabPage1.Controls.Add(this.Label26);
-			this.TabPage1.Controls.Add(this.ComboBox4);
+			this.TabPage1.Controls.Add(this.TransmissionCodeComboBox);
 			this.TabPage1.Controls.Add(this.Label25);
-			this.TabPage1.Controls.Add(this.ComboBox3);
+			this.TabPage1.Controls.Add(this.ChassisCodeComboBox);
 			this.TabPage1.Controls.Add(this.Label24);
-			this.TabPage1.Controls.Add(this.ComboBox2);
+			this.TabPage1.Controls.Add(this.DrivetrainCodeComboBox);
 			this.TabPage1.Controls.Add(this.Label23);
 			this.TabPage1.Controls.Add(this.EngineCodeComboBox);
 			this.TabPage1.Location = new System.Drawing.Point(4, 25);
@@ -1379,17 +1379,17 @@
 			this.Label30.TabIndex = 15;
 			this.Label30.Text = "Horn";
 			// 
-			// ComboBox8
+			// HornCodeComboBox
 			// 
-			this.ComboBox8.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ComboBox8.FormattingEnabled = true;
-			this.ComboBox8.Location = new System.Drawing.Point(96, 240);
-			this.ComboBox8.Margin = new System.Windows.Forms.Padding(4);
-			this.ComboBox8.Name = "ComboBox8";
-			this.ComboBox8.Size = new System.Drawing.Size(375, 24);
-			this.ComboBox8.Sorted = true;
-			this.ComboBox8.TabIndex = 14;
-			this.ComboBox8.SelectedIndexChanged += new System.EventHandler(this.ComboBox8_SelectedIndexChanged);
+			this.HornCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.HornCodeComboBox.FormattingEnabled = true;
+			this.HornCodeComboBox.Location = new System.Drawing.Point(96, 240);
+			this.HornCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
+			this.HornCodeComboBox.Name = "HornCodeComboBox";
+			this.HornCodeComboBox.Size = new System.Drawing.Size(375, 24);
+			this.HornCodeComboBox.Sorted = true;
+			this.HornCodeComboBox.TabIndex = 14;
+			this.HornCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox8_SelectedIndexChanged);
 			// 
 			// Label29
 			// 
@@ -1401,17 +1401,17 @@
 			this.Label29.TabIndex = 13;
 			this.Label29.Text = "LSD";
 			// 
-			// ComboBox7
+			// LsdCodeComboBox
 			// 
-			this.ComboBox7.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ComboBox7.FormattingEnabled = true;
-			this.ComboBox7.Location = new System.Drawing.Point(96, 207);
-			this.ComboBox7.Margin = new System.Windows.Forms.Padding(4);
-			this.ComboBox7.Name = "ComboBox7";
-			this.ComboBox7.Size = new System.Drawing.Size(375, 24);
-			this.ComboBox7.Sorted = true;
-			this.ComboBox7.TabIndex = 12;
-			this.ComboBox7.SelectedIndexChanged += new System.EventHandler(this.ComboBox7_SelectedIndexChanged);
+			this.LsdCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.LsdCodeComboBox.FormattingEnabled = true;
+			this.LsdCodeComboBox.Location = new System.Drawing.Point(96, 207);
+			this.LsdCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
+			this.LsdCodeComboBox.Name = "LsdCodeComboBox";
+			this.LsdCodeComboBox.Size = new System.Drawing.Size(375, 24);
+			this.LsdCodeComboBox.Sorted = true;
+			this.LsdCodeComboBox.TabIndex = 12;
+			this.LsdCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox7_SelectedIndexChanged);
 			// 
 			// Label28
 			// 
@@ -1423,17 +1423,17 @@
 			this.Label28.TabIndex = 11;
 			this.Label28.Text = "Body";
 			// 
-			// ComboBox6
+			// BodyCodeComboBox
 			// 
-			this.ComboBox6.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ComboBox6.FormattingEnabled = true;
-			this.ComboBox6.Location = new System.Drawing.Point(96, 174);
-			this.ComboBox6.Margin = new System.Windows.Forms.Padding(4);
-			this.ComboBox6.Name = "ComboBox6";
-			this.ComboBox6.Size = new System.Drawing.Size(375, 24);
-			this.ComboBox6.Sorted = true;
-			this.ComboBox6.TabIndex = 10;
-			this.ComboBox6.SelectedIndexChanged += new System.EventHandler(this.ComboBox6_SelectedIndexChanged);
+			this.BodyCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.BodyCodeComboBox.FormattingEnabled = true;
+			this.BodyCodeComboBox.Location = new System.Drawing.Point(96, 174);
+			this.BodyCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
+			this.BodyCodeComboBox.Name = "BodyCodeComboBox";
+			this.BodyCodeComboBox.Size = new System.Drawing.Size(375, 24);
+			this.BodyCodeComboBox.Sorted = true;
+			this.BodyCodeComboBox.TabIndex = 10;
+			this.BodyCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox6_SelectedIndexChanged);
 			// 
 			// Label27
 			// 
@@ -1445,17 +1445,17 @@
 			this.Label27.TabIndex = 9;
 			this.Label27.Text = "Suspension";
 			// 
-			// ComboBox5
+			// SuspensionCodeComboBox
 			// 
-			this.ComboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ComboBox5.FormattingEnabled = true;
-			this.ComboBox5.Location = new System.Drawing.Point(96, 140);
-			this.ComboBox5.Margin = new System.Windows.Forms.Padding(4);
-			this.ComboBox5.Name = "ComboBox5";
-			this.ComboBox5.Size = new System.Drawing.Size(375, 24);
-			this.ComboBox5.Sorted = true;
-			this.ComboBox5.TabIndex = 8;
-			this.ComboBox5.SelectedIndexChanged += new System.EventHandler(this.ComboBox5_SelectedIndexChanged);
+			this.SuspensionCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.SuspensionCodeComboBox.FormattingEnabled = true;
+			this.SuspensionCodeComboBox.Location = new System.Drawing.Point(96, 140);
+			this.SuspensionCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
+			this.SuspensionCodeComboBox.Name = "SuspensionCodeComboBox";
+			this.SuspensionCodeComboBox.Size = new System.Drawing.Size(375, 24);
+			this.SuspensionCodeComboBox.Sorted = true;
+			this.SuspensionCodeComboBox.TabIndex = 8;
+			this.SuspensionCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox5_SelectedIndexChanged);
 			// 
 			// Label26
 			// 
@@ -1467,17 +1467,17 @@
 			this.Label26.TabIndex = 7;
 			this.Label26.Text = "Transmission";
 			// 
-			// ComboBox4
+			// TransmissionCodeComboBox
 			// 
-			this.ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ComboBox4.FormattingEnabled = true;
-			this.ComboBox4.Location = new System.Drawing.Point(96, 107);
-			this.ComboBox4.Margin = new System.Windows.Forms.Padding(4);
-			this.ComboBox4.Name = "ComboBox4";
-			this.ComboBox4.Size = new System.Drawing.Size(375, 24);
-			this.ComboBox4.Sorted = true;
-			this.ComboBox4.TabIndex = 6;
-			this.ComboBox4.SelectedIndexChanged += new System.EventHandler(this.ComboBox4_SelectedIndexChanged);
+			this.TransmissionCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.TransmissionCodeComboBox.FormattingEnabled = true;
+			this.TransmissionCodeComboBox.Location = new System.Drawing.Point(96, 107);
+			this.TransmissionCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
+			this.TransmissionCodeComboBox.Name = "TransmissionCodeComboBox";
+			this.TransmissionCodeComboBox.Size = new System.Drawing.Size(375, 24);
+			this.TransmissionCodeComboBox.Sorted = true;
+			this.TransmissionCodeComboBox.TabIndex = 6;
+			this.TransmissionCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox4_SelectedIndexChanged);
 			// 
 			// Label25
 			// 
@@ -1489,17 +1489,17 @@
 			this.Label25.TabIndex = 5;
 			this.Label25.Text = "Chassis";
 			// 
-			// ComboBox3
+			// ChassisCodeComboBox
 			// 
-			this.ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ComboBox3.FormattingEnabled = true;
-			this.ComboBox3.Location = new System.Drawing.Point(96, 74);
-			this.ComboBox3.Margin = new System.Windows.Forms.Padding(4);
-			this.ComboBox3.Name = "ComboBox3";
-			this.ComboBox3.Size = new System.Drawing.Size(375, 24);
-			this.ComboBox3.Sorted = true;
-			this.ComboBox3.TabIndex = 4;
-			this.ComboBox3.SelectedIndexChanged += new System.EventHandler(this.ComboBox3_SelectedIndexChanged);
+			this.ChassisCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ChassisCodeComboBox.FormattingEnabled = true;
+			this.ChassisCodeComboBox.Location = new System.Drawing.Point(96, 74);
+			this.ChassisCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
+			this.ChassisCodeComboBox.Name = "ChassisCodeComboBox";
+			this.ChassisCodeComboBox.Size = new System.Drawing.Size(375, 24);
+			this.ChassisCodeComboBox.Sorted = true;
+			this.ChassisCodeComboBox.TabIndex = 4;
+			this.ChassisCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox3_SelectedIndexChanged);
 			// 
 			// Label24
 			// 
@@ -1511,17 +1511,17 @@
 			this.Label24.TabIndex = 3;
 			this.Label24.Text = "Drivetrain";
 			// 
-			// ComboBox2
+			// DrivetrainCodeComboBox
 			// 
-			this.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ComboBox2.FormattingEnabled = true;
-			this.ComboBox2.Location = new System.Drawing.Point(96, 41);
-			this.ComboBox2.Margin = new System.Windows.Forms.Padding(4);
-			this.ComboBox2.Name = "ComboBox2";
-			this.ComboBox2.Size = new System.Drawing.Size(375, 24);
-			this.ComboBox2.Sorted = true;
-			this.ComboBox2.TabIndex = 2;
-			this.ComboBox2.SelectedIndexChanged += new System.EventHandler(this.ComboBox2_SelectedIndexChanged);
+			this.DrivetrainCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.DrivetrainCodeComboBox.FormattingEnabled = true;
+			this.DrivetrainCodeComboBox.Location = new System.Drawing.Point(96, 41);
+			this.DrivetrainCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
+			this.DrivetrainCodeComboBox.Name = "DrivetrainCodeComboBox";
+			this.DrivetrainCodeComboBox.Size = new System.Drawing.Size(375, 24);
+			this.DrivetrainCodeComboBox.Sorted = true;
+			this.DrivetrainCodeComboBox.TabIndex = 2;
+			this.DrivetrainCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox2_SelectedIndexChanged);
 			// 
 			// Label23
 			// 
@@ -1760,19 +1760,19 @@
 		private System.Windows.Forms.Label Label37;
 		private System.Windows.Forms.Button Button12;
 		private System.Windows.Forms.Label Label30;
-		private System.Windows.Forms.ComboBox ComboBox8;
+		private System.Windows.Forms.ComboBox HornCodeComboBox;
 		private System.Windows.Forms.Label Label29;
-		private System.Windows.Forms.ComboBox ComboBox7;
+		private System.Windows.Forms.ComboBox LsdCodeComboBox;
 		private System.Windows.Forms.Label Label28;
-		private System.Windows.Forms.ComboBox ComboBox6;
+		private System.Windows.Forms.ComboBox BodyCodeComboBox;
 		private System.Windows.Forms.Label Label27;
-		private System.Windows.Forms.ComboBox ComboBox5;
+		private System.Windows.Forms.ComboBox SuspensionCodeComboBox;
 		private System.Windows.Forms.Label Label26;
-		private System.Windows.Forms.ComboBox ComboBox4;
+		private System.Windows.Forms.ComboBox TransmissionCodeComboBox;
 		private System.Windows.Forms.Label Label25;
-		private System.Windows.Forms.ComboBox ComboBox3;
+		private System.Windows.Forms.ComboBox ChassisCodeComboBox;
 		private System.Windows.Forms.Label Label24;
-		private System.Windows.Forms.ComboBox ComboBox2;
+		private System.Windows.Forms.ComboBox DrivetrainCodeComboBox;
 		private System.Windows.Forms.Label Label23;
 		private System.Windows.Forms.ComboBox EngineCodeComboBox;
 		private System.Windows.Forms.TabPage TabPage4;

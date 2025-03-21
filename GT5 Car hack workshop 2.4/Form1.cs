@@ -663,7 +663,7 @@ namespace GT5_Car_hack_workshop_2
         private void LoadParts()
         {
             // Assuming all ComboBoxes are part of the same container (like the form or a group box)
-            foreach (var comboBox in new[] { EngineCodeComboBox, ComboBox2, ComboBox3, ComboBox4, ComboBox5, ComboBox6, ComboBox7, ComboBox8 }) comboBox.Items.Clear();
+            foreach (var comboBox in new[] { EngineCodeComboBox, DrivetrainCodeComboBox, ChassisCodeComboBox, TransmissionCodeComboBox, SuspensionCodeComboBox, BodyCodeComboBox, LsdCodeComboBox, HornCodeComboBox }) comboBox.Items.Clear();
 
             // Spacer is used so that the hex value data after the comma doesn't show up in the GUI (Yep, terrible) TODO: Fix
             var spacer = "                                                                                                                                            ,";
@@ -673,13 +673,13 @@ namespace GT5_Car_hack_workshop_2
                     {
                         var sparr = _CarParts[i].Split(',');
                         EngineCodeComboBox.Items.Add(sparr[0] + spacer + sparr[1]);
-                        ComboBox2.Items.Add(sparr[0] + spacer + sparr[2]);
-                        ComboBox3.Items.Add(sparr[0] + spacer + sparr[3]);
-                        ComboBox4.Items.Add(sparr[0] + spacer + sparr[4]);
-                        ComboBox5.Items.Add(sparr[0] + spacer + sparr[6]);
-                        ComboBox6.Items.Add(sparr[0] + spacer + sparr[5]);
-                        ComboBox7.Items.Add(sparr[0] + spacer + sparr[7]);
-                        ComboBox8.Items.Add(sparr[0] + spacer + sparr[8]);
+                        DrivetrainCodeComboBox.Items.Add(sparr[0] + spacer + sparr[2]);
+                        ChassisCodeComboBox.Items.Add(sparr[0] + spacer + sparr[3]);
+                        TransmissionCodeComboBox.Items.Add(sparr[0] + spacer + sparr[4]);
+                        SuspensionCodeComboBox.Items.Add(sparr[0] + spacer + sparr[6]);
+                        BodyCodeComboBox.Items.Add(sparr[0] + spacer + sparr[5]);
+                        LsdCodeComboBox.Items.Add(sparr[0] + spacer + sparr[7]);
+                        HornCodeComboBox.Items.Add(sparr[0] + spacer + sparr[8]);
                     }
                     catch (Exception ex)
                     {
@@ -703,7 +703,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                var sparr = ComboBox2.SelectedItem.ToString().Split(',');
+                var sparr = DrivetrainCodeComboBox.SelectedItem.ToString().Split(',');
                 DrivetrainCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
@@ -715,7 +715,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                var sparr = ComboBox3.SelectedItem.ToString().Split(',');
+                var sparr = ChassisCodeComboBox.SelectedItem.ToString().Split(',');
                 ChassisCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
@@ -727,7 +727,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                var sparr = ComboBox4.SelectedItem.ToString().Split(',');
+                var sparr = TransmissionCodeComboBox.SelectedItem.ToString().Split(',');
                 TransmissionCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
@@ -739,7 +739,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                var sparr = ComboBox5.SelectedItem.ToString().Split(',');
+                var sparr = SuspensionCodeComboBox.SelectedItem.ToString().Split(',');
                 SuspensionCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
@@ -751,7 +751,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                var sparr = ComboBox6.SelectedItem.ToString().Split(',');
+                var sparr = BodyCodeComboBox.SelectedItem.ToString().Split(',');
                 CarBodyCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
@@ -763,7 +763,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                var sparr = ComboBox7.SelectedItem.ToString().Split(',');
+                var sparr = LsdCodeComboBox.SelectedItem.ToString().Split(',');
                 LsdCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
@@ -775,7 +775,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                var sparr = ComboBox8.SelectedItem.ToString().Split(',');
+                var sparr = HornCodeComboBox.SelectedItem.ToString().Split(',');
                 HornCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)
