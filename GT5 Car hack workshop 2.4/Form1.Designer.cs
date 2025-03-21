@@ -1129,7 +1129,7 @@
 			// 
 			this.Label38.AutoSize = true;
 			this.Label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Label38.ForeColor = System.Drawing.Color.Blue;
+			this.Label38.ForeColor = System.Drawing.Color.Red;
 			this.Label38.Location = new System.Drawing.Point(8, 20);
 			this.Label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.Label38.Name = "Label38";

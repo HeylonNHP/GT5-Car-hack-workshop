@@ -131,7 +131,7 @@ namespace GT5_Car_hack_workshop_2
 
             HornCodeTextBox.Text = $"{Gt5Save[Moff + 23]:X2} {Gt5Save[Moff + 24]:X2}";
 
-            WeightMultiplierTextBox.Text = $"{Gt5Save[Moff - 191]:X2} {Gt5Save[Moff - 190]:X2} {Gt5Save[Moff - 189]:X2} {Gt5Save[Moff - 188]:X2}";
+            WeightMultiplierTextBox.Text = ConvertBytesToUnsignedInt(new Byte[]{Gt5Save[Moff - 191], Gt5Save[Moff - 190], Gt5Save[Moff - 189], Gt5Save[Moff - 188]}).ToString();
         }
 
         private int ConvertBytesToUnsignedInt(byte[] bytes)
@@ -505,12 +505,14 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                var weightMultiplier = HexStringToByteArray(WeightMultiplierTextBox.Text);
-
-                Gt5Save[Moff - 191] = weightMultiplier[0];
-                Gt5Save[Moff - 190] = weightMultiplier[1];
-                Gt5Save[Moff - 189] = weightMultiplier[2];
-                Gt5Save[Moff - 188] = weightMultiplier[3];
+                if (int.TryParse(WeightMultiplierTextBox.Text, out var weightMultiplierInt))
+                {
+                    var weightMultiplierBytes = ConvertToByteArray(weightMultiplierInt, 4);
+                    Gt5Save[Moff - 191] = weightMultiplierBytes[0];
+                    Gt5Save[Moff - 190] = weightMultiplierBytes[1];
+                    Gt5Save[Moff - 189] = weightMultiplierBytes[2];
+                    Gt5Save[Moff - 188] = weightMultiplierBytes[3];
+                }
             }
             catch (Exception e)
             {
