@@ -43,6 +43,7 @@
         <AppDesigner Include="Properties\"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="ByteUtils.cs"/>
         <Compile Include="Customperformance.cs">
             <SubType>Form</SubType>
         </Compile>

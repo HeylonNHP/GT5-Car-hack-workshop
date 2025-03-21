@@ -111,9 +111,9 @@ namespace GT5_Car_hack_workshop_2
             AeroFrontTextBox.Text = Gt5Save[Moff - 43].ToString();
             AeroRearTextBox.Text = Gt5Save[Moff - 42].ToString();
 
-            var suspensionHeightFront = ConvertBytesToUnsignedInt(new[] { Gt5Save[Moff - 33], Gt5Save[Moff - 32] });
+            var suspensionHeightFront = ByteUtils.ConvertBytesToUnsignedInt(new[] { Gt5Save[Moff - 33], Gt5Save[Moff - 32] });
             SuspensionHeightFrontTextBox.Text = suspensionHeightFront.ToString();
-            var suspensionHeightRear = ConvertBytesToUnsignedInt(new[] { Gt5Save[Moff - 31], Gt5Save[Moff - 30] });
+            var suspensionHeightRear = ByteUtils.ConvertBytesToUnsignedInt(new[] { Gt5Save[Moff - 31], Gt5Save[Moff - 30] });
             SuspensionHeightRearTextBox.Text = suspensionHeightRear.ToString();
 
             GripTextBox.Text = Gt5Save[Moff + 10].ToString();
@@ -131,71 +131,14 @@ namespace GT5_Car_hack_workshop_2
 
             HornCodeTextBox.Text = $"{Gt5Save[Moff + 23]:X2} {Gt5Save[Moff + 24]:X2}";
 
-            WeightMultiplierTextBox.Text = ConvertBytesToUnsignedInt(new Byte[]{Gt5Save[Moff - 191], Gt5Save[Moff - 190], Gt5Save[Moff - 189], Gt5Save[Moff - 188]}).ToString();
-        }
-
-        private int ConvertBytesToUnsignedInt(byte[] bytes)
-        {
-            Array.Reverse(bytes); // Reverse the byte order
-
-            var result = 0;
-            for (var i = 0; i < bytes.Length; i++) result += bytes[i] << (i * 8);
-
-            return result;
-        }
-
-        public static byte[] HexStringToByteArray(string hex)
-        {
-            if (string.IsNullOrWhiteSpace(hex)) throw new ArgumentException("Input hex string cannot be null or empty.");
-
-            // Remove any whitespace from the hex string
-            hex = hex.Replace(" ", "");
-
-            // Ensure the string contains an even number of characters
-            if (hex.Length % 2 != 0) throw new FormatException("Hex string must have an even number of characters.");
-
-            var byteList = new List<byte>();
-
-            for (var i = 0; i < hex.Length; i += 2)
-            {
-                var byteString = hex.Substring(i, 2);
-                byteList.Add(byte.Parse(byteString, NumberStyles.HexNumber, CultureInfo.InvariantCulture));
-            }
-
-            return byteList.ToArray();
-        }
-
-        public static byte[] ConvertToByteArray(int value, int outputSize = 0)
-        {
-            // Throws an exception if the value is negative
-            if (value < 0)
-                throw new ArgumentOutOfRangeException(nameof(value), "Value must be non-negative.");
-
-            // Create a list to store bytes
-            var byteList = new List<byte>();
-
-            // Extract the bytes from the integer
-            while (value > 0)
-            {
-                byteList.Insert(0, (byte)(value & 0xFF)); // Get the least significant byte
-                value >>= 8; // Shift right by 8 bits (1 byte)
-            }
-
-            // If outputSize is greater than the current size, pad the array with leading zeros
-            while (byteList.Count < outputSize) byteList.Insert(0, 0); // Add padding at the beginning
-
-            // Validate if the array exceeds the outputSize and throw an error
-            if (outputSize != 0 && byteList.Count > outputSize) throw new ArgumentOutOfRangeException(nameof(outputSize), "Output size is too small to represent the value.");
-
-            // Convert the list to an array and return it
-            return byteList.Count > 0 ? byteList.ToArray() : new byte[] { 0 };
+            WeightMultiplierTextBox.Text = ByteUtils.ConvertBytesToUnsignedInt(new Byte[] { Gt5Save[Moff - 191], Gt5Save[Moff - 190], Gt5Save[Moff - 189], Gt5Save[Moff - 188] }).ToString();
         }
 
         private void SaveData()
         {
             try
             {
-                var engineByteValues = HexStringToByteArray(EngineCodeTextBox.Text);
+                var engineByteValues = ByteUtils.HexStringToByteArray(EngineCodeTextBox.Text);
 
                 Gt5Save[Moff - 213] = engineByteValues[0];
                 Gt5Save[Moff - 212] = engineByteValues[1];
@@ -222,7 +165,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                var drivetrainByteValues = HexStringToByteArray(DrivetrainCodeTextBox.Text);
+                var drivetrainByteValues = ByteUtils.HexStringToByteArray(DrivetrainCodeTextBox.Text);
 
                 Gt5Save[Moff - 209] = drivetrainByteValues[0];
                 Gt5Save[Moff - 208] = drivetrainByteValues[1];
@@ -235,7 +178,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                var chassisByteValues = HexStringToByteArray(ChassisCodeTextBox.Text);
+                var chassisByteValues = ByteUtils.HexStringToByteArray(ChassisCodeTextBox.Text);
 
                 Gt5Save[Moff - 217] = chassisByteValues[0];
                 Gt5Save[Moff - 216] = chassisByteValues[1];
@@ -248,7 +191,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                var transmissionByteValues = HexStringToByteArray(TransmissionCodeTextBox.Text);
+                var transmissionByteValues = ByteUtils.HexStringToByteArray(TransmissionCodeTextBox.Text);
 
                 Gt5Save[Moff - 205] = transmissionByteValues[0];
                 Gt5Save[Moff - 204] = transmissionByteValues[1];
@@ -275,7 +218,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                var paintCodes = HexStringToByteArray(PaintCodesTextBox.Text);
+                var paintCodes = ByteUtils.HexStringToByteArray(PaintCodesTextBox.Text);
 
                 Gt5Save[Moff - 344] = paintCodes[0];
                 Gt5Save[Moff - 343] = paintCodes[1];
@@ -290,7 +233,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                var turboModifier = HexStringToByteArray(TurboModifierTextBox.Text);
+                var turboModifier = ByteUtils.HexStringToByteArray(TurboModifierTextBox.Text);
 
                 Gt5Save[Moff - 171] = turboModifier[0];
                 Gt5Save[Moff - 170] = turboModifier[1];
@@ -374,7 +317,7 @@ namespace GT5_Car_hack_workshop_2
 
                 if (suspensionHeightFront < 0 || suspensionHeightFront > 65535) throw new FormatException("Suspension height front value must be between 0 and 65535.");
 
-                var suspensionHeightFrontBytes = ConvertToByteArray(suspensionHeightFront, 2);
+                var suspensionHeightFrontBytes = ByteUtils.ConvertToByteArray(suspensionHeightFront, 2);
                 Gt5Save[Moff - 33] = suspensionHeightFrontBytes[0];
                 Gt5Save[Moff - 32] = suspensionHeightFrontBytes[1];
             }
@@ -390,7 +333,7 @@ namespace GT5_Car_hack_workshop_2
 
                 if (suspensionHeightRear < 0 || suspensionHeightRear > 65535) throw new FormatException("Suspension height rear value must be between 0 and 65535.");
 
-                var suspensionHeightRearBytes = ConvertToByteArray(suspensionHeightRear, 2);
+                var suspensionHeightRearBytes = ByteUtils.ConvertToByteArray(suspensionHeightRear, 2);
                 Gt5Save[Moff - 31] = suspensionHeightRearBytes[0];
                 Gt5Save[Moff - 30] = suspensionHeightRearBytes[1];
             }
@@ -438,7 +381,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                var exhauseMultiplier = HexStringToByteArray(ExhauseMultiplierTextBox.Text);
+                var exhauseMultiplier = ByteUtils.HexStringToByteArray(ExhauseMultiplierTextBox.Text);
 
                 Gt5Save[Moff - 155] = exhauseMultiplier[0];
                 Gt5Save[Moff - 154] = exhauseMultiplier[1];
@@ -453,7 +396,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                var carBodyCode = HexStringToByteArray(CarBodyCodeTextBox.Text);
+                var carBodyCode = ByteUtils.HexStringToByteArray(CarBodyCodeTextBox.Text);
 
                 Gt5Save[Moff - 262] = carBodyCode[0];
                 Gt5Save[Moff - 261] = carBodyCode[1];
@@ -466,7 +409,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                var suspensionCode = HexStringToByteArray(SuspensionCodeTextBox.Text);
+                var suspensionCode = ByteUtils.HexStringToByteArray(SuspensionCodeTextBox.Text);
 
                 Gt5Save[Moff - 201] = suspensionCode[0];
                 Gt5Save[Moff - 200] = suspensionCode[1];
@@ -479,7 +422,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                var lsdCode = HexStringToByteArray(LsdCodeTextBox.Text);
+                var lsdCode = ByteUtils.HexStringToByteArray(LsdCodeTextBox.Text);
 
                 Gt5Save[Moff - 197] = lsdCode[0];
                 Gt5Save[Moff - 196] = lsdCode[1];
@@ -492,7 +435,7 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                var hornCode = HexStringToByteArray(HornCodeTextBox.Text);
+                var hornCode = ByteUtils.HexStringToByteArray(HornCodeTextBox.Text);
 
                 Gt5Save[Moff + 23] = hornCode[0];
                 Gt5Save[Moff + 24] = hornCode[1];
@@ -505,9 +448,9 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                if (int.TryParse(WeightMultiplierTextBox.Text, out var weightMultiplierInt))
+                if (uint.TryParse(WeightMultiplierTextBox.Text, out var weightMultiplierInt))
                 {
-                    var weightMultiplierBytes = ConvertToByteArray(weightMultiplierInt, 4);
+                    var weightMultiplierBytes = ByteUtils.ConvertToByteArray(weightMultiplierInt, 4);
                     Gt5Save[Moff - 191] = weightMultiplierBytes[0];
                     Gt5Save[Moff - 190] = weightMultiplierBytes[1];
                     Gt5Save[Moff - 189] = weightMultiplierBytes[2];
