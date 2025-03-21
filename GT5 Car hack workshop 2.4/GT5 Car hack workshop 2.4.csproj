@@ -57,6 +57,7 @@
             <DependentUpon>Form1.cs</DependentUpon>
         </Compile>
         <Compile Include="LoadData.cs"/>
+        <Compile Include="Models\CarParts.cs" />
         <Compile Include="My\MyApplication.cs"/>
         <Compile Include="My\MyComputer.cs"/>
         <Compile Include="My\MyProject.cs"/>
