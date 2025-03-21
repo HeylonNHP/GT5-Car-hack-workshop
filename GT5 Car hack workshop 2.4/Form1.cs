@@ -663,7 +663,7 @@ namespace GT5_Car_hack_workshop_2
         private void LoadParts()
         {
             // Assuming all ComboBoxes are part of the same container (like the form or a group box)
-            foreach (var comboBox in new[] { ComboBox1, ComboBox2, ComboBox3, ComboBox4, ComboBox5, ComboBox6, ComboBox7, ComboBox8 }) comboBox.Items.Clear();
+            foreach (var comboBox in new[] { EngineCodeComboBox, ComboBox2, ComboBox3, ComboBox4, ComboBox5, ComboBox6, ComboBox7, ComboBox8 }) comboBox.Items.Clear();
 
             // Spacer is used so that the hex value data after the comma doesn't show up in the GUI (Yep, terrible) TODO: Fix
             var spacer = "                                                                                                                                            ,";
@@ -672,7 +672,7 @@ namespace GT5_Car_hack_workshop_2
                     try
                     {
                         var sparr = _CarParts[i].Split(',');
-                        ComboBox1.Items.Add(sparr[0] + spacer + sparr[1]);
+                        EngineCodeComboBox.Items.Add(sparr[0] + spacer + sparr[1]);
                         ComboBox2.Items.Add(sparr[0] + spacer + sparr[2]);
                         ComboBox3.Items.Add(sparr[0] + spacer + sparr[3]);
                         ComboBox4.Items.Add(sparr[0] + spacer + sparr[4]);
@@ -691,7 +691,7 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                var sparr = ComboBox1.SelectedItem.ToString().Split(',');
+                var sparr = EngineCodeComboBox.SelectedItem.ToString().Split(',');
                 EngineCodeTextBox.Text = sparr[1];
             }
             catch (Exception ex)

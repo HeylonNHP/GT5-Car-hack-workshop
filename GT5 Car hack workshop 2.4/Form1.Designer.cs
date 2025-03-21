@@ -142,7 +142,7 @@
 			this.Label24 = new System.Windows.Forms.Label();
 			this.ComboBox2 = new System.Windows.Forms.ComboBox();
 			this.Label23 = new System.Windows.Forms.Label();
-			this.ComboBox1 = new System.Windows.Forms.ComboBox();
+			this.EngineCodeComboBox = new System.Windows.Forms.ComboBox();
 			this.TabPage4 = new System.Windows.Forms.TabPage();
 			this.Button18 = new System.Windows.Forms.Button();
 			this.Button15 = new System.Windows.Forms.Button();
@@ -1336,7 +1336,7 @@
 			this.TabPage1.Controls.Add(this.Label24);
 			this.TabPage1.Controls.Add(this.ComboBox2);
 			this.TabPage1.Controls.Add(this.Label23);
-			this.TabPage1.Controls.Add(this.ComboBox1);
+			this.TabPage1.Controls.Add(this.EngineCodeComboBox);
 			this.TabPage1.Location = new System.Drawing.Point(4, 25);
 			this.TabPage1.Margin = new System.Windows.Forms.Padding(4);
 			this.TabPage1.Name = "TabPage1";
@@ -1533,17 +1533,17 @@
 			this.Label23.TabIndex = 1;
 			this.Label23.Text = "Engine";
 			// 
-			// ComboBox1
+			// EngineCodeComboBox
 			// 
-			this.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ComboBox1.FormattingEnabled = true;
-			this.ComboBox1.Location = new System.Drawing.Point(96, 7);
-			this.ComboBox1.Margin = new System.Windows.Forms.Padding(4);
-			this.ComboBox1.Name = "ComboBox1";
-			this.ComboBox1.Size = new System.Drawing.Size(375, 24);
-			this.ComboBox1.Sorted = true;
-			this.ComboBox1.TabIndex = 0;
-			this.ComboBox1.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
+			this.EngineCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.EngineCodeComboBox.FormattingEnabled = true;
+			this.EngineCodeComboBox.Location = new System.Drawing.Point(96, 7);
+			this.EngineCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
+			this.EngineCodeComboBox.Name = "EngineCodeComboBox";
+			this.EngineCodeComboBox.Size = new System.Drawing.Size(375, 24);
+			this.EngineCodeComboBox.Sorted = true;
+			this.EngineCodeComboBox.TabIndex = 0;
+			this.EngineCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
 			// 
 			// TabPage4
 			// 
@@ -1774,7 +1774,7 @@
 		private System.Windows.Forms.Label Label24;
 		private System.Windows.Forms.ComboBox ComboBox2;
 		private System.Windows.Forms.Label Label23;
-		private System.Windows.Forms.ComboBox ComboBox1;
+		private System.Windows.Forms.ComboBox EngineCodeComboBox;
 		private System.Windows.Forms.TabPage TabPage4;
 		private System.Windows.Forms.Button Button18;
 		private System.Windows.Forms.Button Button15;
