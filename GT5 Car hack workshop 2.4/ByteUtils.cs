@@ -92,5 +92,33 @@ namespace GT5_Car_hack_workshop_2
             // Return the resulting byte array
             return byteList.Count > 0 ? byteList.ToArray() : new byte[] { 0 };
         }
+
+        public static ushort HexStringToUshort(string hex)
+        {
+            if (string.IsNullOrWhiteSpace(hex)) throw new ArgumentException("Input hex string cannot be null or empty.");
+
+            // Remove any whitespace from the hex string
+            hex = hex.Replace(" ", "");
+
+            // Ensure the string contains exactly 4 characters (2 bytes)
+            if (hex.Length != 4) throw new FormatException("Hex string must be exactly 4 characters (2 bytes) for a ushort value.");
+
+            // Convert the hex string to a byte array
+            byte[] bytes = HexStringToByteArray(hex);
+            
+            // Convert the bytes to a ushort (big-endian)
+            return (ushort)((bytes[0] << 8) | bytes[1]);
+        }
+
+        public static string UshortToHexString(ushort value)
+        {
+            // Convert the ushort to two bytes (big-endian)
+            byte[] bytes = new byte[2];
+            bytes[0] = (byte)(value >> 8);  // High byte
+            bytes[1] = (byte)(value & 0xFF); // Low byte
+            
+            // Convert to hex string with a space between bytes
+            return BitConverter.ToString(bytes).Replace("-", " ");
+        }
     }
 } 

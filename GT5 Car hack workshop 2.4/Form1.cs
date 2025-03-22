@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
+using GT5_Car_hack_workshop_2.Models;
 using GT5_Car_hack_workshop_2.My;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
@@ -14,18 +15,10 @@ namespace GT5_Car_hack_workshop_2
     [DesignerGenerated]
     public partial class Form1 : Form
     {
+        private const string PARTS_DATABASE_FILENAME = "partsdatabase.db";
         private string _CarName;
 
-        /// <summary>
-        ///     Represents an array of car parts, utilized for storing and managing saved car part values.
-        /// </summary>
-        /// <remarks>
-        ///     This array has a capacity of up to 10,000 slots for car part data.
-        ///     Users can add and update car part details within this array, which is persistently saved and loaded
-        ///     from a database file ("partsdatabase.db") during program execution.
-        ///     It is primarily used within the application to display and modify vehicle part information.
-        /// </remarks>
-        private string[] _CarParts;
+        private List<CarParts> _CarPartsList; // New car parts list
 
         private string[] _ProgramSettings;
 
@@ -530,7 +523,8 @@ namespace GT5_Car_hack_workshop_2
             if (!MyProject.Computer.FileSystem.DirectoryExists("Backups")) MyProject.Computer.FileSystem.CreateDirectory("Backups");
 
             _ProgramSettings = SettingsFileClass.LoadSettings("GT5CHWsettings.ini", 1);
-            _CarParts = SettingsFileClass.LoadSettings("partsdatabase.db", 9999);
+            // New car parts list
+            _CarPartsList = SettingsFileClass.LoadCarParts(PARTS_DATABASE_FILENAME);
             TextBox1.Text = _ProgramSettings[0];
             TextBox2.Text = _ProgramSettings[1];
             LoadParts();
@@ -541,7 +535,7 @@ namespace GT5_Car_hack_workshop_2
             _ProgramSettings[0] = TextBox1.Text;
             _ProgramSettings[1] = TextBox2.Text;
             SettingsFileClass.SaveSettings(_ProgramSettings, "GT5CHWsettings.ini");
-            SettingsFileClass.SaveSettings(_CarParts, "partsdatabase.db");
+            SettingsFileClass.SaveCarParts(_CarPartsList, PARTS_DATABASE_FILENAME);
         }
 
         private void LoadButton_Click(object sender, EventArgs e)
@@ -624,78 +618,141 @@ namespace GT5_Car_hack_workshop_2
         /// <param name="e">An EventArgs object containing event data.</param>
         private void Button12_Click(object sender, EventArgs e)
         {
-            // cpos is used to find the next empty slot in the car parts database to place the newly added car parts
-            var cpos = -1;
-            for (var i = 0; i <= _CarParts.Length - 1; i++)
-                if (_CarParts[i] == " ")
-                {
-                    cpos = i;
-                    break;
-                }
-
-            if (cpos == -1)
+            _CarName = Interaction.InputBox("Car name:", "", Conversions.ToString(_CarName));
+            if (string.IsNullOrWhiteSpace(_CarName))
             {
-                MessageBox.Show("No more space in the database, please delete some cars first");
+                MessageBox.Show("Car name cannot be empty");
                 return;
             }
 
-            _CarName = Interaction.InputBox("Car name:", "", Conversions.ToString(_CarName));
+            try
+            {
+                // Create new CarParts object with current car data
+                var newCarParts = new CarParts
+                {
+                    Name = _CarName,
+                    Engine = ByteUtils.HexStringToUshort(EngineCodeTextBox.Text),
+                    Drivetrain = ByteUtils.HexStringToUshort(DrivetrainCodeTextBox.Text),
+                    Chassis = ByteUtils.HexStringToUshort(ChassisCodeTextBox.Text),
+                    Transmission = ByteUtils.HexStringToUshort(TransmissionCodeTextBox.Text),
+                    Body = ByteUtils.HexStringToUshort(CarBodyCodeTextBox.Text),
+                    Suspension = ByteUtils.HexStringToUshort(SuspensionCodeTextBox.Text),
+                    Lsd = ByteUtils.HexStringToUshort(LsdCodeTextBox.Text),
+                    Horn = ByteUtils.HexStringToUshort(HornCodeTextBox.Text)
+                };
 
-            var linetoadd =
-                _CarName + "," +
-                EngineCodeTextBox.Text + "," +
-                DrivetrainCodeTextBox.Text + "," +
-                ChassisCodeTextBox.Text + "," +
-                TransmissionCodeTextBox.Text + "," +
-                CarBodyCodeTextBox.Text + "," +
-                SuspensionCodeTextBox.Text + "," +
-                LsdCodeTextBox.Text + "," +
-                HornCodeTextBox.Text;
-
-            for (var j = 0; j <= _CarParts.Length - 1; j++)
-                if (_CarParts[j].Equals(linetoadd, StringComparison.OrdinalIgnoreCase))
+                // Check for duplicates
+                if (_CarPartsList.Any(cp => cp.Name.Equals(_CarName, StringComparison.OrdinalIgnoreCase)))
+                {
                     MessageBox.Show("Car already exists", "", MessageBoxButtons.OK);
+                    return;
+                }
 
-            _CarParts[cpos] = linetoadd;
-            LoadParts();
+                // Add to list and save
+                _CarPartsList.Add(newCarParts);
+                SettingsFileClass.SaveCarParts(_CarPartsList, PARTS_DATABASE_FILENAME);
+                LoadParts();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error adding car to database: {ex.Message}");
+            }
         }
 
         private void LoadParts()
         {
-            // Assuming all ComboBoxes are part of the same container (like the form or a group box)
-            foreach (var comboBox in new[] { EngineCodeComboBox, DrivetrainCodeComboBox, ChassisCodeComboBox, TransmissionCodeComboBox, SuspensionCodeComboBox, BodyCodeComboBox, LsdCodeComboBox, HornCodeComboBox }) comboBox.Items.Clear();
+            // Clear all ComboBoxes
+            foreach (var comboBox in new[] { EngineCodeComboBox, DrivetrainCodeComboBox, ChassisCodeComboBox, TransmissionCodeComboBox, SuspensionCodeComboBox, BodyCodeComboBox, LsdCodeComboBox, HornCodeComboBox }) 
+            {
+                comboBox.Items.Clear();
+                comboBox.SelectedIndex = -1;
+            }
 
-            // Spacer is used so that the hex value data after the comma doesn't show up in the GUI (Yep, terrible) TODO: Fix
-            var spacer = "                                                                                                                                            ,";
-            for (var i = 0; i <= _CarParts.Length - 1; i++)
-                if (_CarParts[i].Contains(','))
-                    try
-                    {
-                        var sparr = _CarParts[i].Split(',');
-                        EngineCodeComboBox.Items.Add(sparr[0] + spacer + sparr[1]);
-                        DrivetrainCodeComboBox.Items.Add(sparr[0] + spacer + sparr[2]);
-                        ChassisCodeComboBox.Items.Add(sparr[0] + spacer + sparr[3]);
-                        TransmissionCodeComboBox.Items.Add(sparr[0] + spacer + sparr[4]);
-                        SuspensionCodeComboBox.Items.Add(sparr[0] + spacer + sparr[6]);
-                        BodyCodeComboBox.Items.Add(sparr[0] + spacer + sparr[5]);
-                        LsdCodeComboBox.Items.Add(sparr[0] + spacer + sparr[7]);
-                        HornCodeComboBox.Items.Add(sparr[0] + spacer + sparr[8]);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"An issue occured while loading the parts database: {ex.Message}");
-                    }
+            // Set up ComboBox data sources
+            if (_CarPartsList != null && _CarPartsList.Count > 0)
+            {
+                try
+                {
+                    // Create sorted lists from the car parts list
+                    var engineList = new List<CarParts>(_CarPartsList.OrderBy(cp => cp.Name));
+                    var drivetrainList = new List<CarParts>(_CarPartsList.OrderBy(cp => cp.Name));
+                    var chassisList = new List<CarParts>(_CarPartsList.OrderBy(cp => cp.Name));
+                    var transmissionList = new List<CarParts>(_CarPartsList.OrderBy(cp => cp.Name));
+                    var suspensionList = new List<CarParts>(_CarPartsList.OrderBy(cp => cp.Name));
+                    var bodyList = new List<CarParts>(_CarPartsList.OrderBy(cp => cp.Name));
+                    var lsdList = new List<CarParts>(_CarPartsList.OrderBy(cp => cp.Name));
+                    var hornList = new List<CarParts>(_CarPartsList.OrderBy(cp => cp.Name));
+                    
+                    // Insert a null item at the beginning of each sorted list
+                    engineList.Insert(0, new CarParts() {Name = "Select Engine"});
+                    drivetrainList.Insert(0, new CarParts() {Name = "Select Drivetrain"});
+                    chassisList.Insert(0, new CarParts() {Name = "Select Chassis"});
+                    transmissionList.Insert(0, new CarParts() {Name = "Select Transmission"});
+                    suspensionList.Insert(0, new CarParts() {Name = "Select Suspension"});
+                    bodyList.Insert(0, new CarParts() {Name = "Select Body"});
+                    lsdList.Insert(0, new CarParts() {Name = "Select LSD"});
+                    hornList.Insert(0, new CarParts() {Name = "Select Horn"});
+                    
+                    // Configure each ComboBox to display the car name but store the entire CarParts object
+                    EngineCodeComboBox.DisplayMember = "Name";
+                    EngineCodeComboBox.ValueMember = "Engine";
+                    EngineCodeComboBox.DataSource = new BindingSource(engineList, null);
+                    EngineCodeComboBox.SelectedItem = engineList[0];
+                    
+                    DrivetrainCodeComboBox.DisplayMember = "Name";
+                    DrivetrainCodeComboBox.ValueMember = "Drivetrain";
+                    DrivetrainCodeComboBox.DataSource = new BindingSource(drivetrainList, null);
+                    DrivetrainCodeComboBox.SelectedItem = drivetrainList[0];
+                    
+                    ChassisCodeComboBox.DisplayMember = "Name";
+                    ChassisCodeComboBox.ValueMember = "Chassis";
+                    ChassisCodeComboBox.DataSource = new BindingSource(chassisList, null);
+                    ChassisCodeComboBox.SelectedItem = chassisList[0];
+                    
+                    TransmissionCodeComboBox.DisplayMember = "Name";
+                    TransmissionCodeComboBox.ValueMember = "Transmission";
+                    TransmissionCodeComboBox.DataSource = new BindingSource(transmissionList, null);
+                    TransmissionCodeComboBox.SelectedItem = transmissionList[0];
+                    
+                    SuspensionCodeComboBox.DisplayMember = "Name";
+                    SuspensionCodeComboBox.ValueMember = "Suspension";
+                    SuspensionCodeComboBox.DataSource = new BindingSource(suspensionList, null);
+                    SuspensionCodeComboBox.SelectedItem = suspensionList[0];
+                    
+                    BodyCodeComboBox.DisplayMember = "Name";
+                    BodyCodeComboBox.ValueMember = "Body";
+                    BodyCodeComboBox.DataSource = new BindingSource(bodyList, null);
+                    BodyCodeComboBox.SelectedItem = bodyList[0];
+                    
+                    LsdCodeComboBox.DisplayMember = "Name";
+                    LsdCodeComboBox.ValueMember = "Lsd";
+                    LsdCodeComboBox.DataSource = new BindingSource(lsdList, null);
+                    LsdCodeComboBox.SelectedItem = lsdList[0];
+                    
+                    HornCodeComboBox.DisplayMember = "Name";
+                    HornCodeComboBox.ValueMember = "Horn";
+                    HornCodeComboBox.DataSource = new BindingSource(hornList, null);
+                    HornCodeComboBox.SelectedItem = hornList[0];
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An issue occurred while loading the parts database: {ex.Message}");
+                }
+            }
         }
 
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
-                var sparr = EngineCodeComboBox.SelectedItem.ToString().Split(',');
-                EngineCodeTextBox.Text = sparr[1];
+                if (EngineCodeComboBox.SelectedItem is CarParts selectedParts && selectedParts.Name != "Select Engine")
+                {
+                    EngineCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Engine);
+                }
             }
             catch (Exception ex)
             {
+                // Log or handle exception if needed
             }
         }
 
@@ -703,11 +760,14 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                var sparr = DrivetrainCodeComboBox.SelectedItem.ToString().Split(',');
-                DrivetrainCodeTextBox.Text = sparr[1];
+                if (DrivetrainCodeComboBox.SelectedItem is CarParts selectedParts && selectedParts.Name != "Select Drivetrain")
+                {
+                    DrivetrainCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Drivetrain);
+                }
             }
             catch (Exception ex)
             {
+                // Log or handle exception if needed
             }
         }
 
@@ -715,11 +775,14 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                var sparr = ChassisCodeComboBox.SelectedItem.ToString().Split(',');
-                ChassisCodeTextBox.Text = sparr[1];
+                if (ChassisCodeComboBox.SelectedItem is CarParts selectedParts && selectedParts.Name != "Select Chassis")
+                {
+                    ChassisCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Chassis);
+                }
             }
             catch (Exception ex)
             {
+                // Log or handle exception if needed
             }
         }
 
@@ -727,11 +790,14 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                var sparr = TransmissionCodeComboBox.SelectedItem.ToString().Split(',');
-                TransmissionCodeTextBox.Text = sparr[1];
+                if (TransmissionCodeComboBox.SelectedItem is CarParts selectedParts && selectedParts.Name != "Select Transmission")
+                {
+                    TransmissionCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Transmission);
+                }
             }
             catch (Exception ex)
             {
+                // Log or handle exception if needed
             }
         }
 
@@ -739,11 +805,14 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                var sparr = SuspensionCodeComboBox.SelectedItem.ToString().Split(',');
-                SuspensionCodeTextBox.Text = sparr[1];
+                if (SuspensionCodeComboBox.SelectedItem is CarParts selectedParts && selectedParts.Name != "Select Suspension")
+                {
+                    SuspensionCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Suspension);
+                }
             }
             catch (Exception ex)
             {
+                // Log or handle exception if needed
             }
         }
 
@@ -751,11 +820,14 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                var sparr = BodyCodeComboBox.SelectedItem.ToString().Split(',');
-                CarBodyCodeTextBox.Text = sparr[1];
+                if (BodyCodeComboBox.SelectedItem is CarParts selectedParts && selectedParts.Name != "Select Body")
+                {
+                    CarBodyCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Body);
+                }
             }
             catch (Exception ex)
             {
+                // Log or handle exception if needed
             }
         }
 
@@ -763,11 +835,14 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                var sparr = LsdCodeComboBox.SelectedItem.ToString().Split(',');
-                LsdCodeTextBox.Text = sparr[1];
+                if (LsdCodeComboBox.SelectedItem is CarParts selectedParts && selectedParts.Name != "Select LSD")
+                {
+                    LsdCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Lsd);
+                }
             }
             catch (Exception ex)
             {
+                // Log or handle exception if needed
             }
         }
 
@@ -775,11 +850,14 @@ namespace GT5_Car_hack_workshop_2
         {
             try
             {
-                var sparr = HornCodeComboBox.SelectedItem.ToString().Split(',');
-                HornCodeTextBox.Text = sparr[1];
+                if (HornCodeComboBox.SelectedItem is CarParts selectedParts && selectedParts.Name != "Select Horn")
+                {
+                    HornCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Horn);
+                }
             }
             catch (Exception ex)
             {
+                // Log or handle exception if needed
             }
         }
 

@@ -1387,7 +1387,6 @@
 			this.HornCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.HornCodeComboBox.Name = "HornCodeComboBox";
 			this.HornCodeComboBox.Size = new System.Drawing.Size(375, 24);
-			this.HornCodeComboBox.Sorted = true;
 			this.HornCodeComboBox.TabIndex = 14;
 			this.HornCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox8_SelectedIndexChanged);
 			// 
@@ -1409,7 +1408,6 @@
 			this.LsdCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.LsdCodeComboBox.Name = "LsdCodeComboBox";
 			this.LsdCodeComboBox.Size = new System.Drawing.Size(375, 24);
-			this.LsdCodeComboBox.Sorted = true;
 			this.LsdCodeComboBox.TabIndex = 12;
 			this.LsdCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox7_SelectedIndexChanged);
 			// 
@@ -1431,7 +1429,6 @@
 			this.BodyCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.BodyCodeComboBox.Name = "BodyCodeComboBox";
 			this.BodyCodeComboBox.Size = new System.Drawing.Size(375, 24);
-			this.BodyCodeComboBox.Sorted = true;
 			this.BodyCodeComboBox.TabIndex = 10;
 			this.BodyCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox6_SelectedIndexChanged);
 			// 
@@ -1453,7 +1450,6 @@
 			this.SuspensionCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.SuspensionCodeComboBox.Name = "SuspensionCodeComboBox";
 			this.SuspensionCodeComboBox.Size = new System.Drawing.Size(375, 24);
-			this.SuspensionCodeComboBox.Sorted = true;
 			this.SuspensionCodeComboBox.TabIndex = 8;
 			this.SuspensionCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox5_SelectedIndexChanged);
 			// 
@@ -1475,7 +1471,6 @@
 			this.TransmissionCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.TransmissionCodeComboBox.Name = "TransmissionCodeComboBox";
 			this.TransmissionCodeComboBox.Size = new System.Drawing.Size(375, 24);
-			this.TransmissionCodeComboBox.Sorted = true;
 			this.TransmissionCodeComboBox.TabIndex = 6;
 			this.TransmissionCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox4_SelectedIndexChanged);
 			// 
@@ -1497,7 +1492,6 @@
 			this.ChassisCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.ChassisCodeComboBox.Name = "ChassisCodeComboBox";
 			this.ChassisCodeComboBox.Size = new System.Drawing.Size(375, 24);
-			this.ChassisCodeComboBox.Sorted = true;
 			this.ChassisCodeComboBox.TabIndex = 4;
 			this.ChassisCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox3_SelectedIndexChanged);
 			// 
@@ -1519,7 +1513,6 @@
 			this.DrivetrainCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.DrivetrainCodeComboBox.Name = "DrivetrainCodeComboBox";
 			this.DrivetrainCodeComboBox.Size = new System.Drawing.Size(375, 24);
-			this.DrivetrainCodeComboBox.Sorted = true;
 			this.DrivetrainCodeComboBox.TabIndex = 2;
 			this.DrivetrainCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox2_SelectedIndexChanged);
 			// 
@@ -1541,7 +1534,6 @@
 			this.EngineCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.EngineCodeComboBox.Name = "EngineCodeComboBox";
 			this.EngineCodeComboBox.Size = new System.Drawing.Size(375, 24);
-			this.EngineCodeComboBox.Sorted = true;
 			this.EngineCodeComboBox.TabIndex = 0;
 			this.EngineCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
 			// 
