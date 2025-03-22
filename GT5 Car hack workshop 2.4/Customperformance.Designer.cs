@@ -8,8 +8,8 @@
 		internal System.Windows.Forms.Label Label2;
 		internal System.Windows.Forms.Label Label3;
 		internal System.Windows.Forms.TextBox TurboTextBox;
-		internal System.Windows.Forms.TextBox TextBox2;
-		internal System.Windows.Forms.TextBox TextBox3;
+		internal System.Windows.Forms.TextBox EngineTextBox;
+		internal System.Windows.Forms.TextBox ExhaustTextBox;
 		internal System.Windows.Forms.TextBox TextBox4;
 		internal System.Windows.Forms.TextBox TextBox5;
 		internal System.Windows.Forms.Label Label4;
@@ -44,8 +44,8 @@
 			this.Label2 = new System.Windows.Forms.Label();
 			this.Label3 = new System.Windows.Forms.Label();
 			this.TurboTextBox = new System.Windows.Forms.TextBox();
-			this.TextBox2 = new System.Windows.Forms.TextBox();
-			this.TextBox3 = new System.Windows.Forms.TextBox();
+			this.EngineTextBox = new System.Windows.Forms.TextBox();
+			this.ExhaustTextBox = new System.Windows.Forms.TextBox();
 			this.TextBox4 = new System.Windows.Forms.TextBox();
 			this.TextBox5 = new System.Windows.Forms.TextBox();
 			this.Label4 = new System.Windows.Forms.Label();
@@ -89,7 +89,7 @@
 			this.Label3.AutoSize = true;
 			this.Label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
 			this.Label3.ForeColor = System.Drawing.Color.Red;
-			this.Label3.Location = new System.Drawing.Point(20, 78);
+			this.Label3.Location = new System.Drawing.Point(20, 108);
 			this.Label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.Label3.Name = "Label3";
 			this.Label3.Size = new System.Drawing.Size(38, 13);
@@ -105,23 +105,23 @@
 			this.TurboTextBox.TabIndex = 3;
 			this.TurboTextBox.Text = "5415";
 			// 
-			// TextBox2
+			// EngineTextBox
 			// 
-			this.TextBox2.Location = new System.Drawing.Point(79, 44);
-			this.TextBox2.Margin = new System.Windows.Forms.Padding(4);
-			this.TextBox2.Name = "TextBox2";
-			this.TextBox2.Size = new System.Drawing.Size(132, 22);
-			this.TextBox2.TabIndex = 4;
-			this.TextBox2.Text = "3826";
+			this.EngineTextBox.Location = new System.Drawing.Point(79, 44);
+			this.EngineTextBox.Margin = new System.Windows.Forms.Padding(4);
+			this.EngineTextBox.Name = "EngineTextBox";
+			this.EngineTextBox.Size = new System.Drawing.Size(132, 22);
+			this.EngineTextBox.TabIndex = 4;
+			this.EngineTextBox.Text = "3826";
 			// 
-			// TextBox3
+			// ExhaustTextBox
 			// 
-			this.TextBox3.Location = new System.Drawing.Point(79, 103);
-			this.TextBox3.Margin = new System.Windows.Forms.Padding(4);
-			this.TextBox3.Name = "TextBox3";
-			this.TextBox3.Size = new System.Drawing.Size(132, 22);
-			this.TextBox3.TabIndex = 5;
-			this.TextBox3.Text = "5180";
+			this.ExhaustTextBox.Location = new System.Drawing.Point(79, 74);
+			this.ExhaustTextBox.Margin = new System.Windows.Forms.Padding(4);
+			this.ExhaustTextBox.Name = "ExhaustTextBox";
+			this.ExhaustTextBox.Size = new System.Drawing.Size(132, 22);
+			this.ExhaustTextBox.TabIndex = 5;
+			this.ExhaustTextBox.Text = "5180";
 			// 
 			// TextBox4
 			// 
@@ -144,7 +144,7 @@
 			// Label4
 			// 
 			this.Label4.AutoSize = true;
-			this.Label4.Location = new System.Drawing.Point(79, 78);
+			this.Label4.Location = new System.Drawing.Point(79, 108);
 			this.Label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.Label4.Name = "Label4";
 			this.Label4.Size = new System.Drawing.Size(144, 16);
@@ -195,7 +195,7 @@
 			this.Label5.AutoSize = true;
 			this.Label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold);
 			this.Label5.ForeColor = System.Drawing.Color.Red;
-			this.Label5.Location = new System.Drawing.Point(9, 107);
+			this.Label5.Location = new System.Drawing.Point(9, 78);
 			this.Label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.Label5.Name = "Label5";
 			this.Label5.Size = new System.Drawing.Size(52, 13);
@@ -269,8 +269,8 @@
 			this.Controls.Add(this.Label4);
 			this.Controls.Add(this.TextBox5);
 			this.Controls.Add(this.TextBox4);
-			this.Controls.Add(this.TextBox3);
-			this.Controls.Add(this.TextBox2);
+			this.Controls.Add(this.ExhaustTextBox);
+			this.Controls.Add(this.EngineTextBox);
 			this.Controls.Add(this.TurboTextBox);
 			this.Controls.Add(this.Label3);
 			this.Controls.Add(this.Label2);

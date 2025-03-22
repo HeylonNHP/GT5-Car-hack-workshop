@@ -52,7 +52,7 @@ namespace GT5_Car_hack_workshop_2
             // Engine
             MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 175] = 0;
             MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 174] = 0;
-            if (ushort.TryParse(TextBox2.Text, out var number2))
+            if (ushort.TryParse(EngineTextBox.Text, out var number2))
             {
                 MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 173] = (byte)(number2 >> 8);
                 MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 172] = (byte)(number2 & 0xFF);
@@ -65,7 +65,7 @@ namespace GT5_Car_hack_workshop_2
             // Exhaust
             MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 155] = 0;
             MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 154] = 0;
-            if (ushort.TryParse(TextBox3.Text, out var number3))
+            if (ushort.TryParse(ExhaustTextBox.Text, out var number3))
             {
                 MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 153] = (byte)(number3 >> 8);
                 MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 152] = (byte)(number3 & 0xFF);
@@ -162,8 +162,8 @@ namespace GT5_Car_hack_workshop_2
         private void Button3_Click(object sender, EventArgs e)
         {
             TurboTextBox.Text = GetCombinedValue(169, 168).ToString();
-            TextBox2.Text = GetCombinedValue(173, 172).ToString();
-            TextBox3.Text = GetCombinedValue(153, 152).ToString();
+            EngineTextBox.Text = GetCombinedValue(173, 172).ToString();
+            ExhaustTextBox.Text = GetCombinedValue(153, 152).ToString();
             TextBox4.Text = GetCombinedValue(177, 176).ToString();
             TextBox5.Text = GetCombinedValue(129, 128).ToString();
             TextBox6.Text = GetCombinedValue(125, 124).ToString();
