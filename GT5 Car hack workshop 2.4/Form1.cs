@@ -741,7 +741,7 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void EngineCodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -756,7 +756,7 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void DrivetrainCodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -771,7 +771,7 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        private void ComboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        private void ChassisCodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -786,7 +786,7 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        private void ComboBox4_SelectedIndexChanged(object sender, EventArgs e)
+        private void TransmissionCodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -801,7 +801,7 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        private void ComboBox5_SelectedIndexChanged(object sender, EventArgs e)
+        private void SuspensionCodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -816,7 +816,7 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        private void ComboBox6_SelectedIndexChanged(object sender, EventArgs e)
+        private void BodyCodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -831,7 +831,7 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        private void ComboBox7_SelectedIndexChanged(object sender, EventArgs e)
+        private void LsdCodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
@@ -846,7 +846,7 @@ namespace GT5_Car_hack_workshop_2
             }
         }
 
-        private void ComboBox8_SelectedIndexChanged(object sender, EventArgs e)
+        private void HornCodeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
             {
