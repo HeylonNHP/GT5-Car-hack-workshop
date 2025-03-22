@@ -439,7 +439,7 @@ namespace GT5_Car_hack_workshop_2
             {
                 if (uint.TryParse(WeightMultiplierTextBox.Text, out var weightMultiplierInt))
                 {
-                    var weightMultiplierBytes = ByteUtils.ConvertToByteArray(weightMultiplierInt, 4);
+                    var weightMultiplierBytes = ByteUtils.UintToByteArray(weightMultiplierInt);
                     Gt5Save[Moff - 191] = weightMultiplierBytes[0];
                     Gt5Save[Moff - 190] = weightMultiplierBytes[1];
                     Gt5Save[Moff - 189] = weightMultiplierBytes[2];

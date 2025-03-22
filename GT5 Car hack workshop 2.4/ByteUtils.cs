@@ -37,32 +37,6 @@ namespace GT5_Car_hack_workshop_2
             return byteList.ToArray();
         }
 
-        public static byte[] ConvertToByteArray(uint value, int outputSize = 0)
-        {
-            // Create a list to store bytes
-            var byteList = new List<byte>();
-
-            // Extract the bytes from the unsigned integer
-            while (value > 0)
-            {
-                // Get the least significant byte
-                byteList.Insert(0, (byte)(value & 0xFF));
-                // Shift right by 8 bits (1 byte)
-                value >>= 8;
-            }
-
-            // If outputSize is greater than the current size, pad the array with leading zeros
-            while (byteList.Count < outputSize)
-                byteList.Insert(0, 0); // Add padding at the beginning
-
-            // If the array exceeds the outputSize, throw an error
-            if (outputSize != 0 && byteList.Count > outputSize)
-                throw new ArgumentOutOfRangeException(nameof(outputSize), "Output size is too small to represent the value.");
-
-            // Return the resulting byte array
-            return byteList.Count > 0 ? byteList.ToArray() : new byte[] { 0 };
-        }
-
         public static ushort HexStringToUshort(string hex)
         {
             if (string.IsNullOrWhiteSpace(hex)) throw new ArgumentException("Input hex string cannot be null or empty.");
@@ -94,6 +68,17 @@ namespace GT5_Car_hack_workshop_2
         public static byte[] UshortToByteArray(ushort value)
         {
             return new byte[] { (byte)(value >> 8), (byte)(value & 0xFF) };
+        }
+
+        public static byte[] UintToByteArray(uint value)
+        {
+            return new byte[] 
+            { 
+                (byte)(value >> 24),  // Most significant byte
+                (byte)(value >> 16),
+                (byte)(value >> 8),
+                (byte)(value & 0xFF)   // Least significant byte
+            };
         }
     }
 } 
