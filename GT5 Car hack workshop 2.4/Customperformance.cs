@@ -17,12 +17,12 @@ namespace GT5_Car_hack_workshop_2
             InitializeComponent();
         }
 
-        private void Button2_Click(object sender, EventArgs e)
+        private void DiscardButton_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void Button1_Click(object sender, EventArgs e)
+        private void ApplyButton_Click(object sender, EventArgs e)
         {
             if (!NoPartInstallCheckBox.Checked)
             {
@@ -34,12 +34,10 @@ namespace GT5_Car_hack_workshop_2
             }
 
             // Turbo
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 171] = 0;
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 170] = 0;
+            SetCombinedValue(171, 170, 0); // Reset bytes
             if (ushort.TryParse(TurboTextBox.Text, out var number))
             {
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 169] = (byte)(number >> 8);
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 168] = (byte)(number & 0xFF);
+                SetCombinedValue(169, 168, number);
             }
             else
             {
@@ -47,12 +45,10 @@ namespace GT5_Car_hack_workshop_2
             }
 
             // Engine
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 175] = 0;
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 174] = 0;
+            SetCombinedValue(175, 174, 0); // Reset bytes
             if (ushort.TryParse(EngineTextBox.Text, out var number2))
             {
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 173] = (byte)(number2 >> 8);
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 172] = (byte)(number2 & 0xFF);
+                SetCombinedValue(173, 172, number2);
             }
             else
             {
@@ -60,12 +56,10 @@ namespace GT5_Car_hack_workshop_2
             }
 
             // Exhaust
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 155] = 0;
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 154] = 0;
+            SetCombinedValue(155, 154, 0); // Reset bytes
             if (ushort.TryParse(ExhaustTextBox.Text, out var number3))
             {
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 153] = (byte)(number3 >> 8);
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 152] = (byte)(number3 & 0xFF);
+                SetCombinedValue(153, 152, number3);
             }
             else
             {
@@ -73,12 +67,10 @@ namespace GT5_Car_hack_workshop_2
             }
 
             // Transmission
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 179] = 0;
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 178] = 0;
+            SetCombinedValue(179, 178, 0); // Reset bytes
             if (ushort.TryParse(TextBox4.Text, out var number4))
             {
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 177] = (byte)(number4 >> 8);
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 176] = (byte)(number4 & 0xFF);
+                SetCombinedValue(177, 176, number4);
             }
             else
             {
@@ -86,12 +78,10 @@ namespace GT5_Car_hack_workshop_2
             }
 
             // Suspension
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 131] = 0;
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 130] = 0;
+            SetCombinedValue(131, 130, 0); // Reset bytes
             if (ushort.TryParse(TextBox5.Text, out var number5))
             {
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 129] = (byte)(number5 >> 8);
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 128] = (byte)(number5 & 0xFF);
+                SetCombinedValue(129, 128, number5);
             }
             else
             {
@@ -99,12 +89,10 @@ namespace GT5_Car_hack_workshop_2
             }
 
             // Drivetrain
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 127] = 0;
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 126] = 0;
+            SetCombinedValue(127, 126, 0); // Reset bytes
             if (ushort.TryParse(TextBox6.Text, out var number6))
             {
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 125] = (byte)(number6 >> 8);
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 124] = (byte)(number6 & 0xFF);
+                SetCombinedValue(125, 124, number6);
             }
             else
             {
@@ -112,12 +100,10 @@ namespace GT5_Car_hack_workshop_2
             }
 
             // Brakes
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 123] = 0;
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 122] = 0;
+            SetCombinedValue(123, 122, 0); // Reset bytes
             if (ushort.TryParse(TextBox7.Text, out var number7))
             {
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 121] = (byte)(number7 >> 8);
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 120] = (byte)(number7 & 0xFF);
+                SetCombinedValue(121, 120, number7);
             }
             else
             {
@@ -125,12 +111,10 @@ namespace GT5_Car_hack_workshop_2
             }
 
             // Chassis
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 119] = 0;
-            MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 118] = 0;
+            SetCombinedValue(119, 118, 0); // Reset bytes
             if (ushort.TryParse(TextBox8.Text, out var number8))
             {
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 117] = (byte)(number8 >> 8);
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 116] = (byte)(number8 & 0xFF);
+                SetCombinedValue(117, 116, number8);
             }
             else
             {
@@ -148,15 +132,7 @@ namespace GT5_Car_hack_workshop_2
             Close();
         }
 
-        ushort GetCombinedValue(int offsetHigh, int offsetLow)
-        {
-            var form = MyProject.Forms.Form1;
-            // Shift the high byte left by 8 bits and then OR with the low byte.
-            return (ushort)((form.Gt5Save[form.Moff - offsetHigh] << 8) |
-                            form.Gt5Save[form.Moff - offsetLow]);
-        }
-
-        private void Button3_Click(object sender, EventArgs e)
+        private void LoadCurrentCarPerformanceButton_Click(object sender, EventArgs e)
         {
             TurboTextBox.Text = GetCombinedValue(169, 168).ToString();
             EngineTextBox.Text = GetCombinedValue(173, 172).ToString();
@@ -166,6 +142,27 @@ namespace GT5_Car_hack_workshop_2
             TextBox6.Text = GetCombinedValue(125, 124).ToString();
             TextBox7.Text = GetCombinedValue(121, 120).ToString();
             TextBox8.Text = GetCombinedValue(117, 116).ToString();
+        }
+
+        ushort GetCombinedValue(int offsetHigh, int offsetLow)
+        {
+            var gt5Save = MyProject.Forms.Form1.Gt5Save;
+            var moff = MyProject.Forms.Form1.Moff;
+
+            var highByte = gt5Save[moff - offsetHigh];
+            var lowByte = gt5Save[moff - offsetLow];
+
+            return ByteUtils.BytesToUshort(highByte, lowByte);
+        }
+
+        void SetCombinedValue(int offsetHigh, int offsetLow, ushort value)
+        {
+            var gt5Save = MyProject.Forms.Form1.Gt5Save;
+            var moff = MyProject.Forms.Form1.Moff;
+
+            // Write in big endian format - high byte first
+            gt5Save[moff - offsetHigh] = (byte)(value >> 8);    // High byte
+            gt5Save[moff - offsetLow] = (byte)(value & 0xFF);   // Low byte
         }
 
         private void Customperformance_Load(object sender, EventArgs e)

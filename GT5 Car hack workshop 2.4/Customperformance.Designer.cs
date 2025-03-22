@@ -162,7 +162,7 @@
 			this.Button1.TabIndex = 9;
 			this.Button1.Text = "Apply";
 			this.Button1.UseVisualStyleBackColor = false;
-			this.Button1.Click += new System.EventHandler(this.Button1_Click);
+			this.Button1.Click += new System.EventHandler(this.ApplyButton_Click);
 			// 
 			// Button2
 			// 
@@ -175,7 +175,7 @@
 			this.Button2.TabIndex = 10;
 			this.Button2.Text = "Discard";
 			this.Button2.UseVisualStyleBackColor = false;
-			this.Button2.Click += new System.EventHandler(this.Button2_Click);
+			this.Button2.Click += new System.EventHandler(this.DiscardButton_Click);
 			// 
 			// Button3
 			// 
@@ -188,7 +188,7 @@
 			this.Button3.TabIndex = 11;
 			this.Button3.Text = "load current car performance";
 			this.Button3.UseVisualStyleBackColor = false;
-			this.Button3.Click += new System.EventHandler(this.Button3_Click);
+			this.Button3.Click += new System.EventHandler(this.LoadCurrentCarPerformanceButton_Click);
 			// 
 			// Label5
 			// 

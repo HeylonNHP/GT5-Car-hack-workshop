@@ -80,5 +80,11 @@ namespace GT5_Car_hack_workshop_2
                 (byte)(value & 0xFF)   // Least significant byte
             };
         }
+
+        public static ushort BytesToUshort(byte highByte, byte lowByte)
+        {
+            // Combine two bytes into a ushort using big-endian byte order
+            return (ushort)((highByte << 8) | lowByte);
+        }
     }
 } 
