@@ -306,11 +306,9 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                if (!int.TryParse(SuspensionHeightFrontTextBox.Text, out var suspensionHeightFront)) throw new FormatException("Suspension height front value must be a number.");
+                if (!ushort.TryParse(SuspensionHeightFrontTextBox.Text, out var suspensionHeightFront)) throw new FormatException("Suspension height front value must be a number.");
 
-                if (suspensionHeightFront < 0 || suspensionHeightFront > 65535) throw new FormatException("Suspension height front value must be between 0 and 65535.");
-
-                var suspensionHeightFrontBytes = ByteUtils.ConvertToByteArray(suspensionHeightFront, 2);
+                var suspensionHeightFrontBytes = ByteUtils.UshortToByteArray(suspensionHeightFront);
                 Gt5Save[Moff - 33] = suspensionHeightFrontBytes[0];
                 Gt5Save[Moff - 32] = suspensionHeightFrontBytes[1];
             }
@@ -322,11 +320,9 @@ namespace GT5_Car_hack_workshop_2
 
             try
             {
-                if (!int.TryParse(SuspensionHeightRearTextBox.Text, out var suspensionHeightRear)) throw new FormatException("Suspension height rear value must be a number.");
+                if (!ushort.TryParse(SuspensionHeightRearTextBox.Text, out var suspensionHeightRear)) throw new FormatException("Suspension height rear value must be a number.");
 
-                if (suspensionHeightRear < 0 || suspensionHeightRear > 65535) throw new FormatException("Suspension height rear value must be between 0 and 65535.");
-
-                var suspensionHeightRearBytes = ByteUtils.ConvertToByteArray(suspensionHeightRear, 2);
+                var suspensionHeightRearBytes = ByteUtils.UshortToByteArray(suspensionHeightRear);
                 Gt5Save[Moff - 31] = suspensionHeightRearBytes[0];
                 Gt5Save[Moff - 30] = suspensionHeightRearBytes[1];
             }
