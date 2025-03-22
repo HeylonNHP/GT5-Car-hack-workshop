@@ -244,6 +244,8 @@
 			// NoPartInstallCheckBox
 			// 
 			this.NoPartInstallCheckBox.AutoSize = true;
+			this.NoPartInstallCheckBox.Checked = true;
+			this.NoPartInstallCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.NoPartInstallCheckBox.Location = new System.Drawing.Point(221, 16);
 			this.NoPartInstallCheckBox.Margin = new System.Windows.Forms.Padding(4);
 			this.NoPartInstallCheckBox.Name = "NoPartInstallCheckBox";

@@ -17,13 +17,11 @@ namespace GT5_Car_hack_workshop_2
             InitializeComponent();
         }
 
-        // Token: 0x06000048 RID: 72 RVA: 0x00003B64 File Offset: 0x00001F64
         private void Button2_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        // Token: 0x06000049 RID: 73 RVA: 0x00003B6C File Offset: 0x00001F6C
         private void Button1_Click(object sender, EventArgs e)
         {
             if (!NoPartInstallCheckBox.Checked)
@@ -34,7 +32,6 @@ namespace GT5_Car_hack_workshop_2
                 MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 315] = 80;
                 MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 314] = 9;
             }
-
 
             // Turbo
             MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 171] = 0;
@@ -171,7 +168,6 @@ namespace GT5_Car_hack_workshop_2
             TextBox8.Text = GetCombinedValue(117, 116).ToString();
         }
 
-        // Token: 0x0600004B RID: 75 RVA: 0x00004F50 File Offset: 0x00003350
         private void Customperformance_Load(object sender, EventArgs e)
         {
         }
