@@ -516,7 +516,7 @@ namespace GT5_Car_hack_workshop
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            if (!MyProject.Computer.FileSystem.DirectoryExists("Backups")) MyProject.Computer.FileSystem.CreateDirectory("Backups");
+            if (!Directory.Exists("Backups")) Directory.CreateDirectory("Backups");
 
             _ProgramSettings = SettingsFileClass.LoadSettings("GT5CHWsettings.ini", 1);
             // New car parts list

@@ -21,46 +21,14 @@ namespace GT5_Car_hack_workshop.My
     internal sealed class MyProject
     {
         // Token: 0x04000001 RID: 1
-        private static readonly ThreadSafeObjectProvider<MyComputer> m_ComputerObjectProvider = new ThreadSafeObjectProvider<MyComputer>();
-        // Token: 0x04000003 RID: 3
-        private static readonly ThreadSafeObjectProvider<User> m_UserObjectProvider = new ThreadSafeObjectProvider<User>();
-
-        // Token: 0x04000004 RID: 4
         private static readonly ThreadSafeObjectProvider<MyForms> m_MyFormsObjectProvider = new ThreadSafeObjectProvider<MyForms>();
-
-        // Token: 0x04000005 RID: 5
-        private static readonly ThreadSafeObjectProvider<MyWebServices> m_MyWebServicesObjectProvider = new ThreadSafeObjectProvider<MyWebServices>();
 
         // Token: 0x17000001 RID: 1
         // (get) Token: 0x06000006 RID: 6 RVA: 0x00002948 File Offset: 0x00000D48
-        [HelpKeyword("My.Computer")]
-        internal static MyComputer Computer
-        {
-            [DebuggerHidden] get => m_ComputerObjectProvider.GetInstance;
-        }
-
-        // Token: 0x17000003 RID: 3
-        // (get) Token: 0x06000008 RID: 8 RVA: 0x00002978 File Offset: 0x00000D78
-        [HelpKeyword("My.User")]
-        internal static User User
-        {
-            [DebuggerHidden] get => m_UserObjectProvider.GetInstance;
-        }
-
-        // Token: 0x17000004 RID: 4
-        // (get) Token: 0x06000009 RID: 9 RVA: 0x00002990 File Offset: 0x00000D90
         [HelpKeyword("My.Forms")]
         internal static MyForms Forms
         {
             [DebuggerHidden] get => m_MyFormsObjectProvider.GetInstance;
-        }
-
-        // Token: 0x17000005 RID: 5
-        // (get) Token: 0x0600000A RID: 10 RVA: 0x000029A8 File Offset: 0x00000DA8
-        [HelpKeyword("My.WebServices")]
-        internal static MyWebServices WebServices
-        {
-            [DebuggerHidden] get => m_MyWebServicesObjectProvider.GetInstance;
         }
 
         // Token: 0x02000005 RID: 5
@@ -215,66 +183,6 @@ namespace GT5_Car_hack_workshop.My
         }
 
         // Token: 0x02000006 RID: 6
-        [MyGroupCollection("System.Web.Services.Protocols.SoapHttpClientProtocol", "Create__Instance__", "Dispose__Instance__", "")]
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        internal sealed class MyWebServices
-        {
-            // Token: 0x0600001E RID: 30 RVA: 0x00002CD0 File Offset: 0x000010D0
-            [DebuggerHidden]
-            [EditorBrowsable(EditorBrowsableState.Never)]
-            public MyWebServices()
-            {
-            }
-
-            // Token: 0x06000018 RID: 24 RVA: 0x00002C3C File Offset: 0x0000103C
-            [DebuggerHidden]
-            [EditorBrowsable(EditorBrowsableState.Never)]
-            public override bool Equals(object o)
-            {
-                return base.Equals(RuntimeHelpers.GetObjectValue(o));
-            }
-
-            // Token: 0x06000019 RID: 25 RVA: 0x00002C58 File Offset: 0x00001058
-            [DebuggerHidden]
-            [EditorBrowsable(EditorBrowsableState.Never)]
-            public override int GetHashCode()
-            {
-                return base.GetHashCode();
-            }
-
-            // Token: 0x0600001A RID: 26 RVA: 0x00002C6C File Offset: 0x0000106C
-            [EditorBrowsable(EditorBrowsableState.Never)]
-            [DebuggerHidden]
-            internal new Type GetType()
-            {
-                return typeof(MyWebServices);
-            }
-
-            // Token: 0x0600001B RID: 27 RVA: 0x00002C84 File Offset: 0x00001084
-            [DebuggerHidden]
-            [EditorBrowsable(EditorBrowsableState.Never)]
-            public override string ToString()
-            {
-                return base.ToString();
-            }
-
-            // Token: 0x0600001C RID: 28 RVA: 0x00002C98 File Offset: 0x00001098
-            [DebuggerHidden]
-            private static T Create__Instance__<T>(T instance) where T : new()
-            {
-                if (instance == null) return new T();
-                return instance;
-            }
-
-            // Token: 0x0600001D RID: 29 RVA: 0x00002CB4 File Offset: 0x000010B4
-            [DebuggerHidden]
-            private void Dispose__Instance__<T>(ref T instance)
-            {
-                instance = default;
-            }
-        }
-
-        // Token: 0x02000007 RID: 7
         [EditorBrowsable(EditorBrowsableState.Never)]
         [ComVisible(false)]
         internal sealed class ThreadSafeObjectProvider<T> where T : new()
