@@ -12,8 +12,10 @@
         <FileAlignment>512</FileAlignment>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <ApplicationIcon>GT5 Car hack workshop.ico</ApplicationIcon>
-        <StartupObject>GT5_Car_hack_workshop.My.Program</StartupObject>
+        <StartupObject>GT5_Car_hack_workshop.Program</StartupObject>
         <LangVersion>10</LangVersion>
+        <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+        <RuntimeIdentifiers>win</RuntimeIdentifiers>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -59,10 +61,10 @@
         </Compile>
         <Compile Include="LoadData.cs"/>
         <Compile Include="Models\CarParts.cs" />
-        <Compile Include="My\Program.cs" />
-        <Compile Include="My\MyProject.cs"/>
+        <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="SettingsFileClass.cs"/>
+        <Compile Include="Services\FormManager.cs" />
         <Compile Include="TransmissionEditor.cs">
             <SubType>Form</SubType>
         </Compile>
@@ -87,6 +89,10 @@
     </ItemGroup>
     <ItemGroup>
         <None Include="app.manifest"/>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
 </Project>

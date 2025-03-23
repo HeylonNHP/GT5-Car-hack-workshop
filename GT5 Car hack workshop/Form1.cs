@@ -6,7 +6,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using GT5_Car_hack_workshop.Models;
-using GT5_Car_hack_workshop.My;
+using GT5_Car_hack_workshop.Services;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 
@@ -22,12 +22,15 @@ namespace GT5_Car_hack_workshop
 
         private string[] _ProgramSettings;
 
+        private readonly IFormManager _formManager;
+
         public byte[] Gt5Save;
 
         public int Moff;
 
-        public Form1()
+        public Form1(IFormManager formManager)
         {
+            _formManager = formManager;
             Load += Form1_Load;
             FormClosing += Form1_FormClosing;
             Moff = 0;
@@ -602,7 +605,7 @@ namespace GT5_Car_hack_workshop
 
         private void Button11_Click(object sender, EventArgs e)
         {
-            MyProject.Forms.TransmissionEditor.Show();
+            _formManager.TransmissionEditor.Show();
         }
 
         /// <summary>
@@ -859,7 +862,7 @@ namespace GT5_Car_hack_workshop
 
         private void Button13_Click(object sender, EventArgs e)
         {
-            MyProject.Forms.Customperformance.ShowDialog();
+            _formManager.CustomPerformance.ShowDialog();
         }
 
         private void Button14_Click(object sender, EventArgs e)

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
-using GT5_Car_hack_workshop.My;
+using GT5_Car_hack_workshop.Services;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 
@@ -11,8 +11,11 @@ namespace GT5_Car_hack_workshop
     [DesignerGenerated]
     public partial class Customperformance : Form
     {
-        public Customperformance()
+        private readonly IFormManager _formManager;
+
+        public Customperformance(IFormManager formManager)
         {
+            _formManager = formManager;
             Load += Customperformance_Load;
             InitializeComponent();
         }
@@ -26,11 +29,11 @@ namespace GT5_Car_hack_workshop
         {
             if (!NoPartInstallCheckBox.Checked)
             {
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 332] = 56;
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 331] = 9;
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 330] = 8;
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 315] = 80;
-                MyProject.Forms.Form1.Gt5Save[MyProject.Forms.Form1.Moff - 314] = 9;
+                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 332] = 56;
+                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 331] = 9;
+                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 330] = 8;
+                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 315] = 80;
+                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 314] = 9;
             }
 
             // Turbo
@@ -121,14 +124,14 @@ namespace GT5_Car_hack_workshop
                 MessageBox.Show(@"Please enter a valid number for the ???Chassis???");
             }
 
-            MyProject.Forms.Form1.TurboModifierTextBox.Text = string.Concat(MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 171))].ToString("X2"), " ",
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 170))].ToString("X2"), " ",
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 169))].ToString("X2"), " ",
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 168))].ToString("X2"));
-            MyProject.Forms.Form1.ExhauseMultiplierTextBox.Text = string.Concat(MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 155))].ToString("X2"), " ",
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 154))].ToString("X2"), " ",
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 153))].ToString("X2"), " ",
-                MyProject.Forms.Form1.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(MyProject.Forms.Form1.Moff, 152))].ToString("X2"));
+            _formManager.MainForm.TurboModifierTextBox.Text = string.Concat(_formManager.MainForm.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(_formManager.MainForm.Moff, 171))].ToString("X2"), " ",
+                _formManager.MainForm.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(_formManager.MainForm.Moff, 170))].ToString("X2"), " ",
+                _formManager.MainForm.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(_formManager.MainForm.Moff, 169))].ToString("X2"), " ",
+                _formManager.MainForm.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(_formManager.MainForm.Moff, 168))].ToString("X2"));
+            _formManager.MainForm.ExhauseMultiplierTextBox.Text = string.Concat(_formManager.MainForm.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(_formManager.MainForm.Moff, 155))].ToString("X2"), " ",
+                _formManager.MainForm.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(_formManager.MainForm.Moff, 154))].ToString("X2"), " ",
+                _formManager.MainForm.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(_formManager.MainForm.Moff, 153))].ToString("X2"), " ",
+                _formManager.MainForm.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(_formManager.MainForm.Moff, 152))].ToString("X2"));
             Close();
         }
 
@@ -146,8 +149,8 @@ namespace GT5_Car_hack_workshop
 
         ushort GetCombinedValue(int offsetHigh, int offsetLow)
         {
-            var gt5Save = MyProject.Forms.Form1.Gt5Save;
-            var moff = MyProject.Forms.Form1.Moff;
+            var gt5Save = _formManager.MainForm.Gt5Save;
+            var moff = _formManager.MainForm.Moff;
 
             var highByte = gt5Save[moff - offsetHigh];
             var lowByte = gt5Save[moff - offsetLow];
@@ -157,8 +160,8 @@ namespace GT5_Car_hack_workshop
 
         void SetCombinedValue(int offsetHigh, int offsetLow, ushort value)
         {
-            var gt5Save = MyProject.Forms.Form1.Gt5Save;
-            var moff = MyProject.Forms.Form1.Moff;
+            var gt5Save = _formManager.MainForm.Gt5Save;
+            var moff = _formManager.MainForm.Moff;
 
             // Write in big endian format - high byte first
             gt5Save[moff - offsetHigh] = (byte)(value >> 8);    // High byte

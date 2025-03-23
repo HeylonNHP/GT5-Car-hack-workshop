@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Forms;
-using GT5_Car_hack_workshop.My;
+using GT5_Car_hack_workshop.Services;
 
 namespace GT5_Car_hack_workshop
 {
     public partial class TransmissionEditor : Form
     {
         private readonly Timer _Timer1;
-
+        private readonly IFormManager _formManager;
         private decimal _Lastgearpre;
-
         private decimal _OriginalFinalDrive;
 
-        public TransmissionEditor()
+        public TransmissionEditor(IFormManager formManager)
         {
+            _formManager = formManager;
             InitializeComponent();
             
             Load += TransmissionLoadValues;
@@ -38,8 +38,8 @@ namespace GT5_Car_hack_workshop
 
         private string LoadGearRatioToGt5Save(int moffOffset1, int moffOffset2)
         {
-            var firstByte = MyProject.Forms.Form1.Gt5Save[moffOffset1];
-            var secondByte = MyProject.Forms.Form1.Gt5Save[moffOffset2];
+            var firstByte = _formManager.MainForm.Gt5Save[moffOffset1];
+            var secondByte = _formManager.MainForm.Gt5Save[moffOffset2];
             return (((firstByte << 8) | secondByte) / 1000.0f).ToString(CultureInfo.CurrentCulture);
         }
 
@@ -49,40 +49,40 @@ namespace GT5_Car_hack_workshop
             // Each gear ratio is stored as 2 bytes in hex format, divided by 1000 for display
 
             // Gear 1
-            TextBox1.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 73, MyProject.Forms.Form1.Moff - 72);
+            TextBox1.Text = LoadGearRatioToGt5Save(_formManager.MainForm.Moff - 73, _formManager.MainForm.Moff - 72);
 
             // Gear 2
-            TextBox2.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 71, MyProject.Forms.Form1.Moff - 70);
+            TextBox2.Text = LoadGearRatioToGt5Save(_formManager.MainForm.Moff - 71, _formManager.MainForm.Moff - 70);
 
             // Gear 3
-            TextBox3.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 69, MyProject.Forms.Form1.Moff - 68);
+            TextBox3.Text = LoadGearRatioToGt5Save(_formManager.MainForm.Moff - 69, _formManager.MainForm.Moff - 68);
 
             // Gear 4
-            TextBox4.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 67, MyProject.Forms.Form1.Moff - 66);
+            TextBox4.Text = LoadGearRatioToGt5Save(_formManager.MainForm.Moff - 67, _formManager.MainForm.Moff - 66);
 
             // Gear 5
-            TextBox5.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 65, MyProject.Forms.Form1.Moff - 64);
+            TextBox5.Text = LoadGearRatioToGt5Save(_formManager.MainForm.Moff - 65, _formManager.MainForm.Moff - 64);
 
             // Gear 6
-            TextBox6.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 63, MyProject.Forms.Form1.Moff - 62);
+            TextBox6.Text = LoadGearRatioToGt5Save(_formManager.MainForm.Moff - 63, _formManager.MainForm.Moff - 62);
 
             // Gear 7
-            TextBox7.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 61, MyProject.Forms.Form1.Moff - 60);
+            TextBox7.Text = LoadGearRatioToGt5Save(_formManager.MainForm.Moff - 61, _formManager.MainForm.Moff - 60);
 
             // Gear 8
-            TextBox8.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 59, MyProject.Forms.Form1.Moff - 58);
+            TextBox8.Text = LoadGearRatioToGt5Save(_formManager.MainForm.Moff - 59, _formManager.MainForm.Moff - 58);
 
             // Gear 9
-            TextBox9.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 57, MyProject.Forms.Form1.Moff - 56);
+            TextBox9.Text = LoadGearRatioToGt5Save(_formManager.MainForm.Moff - 57, _formManager.MainForm.Moff - 56);
 
             // Gear 10
-            TextBox10.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 55, MyProject.Forms.Form1.Moff - 54);
+            TextBox10.Text = LoadGearRatioToGt5Save(_formManager.MainForm.Moff - 55, _formManager.MainForm.Moff - 54);
 
             // Gear 11
-            TextBox11.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 53, MyProject.Forms.Form1.Moff - 52);
+            TextBox11.Text = LoadGearRatioToGt5Save(_formManager.MainForm.Moff - 53, _formManager.MainForm.Moff - 52);
 
             // Final Drive
-            TextBox12.Text = LoadGearRatioToGt5Save(MyProject.Forms.Form1.Moff - 51, MyProject.Forms.Form1.Moff - 50);
+            TextBox12.Text = LoadGearRatioToGt5Save(_formManager.MainForm.Moff - 51, _formManager.MainForm.Moff - 50);
 
             // Cache the gear ratio of the highest gear
             var textBoxes = new[] { TextBox11, TextBox10, TextBox9, TextBox8, TextBox7, TextBox6, TextBox5, TextBox4, TextBox3, TextBox2, TextBox1 };
@@ -116,50 +116,49 @@ namespace GT5_Car_hack_workshop
 
             var intValue = (int)(parsedRatio * 1000);
 
-            MyProject.Forms.Form1.Gt5Save[moffOffset1] =
+            _formManager.MainForm.Gt5Save[moffOffset1] =
                 byte.Parse(intValue.ToString("X4").Substring(0, 2), NumberStyles.HexNumber);
-            MyProject.Forms.Form1.Gt5Save[moffOffset2] =
+            _formManager.MainForm.Gt5Save[moffOffset2] =
                 byte.Parse(intValue.ToString("X4").Substring(2, 2), NumberStyles.HexNumber);
         }
-
 
         private void OkayButtonClick(object sender, EventArgs e)
         {
             // Gear 1
-            SaveGearRatioToGt5Save(TextBox1.Text, MyProject.Forms.Form1.Moff - 73, MyProject.Forms.Form1.Moff - 72);
+            SaveGearRatioToGt5Save(TextBox1.Text, _formManager.MainForm.Moff - 73, _formManager.MainForm.Moff - 72);
 
             // Gear 2
-            SaveGearRatioToGt5Save(TextBox2.Text, MyProject.Forms.Form1.Moff - 71, MyProject.Forms.Form1.Moff - 70);
+            SaveGearRatioToGt5Save(TextBox2.Text, _formManager.MainForm.Moff - 71, _formManager.MainForm.Moff - 70);
 
             // Gear 3
-            SaveGearRatioToGt5Save(TextBox3.Text, MyProject.Forms.Form1.Moff - 69, MyProject.Forms.Form1.Moff - 68);
+            SaveGearRatioToGt5Save(TextBox3.Text, _formManager.MainForm.Moff - 69, _formManager.MainForm.Moff - 68);
 
             // Gear 4
-            SaveGearRatioToGt5Save(TextBox4.Text, MyProject.Forms.Form1.Moff - 67, MyProject.Forms.Form1.Moff - 66);
+            SaveGearRatioToGt5Save(TextBox4.Text, _formManager.MainForm.Moff - 67, _formManager.MainForm.Moff - 66);
 
             // Gear 5
-            SaveGearRatioToGt5Save(TextBox5.Text, MyProject.Forms.Form1.Moff - 65, MyProject.Forms.Form1.Moff - 64);
+            SaveGearRatioToGt5Save(TextBox5.Text, _formManager.MainForm.Moff - 65, _formManager.MainForm.Moff - 64);
 
             // Gear 6
-            SaveGearRatioToGt5Save(TextBox6.Text, MyProject.Forms.Form1.Moff - 63, MyProject.Forms.Form1.Moff - 62);
+            SaveGearRatioToGt5Save(TextBox6.Text, _formManager.MainForm.Moff - 63, _formManager.MainForm.Moff - 62);
 
             // Gear 7
-            SaveGearRatioToGt5Save(TextBox7.Text, MyProject.Forms.Form1.Moff - 61, MyProject.Forms.Form1.Moff - 60);
+            SaveGearRatioToGt5Save(TextBox7.Text, _formManager.MainForm.Moff - 61, _formManager.MainForm.Moff - 60);
 
             // Gear 8
-            SaveGearRatioToGt5Save(TextBox8.Text, MyProject.Forms.Form1.Moff - 59, MyProject.Forms.Form1.Moff - 58);
+            SaveGearRatioToGt5Save(TextBox8.Text, _formManager.MainForm.Moff - 59, _formManager.MainForm.Moff - 58);
 
             // Gear 9
-            SaveGearRatioToGt5Save(TextBox9.Text, MyProject.Forms.Form1.Moff - 57, MyProject.Forms.Form1.Moff - 56);
+            SaveGearRatioToGt5Save(TextBox9.Text, _formManager.MainForm.Moff - 57, _formManager.MainForm.Moff - 56);
 
             // Gear 10
-            SaveGearRatioToGt5Save(TextBox10.Text, MyProject.Forms.Form1.Moff - 55, MyProject.Forms.Form1.Moff - 54);
+            SaveGearRatioToGt5Save(TextBox10.Text, _formManager.MainForm.Moff - 55, _formManager.MainForm.Moff - 54);
 
             // Gear 11
-            SaveGearRatioToGt5Save(TextBox11.Text, MyProject.Forms.Form1.Moff - 53, MyProject.Forms.Form1.Moff - 52);
+            SaveGearRatioToGt5Save(TextBox11.Text, _formManager.MainForm.Moff - 53, _formManager.MainForm.Moff - 52);
 
             // Final drive
-            SaveGearRatioToGt5Save(TextBox12.Text, MyProject.Forms.Form1.Moff - 51, MyProject.Forms.Form1.Moff - 50);
+            SaveGearRatioToGt5Save(TextBox12.Text, _formManager.MainForm.Moff - 51, _formManager.MainForm.Moff - 50);
 
             Close();
         }
