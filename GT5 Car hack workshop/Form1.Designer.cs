@@ -1,4 +1,4 @@
-﻿namespace GT5_Car_hack_workshop_2
+﻿namespace GT5_Car_hack_workshop
 {
 	public partial class Form1 : global::System.Windows.Forms.Form
 	{

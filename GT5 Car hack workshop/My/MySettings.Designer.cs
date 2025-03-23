@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GT5_Car_hack_workshop_2.My {
+namespace GT5_Car_hack_workshop.My {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

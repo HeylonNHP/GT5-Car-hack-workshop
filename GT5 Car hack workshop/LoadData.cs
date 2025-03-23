@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using System.IO;
 
-namespace GT5_Car_hack_workshop_2
+namespace GT5_Car_hack_workshop
 {
     public static class LoadData
     {

@@ -1,4 +1,4 @@
-﻿namespace GT5_Car_hack_workshop_2
+﻿namespace GT5_Car_hack_workshop
 {
 	// Token: 0x02000008 RID: 8
 	public partial class Customperformance : System.Windows.Forms.Form

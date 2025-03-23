@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Forms;
-using GT5_Car_hack_workshop_2.My;
+using GT5_Car_hack_workshop.My;
 
-namespace GT5_Car_hack_workshop_2
+namespace GT5_Car_hack_workshop
 {
     public partial class TransmissionEditor : Form
     {

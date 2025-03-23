@@ -1,4 +1,4 @@
-﻿namespace GT5_Car_hack_workshop_2.Models
+﻿namespace GT5_Car_hack_workshop.Models
 {
     public class CarParts
     {

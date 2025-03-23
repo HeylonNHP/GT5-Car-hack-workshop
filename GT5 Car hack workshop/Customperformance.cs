@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
-using GT5_Car_hack_workshop_2.My;
+using GT5_Car_hack_workshop.My;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 
-namespace GT5_Car_hack_workshop_2
+namespace GT5_Car_hack_workshop
 {
     // Token: 0x02000008 RID: 8
     [DesignerGenerated]

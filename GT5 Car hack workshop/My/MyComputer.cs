@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using Microsoft.VisualBasic.Devices;
 
-namespace GT5_Car_hack_workshop_2.My
+namespace GT5_Car_hack_workshop.My
 {
     // Token: 0x02000003 RID: 3
     [EditorBrowsable(EditorBrowsableState.Never)]

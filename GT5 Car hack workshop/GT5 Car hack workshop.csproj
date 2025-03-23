@@ -6,13 +6,13 @@
         <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
         <ProjectGuid>{AE2B645F-ED2B-4910-A189-0738291DDF91}</ProjectGuid>
         <OutputType>WinExe</OutputType>
-        <RootNamespace>GT5_Car_hack_workshop_2</RootNamespace>
+        <RootNamespace>GT5_Car_hack_workshop</RootNamespace>
         <AssemblyName>GT5 Car hack workshop</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <ApplicationIcon>GT5 Car hack workshop.ico</ApplicationIcon>
-        <StartupObject>GT5_Car_hack_workshop_2.My.MyApplication</StartupObject>
+        <StartupObject>GT5_Car_hack_workshop.My.MyApplication</StartupObject>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
         <PlatformTarget>AnyCPU</PlatformTarget>

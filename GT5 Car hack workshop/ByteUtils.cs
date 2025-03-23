@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 
-namespace GT5_Car_hack_workshop_2
+namespace GT5_Car_hack_workshop
 {
     public static class ByteUtils
     {

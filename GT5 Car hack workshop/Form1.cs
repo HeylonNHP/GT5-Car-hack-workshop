@@ -5,12 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Forms;
-using GT5_Car_hack_workshop_2.Models;
-using GT5_Car_hack_workshop_2.My;
+using GT5_Car_hack_workshop.Models;
+using GT5_Car_hack_workshop.My;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 
-namespace GT5_Car_hack_workshop_2
+namespace GT5_Car_hack_workshop
 {
     [DesignerGenerated]
     public partial class Form1 : Form

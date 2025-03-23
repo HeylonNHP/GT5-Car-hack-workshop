@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using GT5_Car_hack_workshop_2.Models;
+using GT5_Car_hack_workshop.Models;
 
-namespace GT5_Car_hack_workshop_2
+namespace GT5_Car_hack_workshop
 {
     public static class SettingsFileClass
     {

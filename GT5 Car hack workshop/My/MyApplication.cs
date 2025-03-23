@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.ApplicationServices;
 
-namespace GT5_Car_hack_workshop_2.My
+namespace GT5_Car_hack_workshop.My
 {
     // Token: 0x02000002 RID: 2
     [EditorBrowsable(EditorBrowsableState.Never)]

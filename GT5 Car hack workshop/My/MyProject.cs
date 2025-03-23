@@ -12,7 +12,7 @@ using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.ApplicationServices;
 using Microsoft.VisualBasic.CompilerServices;
 
-namespace GT5_Car_hack_workshop_2.My
+namespace GT5_Car_hack_workshop.My
 {
     // Token: 0x02000004 RID: 4
     [HideModuleName]

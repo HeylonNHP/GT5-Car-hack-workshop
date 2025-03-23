@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using Microsoft.VisualBasic;
 using Microsoft.VisualBasic.CompilerServices;
 
-namespace GT5_Car_hack_workshop_2.My
+namespace GT5_Car_hack_workshop.My
 {
     // Token: 0x0200000D RID: 13
     [StandardModule]
