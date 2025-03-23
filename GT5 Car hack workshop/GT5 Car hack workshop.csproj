@@ -60,7 +60,6 @@
         <Compile Include="LoadData.cs"/>
         <Compile Include="Models\CarParts.cs" />
         <Compile Include="My\Program.cs" />
-        <Compile Include="My\MyComputer.cs"/>
         <Compile Include="My\MyProject.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
         <Compile Include="SettingsFileClass.cs"/>
