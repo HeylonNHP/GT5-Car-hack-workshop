@@ -21,15 +21,12 @@ namespace GT5_Car_hack_workshop.My
     internal sealed class MyProject
     {
         // Token: 0x04000001 RID: 1
-        private static readonly ThreadSafeObjectProvider<MyForms> m_MyFormsObjectProvider = new ThreadSafeObjectProvider<MyForms>();
+        private static readonly ThreadSafeObjectProvider<MyForms> m_MyFormsObjectProvider = new();
 
         // Token: 0x17000001 RID: 1
         // (get) Token: 0x06000006 RID: 6 RVA: 0x00002948 File Offset: 0x00000D48
         [HelpKeyword("My.Forms")]
-        internal static MyForms Forms
-        {
-            [DebuggerHidden] get => m_MyFormsObjectProvider.GetInstance;
-        }
+        internal static MyForms Forms => m_MyFormsObjectProvider.GetInstance;
 
         // Token: 0x02000005 RID: 5
         [EditorBrowsable(EditorBrowsableState.Never)]
@@ -60,15 +57,11 @@ namespace GT5_Car_hack_workshop.My
             // (set) Token: 0x0600000E RID: 14 RVA: 0x00002A2C File Offset: 0x00000E2C
             public Customperformance Customperformance
             {
-                get
-                {
-                    m_Customperformance = Create__Instance__(m_Customperformance);
-                    return m_Customperformance;
-                }
+                get => m_Customperformance = Create__Instance__(m_Customperformance);
                 set
                 {
                     if (value == m_Customperformance) return;
-                    if (value != null) throw new ArgumentException("Property can only be set to Nothing");
+                    if (value is not null) throw new ArgumentException("Property can only be set to Nothing");
                     Dispose__Instance__(ref m_Customperformance);
                 }
             }
@@ -78,15 +71,11 @@ namespace GT5_Car_hack_workshop.My
             // (set) Token: 0x0600000F RID: 15 RVA: 0x00002A54 File Offset: 0x00000E54
             public Form1 Form1
             {
-                get
-                {
-                    m_Form1 = Create__Instance__(m_Form1);
-                    return m_Form1;
-                }
+                get => m_Form1 = Create__Instance__(m_Form1);
                 set
                 {
                     if (value == m_Form1) return;
-                    if (value != null) throw new ArgumentException("Property can only be set to Nothing");
+                    if (value is not null) throw new ArgumentException("Property can only be set to Nothing");
                     Dispose__Instance__(ref m_Form1);
                 }
             }
@@ -96,15 +85,11 @@ namespace GT5_Car_hack_workshop.My
             // (set) Token: 0x06000010 RID: 16 RVA: 0x00002A7C File Offset: 0x00000E7C
             public TransmissionEditor TransmissionEditor
             {
-                get
-                {
-                    MTransmissionEditor = Create__Instance__(MTransmissionEditor);
-                    return MTransmissionEditor;
-                }
+                get => MTransmissionEditor = Create__Instance__(MTransmissionEditor);
                 set
                 {
                     if (value == MTransmissionEditor) return;
-                    if (value != null) throw new ArgumentException("Property can only be set to Nothing");
+                    if (value is not null) throw new ArgumentException("Property can only be set to Nothing");
                     Dispose__Instance__(ref MTransmissionEditor);
                 }
             }
@@ -113,11 +98,12 @@ namespace GT5_Car_hack_workshop.My
             [DebuggerHidden]
             private static T Create__Instance__<T>(T Instance) where T : Form, new()
             {
-                if (Instance == null || Instance.IsDisposed)
+                if (Instance is null || Instance.IsDisposed)
                 {
-                    if (m_FormBeingCreated != null)
+                    if (m_FormBeingCreated is not null)
                     {
-                        if (m_FormBeingCreated.ContainsKey(typeof(T))) throw new InvalidOperationException(Utils.GetResourceString("WinForms_RecursiveFormCreate"));
+                        if (m_FormBeingCreated.ContainsKey(typeof(T))) 
+                            throw new InvalidOperationException(Utils.GetResourceString("WinForms_RecursiveFormCreate"));
                     }
                     else
                     {
@@ -129,17 +115,15 @@ namespace GT5_Car_hack_workshop.My
                     {
                         return new T();
                     }
-                    catch (TargetInvocationException ex) when (ex.InnerException != null)
+                    catch (TargetInvocationException ex) when (ex.InnerException is not null)
                     {
-                        var BetterMessage = Utils.GetResourceString("WinForms_SeeInnerException", ex.InnerException.Message);
-                        throw new InvalidOperationException(BetterMessage, ex.InnerException);
+                        var betterMessage = Utils.GetResourceString("WinForms_SeeInnerException", ex.InnerException.Message);
+                        throw new InvalidOperationException(betterMessage, ex.InnerException);
                     }
                     finally
                     {
                         m_FormBeingCreated.Remove(typeof(T));
                     }
-
-                    return Instance;
                 }
 
                 return Instance;
@@ -155,31 +139,19 @@ namespace GT5_Car_hack_workshop.My
 
             // Token: 0x06000014 RID: 20 RVA: 0x00002BE0 File Offset: 0x00000FE0
             [EditorBrowsable(EditorBrowsableState.Never)]
-            public override bool Equals(object o)
-            {
-                return base.Equals(RuntimeHelpers.GetObjectValue(o));
-            }
+            public override bool Equals(object o) => base.Equals(RuntimeHelpers.GetObjectValue(o));
 
             // Token: 0x06000015 RID: 21 RVA: 0x00002BFC File Offset: 0x00000FFC
             [EditorBrowsable(EditorBrowsableState.Never)]
-            public override int GetHashCode()
-            {
-                return base.GetHashCode();
-            }
+            public override int GetHashCode() => base.GetHashCode();
 
             // Token: 0x06000016 RID: 22 RVA: 0x00002C10 File Offset: 0x00001010
             [EditorBrowsable(EditorBrowsableState.Never)]
-            internal new Type GetType()
-            {
-                return typeof(MyForms);
-            }
+            internal new Type GetType() => typeof(MyForms);
 
             // Token: 0x06000017 RID: 23 RVA: 0x00002C28 File Offset: 0x00001028
             [EditorBrowsable(EditorBrowsableState.Never)]
-            public override string ToString()
-            {
-                return base.ToString();
-            }
+            public override string ToString() => base.ToString();
         }
 
         // Token: 0x02000006 RID: 6
@@ -204,7 +176,8 @@ namespace GT5_Car_hack_workshop.My
                 [DebuggerHidden]
                 get
                 {
-                    if (m_ThreadStaticValue == null) m_ThreadStaticValue = new T();
+                    if (m_ThreadStaticValue is null) 
+                        m_ThreadStaticValue = new T();
                     return m_ThreadStaticValue;
                 }
             }

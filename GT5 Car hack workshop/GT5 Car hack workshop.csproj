@@ -13,6 +13,7 @@
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <ApplicationIcon>GT5 Car hack workshop.ico</ApplicationIcon>
         <StartupObject>GT5_Car_hack_workshop.My.Program</StartupObject>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
