@@ -89,8 +89,5 @@
     <ItemGroup>
         <None Include="app.manifest"/>
     </ItemGroup>
-    <ItemGroup>
-        <Folder Include="My\Resources\"/>
-    </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
 </Project>
