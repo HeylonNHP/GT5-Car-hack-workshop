@@ -22,10 +22,6 @@ namespace GT5_Car_hack_workshop.My
     {
         // Token: 0x04000001 RID: 1
         private static readonly ThreadSafeObjectProvider<MyComputer> m_ComputerObjectProvider = new ThreadSafeObjectProvider<MyComputer>();
-
-        // Token: 0x04000002 RID: 2
-        private static readonly ThreadSafeObjectProvider<MyApplication> m_AppObjectProvider = new ThreadSafeObjectProvider<MyApplication>();
-
         // Token: 0x04000003 RID: 3
         private static readonly ThreadSafeObjectProvider<User> m_UserObjectProvider = new ThreadSafeObjectProvider<User>();
 
@@ -41,14 +37,6 @@ namespace GT5_Car_hack_workshop.My
         internal static MyComputer Computer
         {
             [DebuggerHidden] get => m_ComputerObjectProvider.GetInstance;
-        }
-
-        // Token: 0x17000002 RID: 2
-        // (get) Token: 0x06000007 RID: 7 RVA: 0x00002960 File Offset: 0x00000D60
-        [HelpKeyword("My.Application")]
-        internal static MyApplication Application
-        {
-            [DebuggerHidden] get => m_AppObjectProvider.GetInstance;
         }
 
         // Token: 0x17000003 RID: 3

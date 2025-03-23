@@ -12,7 +12,7 @@
         <FileAlignment>512</FileAlignment>
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <ApplicationIcon>GT5 Car hack workshop.ico</ApplicationIcon>
-        <StartupObject>GT5_Car_hack_workshop.My.MyApplication</StartupObject>
+        <StartupObject>GT5_Car_hack_workshop.My.Program</StartupObject>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -58,7 +58,7 @@
         </Compile>
         <Compile Include="LoadData.cs"/>
         <Compile Include="Models\CarParts.cs" />
-        <Compile Include="My\MyApplication.cs"/>
+        <Compile Include="My\Program.cs" />
         <Compile Include="My\MyComputer.cs"/>
         <Compile Include="My\MyProject.cs"/>
         <Compile Include="My\MySettings.Designer.cs">
