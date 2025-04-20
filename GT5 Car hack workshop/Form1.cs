@@ -83,7 +83,8 @@ namespace GT5_Car_hack_workshop
                         break;
                     }
 
-                var currentCarNameBytes = paramSfoBytes.Skip(currentCarIndex).Take(endIndex - currentCarIndex).ToArray();
+                var currentCarNameBytes =
+                    paramSfoBytes.Skip(currentCarIndex).Take(endIndex - currentCarIndex).ToArray();
                 var currentCarString = new string(currentCarNameBytes.Select(s => (char)s).ToArray());
                 Label7.Text = currentCar + currentCarString;
                 _CarName = currentCarString;
@@ -94,22 +95,30 @@ namespace GT5_Car_hack_workshop
             }
 
             EngineCodeTextBox.Text = Gt5Save[Moff - 213].ToString("X2") + " " + Gt5Save[Moff - 212].ToString("X2");
-            TorqueSplitTextBox.Text = Conversion.Val("&H" + Gt5Save[Moff - 46].ToString("X2")).ToString(CultureInfo.CurrentCulture);
+            TorqueSplitTextBox.Text = Conversion.Val("&H" + Gt5Save[Moff - 46].ToString("X2"))
+                .ToString(CultureInfo.CurrentCulture);
             DrivetrainCodeTextBox.Text = Gt5Save[Moff - 209].ToString("X2") + " " + Gt5Save[Moff - 208].ToString("X2");
             ChassisCodeTextBox.Text = Gt5Save[Moff - 217].ToString("X2") + " " + Gt5Save[Moff - 216].ToString("X2");
-            TransmissionCodeTextBox.Text = Gt5Save[Moff - 205].ToString("X2") + " " + Gt5Save[Moff - 204].ToString("X2");
+            TransmissionCodeTextBox.Text =
+                Gt5Save[Moff - 205].ToString("X2") + " " + Gt5Save[Moff - 204].ToString("X2");
             RemoveSpoilerCodeTextBox.Text = Gt5Save[Moff - 88].ToString();
 
-            PaintCodesTextBox.Text = $"{Gt5Save[Moff - 344]:X2} {Gt5Save[Moff - 343]:X2} {Gt5Save[Moff - 342]:X2} {Gt5Save[Moff - 341]:X2}";
+            PaintCodesTextBox.Text =
+                $"{Gt5Save[Moff - 344]:X2} {Gt5Save[Moff - 343]:X2} {Gt5Save[Moff - 342]:X2} {Gt5Save[Moff - 341]:X2}";
 
-            TurboModifierTextBox.Text = $"{Gt5Save[Moff - 171]:X2} {Gt5Save[Moff - 170]:X2} {Gt5Save[Moff - 169]:X2} {Gt5Save[Moff - 168]:X2}";
+            TurboModifierTextBox.Text =
+                $"{Gt5Save[Moff - 171]:X2} {Gt5Save[Moff - 170]:X2} {Gt5Save[Moff - 169]:X2} {Gt5Save[Moff - 168]:X2}";
+
+            HorsepowerMultiplierText.Text = Gt5Save[Moff + 1].ToString();
 
             AeroFrontTextBox.Text = Gt5Save[Moff - 43].ToString();
             AeroRearTextBox.Text = Gt5Save[Moff - 42].ToString();
 
-            var suspensionHeightFront = ByteUtils.ConvertBytesToUnsignedInt(new[] { Gt5Save[Moff - 33], Gt5Save[Moff - 32] });
+            var suspensionHeightFront =
+                ByteUtils.ConvertBytesToUnsignedInt(new[] { Gt5Save[Moff - 33], Gt5Save[Moff - 32] });
             SuspensionHeightFrontTextBox.Text = suspensionHeightFront.ToString();
-            var suspensionHeightRear = ByteUtils.ConvertBytesToUnsignedInt(new[] { Gt5Save[Moff - 31], Gt5Save[Moff - 30] });
+            var suspensionHeightRear =
+                ByteUtils.ConvertBytesToUnsignedInt(new[] { Gt5Save[Moff - 31], Gt5Save[Moff - 30] });
             SuspensionHeightRearTextBox.Text = suspensionHeightRear.ToString();
 
             GripTextBox.Text = Gt5Save[Moff + 10].ToString();
@@ -117,7 +126,8 @@ namespace GT5_Car_hack_workshop
             SpringRateFrontTextBox.Text = Gt5Save[Moff - 27].ToString();
             SpringRateRearTextBox.Text = Gt5Save[Moff - 26].ToString();
 
-            ExhauseMultiplierTextBox.Text = $"{Gt5Save[Moff - 155]:X2} {Gt5Save[Moff - 154]:X2} {Gt5Save[Moff - 153]:X2} {Gt5Save[Moff - 152]:X2}";
+            ExhauseMultiplierTextBox.Text =
+                $"{Gt5Save[Moff - 155]:X2} {Gt5Save[Moff - 154]:X2} {Gt5Save[Moff - 153]:X2} {Gt5Save[Moff - 152]:X2}";
 
             CarBodyCodeTextBox.Text = $"{Gt5Save[Moff - 262]:X2} {Gt5Save[Moff - 261]:X2}";
 
@@ -127,7 +137,8 @@ namespace GT5_Car_hack_workshop
 
             HornCodeTextBox.Text = $"{Gt5Save[Moff + 23]:X2} {Gt5Save[Moff + 24]:X2}";
 
-            WeightMultiplierTextBox.Text = ByteUtils.ConvertBytesToUnsignedInt(new Byte[] { Gt5Save[Moff - 191], Gt5Save[Moff - 190], Gt5Save[Moff - 189], Gt5Save[Moff - 188] }).ToString();
+            WeightMultiplierTextBox.Text = ByteUtils.ConvertBytesToUnsignedInt(new Byte[]
+                { Gt5Save[Moff - 191], Gt5Save[Moff - 190], Gt5Save[Moff - 189], Gt5Save[Moff - 188] }).ToString();
         }
 
         private void SaveData()
@@ -147,9 +158,11 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                if (!int.TryParse(TorqueSplitTextBox.Text, out var value)) throw new FormatException("Torque split value must be a number.");
+                if (!int.TryParse(TorqueSplitTextBox.Text, out var value))
+                    throw new FormatException("Torque split value must be a number.");
 
-                if (value < 0 || value > 255) throw new FormatException("Torque split value must be between 0 and 255.");
+                if (value < 0 || value > 255)
+                    throw new FormatException("Torque split value must be between 0 and 255.");
 
                 Gt5Save[Moff - 46] = (byte)value;
             }
@@ -200,9 +213,11 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                if (!int.TryParse(RemoveSpoilerCodeTextBox.Text, out var value)) throw new FormatException("Remove spoiler value must be a number.");
+                if (!int.TryParse(RemoveSpoilerCodeTextBox.Text, out var value))
+                    throw new FormatException("Remove spoiler value must be a number.");
 
-                if (value < 0 || value > 255) throw new FormatException("Remove spoiler value must be between 0 and 255.");
+                if (value < 0 || value > 255)
+                    throw new FormatException("Remove spoiler value must be between 0 and 255.");
 
                 Gt5Save[Moff - 88] = (byte)value;
             }
@@ -283,9 +298,14 @@ namespace GT5_Car_hack_workshop
                 Gt5Save[Moff - 116] = 61;
             }
 
+            if (!byte.TryParse(HorsepowerMultiplierText.Text, out var horsepowerMultiplier))
+                throw new FormatException("Horsepower multiplier value must be a byte value (0-255).");
+            Gt5Save[Moff + 1] = horsepowerMultiplier;
+
             try
             {
-                if (!byte.TryParse(AeroFrontTextBox.Text, out var AeroFront)) throw new FormatException("Aero front value must be a byte value (0-255).");
+                if (!byte.TryParse(AeroFrontTextBox.Text, out var AeroFront))
+                    throw new FormatException("Aero front value must be a byte value (0-255).");
 
                 Gt5Save[Moff - 43] = AeroFront;
             }
@@ -297,7 +317,8 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                if (!byte.TryParse(AeroRearTextBox.Text, out var AeroRear)) throw new FormatException("Aero rear value must be a byte value (0-255).");
+                if (!byte.TryParse(AeroRearTextBox.Text, out var AeroRear))
+                    throw new FormatException("Aero rear value must be a byte value (0-255).");
 
                 Gt5Save[Moff - 42] = AeroRear;
             }
@@ -309,7 +330,8 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                if (!ushort.TryParse(SuspensionHeightFrontTextBox.Text, out var suspensionHeightFront)) throw new FormatException("Suspension height front value must be a number.");
+                if (!ushort.TryParse(SuspensionHeightFrontTextBox.Text, out var suspensionHeightFront))
+                    throw new FormatException("Suspension height front value must be a number.");
 
                 var suspensionHeightFrontBytes = ByteUtils.UshortToByteArray(suspensionHeightFront);
                 Gt5Save[Moff - 33] = suspensionHeightFrontBytes[0];
@@ -323,7 +345,8 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                if (!ushort.TryParse(SuspensionHeightRearTextBox.Text, out var suspensionHeightRear)) throw new FormatException("Suspension height rear value must be a number.");
+                if (!ushort.TryParse(SuspensionHeightRearTextBox.Text, out var suspensionHeightRear))
+                    throw new FormatException("Suspension height rear value must be a number.");
 
                 var suspensionHeightRearBytes = ByteUtils.UshortToByteArray(suspensionHeightRear);
                 Gt5Save[Moff - 31] = suspensionHeightRearBytes[0];
@@ -337,7 +360,8 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                if (!byte.TryParse(GripTextBox.Text, out var grip)) throw new FormatException("Grip value must be a byte value (0-255).");
+                if (!byte.TryParse(GripTextBox.Text, out var grip))
+                    throw new FormatException("Grip value must be a byte value (0-255).");
 
                 Gt5Save[Moff + 10] = grip;
             }
@@ -349,7 +373,8 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                if (!byte.TryParse(SpringRateFrontTextBox.Text, out var springRateFront)) throw new FormatException("Spring rate front value must be a byte value (0-255).");
+                if (!byte.TryParse(SpringRateFrontTextBox.Text, out var springRateFront))
+                    throw new FormatException("Spring rate front value must be a byte value (0-255).");
 
                 Gt5Save[Moff - 27] = springRateFront;
             }
@@ -361,7 +386,8 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                if (!byte.TryParse(SpringRateRearTextBox.Text, out var springRateRear)) throw new FormatException("Spring rate front value must be a byte value (0-255).");
+                if (!byte.TryParse(SpringRateRearTextBox.Text, out var springRateRear))
+                    throw new FormatException("Spring rate front value must be a byte value (0-255).");
 
                 Gt5Save[Moff - 26] = springRateRear;
             }
@@ -661,7 +687,11 @@ namespace GT5_Car_hack_workshop
         private void LoadParts()
         {
             // Clear all ComboBoxes
-            foreach (var comboBox in new[] { EngineCodeComboBox, DrivetrainCodeComboBox, ChassisCodeComboBox, TransmissionCodeComboBox, SuspensionCodeComboBox, BodyCodeComboBox, LsdCodeComboBox, HornCodeComboBox }) 
+            foreach (var comboBox in new[]
+                     {
+                         EngineCodeComboBox, DrivetrainCodeComboBox, ChassisCodeComboBox, TransmissionCodeComboBox,
+                         SuspensionCodeComboBox, BodyCodeComboBox, LsdCodeComboBox, HornCodeComboBox
+                     })
             {
                 comboBox.Items.Clear();
                 comboBox.SelectedIndex = -1;
@@ -681,53 +711,53 @@ namespace GT5_Car_hack_workshop
                     var bodyList = new List<CarParts>(_CarPartsList.OrderBy(cp => cp.Name));
                     var lsdList = new List<CarParts>(_CarPartsList.OrderBy(cp => cp.Name));
                     var hornList = new List<CarParts>(_CarPartsList.OrderBy(cp => cp.Name));
-                    
+
                     // Insert a null item at the beginning of each sorted list
-                    engineList.Insert(0, new CarParts() {Name = "Select Engine"});
-                    drivetrainList.Insert(0, new CarParts() {Name = "Select Drivetrain"});
-                    chassisList.Insert(0, new CarParts() {Name = "Select Chassis"});
-                    transmissionList.Insert(0, new CarParts() {Name = "Select Transmission"});
-                    suspensionList.Insert(0, new CarParts() {Name = "Select Suspension"});
-                    bodyList.Insert(0, new CarParts() {Name = "Select Body"});
-                    lsdList.Insert(0, new CarParts() {Name = "Select LSD"});
-                    hornList.Insert(0, new CarParts() {Name = "Select Horn"});
-                    
+                    engineList.Insert(0, new CarParts() { Name = "Select Engine" });
+                    drivetrainList.Insert(0, new CarParts() { Name = "Select Drivetrain" });
+                    chassisList.Insert(0, new CarParts() { Name = "Select Chassis" });
+                    transmissionList.Insert(0, new CarParts() { Name = "Select Transmission" });
+                    suspensionList.Insert(0, new CarParts() { Name = "Select Suspension" });
+                    bodyList.Insert(0, new CarParts() { Name = "Select Body" });
+                    lsdList.Insert(0, new CarParts() { Name = "Select LSD" });
+                    hornList.Insert(0, new CarParts() { Name = "Select Horn" });
+
                     // Configure each ComboBox to display the car name but store the entire CarParts object
                     EngineCodeComboBox.DisplayMember = "Name";
                     EngineCodeComboBox.ValueMember = "Engine";
                     EngineCodeComboBox.DataSource = new BindingSource(engineList, null);
                     EngineCodeComboBox.SelectedItem = engineList[0];
-                    
+
                     DrivetrainCodeComboBox.DisplayMember = "Name";
                     DrivetrainCodeComboBox.ValueMember = "Drivetrain";
                     DrivetrainCodeComboBox.DataSource = new BindingSource(drivetrainList, null);
                     DrivetrainCodeComboBox.SelectedItem = drivetrainList[0];
-                    
+
                     ChassisCodeComboBox.DisplayMember = "Name";
                     ChassisCodeComboBox.ValueMember = "Chassis";
                     ChassisCodeComboBox.DataSource = new BindingSource(chassisList, null);
                     ChassisCodeComboBox.SelectedItem = chassisList[0];
-                    
+
                     TransmissionCodeComboBox.DisplayMember = "Name";
                     TransmissionCodeComboBox.ValueMember = "Transmission";
                     TransmissionCodeComboBox.DataSource = new BindingSource(transmissionList, null);
                     TransmissionCodeComboBox.SelectedItem = transmissionList[0];
-                    
+
                     SuspensionCodeComboBox.DisplayMember = "Name";
                     SuspensionCodeComboBox.ValueMember = "Suspension";
                     SuspensionCodeComboBox.DataSource = new BindingSource(suspensionList, null);
                     SuspensionCodeComboBox.SelectedItem = suspensionList[0];
-                    
+
                     BodyCodeComboBox.DisplayMember = "Name";
                     BodyCodeComboBox.ValueMember = "Body";
                     BodyCodeComboBox.DataSource = new BindingSource(bodyList, null);
                     BodyCodeComboBox.SelectedItem = bodyList[0];
-                    
+
                     LsdCodeComboBox.DisplayMember = "Name";
                     LsdCodeComboBox.ValueMember = "Lsd";
                     LsdCodeComboBox.DataSource = new BindingSource(lsdList, null);
                     LsdCodeComboBox.SelectedItem = lsdList[0];
-                    
+
                     HornCodeComboBox.DisplayMember = "Name";
                     HornCodeComboBox.ValueMember = "Horn";
                     HornCodeComboBox.DataSource = new BindingSource(hornList, null);
@@ -759,7 +789,8 @@ namespace GT5_Car_hack_workshop
         {
             try
             {
-                if (DrivetrainCodeComboBox.SelectedItem is CarParts selectedParts && selectedParts.Name != "Select Drivetrain")
+                if (DrivetrainCodeComboBox.SelectedItem is CarParts selectedParts &&
+                    selectedParts.Name != "Select Drivetrain")
                 {
                     DrivetrainCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Drivetrain);
                 }
@@ -774,7 +805,8 @@ namespace GT5_Car_hack_workshop
         {
             try
             {
-                if (ChassisCodeComboBox.SelectedItem is CarParts selectedParts && selectedParts.Name != "Select Chassis")
+                if (ChassisCodeComboBox.SelectedItem is CarParts selectedParts &&
+                    selectedParts.Name != "Select Chassis")
                 {
                     ChassisCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Chassis);
                 }
@@ -789,7 +821,8 @@ namespace GT5_Car_hack_workshop
         {
             try
             {
-                if (TransmissionCodeComboBox.SelectedItem is CarParts selectedParts && selectedParts.Name != "Select Transmission")
+                if (TransmissionCodeComboBox.SelectedItem is CarParts selectedParts &&
+                    selectedParts.Name != "Select Transmission")
                 {
                     TransmissionCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Transmission);
                 }
@@ -804,7 +837,8 @@ namespace GT5_Car_hack_workshop
         {
             try
             {
-                if (SuspensionCodeComboBox.SelectedItem is CarParts selectedParts && selectedParts.Name != "Select Suspension")
+                if (SuspensionCodeComboBox.SelectedItem is CarParts selectedParts &&
+                    selectedParts.Name != "Select Suspension")
                 {
                     SuspensionCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Suspension);
                 }

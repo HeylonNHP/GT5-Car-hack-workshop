@@ -148,6 +148,8 @@
 			this.Button15 = new System.Windows.Forms.Button();
 			this.Button13 = new System.Windows.Forms.Button();
 			this.Label36 = new System.Windows.Forms.Label();
+			this.label40 = new System.Windows.Forms.Label();
+			this.HorsepowerMultiplierText = new System.Windows.Forms.TextBox();
 			this.GroupBox1.SuspendLayout();
 			this.GroupBox2.SuspendLayout();
 			this.TabControl2.SuspendLayout();
@@ -294,7 +296,7 @@
 			this.GroupBox2.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox2.Name = "GroupBox2";
 			this.GroupBox2.Padding = new System.Windows.Forms.Padding(4);
-			this.GroupBox2.Size = new System.Drawing.Size(637, 549);
+			this.GroupBox2.Size = new System.Drawing.Size(637, 569);
 			this.GroupBox2.TabIndex = 1;
 			this.GroupBox2.TabStop = false;
 			this.GroupBox2.Text = "Basic hacks";
@@ -307,7 +309,7 @@
 			this.TabControl2.Margin = new System.Windows.Forms.Padding(4);
 			this.TabControl2.Name = "TabControl2";
 			this.TabControl2.SelectedIndex = 0;
-			this.TabControl2.Size = new System.Drawing.Size(621, 523);
+			this.TabControl2.Size = new System.Drawing.Size(621, 543);
 			this.TabControl2.TabIndex = 1;
 			// 
 			// TabPage2
@@ -325,7 +327,7 @@
 			this.TabPage2.Margin = new System.Windows.Forms.Padding(4);
 			this.TabPage2.Name = "TabPage2";
 			this.TabPage2.Padding = new System.Windows.Forms.Padding(4);
-			this.TabPage2.Size = new System.Drawing.Size(613, 494);
+			this.TabPage2.Size = new System.Drawing.Size(613, 514);
 			this.TabPage2.TabIndex = 0;
 			this.TabPage2.Text = "Page 1";
 			this.TabPage2.UseVisualStyleBackColor = true;
@@ -826,6 +828,8 @@
 			// 
 			// GroupBox5
 			// 
+			this.GroupBox5.Controls.Add(this.HorsepowerMultiplierText);
+			this.GroupBox5.Controls.Add(this.label40);
 			this.GroupBox5.Controls.Add(this.Button17);
 			this.GroupBox5.Controls.Add(this.Button16);
 			this.GroupBox5.Controls.Add(this.Label15);
@@ -837,14 +841,14 @@
 			this.GroupBox5.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox5.Name = "GroupBox5";
 			this.GroupBox5.Padding = new System.Windows.Forms.Padding(4);
-			this.GroupBox5.Size = new System.Drawing.Size(292, 118);
+			this.GroupBox5.Size = new System.Drawing.Size(292, 159);
 			this.GroupBox5.TabIndex = 40;
 			this.GroupBox5.TabStop = false;
 			this.GroupBox5.Text = "Performance multipliers";
 			// 
 			// Button17
 			// 
-			this.Button17.Location = new System.Drawing.Point(241, 75);
+			this.Button17.Location = new System.Drawing.Point(237, 121);
 			this.Button17.Margin = new System.Windows.Forms.Padding(4);
 			this.Button17.Name = "Button17";
 			this.Button17.Size = new System.Drawing.Size(35, 28);
@@ -909,7 +913,7 @@
 			this.SambaLikePerformanceCheckbox.AutoSize = true;
 			this.SambaLikePerformanceCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.SambaLikePerformanceCheckbox.ForeColor = System.Drawing.Color.Lime;
-			this.SambaLikePerformanceCheckbox.Location = new System.Drawing.Point(17, 80);
+			this.SambaLikePerformanceCheckbox.Location = new System.Drawing.Point(13, 126);
 			this.SambaLikePerformanceCheckbox.Margin = new System.Windows.Forms.Padding(4);
 			this.SambaLikePerformanceCheckbox.Name = "SambaLikePerformanceCheckbox";
 			this.SambaLikePerformanceCheckbox.Size = new System.Drawing.Size(162, 17);
@@ -927,7 +931,7 @@
 			this.GroupBox4.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox4.Name = "GroupBox4";
 			this.GroupBox4.Padding = new System.Windows.Forms.Padding(4);
-			this.GroupBox4.Size = new System.Drawing.Size(295, 84);
+			this.GroupBox4.Size = new System.Drawing.Size(295, 108);
 			this.GroupBox4.TabIndex = 39;
 			this.GroupBox4.TabStop = false;
 			this.GroupBox4.Text = "Reset protection";
@@ -1021,7 +1025,7 @@
 			// 
 			this.Label7.AutoSize = true;
 			this.Label7.Font = new System.Drawing.Font("Comic Sans MS", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Label7.Location = new System.Drawing.Point(4, 469);
+			this.Label7.Location = new System.Drawing.Point(4, 494);
 			this.Label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.Label7.Name = "Label7";
 			this.Label7.Size = new System.Drawing.Size(50, 16);
@@ -1314,7 +1318,7 @@
 			this.TabControl1.Margin = new System.Windows.Forms.Padding(4);
 			this.TabControl1.Name = "TabControl1";
 			this.TabControl1.SelectedIndex = 0;
-			this.TabControl1.Size = new System.Drawing.Size(491, 416);
+			this.TabControl1.Size = new System.Drawing.Size(491, 436);
 			this.TabControl1.TabIndex = 2;
 			// 
 			// TabPage1
@@ -1341,7 +1345,7 @@
 			this.TabPage1.Margin = new System.Windows.Forms.Padding(4);
 			this.TabPage1.Name = "TabPage1";
 			this.TabPage1.Padding = new System.Windows.Forms.Padding(4);
-			this.TabPage1.Size = new System.Drawing.Size(483, 387);
+			this.TabPage1.Size = new System.Drawing.Size(483, 407);
 			this.TabPage1.TabIndex = 0;
 			this.TabPage1.Text = "Parts Database";
 			this.TabPage1.UseVisualStyleBackColor = true;
@@ -1598,11 +1602,31 @@
 			this.Label36.TabIndex = 0;
 			this.Label36.Text = "Custom Samba like performance:";
 			// 
+			// label40
+			// 
+			this.label40.AutoSize = true;
+			this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.label40.ForeColor = System.Drawing.Color.Red;
+			this.label40.Location = new System.Drawing.Point(6, 86);
+			this.label40.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label40.Name = "label40";
+			this.label40.Size = new System.Drawing.Size(74, 13);
+			this.label40.TabIndex = 54;
+			this.label40.Text = "Horsepower";
+			// 
+			// HorsepowerMultiplierText
+			// 
+			this.HorsepowerMultiplierText.Location = new System.Drawing.Point(112, 81);
+			this.HorsepowerMultiplierText.Margin = new System.Windows.Forms.Padding(4);
+			this.HorsepowerMultiplierText.Name = "HorsepowerMultiplierText";
+			this.HorsepowerMultiplierText.Size = new System.Drawing.Size(99, 22);
+			this.HorsepowerMultiplierText.TabIndex = 55;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1169, 580);
+			this.ClientSize = new System.Drawing.Size(1169, 598);
 			this.Controls.Add(this.TabControl1);
 			this.Controls.Add(this.GroupBox2);
 			this.Controls.Add(this.GroupBox1);
@@ -1650,6 +1674,9 @@
 			this.TabPage4.PerformLayout();
 			this.ResumeLayout(false);
 		}
+
+		private System.Windows.Forms.Label label40;
+		public System.Windows.Forms.TextBox HorsepowerMultiplierText;
 
 		private System.Windows.Forms.GroupBox GroupBox1;
 		private System.Windows.Forms.Button Button22;
