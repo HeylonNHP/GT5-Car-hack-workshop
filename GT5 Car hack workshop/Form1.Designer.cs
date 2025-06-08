@@ -103,6 +103,7 @@
 			this.Label7 = new System.Windows.Forms.Label();
 			this.TabPage3 = new System.Windows.Forms.TabPage();
 			this.GroupBox14 = new System.Windows.Forms.GroupBox();
+			this.BadOilBtn = new System.Windows.Forms.Button();
 			this.Button21 = new System.Windows.Forms.Button();
 			this.Button20 = new System.Windows.Forms.Button();
 			this.Label39 = new System.Windows.Forms.Label();
@@ -150,7 +151,7 @@
 			this.Button15 = new System.Windows.Forms.Button();
 			this.Button13 = new System.Windows.Forms.Button();
 			this.Label36 = new System.Windows.Forms.Label();
-			this.BadOilBtn = new System.Windows.Forms.Button();
+			this.GoodOilBtn = new System.Windows.Forms.Button();
 			this.GroupBox1.SuspendLayout();
 			this.GroupBox2.SuspendLayout();
 			this.TabControl2.SuspendLayout();
@@ -312,7 +313,7 @@
 			this.TabPage2.Controls.Add(this.Label7);
 			this.TabPage2.Location = new System.Drawing.Point(4, 22);
 			this.TabPage2.Name = "TabPage2";
-			this.TabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+			this.TabPage2.Padding = new System.Windows.Forms.Padding(3);
 			this.TabPage2.Size = new System.Drawing.Size(458, 415);
 			this.TabPage2.TabIndex = 0;
 			this.TabPage2.Text = "Page 1";
@@ -977,7 +978,7 @@
 			this.TabPage3.Controls.Add(this.GroupBox11);
 			this.TabPage3.Location = new System.Drawing.Point(4, 22);
 			this.TabPage3.Name = "TabPage3";
-			this.TabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+			this.TabPage3.Padding = new System.Windows.Forms.Padding(3);
 			this.TabPage3.Size = new System.Drawing.Size(458, 415);
 			this.TabPage3.TabIndex = 1;
 			this.TabPage3.Text = "Page 2";
@@ -985,6 +986,7 @@
 			// 
 			// GroupBox14
 			// 
+			this.GroupBox14.Controls.Add(this.GoodOilBtn);
 			this.GroupBox14.Controls.Add(this.BadOilBtn);
 			this.GroupBox14.Controls.Add(this.Button21);
 			this.GroupBox14.Controls.Add(this.Button20);
@@ -995,6 +997,17 @@
 			this.GroupBox14.TabIndex = 48;
 			this.GroupBox14.TabStop = false;
 			this.GroupBox14.Text = "Under development (EXPERIMENTAL)";
+			// 
+			// BadOilBtn
+			// 
+			this.BadOilBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+			this.BadOilBtn.Location = new System.Drawing.Point(6, 58);
+			this.BadOilBtn.Name = "BadOilBtn";
+			this.BadOilBtn.Size = new System.Drawing.Size(68, 23);
+			this.BadOilBtn.TabIndex = 3;
+			this.BadOilBtn.Text = "Set bad oil";
+			this.BadOilBtn.UseVisualStyleBackColor = false;
+			this.BadOilBtn.Click += new System.EventHandler(this.BadOilBtn_Click);
 			// 
 			// Button21
 			// 
@@ -1252,7 +1265,7 @@
 			this.TabPage1.Controls.Add(this.EngineCodeComboBox);
 			this.TabPage1.Location = new System.Drawing.Point(4, 22);
 			this.TabPage1.Name = "TabPage1";
-			this.TabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+			this.TabPage1.Padding = new System.Windows.Forms.Padding(3);
 			this.TabPage1.Size = new System.Drawing.Size(360, 328);
 			this.TabPage1.TabIndex = 0;
 			this.TabPage1.Text = "Parts Database";
@@ -1439,7 +1452,7 @@
 			this.TabPage4.Controls.Add(this.Label36);
 			this.TabPage4.Location = new System.Drawing.Point(4, 22);
 			this.TabPage4.Name = "TabPage4";
-			this.TabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+			this.TabPage4.Padding = new System.Windows.Forms.Padding(3);
 			this.TabPage4.Size = new System.Drawing.Size(360, 328);
 			this.TabPage4.TabIndex = 1;
 			this.TabPage4.Text = "Misc.";
@@ -1487,16 +1500,16 @@
 			this.Label36.TabIndex = 0;
 			this.Label36.Text = "Custom Samba like performance:";
 			// 
-			// BadOilBtn
+			// GoodOilBtn
 			// 
-			this.BadOilBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-			this.BadOilBtn.Location = new System.Drawing.Point(6, 58);
-			this.BadOilBtn.Name = "BadOilBtn";
-			this.BadOilBtn.Size = new System.Drawing.Size(68, 23);
-			this.BadOilBtn.TabIndex = 3;
-			this.BadOilBtn.Text = "Set bad oil";
-			this.BadOilBtn.UseVisualStyleBackColor = false;
-			this.BadOilBtn.Click += new System.EventHandler(this.BadOilBtn_Click);
+			this.GoodOilBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+			this.GoodOilBtn.Location = new System.Drawing.Point(80, 58);
+			this.GoodOilBtn.Name = "GoodOilBtn";
+			this.GoodOilBtn.Size = new System.Drawing.Size(71, 23);
+			this.GoodOilBtn.TabIndex = 4;
+			this.GoodOilBtn.Text = "Set good oil";
+			this.GoodOilBtn.UseVisualStyleBackColor = false;
+			this.GoodOilBtn.Click += new System.EventHandler(this.GoodOilBtn_Click);
 			// 
 			// Form1
 			// 
@@ -1549,6 +1562,8 @@
 			this.TabPage4.PerformLayout();
 			this.ResumeLayout(false);
 		}
+
+		private System.Windows.Forms.Button GoodOilBtn;
 
 		private System.Windows.Forms.Button BadOilBtn;
 

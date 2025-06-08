@@ -973,5 +973,14 @@ namespace GT5_Car_hack_workshop
             Gt5Save[Moff - 374] = bytes[2];
             Gt5Save[Moff - 373] = bytes[3];
         }
+
+        private void GoodOilBtn_Click(object sender, EventArgs e)
+        {
+            var bytes = ByteUtils.UintToByteArray(3365043200);
+            Gt5Save[Moff - 376] = bytes[0];
+            Gt5Save[Moff - 375] = bytes[1];
+            Gt5Save[Moff - 374] = bytes[2];
+            Gt5Save[Moff - 373] = bytes[3];
+        }
     }
 }
