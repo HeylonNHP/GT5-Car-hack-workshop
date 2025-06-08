@@ -964,5 +964,14 @@ namespace GT5_Car_hack_workshop
             Interaction.MsgBox(
                 "When you tick this checkbox, you must buy the Rigidity Improvement right before doing anything after loading the hacked save, the Rigidity Improvement is found under Body/Chassis in the tuning shop. The hack wont take proper effect without buying this upgrade.\r\rIf you have already purchased this upgrade, it will be uninstalled when you apply this hack.");
         }
+
+        private void BadOilBtn_Click(object sender, EventArgs e)
+        {
+            var bytes = ByteUtils.UintToByteArray(1251513984);
+            Gt5Save[Moff - 376] = bytes[0];
+            Gt5Save[Moff - 375] = bytes[1];
+            Gt5Save[Moff - 374] = bytes[2];
+            Gt5Save[Moff - 373] = bytes[3];
+        }
     }
 }
