@@ -7,10 +7,10 @@ namespace GT5_Car_hack_workshop
 {
     public partial class TransmissionEditor : Form
     {
-        private readonly Timer _Timer1;
+        private readonly Timer _timer1;
         private readonly IFormManager _formManager;
-        private decimal _Lastgearpre;
-        private decimal _OriginalFinalDrive;
+        private decimal _lastgearpre;
+        private decimal _originalFinalDrive;
 
         public TransmissionEditor(IFormManager formManager)
         {
@@ -18,21 +18,21 @@ namespace GT5_Car_hack_workshop
             InitializeComponent();
             
             Load += TransmissionLoadValues;
-            _Lastgearpre = 0.1m;
-            _OriginalFinalDrive = 0.1m;
+            _lastgearpre = 0.1m;
+            _originalFinalDrive = 0.1m;
 
-            _Timer1 = new Timer
+            _timer1 = new Timer
             {
                 Interval = 100,
                 Enabled = true
             };
-            _Timer1.Tick += Timer1_Tick;
-            _Timer1.Start();
+            _timer1.Tick += Timer1_Tick;
+            _timer1.Start();
 
             FormClosing += (s, e) =>
             {
-                _Timer1.Stop();
-                _Timer1.Dispose();
+                _timer1.Stop();
+                _timer1.Dispose();
             };
         }
 
@@ -95,7 +95,7 @@ namespace GT5_Car_hack_workshop
 
                 if (parsedHighestGearRatio > 0.0m)
                 {
-                    _Lastgearpre = parsedHighestGearRatio;
+                    _lastgearpre = parsedHighestGearRatio;
                     break;
                 }
             }
@@ -103,7 +103,7 @@ namespace GT5_Car_hack_workshop
             // Cache the final drive ratio
             if (decimal.TryParse(TextBox12.Text, out var parsedFinalDriveRatio))
             {
-                _OriginalFinalDrive = parsedFinalDriveRatio;
+                _originalFinalDrive = parsedFinalDriveRatio;
             }
         }
 
@@ -193,9 +193,9 @@ namespace GT5_Car_hack_workshop
                 // Calculate the adjusted ratio based on original final drive, current final drive,
                 // max speed, and last gear ratio
                 float finalDriveRatio = float.Parse(TextBox12.Text);
-                float adjustedRatio = (float)_OriginalFinalDrive / finalDriveRatio *
+                float adjustedRatio = (float)_originalFinalDrive / finalDriveRatio *
                                      maxSpeed *
-                                     (1f / lastGear * (float)_Lastgearpre);
+                                     (1f / lastGear * (float)_lastgearpre);
 
                 // Round to 1 decimal place and display
                 TextBox14.Text = Math.Round(adjustedRatio, 1).ToString();
