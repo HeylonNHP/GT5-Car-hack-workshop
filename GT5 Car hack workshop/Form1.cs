@@ -93,8 +93,7 @@ namespace GT5_Car_hack_workshop
             }
 
             EngineCodeTextBox.Text = Gt5Save[Moff - 213].ToString("X2") + " " + Gt5Save[Moff - 212].ToString("X2");
-            TorqueSplitTextBox.Text = Conversion.Val("&H" + Gt5Save[Moff - 46].ToString("X2"))
-                .ToString(CultureInfo.CurrentCulture);
+            TorqueSplitTextBox.Text = Gt5Save[Moff - 46].ToString();
             DrivetrainCodeTextBox.Text = Gt5Save[Moff - 209].ToString("X2") + " " + Gt5Save[Moff - 208].ToString("X2");
             ChassisCodeTextBox.Text = Gt5Save[Moff - 217].ToString("X2") + " " + Gt5Save[Moff - 216].ToString("X2");
             TransmissionCodeTextBox.Text =
