@@ -186,9 +186,9 @@
 			this.GroupBox1.Controls.Add(this.Label1);
 			this.GroupBox1.Controls.Add(this.TextBox1);
 			this.GroupBox1.Location = new System.Drawing.Point(17, 16);
-			this.GroupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox1.Name = "GroupBox1";
-			this.GroupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox1.Padding = new System.Windows.Forms.Padding(4);
 			this.GroupBox1.Size = new System.Drawing.Size(491, 124);
 			this.GroupBox1.TabIndex = 0;
 			this.GroupBox1.TabStop = false;
@@ -199,7 +199,7 @@
 			this.Button22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
 			this.Button22.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.Button22.Location = new System.Drawing.Point(400, 86);
-			this.Button22.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button22.Margin = new System.Windows.Forms.Padding(4);
 			this.Button22.Name = "Button22";
 			this.Button22.Size = new System.Drawing.Size(83, 28);
 			this.Button22.TabIndex = 8;
@@ -211,7 +211,7 @@
 			// 
 			this.Button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
 			this.Button5.Location = new System.Drawing.Point(244, 86);
-			this.Button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button5.Margin = new System.Windows.Forms.Padding(4);
 			this.Button5.Name = "Button5";
 			this.Button5.Size = new System.Drawing.Size(100, 28);
 			this.Button5.TabIndex = 7;
@@ -232,7 +232,7 @@
 			// TextBox2
 			// 
 			this.TextBox2.Location = new System.Drawing.Point(331, 21);
-			this.TextBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox2.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox2.Name = "TextBox2";
 			this.TextBox2.Size = new System.Drawing.Size(149, 22);
 			this.TextBox2.TabIndex = 5;
@@ -241,7 +241,7 @@
 			// 
 			this.SaveAndEncryptButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
 			this.SaveAndEncryptButton.Location = new System.Drawing.Point(109, 86);
-			this.SaveAndEncryptButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.SaveAndEncryptButton.Margin = new System.Windows.Forms.Padding(4);
 			this.SaveAndEncryptButton.Name = "SaveAndEncryptButton";
 			this.SaveAndEncryptButton.Size = new System.Drawing.Size(133, 28);
 			this.SaveAndEncryptButton.TabIndex = 4;
@@ -253,7 +253,7 @@
 			// 
 			this.LoadButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
 			this.LoadButton.Location = new System.Drawing.Point(8, 86);
-			this.LoadButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.LoadButton.Margin = new System.Windows.Forms.Padding(4);
 			this.LoadButton.Name = "LoadButton";
 			this.LoadButton.Size = new System.Drawing.Size(100, 28);
 			this.LoadButton.TabIndex = 3;
@@ -265,7 +265,7 @@
 			// 
 			this.Button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
 			this.Button1.Location = new System.Drawing.Point(139, 18);
-			this.Button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button1.Margin = new System.Windows.Forms.Padding(4);
 			this.Button1.Name = "Button1";
 			this.Button1.Size = new System.Drawing.Size(100, 28);
 			this.Button1.TabIndex = 2;
@@ -286,7 +286,7 @@
 			// TextBox1
 			// 
 			this.TextBox1.Location = new System.Drawing.Point(8, 54);
-			this.TextBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox1.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox1.Name = "TextBox1";
 			this.TextBox1.Size = new System.Drawing.Size(472, 22);
 			this.TextBox1.TabIndex = 0;
@@ -295,9 +295,9 @@
 			// 
 			this.GroupBox2.Controls.Add(this.TabControl2);
 			this.GroupBox2.Location = new System.Drawing.Point(516, 16);
-			this.GroupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox2.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox2.Name = "GroupBox2";
-			this.GroupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox2.Padding = new System.Windows.Forms.Padding(4);
 			this.GroupBox2.Size = new System.Drawing.Size(637, 569);
 			this.GroupBox2.TabIndex = 1;
 			this.GroupBox2.TabStop = false;
@@ -308,7 +308,7 @@
 			this.TabControl2.Controls.Add(this.TabPage2);
 			this.TabControl2.Controls.Add(this.TabPage3);
 			this.TabControl2.Location = new System.Drawing.Point(8, 18);
-			this.TabControl2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TabControl2.Margin = new System.Windows.Forms.Padding(4);
 			this.TabControl2.Name = "TabControl2";
 			this.TabControl2.SelectedIndex = 0;
 			this.TabControl2.Size = new System.Drawing.Size(621, 543);
@@ -326,9 +326,9 @@
 			this.TabPage2.Controls.Add(this.GroupBox3);
 			this.TabPage2.Controls.Add(this.Label7);
 			this.TabPage2.Location = new System.Drawing.Point(4, 25);
-			this.TabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TabPage2.Margin = new System.Windows.Forms.Padding(4);
 			this.TabPage2.Name = "TabPage2";
-			this.TabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TabPage2.Padding = new System.Windows.Forms.Padding(4);
 			this.TabPage2.Size = new System.Drawing.Size(613, 514);
 			this.TabPage2.TabIndex = 0;
 			this.TabPage2.Text = "Page 1";
@@ -342,9 +342,9 @@
 			this.GroupBox10.Controls.Add(this.Label5);
 			this.GroupBox10.Controls.Add(this.Button8);
 			this.GroupBox10.Location = new System.Drawing.Point(8, 132);
-			this.GroupBox10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox10.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox10.Name = "GroupBox10";
-			this.GroupBox10.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox10.Padding = new System.Windows.Forms.Padding(4);
 			this.GroupBox10.Size = new System.Drawing.Size(295, 49);
 			this.GroupBox10.TabIndex = 45;
 			this.GroupBox10.TabStop = false;
@@ -365,7 +365,7 @@
 			// TorqueSplitTextBox
 			// 
 			this.TorqueSplitTextBox.Location = new System.Drawing.Point(89, 16);
-			this.TorqueSplitTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TorqueSplitTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.TorqueSplitTextBox.Name = "TorqueSplitTextBox";
 			this.TorqueSplitTextBox.Size = new System.Drawing.Size(49, 22);
 			this.TorqueSplitTextBox.TabIndex = 4;
@@ -374,7 +374,7 @@
 			// TextBox5
 			// 
 			this.TextBox5.Location = new System.Drawing.Point(169, 16);
-			this.TextBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TextBox5.Margin = new System.Windows.Forms.Padding(4);
 			this.TextBox5.Name = "TextBox5";
 			this.TextBox5.ReadOnly = true;
 			this.TextBox5.Size = new System.Drawing.Size(49, 22);
@@ -395,7 +395,7 @@
 			// Button8
 			// 
 			this.Button8.Location = new System.Drawing.Point(228, 14);
-			this.Button8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button8.Margin = new System.Windows.Forms.Padding(4);
 			this.Button8.Name = "Button8";
 			this.Button8.Size = new System.Drawing.Size(35, 28);
 			this.Button8.TabIndex = 14;
@@ -425,9 +425,9 @@
 			this.GroupBox9.Controls.Add(this.SuspensionCodeTextBox);
 			this.GroupBox9.Controls.Add(this.Label34);
 			this.GroupBox9.Location = new System.Drawing.Point(311, 9);
-			this.GroupBox9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox9.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox9.Name = "GroupBox9";
-			this.GroupBox9.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox9.Padding = new System.Windows.Forms.Padding(4);
 			this.GroupBox9.Size = new System.Drawing.Size(292, 331);
 			this.GroupBox9.TabIndex = 44;
 			this.GroupBox9.TabStop = false;
@@ -436,7 +436,7 @@
 			// HornCodeTextBox
 			// 
 			this.HornCodeTextBox.Location = new System.Drawing.Point(121, 107);
-			this.HornCodeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.HornCodeTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.HornCodeTextBox.Name = "HornCodeTextBox";
 			this.HornCodeTextBox.Size = new System.Drawing.Size(87, 22);
 			this.HornCodeTextBox.TabIndex = 52;
@@ -457,7 +457,7 @@
 			// TransmissionCodeTextBox
 			// 
 			this.TransmissionCodeTextBox.Location = new System.Drawing.Point(121, 171);
-			this.TransmissionCodeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TransmissionCodeTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.TransmissionCodeTextBox.Name = "TransmissionCodeTextBox";
 			this.TransmissionCodeTextBox.Size = new System.Drawing.Size(87, 22);
 			this.TransmissionCodeTextBox.TabIndex = 20;
@@ -491,7 +491,7 @@
 			// ChassisCodeTextBox
 			// 
 			this.ChassisCodeTextBox.Location = new System.Drawing.Point(121, 203);
-			this.ChassisCodeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.ChassisCodeTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.ChassisCodeTextBox.Name = "ChassisCodeTextBox";
 			this.ChassisCodeTextBox.Size = new System.Drawing.Size(87, 22);
 			this.ChassisCodeTextBox.TabIndex = 17;
@@ -500,7 +500,7 @@
 			// 
 			this.Button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.Button6.Location = new System.Drawing.Point(121, 267);
-			this.Button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button6.Margin = new System.Windows.Forms.Padding(4);
 			this.Button6.Name = "Button6";
 			this.Button6.Size = new System.Drawing.Size(95, 25);
 			this.Button6.TabIndex = 9;
@@ -511,7 +511,7 @@
 			// DrivetrainCodeTextBox
 			// 
 			this.DrivetrainCodeTextBox.Location = new System.Drawing.Point(121, 235);
-			this.DrivetrainCodeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.DrivetrainCodeTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.DrivetrainCodeTextBox.Name = "DrivetrainCodeTextBox";
 			this.DrivetrainCodeTextBox.Size = new System.Drawing.Size(87, 22);
 			this.DrivetrainCodeTextBox.TabIndex = 7;
@@ -532,7 +532,7 @@
 			// LsdCodeTextBox
 			// 
 			this.LsdCodeTextBox.Location = new System.Drawing.Point(121, 75);
-			this.LsdCodeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.LsdCodeTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.LsdCodeTextBox.Name = "LsdCodeTextBox";
 			this.LsdCodeTextBox.Size = new System.Drawing.Size(87, 22);
 			this.LsdCodeTextBox.TabIndex = 50;
@@ -540,7 +540,7 @@
 			// Button7
 			// 
 			this.Button7.Location = new System.Drawing.Point(217, 137);
-			this.Button7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button7.Margin = new System.Windows.Forms.Padding(4);
 			this.Button7.Name = "Button7";
 			this.Button7.Size = new System.Drawing.Size(35, 28);
 			this.Button7.TabIndex = 13;
@@ -552,7 +552,7 @@
 			// 
 			this.Button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
 			this.Button4.Location = new System.Drawing.Point(59, 299);
-			this.Button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button4.Margin = new System.Windows.Forms.Padding(4);
 			this.Button4.Name = "Button4";
 			this.Button4.Size = new System.Drawing.Size(208, 25);
 			this.Button4.TabIndex = 12;
@@ -576,7 +576,7 @@
 			// EngineCodeTextBox
 			// 
 			this.EngineCodeTextBox.Location = new System.Drawing.Point(121, 139);
-			this.EngineCodeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.EngineCodeTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.EngineCodeTextBox.Name = "EngineCodeTextBox";
 			this.EngineCodeTextBox.Size = new System.Drawing.Size(87, 22);
 			this.EngineCodeTextBox.TabIndex = 2;
@@ -584,7 +584,7 @@
 			// CarBodyCodeTextBox
 			// 
 			this.CarBodyCodeTextBox.Location = new System.Drawing.Point(121, 11);
-			this.CarBodyCodeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.CarBodyCodeTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.CarBodyCodeTextBox.Name = "CarBodyCodeTextBox";
 			this.CarBodyCodeTextBox.Size = new System.Drawing.Size(87, 22);
 			this.CarBodyCodeTextBox.TabIndex = 46;
@@ -618,7 +618,7 @@
 			// SuspensionCodeTextBox
 			// 
 			this.SuspensionCodeTextBox.Location = new System.Drawing.Point(121, 43);
-			this.SuspensionCodeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.SuspensionCodeTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.SuspensionCodeTextBox.Name = "SuspensionCodeTextBox";
 			this.SuspensionCodeTextBox.Size = new System.Drawing.Size(87, 22);
 			this.SuspensionCodeTextBox.TabIndex = 48;
@@ -641,9 +641,9 @@
 			this.GroupBox8.Controls.Add(this.Label14);
 			this.GroupBox8.Controls.Add(this.Button11);
 			this.GroupBox8.Location = new System.Drawing.Point(8, 188);
-			this.GroupBox8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox8.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox8.Name = "GroupBox8";
-			this.GroupBox8.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox8.Padding = new System.Windows.Forms.Padding(4);
 			this.GroupBox8.Size = new System.Drawing.Size(295, 52);
 			this.GroupBox8.TabIndex = 43;
 			this.GroupBox8.TabStop = false;
@@ -666,7 +666,7 @@
 			this.Button11.BackColor = System.Drawing.Color.Red;
 			this.Button11.ForeColor = System.Drawing.Color.White;
 			this.Button11.Location = new System.Drawing.Point(171, 14);
-			this.Button11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button11.Margin = new System.Windows.Forms.Padding(4);
 			this.Button11.Name = "Button11";
 			this.Button11.Size = new System.Drawing.Size(100, 28);
 			this.Button11.TabIndex = 27;
@@ -681,9 +681,9 @@
 			this.GroupBox7.Controls.Add(this.AeroRearTextBox);
 			this.GroupBox7.Controls.Add(this.Label17);
 			this.GroupBox7.Location = new System.Drawing.Point(8, 76);
-			this.GroupBox7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox7.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox7.Name = "GroupBox7";
-			this.GroupBox7.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox7.Padding = new System.Windows.Forms.Padding(4);
 			this.GroupBox7.Size = new System.Drawing.Size(295, 48);
 			this.GroupBox7.TabIndex = 42;
 			this.GroupBox7.TabStop = false;
@@ -692,7 +692,7 @@
 			// AeroFrontTextBox
 			// 
 			this.AeroFrontTextBox.Location = new System.Drawing.Point(60, 16);
-			this.AeroFrontTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.AeroFrontTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.AeroFrontTextBox.Name = "AeroFrontTextBox";
 			this.AeroFrontTextBox.Size = new System.Drawing.Size(49, 22);
 			this.AeroFrontTextBox.TabIndex = 32;
@@ -712,7 +712,7 @@
 			// AeroRearTextBox
 			// 
 			this.AeroRearTextBox.Location = new System.Drawing.Point(140, 16);
-			this.AeroRearTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.AeroRearTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.AeroRearTextBox.Name = "AeroRearTextBox";
 			this.AeroRearTextBox.Size = new System.Drawing.Size(49, 22);
 			this.AeroRearTextBox.TabIndex = 33;
@@ -739,9 +739,9 @@
 			this.GroupBox6.Controls.Add(this.RemoveSpoilerCodeTextBox);
 			this.GroupBox6.Controls.Add(this.Button10);
 			this.GroupBox6.Location = new System.Drawing.Point(8, 247);
-			this.GroupBox6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox6.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox6.Name = "GroupBox6";
-			this.GroupBox6.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox6.Padding = new System.Windows.Forms.Padding(4);
 			this.GroupBox6.Size = new System.Drawing.Size(295, 127);
 			this.GroupBox6.TabIndex = 41;
 			this.GroupBox6.TabStop = false;
@@ -750,7 +750,7 @@
 			// Button23
 			// 
 			this.Button23.Location = new System.Drawing.Point(200, 44);
-			this.Button23.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button23.Margin = new System.Windows.Forms.Padding(4);
 			this.Button23.Name = "Button23";
 			this.Button23.Size = new System.Drawing.Size(35, 75);
 			this.Button23.TabIndex = 27;
@@ -764,7 +764,7 @@
 			this.RemoveFrontBumperCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.RemoveFrontBumperCheckBox.ForeColor = System.Drawing.Color.DarkViolet;
 			this.RemoveFrontBumperCheckBox.Location = new System.Drawing.Point(8, 71);
-			this.RemoveFrontBumperCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.RemoveFrontBumperCheckBox.Margin = new System.Windows.Forms.Padding(4);
 			this.RemoveFrontBumperCheckBox.Name = "RemoveFrontBumperCheckBox";
 			this.RemoveFrontBumperCheckBox.Size = new System.Drawing.Size(147, 17);
 			this.RemoveFrontBumperCheckBox.TabIndex = 26;
@@ -777,7 +777,7 @@
 			this.RemoveRearBumperCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.RemoveRearBumperCheckBox.ForeColor = System.Drawing.Color.DarkViolet;
 			this.RemoveRearBumperCheckBox.Location = new System.Drawing.Point(8, 98);
-			this.RemoveRearBumperCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.RemoveRearBumperCheckBox.Margin = new System.Windows.Forms.Padding(4);
 			this.RemoveRearBumperCheckBox.Name = "RemoveRearBumperCheckBox";
 			this.RemoveRearBumperCheckBox.Size = new System.Drawing.Size(143, 17);
 			this.RemoveRearBumperCheckBox.TabIndex = 25;
@@ -790,7 +790,7 @@
 			this.RemoveHoodCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.RemoveHoodCheckBox.ForeColor = System.Drawing.Color.DarkViolet;
 			this.RemoveHoodCheckBox.Location = new System.Drawing.Point(8, 46);
-			this.RemoveHoodCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.RemoveHoodCheckBox.Margin = new System.Windows.Forms.Padding(4);
 			this.RemoveHoodCheckBox.Name = "RemoveHoodCheckBox";
 			this.RemoveHoodCheckBox.Size = new System.Drawing.Size(104, 17);
 			this.RemoveHoodCheckBox.TabIndex = 24;
@@ -812,7 +812,7 @@
 			// RemoveSpoilerCodeTextBox
 			// 
 			this.RemoveSpoilerCodeTextBox.Location = new System.Drawing.Point(141, 16);
-			this.RemoveSpoilerCodeTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.RemoveSpoilerCodeTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.RemoveSpoilerCodeTextBox.Name = "RemoveSpoilerCodeTextBox";
 			this.RemoveSpoilerCodeTextBox.Size = new System.Drawing.Size(49, 22);
 			this.RemoveSpoilerCodeTextBox.TabIndex = 22;
@@ -820,7 +820,7 @@
 			// Button10
 			// 
 			this.Button10.Location = new System.Drawing.Point(200, 14);
-			this.Button10.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button10.Margin = new System.Windows.Forms.Padding(4);
 			this.Button10.Name = "Button10";
 			this.Button10.Size = new System.Drawing.Size(35, 28);
 			this.Button10.TabIndex = 23;
@@ -840,9 +840,9 @@
 			this.GroupBox5.Controls.Add(this.Label31);
 			this.GroupBox5.Controls.Add(this.SambaLikePerformanceCheckbox);
 			this.GroupBox5.Location = new System.Drawing.Point(311, 347);
-			this.GroupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox5.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox5.Name = "GroupBox5";
-			this.GroupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox5.Padding = new System.Windows.Forms.Padding(4);
 			this.GroupBox5.Size = new System.Drawing.Size(292, 159);
 			this.GroupBox5.TabIndex = 40;
 			this.GroupBox5.TabStop = false;
@@ -851,7 +851,7 @@
 			// HorsepowerMultiplierText
 			// 
 			this.HorsepowerMultiplierText.Location = new System.Drawing.Point(112, 81);
-			this.HorsepowerMultiplierText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.HorsepowerMultiplierText.Margin = new System.Windows.Forms.Padding(4);
 			this.HorsepowerMultiplierText.Name = "HorsepowerMultiplierText";
 			this.HorsepowerMultiplierText.Size = new System.Drawing.Size(99, 22);
 			this.HorsepowerMultiplierText.TabIndex = 55;
@@ -871,7 +871,7 @@
 			// Button17
 			// 
 			this.Button17.Location = new System.Drawing.Point(237, 121);
-			this.Button17.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button17.Margin = new System.Windows.Forms.Padding(4);
 			this.Button17.Name = "Button17";
 			this.Button17.Size = new System.Drawing.Size(35, 28);
 			this.Button17.TabIndex = 53;
@@ -882,7 +882,7 @@
 			// Button16
 			// 
 			this.Button16.Location = new System.Drawing.Point(220, 16);
-			this.Button16.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button16.Margin = new System.Windows.Forms.Padding(4);
 			this.Button16.Name = "Button16";
 			this.Button16.Size = new System.Drawing.Size(32, 57);
 			this.Button16.TabIndex = 37;
@@ -905,7 +905,7 @@
 			// TurboModifierTextBox
 			// 
 			this.TurboModifierTextBox.Location = new System.Drawing.Point(91, 16);
-			this.TurboModifierTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TurboModifierTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.TurboModifierTextBox.Name = "TurboModifierTextBox";
 			this.TurboModifierTextBox.Size = new System.Drawing.Size(120, 22);
 			this.TurboModifierTextBox.TabIndex = 29;
@@ -913,7 +913,7 @@
 			// ExhauseMultiplierTextBox
 			// 
 			this.ExhauseMultiplierTextBox.Location = new System.Drawing.Point(91, 48);
-			this.ExhauseMultiplierTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.ExhauseMultiplierTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.ExhauseMultiplierTextBox.Name = "ExhauseMultiplierTextBox";
 			this.ExhauseMultiplierTextBox.Size = new System.Drawing.Size(120, 22);
 			this.ExhauseMultiplierTextBox.TabIndex = 36;
@@ -936,7 +936,7 @@
 			this.SambaLikePerformanceCheckbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.SambaLikePerformanceCheckbox.ForeColor = System.Drawing.Color.Lime;
 			this.SambaLikePerformanceCheckbox.Location = new System.Drawing.Point(13, 126);
-			this.SambaLikePerformanceCheckbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.SambaLikePerformanceCheckbox.Margin = new System.Windows.Forms.Padding(4);
 			this.SambaLikePerformanceCheckbox.Name = "SambaLikePerformanceCheckbox";
 			this.SambaLikePerformanceCheckbox.Size = new System.Drawing.Size(162, 17);
 			this.SambaLikePerformanceCheckbox.TabIndex = 30;
@@ -950,9 +950,9 @@
 			this.GroupBox4.Controls.Add(this.Add74ByteCheckBox);
 			this.GroupBox4.Controls.Add(this.Button9);
 			this.GroupBox4.Location = new System.Drawing.Point(8, 382);
-			this.GroupBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox4.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox4.Name = "GroupBox4";
-			this.GroupBox4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox4.Padding = new System.Windows.Forms.Padding(4);
 			this.GroupBox4.Size = new System.Drawing.Size(295, 108);
 			this.GroupBox4.TabIndex = 39;
 			this.GroupBox4.TabStop = false;
@@ -962,7 +962,7 @@
 			// 
 			this.AddLucaBytesCheckBox.AutoSize = true;
 			this.AddLucaBytesCheckBox.Location = new System.Drawing.Point(8, 23);
-			this.AddLucaBytesCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.AddLucaBytesCheckBox.Margin = new System.Windows.Forms.Padding(4);
 			this.AddLucaBytesCheckBox.Name = "AddLucaBytesCheckBox";
 			this.AddLucaBytesCheckBox.Size = new System.Drawing.Size(223, 20);
 			this.AddLucaBytesCheckBox.TabIndex = 37;
@@ -972,7 +972,7 @@
 			// Button14
 			// 
 			this.Button14.Location = new System.Drawing.Point(248, 18);
-			this.Button14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button14.Margin = new System.Windows.Forms.Padding(4);
 			this.Button14.Name = "Button14";
 			this.Button14.Size = new System.Drawing.Size(35, 28);
 			this.Button14.TabIndex = 38;
@@ -986,7 +986,7 @@
 			this.Add74ByteCheckBox.Checked = true;
 			this.Add74ByteCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
 			this.Add74ByteCheckBox.Location = new System.Drawing.Point(8, 52);
-			this.Add74ByteCheckBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Add74ByteCheckBox.Margin = new System.Windows.Forms.Padding(4);
 			this.Add74ByteCheckBox.Name = "Add74ByteCheckBox";
 			this.Add74ByteCheckBox.Size = new System.Drawing.Size(195, 20);
 			this.Add74ByteCheckBox.TabIndex = 15;
@@ -996,7 +996,7 @@
 			// Button9
 			// 
 			this.Button9.Location = new System.Drawing.Point(229, 47);
-			this.Button9.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button9.Margin = new System.Windows.Forms.Padding(4);
 			this.Button9.Name = "Button9";
 			this.Button9.Size = new System.Drawing.Size(35, 28);
 			this.Button9.TabIndex = 16;
@@ -1011,9 +1011,9 @@
 			this.GroupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.GroupBox3.ForeColor = System.Drawing.Color.Fuchsia;
 			this.GroupBox3.Location = new System.Drawing.Point(16, 9);
-			this.GroupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox3.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox3.Name = "GroupBox3";
-			this.GroupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox3.Padding = new System.Windows.Forms.Padding(4);
 			this.GroupBox3.Size = new System.Drawing.Size(163, 60);
 			this.GroupBox3.TabIndex = 11;
 			this.GroupBox3.TabStop = false;
@@ -1061,9 +1061,9 @@
 			this.TabPage3.Controls.Add(this.GroupBox12);
 			this.TabPage3.Controls.Add(this.GroupBox11);
 			this.TabPage3.Location = new System.Drawing.Point(4, 25);
-			this.TabPage3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TabPage3.Margin = new System.Windows.Forms.Padding(4);
 			this.TabPage3.Name = "TabPage3";
-			this.TabPage3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TabPage3.Padding = new System.Windows.Forms.Padding(4);
 			this.TabPage3.Size = new System.Drawing.Size(613, 514);
 			this.TabPage3.TabIndex = 1;
 			this.TabPage3.Text = "Page 2";
@@ -1077,9 +1077,9 @@
 			this.GroupBox14.Controls.Add(this.Button20);
 			this.GroupBox14.Controls.Add(this.Label39);
 			this.GroupBox14.Location = new System.Drawing.Point(327, 98);
-			this.GroupBox14.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox14.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox14.Name = "GroupBox14";
-			this.GroupBox14.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox14.Padding = new System.Windows.Forms.Padding(4);
 			this.GroupBox14.Size = new System.Drawing.Size(276, 123);
 			this.GroupBox14.TabIndex = 48;
 			this.GroupBox14.TabStop = false;
@@ -1089,7 +1089,7 @@
 			// 
 			this.GoodOilBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
 			this.GoodOilBtn.Location = new System.Drawing.Point(107, 71);
-			this.GoodOilBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GoodOilBtn.Margin = new System.Windows.Forms.Padding(4);
 			this.GoodOilBtn.Name = "GoodOilBtn";
 			this.GoodOilBtn.Size = new System.Drawing.Size(95, 28);
 			this.GoodOilBtn.TabIndex = 4;
@@ -1101,7 +1101,7 @@
 			// 
 			this.BadOilBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
 			this.BadOilBtn.Location = new System.Drawing.Point(8, 71);
-			this.BadOilBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.BadOilBtn.Margin = new System.Windows.Forms.Padding(4);
 			this.BadOilBtn.Name = "BadOilBtn";
 			this.BadOilBtn.Size = new System.Drawing.Size(91, 28);
 			this.BadOilBtn.TabIndex = 3;
@@ -1113,7 +1113,7 @@
 			// 
 			this.Button21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
 			this.Button21.Location = new System.Drawing.Point(97, 39);
-			this.Button21.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button21.Margin = new System.Windows.Forms.Padding(4);
 			this.Button21.Name = "Button21";
 			this.Button21.Size = new System.Drawing.Size(73, 28);
 			this.Button21.TabIndex = 2;
@@ -1126,7 +1126,7 @@
 			this.Button20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
 			this.Button20.ForeColor = System.Drawing.SystemColors.ControlText;
 			this.Button20.Location = new System.Drawing.Point(8, 39);
-			this.Button20.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button20.Margin = new System.Windows.Forms.Padding(4);
 			this.Button20.Name = "Button20";
 			this.Button20.Size = new System.Drawing.Size(81, 28);
 			this.Button20.TabIndex = 1;
@@ -1150,9 +1150,9 @@
 			this.GroupBox13.Controls.Add(this.WeightMultiplierTextBox);
 			this.GroupBox13.Controls.Add(this.Label38);
 			this.GroupBox13.Location = new System.Drawing.Point(327, 7);
-			this.GroupBox13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox13.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox13.Name = "GroupBox13";
-			this.GroupBox13.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox13.Padding = new System.Windows.Forms.Padding(4);
 			this.GroupBox13.Size = new System.Drawing.Size(280, 84);
 			this.GroupBox13.TabIndex = 47;
 			this.GroupBox13.TabStop = false;
@@ -1162,7 +1162,7 @@
 			// 
 			this.CheckBox4.AutoSize = true;
 			this.CheckBox4.Location = new System.Drawing.Point(12, 47);
-			this.CheckBox4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.CheckBox4.Margin = new System.Windows.Forms.Padding(4);
 			this.CheckBox4.Name = "CheckBox4";
 			this.CheckBox4.Size = new System.Drawing.Size(207, 20);
 			this.CheckBox4.TabIndex = 46;
@@ -1172,7 +1172,7 @@
 			// WeightMultiplierTextBox
 			// 
 			this.WeightMultiplierTextBox.Location = new System.Drawing.Point(151, 16);
-			this.WeightMultiplierTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.WeightMultiplierTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.WeightMultiplierTextBox.Name = "WeightMultiplierTextBox";
 			this.WeightMultiplierTextBox.Size = new System.Drawing.Size(120, 22);
 			this.WeightMultiplierTextBox.TabIndex = 41;
@@ -1196,9 +1196,9 @@
 			this.GroupBox12.Controls.Add(this.GripTextBox);
 			this.GroupBox12.Controls.Add(this.Label20);
 			this.GroupBox12.Location = new System.Drawing.Point(8, 126);
-			this.GroupBox12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox12.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox12.Name = "GroupBox12";
-			this.GroupBox12.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox12.Padding = new System.Windows.Forms.Padding(4);
 			this.GroupBox12.Size = new System.Drawing.Size(311, 89);
 			this.GroupBox12.TabIndex = 46;
 			this.GroupBox12.TabStop = false;
@@ -1219,7 +1219,7 @@
 			// PaintCodesTextBox
 			// 
 			this.PaintCodesTextBox.Location = new System.Drawing.Point(64, 16);
-			this.PaintCodesTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.PaintCodesTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.PaintCodesTextBox.Name = "PaintCodesTextBox";
 			this.PaintCodesTextBox.Size = new System.Drawing.Size(120, 22);
 			this.PaintCodesTextBox.TabIndex = 25;
@@ -1227,7 +1227,7 @@
 			// GripTextBox
 			// 
 			this.GripTextBox.Location = new System.Drawing.Point(64, 48);
-			this.GripTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GripTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.GripTextBox.Name = "GripTextBox";
 			this.GripTextBox.Size = new System.Drawing.Size(55, 22);
 			this.GripTextBox.TabIndex = 40;
@@ -1256,9 +1256,9 @@
 			this.GroupBox11.Controls.Add(this.SpringRateFrontTextBox);
 			this.GroupBox11.Controls.Add(this.Label21);
 			this.GroupBox11.Location = new System.Drawing.Point(8, 7);
-			this.GroupBox11.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox11.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox11.Name = "GroupBox11";
-			this.GroupBox11.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.GroupBox11.Padding = new System.Windows.Forms.Padding(4);
 			this.GroupBox11.Size = new System.Drawing.Size(311, 111);
 			this.GroupBox11.TabIndex = 45;
 			this.GroupBox11.TabStop = false;
@@ -1270,7 +1270,7 @@
 			this.Button19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Button19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
 			this.Button19.Location = new System.Drawing.Point(164, 75);
-			this.Button19.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button19.Margin = new System.Windows.Forms.Padding(4);
 			this.Button19.Name = "Button19";
 			this.Button19.Size = new System.Drawing.Size(100, 28);
 			this.Button19.TabIndex = 42;
@@ -1293,7 +1293,7 @@
 			// SuspensionHeightFrontTextBox
 			// 
 			this.SuspensionHeightFrontTextBox.Location = new System.Drawing.Point(164, 16);
-			this.SuspensionHeightFrontTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.SuspensionHeightFrontTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.SuspensionHeightFrontTextBox.Name = "SuspensionHeightFrontTextBox";
 			this.SuspensionHeightFrontTextBox.Size = new System.Drawing.Size(55, 22);
 			this.SuspensionHeightFrontTextBox.TabIndex = 36;
@@ -1313,7 +1313,7 @@
 			// SuspensionHeightRearTextBox
 			// 
 			this.SuspensionHeightRearTextBox.Location = new System.Drawing.Point(249, 16);
-			this.SuspensionHeightRearTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.SuspensionHeightRearTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.SuspensionHeightRearTextBox.Name = "SuspensionHeightRearTextBox";
 			this.SuspensionHeightRearTextBox.Size = new System.Drawing.Size(55, 22);
 			this.SuspensionHeightRearTextBox.TabIndex = 37;
@@ -1321,7 +1321,7 @@
 			// SpringRateRearTextBox
 			// 
 			this.SpringRateRearTextBox.Location = new System.Drawing.Point(249, 48);
-			this.SpringRateRearTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.SpringRateRearTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.SpringRateRearTextBox.Name = "SpringRateRearTextBox";
 			this.SpringRateRearTextBox.Size = new System.Drawing.Size(55, 22);
 			this.SpringRateRearTextBox.TabIndex = 43;
@@ -1341,7 +1341,7 @@
 			// SpringRateFrontTextBox
 			// 
 			this.SpringRateFrontTextBox.Location = new System.Drawing.Point(164, 48);
-			this.SpringRateFrontTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.SpringRateFrontTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.SpringRateFrontTextBox.Name = "SpringRateFrontTextBox";
 			this.SpringRateFrontTextBox.Size = new System.Drawing.Size(55, 22);
 			this.SpringRateFrontTextBox.TabIndex = 42;
@@ -1363,7 +1363,7 @@
 			this.TabControl1.Controls.Add(this.TabPage1);
 			this.TabControl1.Controls.Add(this.TabPage4);
 			this.TabControl1.Location = new System.Drawing.Point(17, 149);
-			this.TabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TabControl1.Margin = new System.Windows.Forms.Padding(4);
 			this.TabControl1.Name = "TabControl1";
 			this.TabControl1.SelectedIndex = 0;
 			this.TabControl1.Size = new System.Drawing.Size(491, 436);
@@ -1390,9 +1390,9 @@
 			this.TabPage1.Controls.Add(this.Label23);
 			this.TabPage1.Controls.Add(this.EngineCodeComboBox);
 			this.TabPage1.Location = new System.Drawing.Point(4, 25);
-			this.TabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TabPage1.Margin = new System.Windows.Forms.Padding(4);
 			this.TabPage1.Name = "TabPage1";
-			this.TabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TabPage1.Padding = new System.Windows.Forms.Padding(4);
 			this.TabPage1.Size = new System.Drawing.Size(483, 407);
 			this.TabPage1.TabIndex = 0;
 			this.TabPage1.Text = "Parts Database";
@@ -1413,7 +1413,7 @@
 			this.Button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
 			this.Button12.ForeColor = System.Drawing.Color.Black;
 			this.Button12.Location = new System.Drawing.Point(96, 271);
-			this.Button12.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button12.Margin = new System.Windows.Forms.Padding(4);
 			this.Button12.Name = "Button12";
 			this.Button12.Size = new System.Drawing.Size(376, 25);
 			this.Button12.TabIndex = 16;
@@ -1436,7 +1436,7 @@
 			this.HornCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.HornCodeComboBox.FormattingEnabled = true;
 			this.HornCodeComboBox.Location = new System.Drawing.Point(96, 240);
-			this.HornCodeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.HornCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.HornCodeComboBox.Name = "HornCodeComboBox";
 			this.HornCodeComboBox.Size = new System.Drawing.Size(375, 24);
 			this.HornCodeComboBox.TabIndex = 14;
@@ -1457,7 +1457,7 @@
 			this.LsdCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.LsdCodeComboBox.FormattingEnabled = true;
 			this.LsdCodeComboBox.Location = new System.Drawing.Point(96, 207);
-			this.LsdCodeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.LsdCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.LsdCodeComboBox.Name = "LsdCodeComboBox";
 			this.LsdCodeComboBox.Size = new System.Drawing.Size(375, 24);
 			this.LsdCodeComboBox.TabIndex = 12;
@@ -1478,7 +1478,7 @@
 			this.BodyCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.BodyCodeComboBox.FormattingEnabled = true;
 			this.BodyCodeComboBox.Location = new System.Drawing.Point(96, 174);
-			this.BodyCodeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.BodyCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.BodyCodeComboBox.Name = "BodyCodeComboBox";
 			this.BodyCodeComboBox.Size = new System.Drawing.Size(375, 24);
 			this.BodyCodeComboBox.TabIndex = 10;
@@ -1499,7 +1499,7 @@
 			this.SuspensionCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.SuspensionCodeComboBox.FormattingEnabled = true;
 			this.SuspensionCodeComboBox.Location = new System.Drawing.Point(96, 140);
-			this.SuspensionCodeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.SuspensionCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.SuspensionCodeComboBox.Name = "SuspensionCodeComboBox";
 			this.SuspensionCodeComboBox.Size = new System.Drawing.Size(375, 24);
 			this.SuspensionCodeComboBox.TabIndex = 8;
@@ -1520,7 +1520,7 @@
 			this.TransmissionCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.TransmissionCodeComboBox.FormattingEnabled = true;
 			this.TransmissionCodeComboBox.Location = new System.Drawing.Point(96, 107);
-			this.TransmissionCodeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TransmissionCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.TransmissionCodeComboBox.Name = "TransmissionCodeComboBox";
 			this.TransmissionCodeComboBox.Size = new System.Drawing.Size(375, 24);
 			this.TransmissionCodeComboBox.TabIndex = 6;
@@ -1541,7 +1541,7 @@
 			this.ChassisCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.ChassisCodeComboBox.FormattingEnabled = true;
 			this.ChassisCodeComboBox.Location = new System.Drawing.Point(96, 74);
-			this.ChassisCodeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.ChassisCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.ChassisCodeComboBox.Name = "ChassisCodeComboBox";
 			this.ChassisCodeComboBox.Size = new System.Drawing.Size(375, 24);
 			this.ChassisCodeComboBox.TabIndex = 4;
@@ -1562,7 +1562,7 @@
 			this.DrivetrainCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.DrivetrainCodeComboBox.FormattingEnabled = true;
 			this.DrivetrainCodeComboBox.Location = new System.Drawing.Point(96, 41);
-			this.DrivetrainCodeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.DrivetrainCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.DrivetrainCodeComboBox.Name = "DrivetrainCodeComboBox";
 			this.DrivetrainCodeComboBox.Size = new System.Drawing.Size(375, 24);
 			this.DrivetrainCodeComboBox.TabIndex = 2;
@@ -1583,7 +1583,7 @@
 			this.EngineCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.EngineCodeComboBox.FormattingEnabled = true;
 			this.EngineCodeComboBox.Location = new System.Drawing.Point(96, 7);
-			this.EngineCodeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.EngineCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.EngineCodeComboBox.Name = "EngineCodeComboBox";
 			this.EngineCodeComboBox.Size = new System.Drawing.Size(375, 24);
 			this.EngineCodeComboBox.TabIndex = 0;
@@ -1596,9 +1596,9 @@
 			this.TabPage4.Controls.Add(this.Button13);
 			this.TabPage4.Controls.Add(this.Label36);
 			this.TabPage4.Location = new System.Drawing.Point(4, 25);
-			this.TabPage4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TabPage4.Margin = new System.Windows.Forms.Padding(4);
 			this.TabPage4.Name = "TabPage4";
-			this.TabPage4.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.TabPage4.Padding = new System.Windows.Forms.Padding(4);
 			this.TabPage4.Size = new System.Drawing.Size(483, 407);
 			this.TabPage4.TabIndex = 1;
 			this.TabPage4.Text = "Misc.";
@@ -1607,7 +1607,7 @@
 			// Button18
 			// 
 			this.Button18.Location = new System.Drawing.Point(4, 80);
-			this.Button18.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button18.Margin = new System.Windows.Forms.Padding(4);
 			this.Button18.Name = "Button18";
 			this.Button18.Size = new System.Drawing.Size(472, 28);
 			this.Button18.TabIndex = 3;
@@ -1619,7 +1619,7 @@
 			// 
 			this.Button15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Button15.Location = new System.Drawing.Point(4, 38);
-			this.Button15.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button15.Margin = new System.Windows.Forms.Padding(4);
 			this.Button15.Name = "Button15";
 			this.Button15.Size = new System.Drawing.Size(472, 34);
 			this.Button15.TabIndex = 2;
@@ -1632,7 +1632,7 @@
 			this.Button13.BackColor = System.Drawing.Color.Red;
 			this.Button13.ForeColor = System.Drawing.Color.White;
 			this.Button13.Location = new System.Drawing.Point(232, 2);
-			this.Button13.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Button13.Margin = new System.Windows.Forms.Padding(4);
 			this.Button13.Name = "Button13";
 			this.Button13.Size = new System.Drawing.Size(100, 28);
 			this.Button13.TabIndex = 1;
@@ -1659,7 +1659,7 @@
 			this.Controls.Add(this.GroupBox2);
 			this.Controls.Add(this.GroupBox1);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.MaximizeBox = false;
 			this.Name = "Form1";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
