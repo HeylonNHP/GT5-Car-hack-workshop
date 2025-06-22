@@ -1663,7 +1663,7 @@
 			this.MaximizeBox = false;
 			this.Name = "Form1";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "GT5 Car hack workshop 2.5 (For GT5 2.14). Created by HeylonNHP";
+			this.Text = "GT5 Car hack workshop 2.6 (For GT5 2.14). Created by HeylonNHP";
 			this.GroupBox1.ResumeLayout(false);
 			this.GroupBox1.PerformLayout();
 			this.GroupBox2.ResumeLayout(false);
