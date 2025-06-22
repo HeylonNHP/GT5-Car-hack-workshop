@@ -146,7 +146,7 @@
 			this.Label24 = new System.Windows.Forms.Label();
 			this.DrivetrainCodeComboBox = new System.Windows.Forms.ComboBox();
 			this.Label23 = new System.Windows.Forms.Label();
-			this.EngineCodeComboBox = new System.Windows.Forms.ComboBox();
+			this.EngineCodeComboBox = new YourNamespace.Controls.SearchableComboBox();
 			this.TabPage4 = new System.Windows.Forms.TabPage();
 			this.Button18 = new System.Windows.Forms.Button();
 			this.Button15 = new System.Windows.Forms.Button();
@@ -1580,8 +1580,6 @@
 			// 
 			// EngineCodeComboBox
 			// 
-			this.EngineCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.EngineCodeComboBox.FormattingEnabled = true;
 			this.EngineCodeComboBox.Location = new System.Drawing.Point(96, 7);
 			this.EngineCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.EngineCodeComboBox.Name = "EngineCodeComboBox";
@@ -1825,7 +1823,7 @@
 		private System.Windows.Forms.Label Label24;
 		private System.Windows.Forms.ComboBox DrivetrainCodeComboBox;
 		private System.Windows.Forms.Label Label23;
-		private System.Windows.Forms.ComboBox EngineCodeComboBox;
+		private YourNamespace.Controls.SearchableComboBox EngineCodeComboBox;
 		private System.Windows.Forms.TabPage TabPage4;
 		private System.Windows.Forms.Button Button18;
 		private System.Windows.Forms.Button Button15;
