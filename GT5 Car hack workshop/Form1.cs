@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using GT5_Car_hack_workshop.Models;
 using GT5_Car_hack_workshop.Services;
@@ -12,7 +11,6 @@ using Microsoft.VisualBasic.CompilerServices;
 
 namespace GT5_Car_hack_workshop
 {
-    [DesignerGenerated]
     public partial class Form1 : Form
     {
         private const string PARTS_DATABASE_FILENAME = "partsdatabase.db";
@@ -152,7 +150,7 @@ namespace GT5_Car_hack_workshop
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Can't save engine code to the save file.\n{ex.Message}");
+                MessageBox.Show($@"Can't save engine code to the save file. {ex.Message}");
                 return;
             }
 
@@ -575,7 +573,7 @@ namespace GT5_Car_hack_workshop
         {
             SaveData();
             LoadData.Encrypt(TextBox1.Text);
-            Interaction.MsgBox("Data saved, immediately goto the GT Auto and change the cars oil to apply the hacks.");
+            MessageBox.Show("Data saved, immediately goto the GT Auto and change the cars oil to apply the hacks.");
         }
 
         private void Button5_Click(object sender, EventArgs e)
@@ -585,47 +583,52 @@ namespace GT5_Car_hack_workshop
 
         private void TextBox4_TextChanged(object sender, EventArgs e)
         {
-            TextBox5.Text = Conversions.ToString(100.0 - Conversion.Val(TorqueSplitTextBox.Text));
+            if (!double.TryParse(TorqueSplitTextBox.Text, out var torqueValue))
+            {
+                torqueValue = 0.0;
+            }
+
+            TextBox5.Text = (100.0 - torqueValue).ToString(CultureInfo.InvariantCulture);
         }
 
         private void Button6_Click(object sender, EventArgs e)
         {
-            TorqueSplitTextBox.Text = Conversions.ToString(50);
+            TorqueSplitTextBox.Text = "50";
             DrivetrainCodeTextBox.Text = "0A 1E";
         }
 
         private void Button4_Click(object sender, EventArgs e)
         {
-            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 355))] = 0;
-            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 333))] = 88;
-            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 211))] = 0;
-            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 210))] = 0;
-            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 209))] = 10;
-            Gt5Save[Conversions.ToInteger(Operators.SubtractObject(Moff, 208))] = 84;
-            Interaction.MsgBox("Torque split editor installed, don't forget to save");
+            Gt5Save[Moff - 355] = 0;
+            Gt5Save[Moff - 333] = 88;
+            Gt5Save[Moff - 211] = 0;
+            Gt5Save[Moff - 210] = 0;
+            Gt5Save[Moff - 209] = 10;
+            Gt5Save[Moff - 208] = 84;
+            MessageBox.Show("Torque split editor installed, don't forget to save");
         }
 
         private void Button7_Click(object sender, EventArgs e)
         {
-            Interaction.MsgBox(
+            MessageBox.Show(
                 "Copy the hex values in this box, this is your current cars engine\r\rIf you paste your copied engine values back in while editing another car, that car will have the engine of the car you copied it from.");
         }
 
         private void Button8_Click(object sender, EventArgs e)
         {
-            Interaction.MsgBox(
+            MessageBox.Show(
                 "This directly controls the torque that is sent to the front wheels, EG: if you typed in 10 the torque split would then be 10:90, if you typed in 50 the split would be 50:50\rYou could be really tricky and type 101, then the split would be 101:-1, which I reccomend in combination with added grip for high HP cars");
         }
 
         private void Button9_Click(object sender, EventArgs e)
         {
-            Interaction.MsgBox(
+            MessageBox.Show(
                 "This is what gives hackers all the freedom to swap chassis, engine etc. in update 2.14.\rUntick this and you will find that most hacks won't work");
         }
 
         private void Button10_Click(object sender, EventArgs e)
         {
-            Interaction.MsgBox(
+            MessageBox.Show(
                 "Make sure the highest stage spoiler in GT Auto is installed. EG Type B or Type C (which ever one is the highest available).\rThen increase the value here by 1. EG: 2 to 3 or 3 to 4 etc.");
         }
 
@@ -901,27 +904,27 @@ namespace GT5_Car_hack_workshop
 
         private void Button14_Click(object sender, EventArgs e)
         {
-            Interaction.MsgBox(
+            MessageBox.Show(
                 "This will override the 74 byte checkbox\rGT5 Editor 1.6 uses this method instead of the 74 byte, I have no idea whether it's more effective. So I've added in this function for testing purposes.");
         }
 
         private void Button15_Click(object sender, EventArgs e)
         {
-            Gt5Save[Conversions.ToInteger(Operators.AddObject(Moff, 248))] = byte.MaxValue;
-            Interaction.MsgBox(
+            Gt5Save[Moff + 248] = byte.MaxValue;
+            MessageBox.Show(
                 "The car is now yours, you can now either hack it, or click encrypt and save then return the data to the PS3");
             SaveData();
         }
 
         private void Button16_Click(object sender, EventArgs e)
         {
-            Interaction.MsgBox(
+            MessageBox.Show(
                 "This is the performance multiplier of the exhaust and turbo. Increasing these will increase the effectiveness of these performance parts on the engines performance");
         }
 
         private void Button17_Click(object sender, EventArgs e)
         {
-            Interaction.MsgBox(
+            MessageBox.Show(
                 "Samba like performance installs the performance parts out of a samba bus onto your current car.\rThe samba bus parts increase the engines performance a lot more than the performance parts for most other cars.\rEG: a 300hp (When stock) engine with samba bus parts installed can increase to about 1,000 - 1,800hp");
         }
 
@@ -931,7 +934,7 @@ namespace GT5_Car_hack_workshop
             Gt5Save[Moff + 2283] = byte.MaxValue;
             Gt5Save[Moff + 2284] = byte.MaxValue;
             Gt5Save[Moff + 2285] = byte.MaxValue;
-            Interaction.MsgBox("You now have 4,294,967,295 cr");
+            MessageBox.Show("You now have 4,294,967,295 cr");
             SaveData();
         }
 
@@ -961,7 +964,7 @@ namespace GT5_Car_hack_workshop
 
         private void Button23_Click(object sender, EventArgs e)
         {
-            Interaction.MsgBox(
+            MessageBox.Show(
                 "When you tick this checkbox, you must buy the Rigidity Improvement right before doing anything after loading the hacked save, the Rigidity Improvement is found under Body/Chassis in the tuning shop. The hack wont take proper effect without buying this upgrade.\r\rIf you have already purchased this upgrade, it will be uninstalled when you apply this hack.");
         }
 
