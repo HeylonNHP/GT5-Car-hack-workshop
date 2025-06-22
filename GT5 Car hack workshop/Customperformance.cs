@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using GT5_Car_hack_workshop.Services;
-using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
 
 namespace GT5_Car_hack_workshop
 {
-    // Token: 0x02000008 RID: 8
-    [DesignerGenerated]
     public partial class Customperformance : Form
     {
         private readonly IFormManager _formManager;
@@ -124,14 +119,17 @@ namespace GT5_Car_hack_workshop
                 MessageBox.Show(@"Please enter a valid number for the ???Chassis???");
             }
 
-            _formManager.MainForm.TurboModifierTextBox.Text = string.Concat(_formManager.MainForm.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(_formManager.MainForm.Moff, 171))].ToString("X2"), " ",
-                _formManager.MainForm.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(_formManager.MainForm.Moff, 170))].ToString("X2"), " ",
-                _formManager.MainForm.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(_formManager.MainForm.Moff, 169))].ToString("X2"), " ",
-                _formManager.MainForm.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(_formManager.MainForm.Moff, 168))].ToString("X2"));
-            _formManager.MainForm.ExhauseMultiplierTextBox.Text = string.Concat(_formManager.MainForm.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(_formManager.MainForm.Moff, 155))].ToString("X2"), " ",
-                _formManager.MainForm.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(_formManager.MainForm.Moff, 154))].ToString("X2"), " ",
-                _formManager.MainForm.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(_formManager.MainForm.Moff, 153))].ToString("X2"), " ",
-                _formManager.MainForm.Gt5Save[Conversions.ToInteger(Operators.SubtractObject(_formManager.MainForm.Moff, 152))].ToString("X2"));
+            _formManager.MainForm.TurboModifierTextBox.Text = string.Concat(
+                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 171].ToString("X2"), " ",
+                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 170].ToString("X2"), " ",
+                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 169].ToString("X2"), " ",
+                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 168].ToString("X2"));
+
+            _formManager.MainForm.ExhauseMultiplierTextBox.Text = string.Concat(
+                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 155].ToString("X2"), " ",
+                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 154].ToString("X2"), " ",
+                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 153].ToString("X2"), " ",
+                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 152].ToString("X2"));
             Close();
         }
 
@@ -164,8 +162,8 @@ namespace GT5_Car_hack_workshop
             var moff = _formManager.MainForm.Moff;
 
             // Write in big endian format - high byte first
-            gt5Save[moff - offsetHigh] = (byte)(value >> 8);    // High byte
-            gt5Save[moff - offsetLow] = (byte)(value & 0xFF);   // Low byte
+            gt5Save[moff - offsetHigh] = (byte)(value >> 8); // High byte
+            gt5Save[moff - offsetLow] = (byte)(value & 0xFF); // Low byte
         }
 
         private void Customperformance_Load(object sender, EventArgs e)
