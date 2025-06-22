@@ -134,17 +134,17 @@ namespace GT5_Car_hack_workshop
 			this.Label37 = new System.Windows.Forms.Label();
 			this.Button12 = new System.Windows.Forms.Button();
 			this.Label30 = new System.Windows.Forms.Label();
-			this.HornCodeComboBox = new System.Windows.Forms.ComboBox();
+			this.HornCodeComboBox = new SearchableComboBox();
 			this.Label29 = new System.Windows.Forms.Label();
-			this.LsdCodeComboBox = new System.Windows.Forms.ComboBox();
+			this.LsdCodeComboBox = new SearchableComboBox();
 			this.Label28 = new System.Windows.Forms.Label();
-			this.BodyCodeComboBox = new System.Windows.Forms.ComboBox();
+			this.BodyCodeComboBox = new SearchableComboBox();
 			this.Label27 = new System.Windows.Forms.Label();
-			this.SuspensionCodeComboBox = new System.Windows.Forms.ComboBox();
+			this.SuspensionCodeComboBox = new SearchableComboBox();
 			this.Label26 = new System.Windows.Forms.Label();
-			this.TransmissionCodeComboBox = new System.Windows.Forms.ComboBox();
+			this.TransmissionCodeComboBox = new SearchableComboBox();
 			this.Label25 = new System.Windows.Forms.Label();
-			this.ChassisCodeComboBox = new System.Windows.Forms.ComboBox();
+			this.ChassisCodeComboBox = new SearchableComboBox();
 			this.Label24 = new System.Windows.Forms.Label();
 			this.DrivetrainCodeComboBox = new SearchableComboBox();
 			this.Label23 = new System.Windows.Forms.Label();
@@ -1435,8 +1435,6 @@ namespace GT5_Car_hack_workshop
 			// 
 			// HornCodeComboBox
 			// 
-			this.HornCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.HornCodeComboBox.FormattingEnabled = true;
 			this.HornCodeComboBox.Location = new System.Drawing.Point(96, 240);
 			this.HornCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.HornCodeComboBox.Name = "HornCodeComboBox";
@@ -1456,8 +1454,6 @@ namespace GT5_Car_hack_workshop
 			// 
 			// LsdCodeComboBox
 			// 
-			this.LsdCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.LsdCodeComboBox.FormattingEnabled = true;
 			this.LsdCodeComboBox.Location = new System.Drawing.Point(96, 207);
 			this.LsdCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.LsdCodeComboBox.Name = "LsdCodeComboBox";
@@ -1477,8 +1473,6 @@ namespace GT5_Car_hack_workshop
 			// 
 			// BodyCodeComboBox
 			// 
-			this.BodyCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.BodyCodeComboBox.FormattingEnabled = true;
 			this.BodyCodeComboBox.Location = new System.Drawing.Point(96, 174);
 			this.BodyCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.BodyCodeComboBox.Name = "BodyCodeComboBox";
@@ -1498,8 +1492,6 @@ namespace GT5_Car_hack_workshop
 			// 
 			// SuspensionCodeComboBox
 			// 
-			this.SuspensionCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.SuspensionCodeComboBox.FormattingEnabled = true;
 			this.SuspensionCodeComboBox.Location = new System.Drawing.Point(96, 140);
 			this.SuspensionCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.SuspensionCodeComboBox.Name = "SuspensionCodeComboBox";
@@ -1519,8 +1511,6 @@ namespace GT5_Car_hack_workshop
 			// 
 			// TransmissionCodeComboBox
 			// 
-			this.TransmissionCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.TransmissionCodeComboBox.FormattingEnabled = true;
 			this.TransmissionCodeComboBox.Location = new System.Drawing.Point(96, 107);
 			this.TransmissionCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.TransmissionCodeComboBox.Name = "TransmissionCodeComboBox";
@@ -1540,8 +1530,6 @@ namespace GT5_Car_hack_workshop
 			// 
 			// ChassisCodeComboBox
 			// 
-			this.ChassisCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.ChassisCodeComboBox.FormattingEnabled = true;
 			this.ChassisCodeComboBox.Location = new System.Drawing.Point(96, 74);
 			this.ChassisCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.ChassisCodeComboBox.Name = "ChassisCodeComboBox";
@@ -1809,17 +1797,17 @@ namespace GT5_Car_hack_workshop
 		private System.Windows.Forms.Label Label37;
 		private System.Windows.Forms.Button Button12;
 		private System.Windows.Forms.Label Label30;
-		private System.Windows.Forms.ComboBox HornCodeComboBox;
+		private SearchableComboBox HornCodeComboBox;
 		private System.Windows.Forms.Label Label29;
-		private System.Windows.Forms.ComboBox LsdCodeComboBox;
+		private SearchableComboBox LsdCodeComboBox;
 		private System.Windows.Forms.Label Label28;
-		private System.Windows.Forms.ComboBox BodyCodeComboBox;
+		private SearchableComboBox BodyCodeComboBox;
 		private System.Windows.Forms.Label Label27;
-		private System.Windows.Forms.ComboBox SuspensionCodeComboBox;
+		private SearchableComboBox SuspensionCodeComboBox;
 		private System.Windows.Forms.Label Label26;
-		private System.Windows.Forms.ComboBox TransmissionCodeComboBox;
+		private SearchableComboBox TransmissionCodeComboBox;
 		private System.Windows.Forms.Label Label25;
-		private System.Windows.Forms.ComboBox ChassisCodeComboBox;
+		private SearchableComboBox ChassisCodeComboBox;
 		private System.Windows.Forms.Label Label24;
 		private SearchableComboBox DrivetrainCodeComboBox;
 		private System.Windows.Forms.Label Label23;

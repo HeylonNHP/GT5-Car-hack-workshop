@@ -688,15 +688,13 @@ namespace GT5_Car_hack_workshop
         private void LoadParts()
         {
             // Clear all ComboBoxes
-            EngineCodeComboBox.ClearItems();
-            DrivetrainCodeComboBox.ClearItems();
             foreach (var comboBox in new[]
                      {
-                         ChassisCodeComboBox, TransmissionCodeComboBox,
+                         EngineCodeComboBox, DrivetrainCodeComboBox, ChassisCodeComboBox, TransmissionCodeComboBox,
                          SuspensionCodeComboBox, BodyCodeComboBox, LsdCodeComboBox, HornCodeComboBox
                      })
             {
-                comboBox.Items.Clear();
+                comboBox.ClearItems();
                 comboBox.SelectedIndex = -1;
             }
 
@@ -737,32 +735,32 @@ namespace GT5_Car_hack_workshop
 
                     ChassisCodeComboBox.DisplayMember = "Name";
                     ChassisCodeComboBox.ValueMember = "Chassis";
-                    ChassisCodeComboBox.DataSource = new BindingSource(chassisList, null);
+                    ChassisCodeComboBox.AddRange(chassisList);
                     ChassisCodeComboBox.SelectedItem = chassisList[0];
 
                     TransmissionCodeComboBox.DisplayMember = "Name";
                     TransmissionCodeComboBox.ValueMember = "Transmission";
-                    TransmissionCodeComboBox.DataSource = new BindingSource(transmissionList, null);
+                    TransmissionCodeComboBox.AddRange(transmissionList);
                     TransmissionCodeComboBox.SelectedItem = transmissionList[0];
 
                     SuspensionCodeComboBox.DisplayMember = "Name";
                     SuspensionCodeComboBox.ValueMember = "Suspension";
-                    SuspensionCodeComboBox.DataSource = new BindingSource(suspensionList, null);
+                    SuspensionCodeComboBox.AddRange(suspensionList);
                     SuspensionCodeComboBox.SelectedItem = suspensionList[0];
 
                     BodyCodeComboBox.DisplayMember = "Name";
                     BodyCodeComboBox.ValueMember = "Body";
-                    BodyCodeComboBox.DataSource = new BindingSource(bodyList, null);
+                    BodyCodeComboBox.AddRange(bodyList);
                     BodyCodeComboBox.SelectedItem = bodyList[0];
 
                     LsdCodeComboBox.DisplayMember = "Name";
                     LsdCodeComboBox.ValueMember = "Lsd";
-                    LsdCodeComboBox.DataSource = new BindingSource(lsdList, null);
+                    LsdCodeComboBox.AddRange(lsdList);
                     LsdCodeComboBox.SelectedItem = lsdList[0];
 
                     HornCodeComboBox.DisplayMember = "Name";
                     HornCodeComboBox.ValueMember = "Horn";
-                    HornCodeComboBox.DataSource = new BindingSource(hornList, null);
+                    HornCodeComboBox.AddRange(hornList);
                     HornCodeComboBox.SelectedItem = hornList[0];
                 }
                 catch (Exception ex)
