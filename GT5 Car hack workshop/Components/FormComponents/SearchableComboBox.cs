@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace YourNamespace.Controls
+namespace GT5_Car_hack_workshop.Components.FormComponents
 {
     public partial class SearchableComboBox : UserControl
     {
@@ -131,6 +131,29 @@ namespace YourNamespace.Controls
             foreach (object item in comboBox1.Items)
             {
                 _originalItems.Add(item);
+            }
+        }
+
+        /// <summary>
+        /// Adds a range of items to the combo box
+        /// </summary>
+        /// <param name="items">The collection of items to add</param>
+        public void AddRange(IEnumerable<object> items)
+        {
+            if (items == null)
+                throw new ArgumentNullException(nameof(items));
+
+            foreach (var item in items)
+            {
+                _originalItems.Add(item);
+            }
+
+            if (!_isFiltering)
+            {
+                foreach (var item in items)
+                {
+                    comboBox1.Items.Add(item);
+                }
             }
         }
 

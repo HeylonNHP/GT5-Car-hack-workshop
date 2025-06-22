@@ -689,9 +689,10 @@ namespace GT5_Car_hack_workshop
         {
             // Clear all ComboBoxes
             EngineCodeComboBox.ClearItems();
+            DrivetrainCodeComboBox.ClearItems();
             foreach (var comboBox in new[]
                      {
-                         DrivetrainCodeComboBox, ChassisCodeComboBox, TransmissionCodeComboBox,
+                         ChassisCodeComboBox, TransmissionCodeComboBox,
                          SuspensionCodeComboBox, BodyCodeComboBox, LsdCodeComboBox, HornCodeComboBox
                      })
             {
@@ -726,17 +727,12 @@ namespace GT5_Car_hack_workshop
 
                     EngineCodeComboBox.DisplayMember = "Name";
                     EngineCodeComboBox.ValueMember = "Engine";
-                    EngineCodeComboBox.ClearItems(); // Clear existing items first
-                    foreach (var item in engineList)
-                    {
-                        EngineCodeComboBox.AddItem(item);
-                    }
-
+                    EngineCodeComboBox.AddRange(engineList);
                     EngineCodeComboBox.SelectedItem = engineList[0];
 
                     DrivetrainCodeComboBox.DisplayMember = "Name";
                     DrivetrainCodeComboBox.ValueMember = "Drivetrain";
-                    DrivetrainCodeComboBox.DataSource = new BindingSource(drivetrainList, null);
+                    DrivetrainCodeComboBox.AddRange(drivetrainList);
                     DrivetrainCodeComboBox.SelectedItem = drivetrainList[0];
 
                     ChassisCodeComboBox.DisplayMember = "Name";

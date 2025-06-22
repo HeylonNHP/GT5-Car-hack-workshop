@@ -1,4 +1,6 @@
-﻿namespace GT5_Car_hack_workshop
+﻿using GT5_Car_hack_workshop.Components.FormComponents;
+
+namespace GT5_Car_hack_workshop
 {
 	public partial class Form1 : global::System.Windows.Forms.Form
 	{
@@ -144,9 +146,9 @@
 			this.Label25 = new System.Windows.Forms.Label();
 			this.ChassisCodeComboBox = new System.Windows.Forms.ComboBox();
 			this.Label24 = new System.Windows.Forms.Label();
-			this.DrivetrainCodeComboBox = new System.Windows.Forms.ComboBox();
+			this.DrivetrainCodeComboBox = new SearchableComboBox();
 			this.Label23 = new System.Windows.Forms.Label();
-			this.EngineCodeComboBox = new YourNamespace.Controls.SearchableComboBox();
+			this.EngineCodeComboBox = new SearchableComboBox();
 			this.TabPage4 = new System.Windows.Forms.TabPage();
 			this.Button18 = new System.Windows.Forms.Button();
 			this.Button15 = new System.Windows.Forms.Button();
@@ -1559,8 +1561,6 @@
 			// 
 			// DrivetrainCodeComboBox
 			// 
-			this.DrivetrainCodeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.DrivetrainCodeComboBox.FormattingEnabled = true;
 			this.DrivetrainCodeComboBox.Location = new System.Drawing.Point(96, 41);
 			this.DrivetrainCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
 			this.DrivetrainCodeComboBox.Name = "DrivetrainCodeComboBox";
@@ -1821,9 +1821,9 @@
 		private System.Windows.Forms.Label Label25;
 		private System.Windows.Forms.ComboBox ChassisCodeComboBox;
 		private System.Windows.Forms.Label Label24;
-		private System.Windows.Forms.ComboBox DrivetrainCodeComboBox;
+		private SearchableComboBox DrivetrainCodeComboBox;
 		private System.Windows.Forms.Label Label23;
-		private YourNamespace.Controls.SearchableComboBox EngineCodeComboBox;
+		private SearchableComboBox EngineCodeComboBox;
 		private System.Windows.Forms.TabPage TabPage4;
 		private System.Windows.Forms.Button Button18;
 		private System.Windows.Forms.Button Button15;

@@ -1,4 +1,4 @@
-﻿namespace YourNamespace.Controls
+﻿namespace GT5_Car_hack_workshop.Components.FormComponents
 {
     partial class SearchableComboBox
     {
@@ -52,6 +52,6 @@
 
         #endregion
 
-        public System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
