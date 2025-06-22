@@ -4,10 +4,9 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using GT5_Car_hack_workshop.Components.Forms;
 using GT5_Car_hack_workshop.Models;
 using GT5_Car_hack_workshop.Services;
-using Microsoft.VisualBasic;
-using Microsoft.VisualBasic.CompilerServices;
 
 namespace GT5_Car_hack_workshop
 {
@@ -645,7 +644,7 @@ namespace GT5_Car_hack_workshop
         /// <param name="e">An EventArgs object containing event data.</param>
         private void Button12_Click(object sender, EventArgs e)
         {
-            _CarName = Interaction.InputBox("Car name:", "", Conversions.ToString(_CarName));
+            _CarName = InputDialog.Show("Car name:", "Add car to parts database", _CarName);
             if (string.IsNullOrWhiteSpace(_CarName))
             {
                 MessageBox.Show("Car name cannot be empty");

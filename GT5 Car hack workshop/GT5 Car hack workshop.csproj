@@ -58,6 +58,12 @@
       <Reference Include="Microsoft.VisualBasic" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="Components\Forms\InputDialog.cs">
+        <SubType>Form</SubType>
+      </Compile>
+    </ItemGroup>
+
     <PropertyGroup>
         <ComVisible>false</ComVisible>
         <Guid>567be9e8-cd5e-4e2f-b572-03f8a94e0036</Guid>
