@@ -114,9 +114,12 @@ namespace GT5_Car_hack_workshop
 			this.CheckBox4 = new System.Windows.Forms.CheckBox();
 			this.WeightMultiplierTextBox = new System.Windows.Forms.TextBox();
 			this.Label38 = new System.Windows.Forms.Label();
+			this.GroupBoxPaint = new System.Windows.Forms.GroupBox();
+			this.BodyPaintLabel = new System.Windows.Forms.Label();
+			this.BodyPaintTextBox = new System.Windows.Forms.TextBox();
+			this.WheelsPaintLabel = new System.Windows.Forms.Label();
+			this.WheelsPaintTextBox = new System.Windows.Forms.TextBox();
 			this.GroupBox12 = new System.Windows.Forms.GroupBox();
-			this.Label13 = new System.Windows.Forms.Label();
-			this.PaintCodesTextBox = new System.Windows.Forms.TextBox();
 			this.GripTextBox = new System.Windows.Forms.TextBox();
 			this.Label20 = new System.Windows.Forms.Label();
 			this.GroupBox11 = new System.Windows.Forms.GroupBox();
@@ -134,21 +137,21 @@ namespace GT5_Car_hack_workshop
 			this.Label37 = new System.Windows.Forms.Label();
 			this.Button12 = new System.Windows.Forms.Button();
 			this.Label30 = new System.Windows.Forms.Label();
-			this.HornCodeComboBox = new SearchableComboBox();
+			this.HornCodeComboBox = new GT5_Car_hack_workshop.Components.FormComponents.SearchableComboBox();
 			this.Label29 = new System.Windows.Forms.Label();
-			this.LsdCodeComboBox = new SearchableComboBox();
+			this.LsdCodeComboBox = new GT5_Car_hack_workshop.Components.FormComponents.SearchableComboBox();
 			this.Label28 = new System.Windows.Forms.Label();
-			this.BodyCodeComboBox = new SearchableComboBox();
+			this.BodyCodeComboBox = new GT5_Car_hack_workshop.Components.FormComponents.SearchableComboBox();
 			this.Label27 = new System.Windows.Forms.Label();
-			this.SuspensionCodeComboBox = new SearchableComboBox();
+			this.SuspensionCodeComboBox = new GT5_Car_hack_workshop.Components.FormComponents.SearchableComboBox();
 			this.Label26 = new System.Windows.Forms.Label();
-			this.TransmissionCodeComboBox = new SearchableComboBox();
+			this.TransmissionCodeComboBox = new GT5_Car_hack_workshop.Components.FormComponents.SearchableComboBox();
 			this.Label25 = new System.Windows.Forms.Label();
-			this.ChassisCodeComboBox = new SearchableComboBox();
+			this.ChassisCodeComboBox = new GT5_Car_hack_workshop.Components.FormComponents.SearchableComboBox();
 			this.Label24 = new System.Windows.Forms.Label();
-			this.DrivetrainCodeComboBox = new SearchableComboBox();
+			this.DrivetrainCodeComboBox = new GT5_Car_hack_workshop.Components.FormComponents.SearchableComboBox();
 			this.Label23 = new System.Windows.Forms.Label();
-			this.EngineCodeComboBox = new SearchableComboBox();
+			this.EngineCodeComboBox = new GT5_Car_hack_workshop.Components.FormComponents.SearchableComboBox();
 			this.TabPage4 = new System.Windows.Forms.TabPage();
 			this.Button18 = new System.Windows.Forms.Button();
 			this.Button15 = new System.Windows.Forms.Button();
@@ -169,6 +172,7 @@ namespace GT5_Car_hack_workshop
 			this.TabPage3.SuspendLayout();
 			this.GroupBox14.SuspendLayout();
 			this.GroupBox13.SuspendLayout();
+			this.GroupBoxPaint.SuspendLayout();
 			this.GroupBox12.SuspendLayout();
 			this.GroupBox11.SuspendLayout();
 			this.TabControl1.SuspendLayout();
@@ -1060,6 +1064,7 @@ namespace GT5_Car_hack_workshop
 			// 
 			this.TabPage3.Controls.Add(this.GroupBox14);
 			this.TabPage3.Controls.Add(this.GroupBox13);
+			this.TabPage3.Controls.Add(this.GroupBoxPaint);
 			this.TabPage3.Controls.Add(this.GroupBox12);
 			this.TabPage3.Controls.Add(this.GroupBox11);
 			this.TabPage3.Location = new System.Drawing.Point(4, 25);
@@ -1191,44 +1196,77 @@ namespace GT5_Car_hack_workshop
 			this.Label38.TabIndex = 45;
 			this.Label38.Text = "Weight multiplier";
 			// 
+			// GroupBoxPaint
+			// 
+			this.GroupBoxPaint.Controls.Add(this.BodyPaintLabel);
+			this.GroupBoxPaint.Controls.Add(this.BodyPaintTextBox);
+			this.GroupBoxPaint.Controls.Add(this.WheelsPaintLabel);
+			this.GroupBoxPaint.Controls.Add(this.WheelsPaintTextBox);
+			this.GroupBoxPaint.Location = new System.Drawing.Point(8, 126);
+			this.GroupBoxPaint.Margin = new System.Windows.Forms.Padding(4);
+			this.GroupBoxPaint.Name = "GroupBoxPaint";
+			this.GroupBoxPaint.Padding = new System.Windows.Forms.Padding(4);
+			this.GroupBoxPaint.Size = new System.Drawing.Size(311, 84);
+			this.GroupBoxPaint.TabIndex = 46;
+			this.GroupBoxPaint.TabStop = false;
+			this.GroupBoxPaint.Text = "Paint";
+			// 
+			// BodyPaintLabel
+			// 
+			this.BodyPaintLabel.AutoSize = true;
+			this.BodyPaintLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.BodyPaintLabel.ForeColor = System.Drawing.Color.Blue;
+			this.BodyPaintLabel.Location = new System.Drawing.Point(9, 21);
+			this.BodyPaintLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.BodyPaintLabel.Name = "BodyPaintLabel";
+			this.BodyPaintLabel.Size = new System.Drawing.Size(35, 13);
+			this.BodyPaintLabel.TabIndex = 25;
+			this.BodyPaintLabel.Text = "Body";
+			// 
+			// BodyPaintTextBox
+			// 
+			this.BodyPaintTextBox.Location = new System.Drawing.Point(100, 18);
+			this.BodyPaintTextBox.Margin = new System.Windows.Forms.Padding(4);
+			this.BodyPaintTextBox.Name = "BodyPaintTextBox";
+			this.BodyPaintTextBox.Size = new System.Drawing.Size(99, 22);
+			this.BodyPaintTextBox.TabIndex = 26;
+			// 
+			// WheelsPaintLabel
+			// 
+			this.WheelsPaintLabel.AutoSize = true;
+			this.WheelsPaintLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.WheelsPaintLabel.ForeColor = System.Drawing.Color.Blue;
+			this.WheelsPaintLabel.Location = new System.Drawing.Point(9, 49);
+			this.WheelsPaintLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.WheelsPaintLabel.Name = "WheelsPaintLabel";
+			this.WheelsPaintLabel.Size = new System.Drawing.Size(49, 13);
+			this.WheelsPaintLabel.TabIndex = 27;
+			this.WheelsPaintLabel.Text = "Wheels";
+			// 
+			// WheelsPaintTextBox
+			// 
+			this.WheelsPaintTextBox.Location = new System.Drawing.Point(100, 46);
+			this.WheelsPaintTextBox.Margin = new System.Windows.Forms.Padding(4);
+			this.WheelsPaintTextBox.Name = "WheelsPaintTextBox";
+			this.WheelsPaintTextBox.Size = new System.Drawing.Size(99, 22);
+			this.WheelsPaintTextBox.TabIndex = 28;
+			// 
 			// GroupBox12
 			// 
-			this.GroupBox12.Controls.Add(this.Label13);
-			this.GroupBox12.Controls.Add(this.PaintCodesTextBox);
 			this.GroupBox12.Controls.Add(this.GripTextBox);
 			this.GroupBox12.Controls.Add(this.Label20);
-			this.GroupBox12.Location = new System.Drawing.Point(8, 126);
+			this.GroupBox12.Location = new System.Drawing.Point(8, 218);
 			this.GroupBox12.Margin = new System.Windows.Forms.Padding(4);
 			this.GroupBox12.Name = "GroupBox12";
 			this.GroupBox12.Padding = new System.Windows.Forms.Padding(4);
-			this.GroupBox12.Size = new System.Drawing.Size(311, 89);
-			this.GroupBox12.TabIndex = 46;
+			this.GroupBox12.Size = new System.Drawing.Size(311, 56);
+			this.GroupBox12.TabIndex = 47;
 			this.GroupBox12.TabStop = false;
 			this.GroupBox12.Text = "Other";
 			// 
-			// Label13
-			// 
-			this.Label13.AutoSize = true;
-			this.Label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Label13.ForeColor = System.Drawing.Color.Blue;
-			this.Label13.Location = new System.Drawing.Point(8, 20);
-			this.Label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-			this.Label13.Name = "Label13";
-			this.Label13.Size = new System.Drawing.Size(36, 13);
-			this.Label13.TabIndex = 24;
-			this.Label13.Text = "Paint";
-			// 
-			// PaintCodesTextBox
-			// 
-			this.PaintCodesTextBox.Location = new System.Drawing.Point(64, 16);
-			this.PaintCodesTextBox.Margin = new System.Windows.Forms.Padding(4);
-			this.PaintCodesTextBox.Name = "PaintCodesTextBox";
-			this.PaintCodesTextBox.Size = new System.Drawing.Size(120, 22);
-			this.PaintCodesTextBox.TabIndex = 25;
-			// 
 			// GripTextBox
 			// 
-			this.GripTextBox.Location = new System.Drawing.Point(64, 48);
+			this.GripTextBox.Location = new System.Drawing.Point(64, 16);
 			this.GripTextBox.Margin = new System.Windows.Forms.Padding(4);
 			this.GripTextBox.Name = "GripTextBox";
 			this.GripTextBox.Size = new System.Drawing.Size(55, 22);
@@ -1239,7 +1277,7 @@ namespace GT5_Car_hack_workshop
 			this.Label20.AutoSize = true;
 			this.Label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Label20.ForeColor = System.Drawing.Color.Red;
-			this.Label20.Location = new System.Drawing.Point(16, 52);
+			this.Label20.Location = new System.Drawing.Point(16, 20);
 			this.Label20.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.Label20.Name = "Label20";
 			this.Label20.Size = new System.Drawing.Size(30, 13);
@@ -1435,11 +1473,16 @@ namespace GT5_Car_hack_workshop
 			// 
 			// HornCodeComboBox
 			// 
+			this.HornCodeComboBox.CaseSensitiveSearch = false;
+			this.HornCodeComboBox.DisplayMember = "";
 			this.HornCodeComboBox.Location = new System.Drawing.Point(96, 240);
-			this.HornCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
+			this.HornCodeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.HornCodeComboBox.Name = "HornCodeComboBox";
+			this.HornCodeComboBox.SelectedIndex = -1;
+			this.HornCodeComboBox.SelectedItem = null;
 			this.HornCodeComboBox.Size = new System.Drawing.Size(375, 24);
 			this.HornCodeComboBox.TabIndex = 14;
+			this.HornCodeComboBox.ValueMember = "";
 			this.HornCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.HornCodeComboBox_SelectedIndexChanged);
 			// 
 			// Label29
@@ -1454,11 +1497,16 @@ namespace GT5_Car_hack_workshop
 			// 
 			// LsdCodeComboBox
 			// 
+			this.LsdCodeComboBox.CaseSensitiveSearch = false;
+			this.LsdCodeComboBox.DisplayMember = "";
 			this.LsdCodeComboBox.Location = new System.Drawing.Point(96, 207);
-			this.LsdCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
+			this.LsdCodeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.LsdCodeComboBox.Name = "LsdCodeComboBox";
+			this.LsdCodeComboBox.SelectedIndex = -1;
+			this.LsdCodeComboBox.SelectedItem = null;
 			this.LsdCodeComboBox.Size = new System.Drawing.Size(375, 24);
 			this.LsdCodeComboBox.TabIndex = 12;
+			this.LsdCodeComboBox.ValueMember = "";
 			this.LsdCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.LsdCodeComboBox_SelectedIndexChanged);
 			// 
 			// Label28
@@ -1473,11 +1521,16 @@ namespace GT5_Car_hack_workshop
 			// 
 			// BodyCodeComboBox
 			// 
+			this.BodyCodeComboBox.CaseSensitiveSearch = false;
+			this.BodyCodeComboBox.DisplayMember = "";
 			this.BodyCodeComboBox.Location = new System.Drawing.Point(96, 174);
-			this.BodyCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
+			this.BodyCodeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.BodyCodeComboBox.Name = "BodyCodeComboBox";
+			this.BodyCodeComboBox.SelectedIndex = -1;
+			this.BodyCodeComboBox.SelectedItem = null;
 			this.BodyCodeComboBox.Size = new System.Drawing.Size(375, 24);
 			this.BodyCodeComboBox.TabIndex = 10;
+			this.BodyCodeComboBox.ValueMember = "";
 			this.BodyCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.BodyCodeComboBox_SelectedIndexChanged);
 			// 
 			// Label27
@@ -1492,11 +1545,16 @@ namespace GT5_Car_hack_workshop
 			// 
 			// SuspensionCodeComboBox
 			// 
+			this.SuspensionCodeComboBox.CaseSensitiveSearch = false;
+			this.SuspensionCodeComboBox.DisplayMember = "";
 			this.SuspensionCodeComboBox.Location = new System.Drawing.Point(96, 140);
-			this.SuspensionCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
+			this.SuspensionCodeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.SuspensionCodeComboBox.Name = "SuspensionCodeComboBox";
+			this.SuspensionCodeComboBox.SelectedIndex = -1;
+			this.SuspensionCodeComboBox.SelectedItem = null;
 			this.SuspensionCodeComboBox.Size = new System.Drawing.Size(375, 24);
 			this.SuspensionCodeComboBox.TabIndex = 8;
+			this.SuspensionCodeComboBox.ValueMember = "";
 			this.SuspensionCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.SuspensionCodeComboBox_SelectedIndexChanged);
 			// 
 			// Label26
@@ -1511,11 +1569,16 @@ namespace GT5_Car_hack_workshop
 			// 
 			// TransmissionCodeComboBox
 			// 
+			this.TransmissionCodeComboBox.CaseSensitiveSearch = false;
+			this.TransmissionCodeComboBox.DisplayMember = "";
 			this.TransmissionCodeComboBox.Location = new System.Drawing.Point(96, 107);
-			this.TransmissionCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
+			this.TransmissionCodeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.TransmissionCodeComboBox.Name = "TransmissionCodeComboBox";
+			this.TransmissionCodeComboBox.SelectedIndex = -1;
+			this.TransmissionCodeComboBox.SelectedItem = null;
 			this.TransmissionCodeComboBox.Size = new System.Drawing.Size(375, 24);
 			this.TransmissionCodeComboBox.TabIndex = 6;
+			this.TransmissionCodeComboBox.ValueMember = "";
 			this.TransmissionCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.TransmissionCodeComboBox_SelectedIndexChanged);
 			// 
 			// Label25
@@ -1530,11 +1593,16 @@ namespace GT5_Car_hack_workshop
 			// 
 			// ChassisCodeComboBox
 			// 
+			this.ChassisCodeComboBox.CaseSensitiveSearch = false;
+			this.ChassisCodeComboBox.DisplayMember = "";
 			this.ChassisCodeComboBox.Location = new System.Drawing.Point(96, 74);
-			this.ChassisCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
+			this.ChassisCodeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.ChassisCodeComboBox.Name = "ChassisCodeComboBox";
+			this.ChassisCodeComboBox.SelectedIndex = -1;
+			this.ChassisCodeComboBox.SelectedItem = null;
 			this.ChassisCodeComboBox.Size = new System.Drawing.Size(375, 24);
 			this.ChassisCodeComboBox.TabIndex = 4;
+			this.ChassisCodeComboBox.ValueMember = "";
 			this.ChassisCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.ChassisCodeComboBox_SelectedIndexChanged);
 			// 
 			// Label24
@@ -1549,11 +1617,16 @@ namespace GT5_Car_hack_workshop
 			// 
 			// DrivetrainCodeComboBox
 			// 
+			this.DrivetrainCodeComboBox.CaseSensitiveSearch = false;
+			this.DrivetrainCodeComboBox.DisplayMember = "";
 			this.DrivetrainCodeComboBox.Location = new System.Drawing.Point(96, 41);
-			this.DrivetrainCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
+			this.DrivetrainCodeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.DrivetrainCodeComboBox.Name = "DrivetrainCodeComboBox";
+			this.DrivetrainCodeComboBox.SelectedIndex = -1;
+			this.DrivetrainCodeComboBox.SelectedItem = null;
 			this.DrivetrainCodeComboBox.Size = new System.Drawing.Size(375, 24);
 			this.DrivetrainCodeComboBox.TabIndex = 2;
+			this.DrivetrainCodeComboBox.ValueMember = "";
 			this.DrivetrainCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.DrivetrainCodeComboBox_SelectedIndexChanged);
 			// 
 			// Label23
@@ -1568,11 +1641,16 @@ namespace GT5_Car_hack_workshop
 			// 
 			// EngineCodeComboBox
 			// 
+			this.EngineCodeComboBox.CaseSensitiveSearch = false;
+			this.EngineCodeComboBox.DisplayMember = "";
 			this.EngineCodeComboBox.Location = new System.Drawing.Point(96, 7);
-			this.EngineCodeComboBox.Margin = new System.Windows.Forms.Padding(4);
+			this.EngineCodeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.EngineCodeComboBox.Name = "EngineCodeComboBox";
+			this.EngineCodeComboBox.SelectedIndex = -1;
+			this.EngineCodeComboBox.SelectedItem = null;
 			this.EngineCodeComboBox.Size = new System.Drawing.Size(375, 24);
 			this.EngineCodeComboBox.TabIndex = 0;
+			this.EngineCodeComboBox.ValueMember = "";
 			this.EngineCodeComboBox.SelectedIndexChanged += new System.EventHandler(this.EngineCodeComboBox_SelectedIndexChanged);
 			// 
 			// TabPage4
@@ -1677,6 +1755,8 @@ namespace GT5_Car_hack_workshop
 			this.GroupBox14.PerformLayout();
 			this.GroupBox13.ResumeLayout(false);
 			this.GroupBox13.PerformLayout();
+			this.GroupBoxPaint.ResumeLayout(false);
+			this.GroupBoxPaint.PerformLayout();
 			this.GroupBox12.ResumeLayout(false);
 			this.GroupBox12.PerformLayout();
 			this.GroupBox11.ResumeLayout(false);
@@ -1777,9 +1857,12 @@ namespace GT5_Car_hack_workshop
 		private System.Windows.Forms.CheckBox CheckBox4;
 		private System.Windows.Forms.TextBox WeightMultiplierTextBox;
 		private System.Windows.Forms.Label Label38;
+		private System.Windows.Forms.GroupBox GroupBoxPaint;
+		private System.Windows.Forms.Label BodyPaintLabel;
+		private System.Windows.Forms.TextBox BodyPaintTextBox;
+		private System.Windows.Forms.Label WheelsPaintLabel;
+		private System.Windows.Forms.TextBox WheelsPaintTextBox;
 		private System.Windows.Forms.GroupBox GroupBox12;
-		private System.Windows.Forms.Label Label13;
-		private System.Windows.Forms.TextBox PaintCodesTextBox;
 		private System.Windows.Forms.TextBox GripTextBox;
 		private System.Windows.Forms.Label Label20;
 		private System.Windows.Forms.GroupBox GroupBox11;

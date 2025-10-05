@@ -99,8 +99,8 @@ namespace GT5_Car_hack_workshop
                 Gt5Save[Moff - 205].ToString("X2") + " " + Gt5Save[Moff - 204].ToString("X2");
             RemoveSpoilerCodeTextBox.Text = Gt5Save[Moff - 88].ToString();
 
-            PaintCodesTextBox.Text =
-                $"{Gt5Save[Moff - 344]:X2} {Gt5Save[Moff - 343]:X2} {Gt5Save[Moff - 342]:X2} {Gt5Save[Moff - 341]:X2}";
+            BodyPaintTextBox.Text = $"{Gt5Save[Moff - 344]:X2} {Gt5Save[Moff - 343]:X2}";
+            WheelsPaintTextBox.Text = $"{Gt5Save[Moff - 342]:X2} {Gt5Save[Moff - 341]:X2}";
 
             TurboModifierTextBox.Text =
                 $"{Gt5Save[Moff - 171]:X2} {Gt5Save[Moff - 170]:X2} {Gt5Save[Moff - 169]:X2} {Gt5Save[Moff - 168]:X2}";
@@ -225,12 +225,13 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                var paintCodes = ByteUtils.HexStringToByteArray(PaintCodesTextBox.Text);
+                var bodyPaint = ByteUtils.HexStringToByteArray(BodyPaintTextBox.Text);
+                var wheelsPaint = ByteUtils.HexStringToByteArray(WheelsPaintTextBox.Text);
 
-                Gt5Save[Moff - 344] = paintCodes[0];
-                Gt5Save[Moff - 343] = paintCodes[1];
-                Gt5Save[Moff - 342] = paintCodes[2];
-                Gt5Save[Moff - 341] = paintCodes[3];
+                Gt5Save[Moff - 344] = bodyPaint[0];
+                Gt5Save[Moff - 343] = bodyPaint[1];
+                Gt5Save[Moff - 342] = wheelsPaint[0];
+                Gt5Save[Moff - 341] = wheelsPaint[1];
             }
             catch (Exception ex)
             {
