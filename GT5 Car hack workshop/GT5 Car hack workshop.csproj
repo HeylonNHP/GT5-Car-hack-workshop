@@ -2,15 +2,16 @@
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <TargetFramework>net48</TargetFramework>
+        <TargetFramework>net10.0-windows</TargetFramework>
         <UseWindowsForms>true</UseWindowsForms>
+        <EnableWindowsTargeting>true</EnableWindowsTargeting>
         <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
 
         <RootNamespace>GT5_Car_hack_workshop</RootNamespace>
         <AssemblyName>GT5 Car hack workshop</AssemblyName>
         <StartupObject>GT5_Car_hack_workshop.Program</StartupObject>
         <ApplicationIcon>GT5 Car hack workshop.ico</ApplicationIcon>
-        <LangVersion>10</LangVersion>
+        <LangVersion>latest</LangVersion>
         <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
 
         <!-- Assembly Information -->
@@ -43,8 +44,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.1" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
     </ItemGroup>
 
     <ItemGroup>
@@ -54,9 +55,6 @@
         <EmbeddedResource Include="Resources\Tranny.resources" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Reference Include="Microsoft.VisualBasic" />
-    </ItemGroup>
 
     <ItemGroup>
       <Compile Update="Components\Forms\InputDialog.cs">

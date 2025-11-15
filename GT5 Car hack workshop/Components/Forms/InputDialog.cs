@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.ComponentModel;
+using System.Windows.Forms;
 
 namespace GT5_Car_hack_workshop.Components.Forms
 {
@@ -12,6 +13,7 @@ namespace GT5_Car_hack_workshop.Components.Forms
         /// <summary>
         /// The text shown as the prompt.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string Prompt
         {
             get => lblPrompt.Text;
@@ -21,6 +23,7 @@ namespace GT5_Car_hack_workshop.Components.Forms
         /// <summary>
         /// The current value of the input box.
         /// </summary>
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string InputValue
         {
             get => txtInput.Text;

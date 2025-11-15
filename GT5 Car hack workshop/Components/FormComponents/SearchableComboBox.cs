@@ -27,6 +27,7 @@ namespace GT5_Car_hack_workshop.Components.FormComponents
         [Browsable(true)]
         [Category("Appearance")]
         [Description("The selected item in the combo box")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public object SelectedItem
         {
             get => comboBox1.SelectedItem;
@@ -36,6 +37,7 @@ namespace GT5_Car_hack_workshop.Components.FormComponents
         [Browsable(true)]
         [Category("Appearance")]
         [Description("The index of the selected item")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public int SelectedIndex
         {
             get => comboBox1.SelectedIndex;
@@ -54,11 +56,13 @@ namespace GT5_Car_hack_workshop.Components.FormComponents
         [Browsable(true)]
         [Category("Behavior")]
         [Description("Determines if the search is case sensitive")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public bool CaseSensitiveSearch { get; set; } = false;
 
         [Browsable(true)]
         [Category("Data")]
         [Description("The property to display for the items in the combo box")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string DisplayMember
         {
             get => comboBox1.DisplayMember;
@@ -68,6 +72,7 @@ namespace GT5_Car_hack_workshop.Components.FormComponents
         [Browsable(true)]
         [Category("Data")]
         [Description("The property to use as the value for the items in the combo box")]
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public string ValueMember
         {
             get => comboBox1.ValueMember;
