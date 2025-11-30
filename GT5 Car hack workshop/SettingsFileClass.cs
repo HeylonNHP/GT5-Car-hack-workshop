@@ -43,6 +43,7 @@ namespace GT5_Car_hack_workshop
 
         /// <summary>
         ///     Reads the contents of the specified file into a string array, with each line of the file being an element in the array.
+        ///     Handles both Windows (\r\n) and Unix (\n) line endings.
         /// </summary>
         /// <param name="file">The path of the file to load.</param>
         /// <returns>An array of strings where each element represents a line from the file. If the file does not exist, an empty array is returned.</returns>
@@ -52,10 +53,12 @@ namespace GT5_Car_hack_workshop
 
             if (File.Exists(file))
             {
-                var fileBytes = File.ReadAllBytes(file);
-                var fileContent = Encoding.UTF8.GetString(fileBytes);
-                var fileLines = fileContent.Split(new[] { "\r\n" }, StringSplitOptions.None);
-                foreach (var line in fileLines) lines.Add(line);
+                // Read all text and handle both Windows and Unix line endings
+                var fileContent = File.ReadAllText(file);
+                // Split by both \r\n and \n, removing empty entries only if they result from the split
+                var fileLines = fileContent.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+                foreach (var line in fileLines) 
+                    lines.Add(line);
             }
             else
             {
