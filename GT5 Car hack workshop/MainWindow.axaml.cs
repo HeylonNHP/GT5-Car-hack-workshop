@@ -659,7 +659,8 @@ namespace GT5_Car_hack_workshop
 
         private async void Button13_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Open Customperformance window
+            var customPerformanceWindow = new CustomPerformanceWindow(_formManager);
+            await customPerformanceWindow.ShowDialog(this);
         }
 
         private async void Button6_Click(object sender, RoutedEventArgs e)

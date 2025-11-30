@@ -1,0 +1,99 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="380" d:DesignHeight="400"
+        x:Class="GT5_Car_hack_workshop.CustomPerformanceWindow"
+        Title="Custom samba like performance"
+        Width="380" Height="400"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Main Content -->
+        <StackPanel Grid.Row="0" Spacing="5">
+            <!-- Turbo -->
+            <Grid ColumnDefinitions="80,*,*">
+                <TextBlock Text="Turbo" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center"/>
+                <TextBox x:Name="TurboTextBox" Grid.Column="1" Text="5415" Width="140" HorizontalAlignment="Left"/>
+                <CheckBox x:Name="NoPartInstallCheckBox" Grid.Column="2" Content="Don't install any part" IsChecked="True" VerticalAlignment="Center" Margin="5,0,0,0"/>
+            </Grid>
+
+            <!-- Engine -->
+            <Grid ColumnDefinitions="80,*">
+                <TextBlock Text="Engine" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center"/>
+                <TextBox x:Name="EngineTextBox" Grid.Column="1" Text="3826" Width="140" HorizontalAlignment="Left"/>
+            </Grid>
+
+            <!-- Exhaust -->
+            <Grid ColumnDefinitions="80,*">
+                <TextBlock Text="Exhaust" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center"/>
+                <TextBox x:Name="ExhaustTextBox" Grid.Column="1" Text="5180" Width="140" HorizontalAlignment="Left"/>
+            </Grid>
+
+            <!-- Separator -->
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,5">
+                <TextBlock Text="Other" Foreground="Red" FontWeight="Bold" Margin="0,0,10,0" VerticalAlignment="Center"/>
+                <TextBlock Text="----------------------------------" VerticalAlignment="Center"/>
+            </StackPanel>
+
+            <!-- Other fields -->
+            <Grid ColumnDefinitions="80,*">
+                <TextBlock Text="???Transmission???" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="TextBox4" Grid.Column="1" Text="1361" Width="140" HorizontalAlignment="Left"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="80,*">
+                <TextBlock Text="???Suspension???" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="TextBox5" Grid.Column="1" Text="856" Width="140" HorizontalAlignment="Left"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="80,*">
+                <TextBlock Text="???Drivetrain???" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="TextBox6" Grid.Column="1" Text="856" Width="140" HorizontalAlignment="Left"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="80,*">
+                <TextBlock Text="???Brakes???" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="TextBox7" Grid.Column="1" Text="824" Width="140" HorizontalAlignment="Left"/>
+            </Grid>
+
+            <Grid ColumnDefinitions="80,*">
+                <TextBlock Text="???Chassis???" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="TextBox8" Grid.Column="1" Text="829" Width="140" HorizontalAlignment="Left"/>
+            </Grid>
+
+            <!-- Warning Label -->
+            <TextBlock Text="The values in these boxes must not exceed&#x0a;65535"
+                       Foreground="Red"
+                       FontStyle="Italic"
+                       TextDecorations="Underline"
+                       Margin="0,15,0,0"/>
+        </StackPanel>
+
+        <!-- Bottom Buttons -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Spacing="5">
+            <Button x:Name="LoadCurrentCarButton"
+                    Content="Load current car performance"
+                    Background="#C0C0FF"
+                    Width="160"
+                    Click="LoadCurrentCarPerformanceButton_Click"/>
+            <Button x:Name="DiscardButton"
+                    Content="Discard"
+                    Background="#FFC0C0"
+                    Width="80"
+                    Click="DiscardButton_Click"/>
+            <Button x:Name="ApplyButton"
+                    Content="Apply"
+                    Background="#C0FFC0"
+                    Width="80"
+                    Click="ApplyButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
