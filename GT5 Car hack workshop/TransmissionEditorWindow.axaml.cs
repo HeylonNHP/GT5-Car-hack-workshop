@@ -1,39 +1,44 @@
-﻿using System;
+using System;
 using System.Globalization;
-using System.Windows.Forms;
+using Avalonia.Controls;
+using Avalonia.Interactivity;
+using Avalonia.Threading;
 using GT5_Car_hack_workshop.Services;
 
 namespace GT5_Car_hack_workshop
 {
-    public partial class TransmissionEditor : Form
+    public partial class TransmissionEditorWindow : Window
     {
-        private readonly Timer _timer1;
+        private readonly DispatcherTimer _timer;
         private readonly IFormManager _formManager;
         private decimal _lastgearpre;
         private decimal _originalFinalDrive;
 
-        public TransmissionEditor(IFormManager formManager)
+        public TransmissionEditorWindow(IFormManager formManager)
         {
             _formManager = formManager;
             InitializeComponent();
-            
-            Load += TransmissionLoadValues;
+
+            Loaded += TransmissionLoadValues;
             _lastgearpre = 0.1m;
             _originalFinalDrive = 0.1m;
 
-            _timer1 = new Timer
+            _timer = new DispatcherTimer
             {
-                Interval = 100,
-                Enabled = true
+                Interval = TimeSpan.FromMilliseconds(100)
             };
-            _timer1.Tick += Timer1_Tick;
-            _timer1.Start();
+            _timer.Tick += Timer1_Tick;
+            _timer.Start();
 
-            FormClosing += (s, e) =>
+            Closing += (s, e) =>
             {
-                _timer1.Stop();
-                _timer1.Dispose();
+                _timer.Stop();
             };
+        }
+
+        public TransmissionEditorWindow()
+        {
+            InitializeComponent();
         }
 
         private string LoadGearRatioToGt5Save(int moffOffset1, int moffOffset2)
@@ -43,7 +48,7 @@ namespace GT5_Car_hack_workshop
             return (((firstByte << 8) | secondByte) / 1000.0f).ToString(CultureInfo.CurrentCulture);
         }
 
-        private void TransmissionLoadValues(object sender, EventArgs e)
+        private void TransmissionLoadValues(object sender, RoutedEventArgs e)
         {
             // Load gear ratios from save data into text boxes
             // Each gear ratio is stored as 2 bytes in hex format, divided by 1000 for display
@@ -122,7 +127,7 @@ namespace GT5_Car_hack_workshop
                 byte.Parse(intValue.ToString("X4").Substring(2, 2), NumberStyles.HexNumber);
         }
 
-        private void OkayButtonClick(object sender, EventArgs e)
+        private void OkayButtonClick(object sender, RoutedEventArgs e)
         {
             // Gear 1
             SaveGearRatioToGt5Save(TextBox1.Text, _formManager.MainForm.Moff - 73, _formManager.MainForm.Moff - 72);
@@ -183,22 +188,24 @@ namespace GT5_Car_hack_workshop
                 // Find the first TextBox with a value > 0
                 foreach (var textBox in textBoxes)
                 {
-                    if (float.Parse(textBox.Text) > 0f)
+                    if (float.TryParse(textBox.Text, out var gearValue) && gearValue > 0f)
                     {
-                        lastGear = float.Parse(textBox.Text);
+                        lastGear = gearValue;
                         break;
                     }
                 }
 
                 // Calculate the adjusted ratio based on original final drive, current final drive,
                 // max speed, and last gear ratio
-                float finalDriveRatio = float.Parse(TextBox12.Text);
-                float adjustedRatio = (float)_originalFinalDrive / finalDriveRatio *
-                                     maxSpeed *
-                                     (1f / lastGear * (float)_lastgearpre);
+                if (float.TryParse(TextBox12.Text, out float finalDriveRatio))
+                {
+                    float adjustedRatio = (float)_originalFinalDrive / finalDriveRatio *
+                                         maxSpeed *
+                                         (1f / lastGear * (float)_lastgearpre);
 
-                // Round to 1 decimal place and display
-                TextBox14.Text = Math.Round(adjustedRatio, 1).ToString();
+                    // Round to 1 decimal place and display
+                    TextBox14.Text = Math.Round(adjustedRatio, 1).ToString();
+                }
             }
         }
     }

@@ -698,7 +698,8 @@ namespace GT5_Car_hack_workshop
 
         private async void Button11_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Open TransmissionEditor
+            var transmissionEditorWindow = new TransmissionEditorWindow(_formManager);
+            await transmissionEditorWindow.ShowDialog(this);
         }
 
         private async void Button14_Click(object sender, RoutedEventArgs e)
