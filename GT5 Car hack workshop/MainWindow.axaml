@@ -2,13 +2,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="650"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="1100"
         x:Class="GT5_Car_hack_workshop.MainWindow"
         Title="GT5 Car hack workshop 2.6 (For GT5 2.14). Created by HeylonNHP"
-        Width="1200" Height="650"
-        CanResize="False">
+        Width="1200" Height="1100"
+        CanResize="False"
+        FontSize="11">
 
-    <Grid Margin="10">
+    <Grid Margin="6">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -19,10 +20,10 @@
         </Grid.ColumnDefinitions>
 
         <!-- Left Panel -->
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Spacing="10">
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Spacing="6">
             <!-- File and Settings Group -->
-            <Border BorderBrush="Gray" BorderThickness="1" Padding="10">
-                <StackPanel Spacing="10">
+            <Border BorderBrush="Gray" BorderThickness="1" Padding="6">
+                <StackPanel Spacing="6">
                     <TextBlock Text="Before and after you start hacking" FontWeight="Bold"/>
 
                     <TextBlock Text="GT5.0 file location:"/>
@@ -46,10 +47,10 @@
             </Border>
 
             <!-- Parts Database TabControl -->
-            <TabControl Height="480">
+            <TabControl Height="420">
                 <TabItem Header="Parts Database">
                     <ScrollViewer>
-                        <StackPanel Spacing="10" Margin="10">
+                        <StackPanel Spacing="5" Margin="6">
                             <Grid ColumnDefinitions="Auto,*">
                                 <TextBlock Text="Engine" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                 <ComboBox x:Name="EngineCodeComboBox" Grid.Column="1" SelectionChanged="EngineCodeComboBox_SelectionChanged"/>
@@ -89,7 +90,7 @@
                 </TabItem>
 
                 <TabItem Header="Misc.">
-                    <StackPanel Spacing="10" Margin="10">
+                    <StackPanel Spacing="5" Margin="6">
                         <Grid ColumnDefinitions="*,Auto">
                             <TextBlock Text="Custom Samba like performance:" Grid.Column="0" VerticalAlignment="Center"/>
                             <Button x:Name="Button13" Content="Open" Grid.Column="1" Background="Red" Foreground="White" Click="Button13_Click"/>
@@ -102,8 +103,8 @@
         </StackPanel>
 
         <!-- Right Panel -->
-        <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" BorderBrush="Gray" BorderThickness="1" Padding="10" Margin="10,0,0,0">
-            <StackPanel Spacing="5">
+        <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" BorderBrush="Gray" BorderThickness="1" Padding="6" Margin="6,0,0,0">
+            <StackPanel Spacing="3">
                 <TextBlock Text="Basic hacks" FontWeight="Bold"/>
 
                 <TabControl>
@@ -113,44 +114,47 @@
                                 <!-- Current Car Label -->
                                 <TextBlock x:Name="Label7" Text="??Car??" FontStyle="Italic"/>
 
-                                <!-- Key Legend -->
-                                <Border BorderBrush="Magenta" BorderThickness="1" Padding="5">
-                                    <StackPanel>
-                                        <TextBlock Text="Key" Foreground="Magenta" FontWeight="Bold"/>
-                                        <TextBlock Text="Hex only" Foreground="Blue" FontWeight="Bold"/>
-                                        <TextBlock Text="Decimal only" Foreground="Red" FontWeight="Bold"/>
-                                    </StackPanel>
-                                </Border>
+                                <!-- Key Legend and Downforce/Torque side-by-side -->
+                                <Grid ColumnDefinitions="Auto,10,*,10,*">
+                                    <!-- Key Legend -->
+                                    <Border Grid.Column="0" BorderBrush="Magenta" BorderThickness="1" Padding="3">
+                                        <StackPanel>
+                                            <TextBlock Text="Key" Foreground="Magenta" FontWeight="Bold" FontSize="10"/>
+                                            <TextBlock Text="Hex only" Foreground="Blue" FontWeight="Bold" FontSize="10"/>
+                                            <TextBlock Text="Decimal only" Foreground="Red" FontWeight="Bold" FontSize="10"/>
+                                        </StackPanel>
+                                    </Border>
 
-                                <!-- Downforce -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
-                                    <StackPanel>
-                                        <TextBlock Text="Downforce" FontWeight="Bold"/>
-                                        <Grid ColumnDefinitions="Auto,*,Auto,*">
-                                            <TextBlock Text="Aero" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                                            <TextBox x:Name="AeroFrontTextBox" Grid.Column="1" Width="60" Margin="0,0,10,0"/>
-                                            <TextBlock Text=":" Grid.Column="2" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                                            <TextBox x:Name="AeroRearTextBox" Grid.Column="3" Width="60"/>
-                                        </Grid>
-                                    </StackPanel>
-                                </Border>
+                                    <!-- Downforce -->
+                                    <Border Grid.Column="2" BorderBrush="Gray" BorderThickness="1" Padding="3">
+                                        <StackPanel>
+                                            <TextBlock Text="Downforce" FontWeight="Bold"/>
+                                            <Grid ColumnDefinitions="Auto,*,Auto,*">
+                                                <TextBlock Text="Aero" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                                <TextBox x:Name="AeroFrontTextBox" Grid.Column="1" Width="60" Margin="0,0,10,0"/>
+                                                <TextBlock Text=":" Grid.Column="2" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                                <TextBox x:Name="AeroRearTextBox" Grid.Column="3" Width="60"/>
+                                            </Grid>
+                                        </StackPanel>
+                                    </Border>
 
-                                <!-- Torque -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
-                                    <StackPanel>
-                                        <TextBlock Text="Torque" FontWeight="Bold"/>
-                                        <Grid ColumnDefinitions="Auto,*,Auto,*,Auto">
-                                            <TextBlock Text="Tq. Split" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                                            <TextBox x:Name="TorqueSplitTextBox" Grid.Column="1" Width="60" Margin="0,0,5,0" TextChanged="TorqueSplitTextBox_TextChanged"/>
-                                            <TextBlock Text=":" Grid.Column="2" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
-                                            <TextBox x:Name="TextBox5" Grid.Column="3" Width="60" IsReadOnly="True" Margin="0,0,5,0"/>
-                                            <Button x:Name="Button8" Content="?" Grid.Column="4" Click="Button8_Click"/>
-                                        </Grid>
-                                    </StackPanel>
-                                </Border>
+                                    <!-- Torque -->
+                                    <Border Grid.Column="4" BorderBrush="Gray" BorderThickness="1" Padding="3">
+                                        <StackPanel>
+                                            <TextBlock Text="Torque" FontWeight="Bold"/>
+                                            <Grid ColumnDefinitions="Auto,*,Auto,*,Auto">
+                                                <TextBlock Text="Tq. Split" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                                <TextBox x:Name="TorqueSplitTextBox" Grid.Column="1" Width="60" Margin="0,0,5,0" TextChanged="TorqueSplitTextBox_TextChanged"/>
+                                                <TextBlock Text=":" Grid.Column="2" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                                <TextBox x:Name="TextBox5" Grid.Column="3" Width="60" IsReadOnly="True" Margin="0,0,5,0"/>
+                                                <Button x:Name="Button8" Content="?" Grid.Column="4" Click="Button8_Click"/>
+                                            </Grid>
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
 
                                 <!-- Transmission -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="3">
                                     <StackPanel>
                                         <TextBlock Text="Transmission" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*">
@@ -161,8 +165,8 @@
                                 </Border>
 
                                 <!-- Visual mods -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
-                                    <StackPanel Spacing="5">
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="3">
+                                    <StackPanel Spacing="3">
                                         <TextBlock Text="Visual mods" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*,Auto,Auto">
                                             <TextBlock Text="Remove spoiler" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
@@ -177,8 +181,8 @@
                                 </Border>
 
                                 <!-- Car parts -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
-                                    <StackPanel Spacing="5">
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="3">
+                                    <StackPanel Spacing="3">
                                         <TextBlock Text="Car parts" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
                                             <TextBlock Text="Car body" Grid.Row="0" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
@@ -214,8 +218,8 @@
                                 </Border>
 
                                 <!-- Performance multipliers -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
-                                    <StackPanel Spacing="5">
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="3">
+                                    <StackPanel Spacing="3">
                                         <TextBlock Text="Performance multipliers" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*,Auto">
                                             <TextBlock Text="Turbo" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
@@ -238,8 +242,8 @@
                                 </Border>
 
                                 <!-- Reset protection -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
-                                    <StackPanel Spacing="5">
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="3">
+                                    <StackPanel Spacing="3">
                                         <TextBlock Text="Reset protection" FontWeight="Bold"/>
                                         <StackPanel Orientation="Horizontal" Spacing="5">
                                             <CheckBox x:Name="AddLucaBytesCheckBox" Content="Add LUCA bytes before FF block"/>
@@ -259,8 +263,8 @@
                         <ScrollViewer>
                             <StackPanel Spacing="10" Margin="5">
                                 <!-- Suspension -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
-                                    <StackPanel Spacing="5">
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="3">
+                                    <StackPanel Spacing="3">
                                         <TextBlock Text="Suspension" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*,Auto,*">
                                             <TextBlock Text="Suspension height" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
@@ -279,8 +283,8 @@
                                 </Border>
 
                                 <!-- Paint -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
-                                    <StackPanel Spacing="5">
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="3">
+                                    <StackPanel Spacing="3">
                                         <TextBlock Text="Paint" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*">
                                             <TextBlock Text="Body" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0"/>
@@ -294,7 +298,7 @@
                                 </Border>
 
                                 <!-- Other -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="3">
                                     <StackPanel>
                                         <TextBlock Text="Other" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*">
@@ -305,8 +309,8 @@
                                 </Border>
 
                                 <!-- Weight hack -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
-                                    <StackPanel Spacing="5">
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="3">
+                                    <StackPanel Spacing="3">
                                         <TextBlock Text="Weight hack" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*">
                                             <TextBlock Text="Weight multiplier" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0"/>
@@ -317,8 +321,8 @@
                                 </Border>
 
                                 <!-- Experimental -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
-                                    <StackPanel Spacing="5">
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="3">
+                                    <StackPanel Spacing="3">
                                         <TextBlock Text="Under development (EXPERIMENTAL)" FontWeight="Bold"/>
                                         <TextBlock Text="Transmission"/>
                                         <StackPanel Orientation="Horizontal" Spacing="5">
