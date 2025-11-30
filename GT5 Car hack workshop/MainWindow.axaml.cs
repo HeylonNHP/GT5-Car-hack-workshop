@@ -85,10 +85,30 @@ namespace GT5_Car_hack_workshop
 
         private async void LoadButton_Click(object sender, RoutedEventArgs e)
         {
-            var fileInfo = new FileInfo(TextBox1.Text);
-            var currentDate = DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss");
-            File.Copy(TextBox1.Text, $"Backups/{currentDate} {fileInfo.Name}");
-            await ProcessData();
+            var filePath = TextBox1.Text?.Trim();
+            if (string.IsNullOrWhiteSpace(filePath))
+            {
+                await ShowMessageBox("Please select a GT5.0 file first.");
+                return;
+            }
+
+            if (!File.Exists(filePath))
+            {
+                await ShowMessageBox($"The file does not exist:\n{filePath}");
+                return;
+            }
+
+            try
+            {
+                var fileInfo = new FileInfo(filePath);
+                var currentDate = DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss");
+                File.Copy(filePath, $"Backups/{currentDate} {fileInfo.Name}");
+                await ProcessData();
+            }
+            catch (Exception ex)
+            {
+                await ShowMessageBox($"Error creating backup:\n{ex.Message}");
+            }
         }
 
         private async void SaveAndEncrypt_Click(object sender, RoutedEventArgs e)

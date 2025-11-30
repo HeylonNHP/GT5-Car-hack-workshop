@@ -13,23 +13,44 @@ namespace GT5_Car_hack_workshop
 	    private static bool IsLinux => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
 
 	    /// <summary>
-	    ///     Creates a process configured to run pfdtool with the given arguments
+	    ///     Converts a Unix path to a Windows path using winepath
 	    /// </summary>
-	    private static Process CreatePfdToolProcess(string arguments)
+	    private static string ConvertToWindowsPath(string unixPath)
         {
             var proc = new Process();
+            proc.StartInfo.FileName = "winepath";
+            proc.StartInfo.Arguments = $"-w \"{unixPath}\"";
+            proc.StartInfo.RedirectStandardOutput = true;
+            proc.StartInfo.UseShellExecute = false;
+            proc.StartInfo.CreateNoWindow = true;
+            proc.Start();
+            var windowsPath = proc.StandardOutput.ReadToEnd().Trim();
+            proc.WaitForExit();
+            return windowsPath;
+        }
+
+	    /// <summary>
+	    ///     Creates a process configured to run pfdtool with the given arguments
+	    /// </summary>
+	    private static Process CreatePfdToolProcess(string directory, string fileName, string operation)
+        {
+            var proc = new Process();
+            var executableDir = AppDomain.CurrentDomain.BaseDirectory;
+            var pfdtoolPath = Path.Combine(executableDir, "pfdtool.exe");
             
             if (IsLinux)
             {
-                // On Linux, use Wine to run pfdtool
+                // On Linux, use Wine to run pfdtool with converted paths
+                var winDirectory = ConvertToWindowsPath(directory);
+                var winPfdtoolPath = ConvertToWindowsPath(pfdtoolPath);
                 proc.StartInfo.FileName = "wine";
-                proc.StartInfo.Arguments = $"pfdtool {arguments}";
+                proc.StartInfo.Arguments = $"\"{winPfdtoolPath}\" -g BCES00569 {operation} \"{winDirectory}\" {fileName}";
             }
             else
             {
                 // On Windows, run pfdtool directly
-                proc.StartInfo.FileName = "pfdtool";
-                proc.StartInfo.Arguments = arguments;
+                proc.StartInfo.FileName = pfdtoolPath;
+                proc.StartInfo.Arguments = $"-g BCES00569 {operation} \"{directory}\" {fileName}";
             }
             
             proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -44,7 +65,7 @@ namespace GT5_Car_hack_workshop
 	    public static byte[] Load(string path)
         {
             var gt5File = new FileInfo(path);
-            var proc = CreatePfdToolProcess($"-g BCES00569 -d \"{gt5File.Directory.FullName}\" {gt5File.Name}");
+            var proc = CreatePfdToolProcess(gt5File.Directory.FullName, gt5File.Name, "-d");
             proc.Start();
             proc.WaitForExit();
             return File.ReadAllBytes(gt5File.FullName);
@@ -57,7 +78,7 @@ namespace GT5_Car_hack_workshop
 	    public static void Encrypt(string path)
         {
             var gt5File = new FileInfo(path);
-            var proc = CreatePfdToolProcess($"-g BCES00569 -e \"{gt5File.Directory.FullName}\" {gt5File.Name}");
+            var proc = CreatePfdToolProcess(gt5File.Directory.FullName, gt5File.Name, "-e");
             proc.Start();
             proc.WaitForExit();
         }
