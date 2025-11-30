@@ -639,18 +639,18 @@ namespace GT5_Car_hack_workshop
 
         private async void Button12_Click(object sender, RoutedEventArgs e)
         {
-            // TODO: Implement InputDialog
-            if (string.IsNullOrWhiteSpace(_CarName))
+            var carName = await InputDialog.Show(this, "Enter car name:", "Add Car to Database", _CarName ?? "");
+
+            if (string.IsNullOrWhiteSpace(carName))
             {
-                await ShowMessageBox("Car name cannot be empty");
-                return;
+                return; // User cancelled or entered empty name
             }
 
             try
             {
                 var newCarParts = new CarParts
                 {
-                    Name = _CarName,
+                    Name = carName,
                     Engine = ByteUtils.HexStringToUshort(EngineCodeTextBox.Text),
                     Drivetrain = ByteUtils.HexStringToUshort(DrivetrainCodeTextBox.Text),
                     Chassis = ByteUtils.HexStringToUshort(ChassisCodeTextBox.Text),
@@ -661,7 +661,7 @@ namespace GT5_Car_hack_workshop
                     Horn = ByteUtils.HexStringToUshort(HornCodeTextBox.Text)
                 };
 
-                if (_CarPartsList.Any(cp => cp.Name.Equals(_CarName, StringComparison.OrdinalIgnoreCase)))
+                if (_CarPartsList.Any(cp => cp.Name.Equals(carName, StringComparison.OrdinalIgnoreCase)))
                 {
                     await ShowMessageBox("Car already exists");
                     return;
@@ -670,6 +670,7 @@ namespace GT5_Car_hack_workshop
                 _CarPartsList.Add(newCarParts);
                 SettingsFileClass.SaveCarParts(_CarPartsList, PARTS_DATABASE_FILENAME);
                 LoadParts();
+                await ShowMessageBox($"Successfully added {carName} to the database");
             }
             catch (Exception ex)
             {

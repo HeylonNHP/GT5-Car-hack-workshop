@@ -1,0 +1,48 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="GT5_Car_hack_workshop.InputDialog"
+        Title="Input"
+        Width="420"
+        Height="150"
+        CanResize="false"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Prompt Label -->
+        <TextBlock x:Name="LblPrompt"
+                   Grid.Row="0"
+                   Text="Prompt:"
+                   TextWrapping="Wrap"
+                   MaxWidth="360"
+                   Margin="0,0,0,10"/>
+
+        <!-- Input TextBox -->
+        <TextBox x:Name="TxtInput"
+                 Grid.Row="1"
+                 VerticalAlignment="Top"
+                 Margin="0,0,0,15"/>
+
+        <!-- Buttons -->
+        <StackPanel Grid.Row="2"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Spacing="10">
+            <Button x:Name="BtnOk"
+                    Content="OK"
+                    Width="75"
+                    Click="BtnOk_Click"
+                    IsDefault="True"/>
+            <Button x:Name="BtnCancel"
+                    Content="Cancel"
+                    Width="75"
+                    Click="BtnCancel_Click"
+                    IsCancel="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

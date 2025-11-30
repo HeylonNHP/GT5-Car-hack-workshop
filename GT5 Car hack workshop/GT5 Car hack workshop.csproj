@@ -43,7 +43,5 @@
     <ItemGroup>
         <Compile Remove="Components\FormComponents\SearchableComboBox.cs" />
         <Compile Remove="Components\FormComponents\SearchableComboBox.Designer.cs" />
-        <Compile Remove="Components\Forms\InputDialog.cs" />
-        <Compile Remove="Components\Forms\InputDialog.Designer.cs" />
     </ItemGroup>
 </Project>
