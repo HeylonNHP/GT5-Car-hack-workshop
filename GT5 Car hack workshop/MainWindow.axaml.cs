@@ -51,8 +51,13 @@ namespace GT5_Car_hack_workshop
 
             _ProgramSettings = SettingsFileClass.LoadSettings("GT5CHWsettings.ini", 1);
             _CarPartsList = SettingsFileClass.LoadCarParts(PARTS_DATABASE_FILENAME);
-            TextBox1.Text = _ProgramSettings[0];
-            TextBox2.Text = _ProgramSettings[1];
+
+            // Safely access settings with bounds checking
+            if (_ProgramSettings != null && _ProgramSettings.Length > 0)
+                TextBox1.Text = _ProgramSettings[0];
+            if (_ProgramSettings != null && _ProgramSettings.Length > 1)
+                TextBox2.Text = _ProgramSettings[1];
+
             LoadParts();
         }
 

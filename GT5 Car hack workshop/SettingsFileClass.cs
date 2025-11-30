@@ -18,13 +18,25 @@ namespace GT5_Car_hack_workshop
 
         public static string[] LoadSettings(string file, int arraySize)
         {
+            var requiredSize = arraySize + 1;
+
             if (File.Exists(file))
             {
                 var lines = LoadFileToArray(file);
-                return lines.Take(arraySize + 1).ToArray();
+                // Ensure we always return the required size by padding with spaces if needed
+                if (lines.Length < requiredSize)
+                {
+                    var paddedArray = new string[requiredSize];
+                    for (int i = 0; i < requiredSize; i++)
+                    {
+                        paddedArray[i] = i < lines.Length ? lines[i] : " ";
+                    }
+                    return paddedArray;
+                }
+                return lines.Take(requiredSize).ToArray();
             }
 
-            return Enumerable.Repeat(" ", arraySize + 1).ToArray();
+            return Enumerable.Repeat(" ", requiredSize).ToArray();
         }
 
         /// <summary>
