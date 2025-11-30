@@ -47,7 +47,8 @@ namespace GT5_Car_hack_workshop
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            if (!Directory.Exists("Backups")) Directory.CreateDirectory("Backups");
+            var backupPath = Path.Combine(AppContext.BaseDirectory, "Backups");
+            if (!Directory.Exists(backupPath)) Directory.CreateDirectory(backupPath);
 
             _ProgramSettings = SettingsFileClass.LoadSettings("GT5CHWsettings.ini", 1);
             _CarPartsList = SettingsFileClass.LoadCarParts(PARTS_DATABASE_FILENAME);
@@ -102,7 +103,8 @@ namespace GT5_Car_hack_workshop
             {
                 var fileInfo = new FileInfo(filePath);
                 var currentDate = DateTime.Now.ToString("yyyy-MM-dd HH.mm.ss");
-                File.Copy(filePath, $"Backups/{currentDate} {fileInfo.Name}");
+                var backupPath = Path.Combine(AppContext.BaseDirectory, "Backups", $"{currentDate} {fileInfo.Name}");
+                File.Copy(filePath, backupPath);
                 await ProcessData();
             }
             catch (Exception ex)

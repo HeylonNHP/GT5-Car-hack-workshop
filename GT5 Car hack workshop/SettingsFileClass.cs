@@ -11,18 +11,20 @@ namespace GT5_Car_hack_workshop
     {
         public static void SaveSettings(string[] settings, string file)
         {
-            if (File.Exists(file)) File.Delete(file);
+            var filePath = Path.Combine(AppContext.BaseDirectory, file);
+            if (File.Exists(filePath)) File.Delete(filePath);
 
-            File.WriteAllLines(file, settings);
+            File.WriteAllLines(filePath, settings);
         }
 
         public static string[] LoadSettings(string file, int arraySize)
         {
             var requiredSize = arraySize + 1;
+            var filePath = Path.Combine(AppContext.BaseDirectory, file);
 
-            if (File.Exists(file))
+            if (File.Exists(filePath))
             {
-                var lines = LoadFileToArray(file);
+                var lines = LoadFileToArray(filePath);
                 // Ensure we always return the required size by padding with spaces if needed
                 if (lines.Length < requiredSize)
                 {
@@ -65,13 +67,14 @@ namespace GT5_Car_hack_workshop
 
         public static List<CarParts> LoadCarParts(string file){
             var carPartsList = new List<CarParts>();
-            
-            if (!File.Exists(file))
+            var filePath = Path.Combine(AppContext.BaseDirectory, file);
+
+            if (!File.Exists(filePath))
             {
                 return carPartsList;
             }
 
-            var lines = LoadFileToArray(file);
+            var lines = LoadFileToArray(filePath);
             foreach (var line in lines)
             {
                 if (string.IsNullOrWhiteSpace(line) || line == " ")
@@ -110,7 +113,7 @@ namespace GT5_Car_hack_workshop
         public static void SaveCarParts(List<CarParts> carParts, string file)
         {
             var lines = new List<string>();
-            
+
             foreach (var part in carParts)
             {
                 var line = $"{part.Name}," +
@@ -125,8 +128,9 @@ namespace GT5_Car_hack_workshop
                 lines.Add(line);
             }
 
-            if (File.Exists(file)) File.Delete(file);
-            File.WriteAllLines(file, lines);
+            var filePath = Path.Combine(AppContext.BaseDirectory, file);
+            if (File.Exists(filePath)) File.Delete(filePath);
+            File.WriteAllLines(filePath, lines);
         }
     }
 }
