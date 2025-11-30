@@ -35,16 +35,12 @@
     </ItemGroup>
 
     <ItemGroup>
-        <EmbeddedResource Include="Resources\Customperformance.resources" />
-        <EmbeddedResource Include="Resources\Form1.resources" />
         <EmbeddedResource Include="Resources\Resources.resources" />
         <EmbeddedResource Include="Resources\Tranny.resources" />
     </ItemGroup>
 
     <!-- Exclude old Windows Forms files from compilation -->
     <ItemGroup>
-        <Compile Remove="Form1.cs" />
-        <Compile Remove="Form1.Designer.cs" />
         <Compile Remove="TransmissionEditor.cs" />
         <Compile Remove="TransmissionEditor.Designer.cs" />
         <Compile Remove="Components\FormComponents\SearchableComboBox.cs" />
@@ -54,7 +50,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Remove="Form1.resx" />
         <None Remove="TransmissionEditor.resx" />
     </ItemGroup>
 </Project>
