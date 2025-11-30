@@ -1,10 +1,41 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace GT5_Car_hack_workshop
 {
     public static class LoadData
     {
+	    /// <summary>
+	    ///     Determines if the current platform is Linux
+	    /// </summary>
+	    private static bool IsLinux => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
+
+	    /// <summary>
+	    ///     Creates a process configured to run pfdtool with the given arguments
+	    /// </summary>
+	    private static Process CreatePfdToolProcess(string arguments)
+        {
+            var proc = new Process();
+            
+            if (IsLinux)
+            {
+                // On Linux, use Wine to run pfdtool
+                proc.StartInfo.FileName = "wine";
+                proc.StartInfo.Arguments = $"pfdtool {arguments}";
+            }
+            else
+            {
+                // On Windows, run pfdtool directly
+                proc.StartInfo.FileName = "pfdtool";
+                proc.StartInfo.Arguments = arguments;
+            }
+            
+            proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            return proc;
+        }
+
 	    /// <summary>
 	    ///     Unencrypt and load GT5.0 file into byte array which is then returned
 	    /// </summary>
@@ -13,10 +44,7 @@ namespace GT5_Car_hack_workshop
 	    public static byte[] Load(string path)
         {
             var gt5File = new FileInfo(path);
-            var proc = new Process();
-            proc.StartInfo.FileName = "pfdtool";
-            proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            proc.StartInfo.Arguments = $"-g BCES00569 -d \"{gt5File.Directory.FullName}\" {gt5File.Name}";
+            var proc = CreatePfdToolProcess($"-g BCES00569 -d \"{gt5File.Directory.FullName}\" {gt5File.Name}");
             proc.Start();
             proc.WaitForExit();
             return File.ReadAllBytes(gt5File.FullName);
@@ -29,10 +57,7 @@ namespace GT5_Car_hack_workshop
 	    public static void Encrypt(string path)
         {
             var gt5File = new FileInfo(path);
-            var proc = new Process();
-            proc.StartInfo.FileName = "pfdtool";
-            proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            proc.StartInfo.Arguments = $"-g BCES00569 -e \"{gt5File.Directory.FullName}\" {gt5File.Name}";
+            var proc = CreatePfdToolProcess($"-g BCES00569 -e \"{gt5File.Directory.FullName}\" {gt5File.Name}");
             proc.Start();
             proc.WaitForExit();
         }
