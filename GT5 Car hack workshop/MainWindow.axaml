@@ -1,0 +1,341 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="650"
+        x:Class="GT5_Car_hack_workshop.MainWindow"
+        Title="GT5 Car hack workshop 2.6 (For GT5 2.14). Created by HeylonNHP"
+        Width="1200" Height="650"
+        CanResize="False">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="500"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Left Panel -->
+        <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Spacing="10">
+            <!-- File and Settings Group -->
+            <Border BorderBrush="Gray" BorderThickness="1" Padding="10">
+                <StackPanel Spacing="10">
+                    <TextBlock Text="Before and after you start hacking" FontWeight="Bold"/>
+
+                    <TextBlock Text="GT5.0 file location:"/>
+                    <Grid ColumnDefinitions="*,Auto">
+                        <TextBox x:Name="TextBox1" Grid.Column="0" Margin="0,0,5,0"/>
+                        <Button x:Name="Button1" Content="Browse" Grid.Column="1" Background="#FFFFE0C0" Click="Button1_Click"/>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto,*">
+                        <TextBlock Text="PSN name" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                        <TextBox x:Name="TextBox2" Grid.Column="1"/>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*,*,Auto">
+                        <Button x:Name="LoadButton" Content="Load data" Grid.Column="0" Background="#FFC0C0" Margin="0,0,5,0" Click="LoadButton_Click"/>
+                        <Button x:Name="SaveAndEncryptButton" Content="Save and encrypt" Grid.Column="1" Background="#C0FFC0" Margin="0,0,5,0" Click="SaveAndEncrypt_Click"/>
+                        <Button x:Name="Button5" Content="Save only" Grid.Column="2" Background="#C0C0FF" Margin="0,0,5,0" Click="Button5_Click"/>
+                        <Button x:Name="Button22" Content="About" Grid.Column="3" Background="#FFFFC0" Click="Button22_Click"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- Parts Database TabControl -->
+            <TabControl Height="480">
+                <TabItem Header="Parts Database">
+                    <ScrollViewer>
+                        <StackPanel Spacing="10" Margin="10">
+                            <Grid ColumnDefinitions="Auto,*">
+                                <TextBlock Text="Engine" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                <ComboBox x:Name="EngineCodeComboBox" Grid.Column="1" SelectionChanged="EngineCodeComboBox_SelectionChanged"/>
+                            </Grid>
+                            <Grid ColumnDefinitions="Auto,*">
+                                <TextBlock Text="Drivetrain" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                <ComboBox x:Name="DrivetrainCodeComboBox" Grid.Column="1" SelectionChanged="DrivetrainCodeComboBox_SelectionChanged"/>
+                            </Grid>
+                            <Grid ColumnDefinitions="Auto,*">
+                                <TextBlock Text="Chassis" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                <ComboBox x:Name="ChassisCodeComboBox" Grid.Column="1" SelectionChanged="ChassisCodeComboBox_SelectionChanged"/>
+                            </Grid>
+                            <Grid ColumnDefinitions="Auto,*">
+                                <TextBlock Text="Transmission" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                <ComboBox x:Name="TransmissionCodeComboBox" Grid.Column="1" SelectionChanged="TransmissionCodeComboBox_SelectionChanged"/>
+                            </Grid>
+                            <Grid ColumnDefinitions="Auto,*">
+                                <TextBlock Text="Suspension" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                <ComboBox x:Name="SuspensionCodeComboBox" Grid.Column="1" SelectionChanged="SuspensionCodeComboBox_SelectionChanged"/>
+                            </Grid>
+                            <Grid ColumnDefinitions="Auto,*">
+                                <TextBlock Text="Body" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                <ComboBox x:Name="BodyCodeComboBox" Grid.Column="1" SelectionChanged="BodyCodeComboBox_SelectionChanged"/>
+                            </Grid>
+                            <Grid ColumnDefinitions="Auto,*">
+                                <TextBlock Text="LSD" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                <ComboBox x:Name="LsdCodeComboBox" Grid.Column="1" SelectionChanged="LsdCodeComboBox_SelectionChanged"/>
+                            </Grid>
+                            <Grid ColumnDefinitions="Auto,*">
+                                <TextBlock Text="Horn" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                <ComboBox x:Name="HornCodeComboBox" Grid.Column="1" SelectionChanged="HornCodeComboBox_SelectionChanged"/>
+                            </Grid>
+
+                            <Button x:Name="Button12" Content="Add current car to parts database" Background="#C0FFFF" Click="Button12_Click"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+
+                <TabItem Header="Misc.">
+                    <StackPanel Spacing="10" Margin="10">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <TextBlock Text="Custom Samba like performance:" Grid.Column="0" VerticalAlignment="Center"/>
+                            <Button x:Name="Button13" Content="Open" Grid.Column="1" Background="Red" Foreground="White" Click="Button13_Click"/>
+                        </Grid>
+                        <Button x:Name="Button15" Content="Borrow glitch (Steal car)" FontWeight="Bold" FontStyle="Italic" Click="Button15_Click"/>
+                        <Button x:Name="Button18" Content="Get 4.2 billion credits ($$$)" Click="Button18_Click"/>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </StackPanel>
+
+        <!-- Right Panel -->
+        <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" BorderBrush="Gray" BorderThickness="1" Padding="10" Margin="10,0,0,0">
+            <StackPanel Spacing="5">
+                <TextBlock Text="Basic hacks" FontWeight="Bold"/>
+
+                <TabControl>
+                    <TabItem Header="Page 1">
+                        <ScrollViewer>
+                            <StackPanel Spacing="10" Margin="5">
+                                <!-- Current Car Label -->
+                                <TextBlock x:Name="Label7" Text="??Car??" FontStyle="Italic"/>
+
+                                <!-- Key Legend -->
+                                <Border BorderBrush="Magenta" BorderThickness="1" Padding="5">
+                                    <StackPanel>
+                                        <TextBlock Text="Key" Foreground="Magenta" FontWeight="Bold"/>
+                                        <TextBlock Text="Hex only" Foreground="Blue" FontWeight="Bold"/>
+                                        <TextBlock Text="Decimal only" Foreground="Red" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Downforce -->
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
+                                    <StackPanel>
+                                        <TextBlock Text="Downforce" FontWeight="Bold"/>
+                                        <Grid ColumnDefinitions="Auto,*,Auto,*">
+                                            <TextBlock Text="Aero" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="AeroFrontTextBox" Grid.Column="1" Width="60" Margin="0,0,10,0"/>
+                                            <TextBlock Text=":" Grid.Column="2" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="AeroRearTextBox" Grid.Column="3" Width="60"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Torque -->
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
+                                    <StackPanel>
+                                        <TextBlock Text="Torque" FontWeight="Bold"/>
+                                        <Grid ColumnDefinitions="Auto,*,Auto,*,Auto">
+                                            <TextBlock Text="Tq. Split" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="TorqueSplitTextBox" Grid.Column="1" Width="60" Margin="0,0,5,0" TextChanged="TorqueSplitTextBox_TextChanged"/>
+                                            <TextBlock Text=":" Grid.Column="2" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="TextBox5" Grid.Column="3" Width="60" IsReadOnly="True" Margin="0,0,5,0"/>
+                                            <Button x:Name="Button8" Content="?" Grid.Column="4" Click="Button8_Click"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Transmission -->
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
+                                    <StackPanel>
+                                        <TextBlock Text="Transmission" FontWeight="Bold"/>
+                                        <Grid ColumnDefinitions="Auto,*">
+                                            <TextBlock Text="Transmission editor" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                            <Button x:Name="Button11" Content="Open" Grid.Column="1" Background="Red" Foreground="White" HorizontalAlignment="Left" Click="Button11_Click"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Visual mods -->
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
+                                    <StackPanel Spacing="5">
+                                        <TextBlock Text="Visual mods" FontWeight="Bold"/>
+                                        <Grid ColumnDefinitions="Auto,*,Auto,Auto">
+                                            <TextBlock Text="Remove spoiler" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="RemoveSpoilerCodeTextBox" Grid.Column="1" Width="60" Margin="0,0,5,0"/>
+                                            <Button x:Name="Button10" Content="?" Grid.Column="2" Margin="0,0,5,0" Click="Button10_Click"/>
+                                            <Button x:Name="Button23" Content="?" Grid.Column="3" Click="Button23_Click"/>
+                                        </Grid>
+                                        <CheckBox x:Name="RemoveHoodCheckBox" Content="Remove hood" Foreground="DarkViolet" FontWeight="Bold"/>
+                                        <CheckBox x:Name="RemoveFrontBumperCheckBox" Content="Remove front bumper" Foreground="DarkViolet" FontWeight="Bold"/>
+                                        <CheckBox x:Name="RemoveRearBumperCheckBox" Content="Remove rear bumper" Foreground="DarkViolet" FontWeight="Bold"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Car parts -->
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
+                                    <StackPanel Spacing="5">
+                                        <TextBlock Text="Car parts" FontWeight="Bold"/>
+                                        <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+                                            <TextBlock Text="Car body" Grid.Row="0" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="CarBodyCodeTextBox" Grid.Row="0" Grid.Column="1" Margin="0,2"/>
+
+                                            <TextBlock Text="Suspension" Grid.Row="1" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="SuspensionCodeTextBox" Grid.Row="1" Grid.Column="1" Margin="0,2"/>
+
+                                            <TextBlock Text="LSD" Grid.Row="2" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="LsdCodeTextBox" Grid.Row="2" Grid.Column="1" Margin="0,2"/>
+
+                                            <TextBlock Text="Horn" Grid.Row="3" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="HornCodeTextBox" Grid.Row="3" Grid.Column="1" Margin="0,2"/>
+
+                                            <TextBlock Text="Engine" Grid.Row="4" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Spacing="5" Margin="0,2">
+                                                <TextBox x:Name="EngineCodeTextBox" Width="100"/>
+                                                <Button x:Name="Button7" Content="?" Click="Button7_Click"/>
+                                            </StackPanel>
+
+                                            <TextBlock Text="Transmission" Grid.Row="5" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="TransmissionCodeTextBox" Grid.Row="5" Grid.Column="1" Margin="0,2"/>
+
+                                            <TextBlock Text="Chassis" Grid.Row="6" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="ChassisCodeTextBox" Grid.Row="6" Grid.Column="1" Margin="0,2"/>
+
+                                            <TextBlock Text="Drivetrain" Grid.Row="7" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="DrivetrainCodeTextBox" Grid.Row="7" Grid.Column="1" Margin="0,2"/>
+                                        </Grid>
+                                        <Button x:Name="Button6" Content="Make 4WD" Background="#C0FFFF" HorizontalAlignment="Center" Click="Button6_Click"/>
+                                        <Button x:Name="Button4" Content="Force torque split editor install" Background="#FFFFC0" Click="Button4_Click"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Performance multipliers -->
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
+                                    <StackPanel Spacing="5">
+                                        <TextBlock Text="Performance multipliers" FontWeight="Bold"/>
+                                        <Grid ColumnDefinitions="Auto,*,Auto">
+                                            <TextBlock Text="Turbo" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="TurboModifierTextBox" Grid.Column="1" Margin="0,0,5,0"/>
+                                            <Button x:Name="Button16" Content="?" Grid.Column="2" Click="Button16_Click"/>
+                                        </Grid>
+                                        <Grid ColumnDefinitions="Auto,*">
+                                            <TextBlock Text="Exhaust" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="ExhauseMultiplierTextBox" Grid.Column="1"/>
+                                        </Grid>
+                                        <Grid ColumnDefinitions="Auto,*">
+                                            <TextBlock Text="Horsepower" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="HorsepowerMultiplierText" Grid.Column="1"/>
+                                        </Grid>
+                                        <StackPanel Orientation="Horizontal" Spacing="5">
+                                            <CheckBox x:Name="SambaLikePerformanceCheckbox" Content="Samba-like performance" Foreground="Lime" FontWeight="Bold" FontStyle="Italic"/>
+                                            <Button x:Name="Button17" Content="?" Click="Button17_Click"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Reset protection -->
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
+                                    <StackPanel Spacing="5">
+                                        <TextBlock Text="Reset protection" FontWeight="Bold"/>
+                                        <StackPanel Orientation="Horizontal" Spacing="5">
+                                            <CheckBox x:Name="AddLucaBytesCheckBox" Content="Add LUCA bytes before FF block"/>
+                                            <Button x:Name="Button14" Content="?" Click="Button14_Click"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Spacing="5">
+                                            <CheckBox x:Name="Add74ByteCheckBox" Content="Add 74 byte before FF block" IsChecked="True"/>
+                                            <Button x:Name="Button9" Content="?" Click="Button9_Click"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+
+                    <TabItem Header="Page 2">
+                        <ScrollViewer>
+                            <StackPanel Spacing="10" Margin="5">
+                                <!-- Suspension -->
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
+                                    <StackPanel Spacing="5">
+                                        <TextBlock Text="Suspension" FontWeight="Bold"/>
+                                        <Grid ColumnDefinitions="Auto,*,Auto,*">
+                                            <TextBlock Text="Suspension height" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="SuspensionHeightFrontTextBox" Grid.Column="1" Width="70" Margin="0,0,5,0"/>
+                                            <TextBlock Text=":" Grid.Column="2" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="SuspensionHeightRearTextBox" Grid.Column="3" Width="70"/>
+                                        </Grid>
+                                        <Grid ColumnDefinitions="Auto,*,Auto,*">
+                                            <TextBlock Text="Spring rate" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="SpringRateFrontTextBox" Grid.Column="1" Width="70" Margin="0,0,5,0"/>
+                                            <TextBlock Text=":" Grid.Column="2" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                                            <TextBox x:Name="SpringRateRearTextBox" Grid.Column="3" Width="70"/>
+                                        </Grid>
+                                        <Button x:Name="Button19" Content="Slam car" Background="#C0FFFF" Foreground="OrangeRed" FontWeight="Bold" HorizontalAlignment="Center" Click="Button19_Click"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Paint -->
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
+                                    <StackPanel Spacing="5">
+                                        <TextBlock Text="Paint" FontWeight="Bold"/>
+                                        <Grid ColumnDefinitions="Auto,*">
+                                            <TextBlock Text="Body" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                            <TextBox x:Name="BodyPaintTextBox" Grid.Column="1"/>
+                                        </Grid>
+                                        <Grid ColumnDefinitions="Auto,*">
+                                            <TextBlock Text="Wheels" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                            <TextBox x:Name="WheelsPaintTextBox" Grid.Column="1"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Other -->
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
+                                    <StackPanel>
+                                        <TextBlock Text="Other" FontWeight="Bold"/>
+                                        <Grid ColumnDefinitions="Auto,*">
+                                            <TextBlock Text="Grip" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                            <TextBox x:Name="GripTextBox" Grid.Column="1" Width="70" HorizontalAlignment="Left"/>
+                                        </Grid>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Weight hack -->
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
+                                    <StackPanel Spacing="5">
+                                        <TextBlock Text="Weight hack" FontWeight="Bold"/>
+                                        <Grid ColumnDefinitions="Auto,*">
+                                            <TextBlock Text="Weight multiplier" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                                            <TextBox x:Name="WeightMultiplierTextBox" Grid.Column="1"/>
+                                        </Grid>
+                                        <CheckBox x:Name="CheckBox4" Content="Install stage 3 weight reduction"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Experimental -->
+                                <Border BorderBrush="Gray" BorderThickness="1" Padding="5">
+                                    <StackPanel Spacing="5">
+                                        <TextBlock Text="Under development (EXPERIMENTAL)" FontWeight="Bold"/>
+                                        <TextBlock Text="Transmission"/>
+                                        <StackPanel Orientation="Horizontal" Spacing="5">
+                                            <Button x:Name="Button20" Content="Install" Background="#C0FFC0" Click="Button20_Click"/>
+                                            <Button x:Name="Button21" Content="Uninstall" Background="#FFC0C0" Click="Button21_Click"/>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Horizontal" Spacing="5">
+                                            <Button x:Name="BadOilBtn" Content="Set bad oil" Background="#FFC0C0" Click="BadOilBtn_Click"/>
+                                            <Button x:Name="GoodOilBtn" Content="Set good oil" Background="#C0FFC0" Click="GoodOilBtn_Click"/>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Border>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                </TabControl>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

@@ -2,11 +2,10 @@
 
     <PropertyGroup>
         <OutputType>WinExe</OutputType>
-        <TargetFramework>net10.0-windows</TargetFramework>
-        <UseWindowsForms>true</UseWindowsForms>
-        <EnableWindowsTargeting>true</EnableWindowsTargeting>
-        <RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
-
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <RootNamespace>GT5_Car_hack_workshop</RootNamespace>
         <AssemblyName>GT5 Car hack workshop</AssemblyName>
         <StartupObject>GT5_Car_hack_workshop.Program</StartupObject>
@@ -22,28 +21,15 @@
         <Product>GT5 Car hack workshop 2</Product>
         <Title>GT5 Car hack workshop 2</Title>
         <Copyright>Copyright © NHP 2025</Copyright>
-        <Description></Description>
-        <Trademark></Trademark>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-        <PlatformTarget>x86</PlatformTarget>
-        <DebugSymbols>true</DebugSymbols>
-        <DebugType>full</DebugType>
-        <Optimize>false</Optimize>
-        <OutputPath>bin\Debug\</OutputPath>
-        <DefineConstants>DEBUG;TRACE</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-        <PlatformTarget>x86</PlatformTarget>
-        <DebugType>pdbonly</DebugType>
-        <Optimize>true</Optimize>
-        <OutputPath>bin\Release\</OutputPath>
-        <DefineConstants>TRACE</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.2.2" />
+        <PackageReference Include="Avalonia.Desktop" Version="11.2.2" />
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.2" />
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.2" />
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.2.2" />
+        <PackageReference Include="MessageBox.Avalonia" Version="3.1.5.1" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
     </ItemGroup>
@@ -55,16 +41,23 @@
         <EmbeddedResource Include="Resources\Tranny.resources" />
     </ItemGroup>
 
-
+    <!-- Exclude old Windows Forms files from compilation -->
     <ItemGroup>
-      <Compile Update="Components\Forms\InputDialog.cs">
-        <SubType>Form</SubType>
-      </Compile>
+        <Compile Remove="Form1.cs" />
+        <Compile Remove="Form1.Designer.cs" />
+        <Compile Remove="TransmissionEditor.cs" />
+        <Compile Remove="TransmissionEditor.Designer.cs" />
+        <Compile Remove="Customperformance.cs" />
+        <Compile Remove="Customperformance.Designer.cs" />
+        <Compile Remove="Components\FormComponents\SearchableComboBox.cs" />
+        <Compile Remove="Components\FormComponents\SearchableComboBox.Designer.cs" />
+        <Compile Remove="Components\Forms\InputDialog.cs" />
+        <Compile Remove="Components\Forms\InputDialog.Designer.cs" />
     </ItemGroup>
 
-    <PropertyGroup>
-        <ComVisible>false</ComVisible>
-        <Guid>567be9e8-cd5e-4e2f-b572-03f8a94e0036</Guid>
-    </PropertyGroup>
-
+    <ItemGroup>
+        <None Remove="Form1.resx" />
+        <None Remove="TransmissionEditor.resx" />
+        <None Remove="Customperformance.resx" />
+    </ItemGroup>
 </Project>
