@@ -81,17 +81,17 @@
         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Spacing="5">
             <Button x:Name="LoadCurrentCarButton"
                     Content="Load current car performance"
-                    Background="#C0C0FF"
+                    Background="#C0C0FF" Classes="pastel"
                     Width="160"
                     Click="LoadCurrentCarPerformanceButton_Click"/>
             <Button x:Name="DiscardButton"
                     Content="Discard"
-                    Background="#FFC0C0"
+                    Background="#FFC0C0" Classes="pastel"
                     Width="80"
                     Click="DiscardButton_Click"/>
             <Button x:Name="ApplyButton"
                     Content="Apply"
-                    Background="#C0FFC0"
+                    Background="#C0FFC0" Classes="pastel"
                     Width="80"
                     Click="ApplyButton_Click"/>
         </StackPanel>
