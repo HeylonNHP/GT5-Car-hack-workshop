@@ -32,9 +32,16 @@
         <SolidColorBrush x:Key="SlamCarBrush" Color="#C04000"/>
         <SolidColorBrush x:Key="OpenEditorBrush" Color="#D32F2F"/>
         <SolidColorBrush x:Key="GroupBorderBrush" Color="#666666"/>
+        <!-- Dark text used on the light pastel buttons, which keep white theme text otherwise -->
+        <SolidColorBrush x:Key="PastelButtonForegroundBrush" Color="#141414"/>
     </Application.Resources>
 
     <Application.Styles>
         <FluentTheme />
+        <!-- Pastel button colour-coding (pink/green/lavender/yellow/cyan/orange): dark text
+             for readability on the light backgrounds (9.5:1 - 16:1 contrast) -->
+        <Style Selector="Button.pastel">
+            <Setter Property="Foreground" Value="{DynamicResource PastelButtonForegroundBrush}"/>
+        </Style>
     </Application.Styles>
 </Application>

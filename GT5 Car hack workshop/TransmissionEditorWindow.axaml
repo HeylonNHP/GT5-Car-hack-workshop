@@ -90,7 +90,7 @@
             </Grid>
 
             <!-- Okay Button -->
-            <Button x:Name="OkayButton" Content="Okay" Background="#C0FFFF" Height="35" Margin="0,10,0,0" Click="OkayButtonClick"/>
+            <Button x:Name="OkayButton" Content="Okay" Background="#C0FFFF" Classes="pastel" Height="35" Margin="0,10,0,0" Click="OkayButtonClick"/>
         </StackPanel>
 
         <!-- Right Panel - Calculate Speed -->
