@@ -23,6 +23,9 @@ namespace GT5_Car_hack_workshop
         private string[] _ProgramSettings;
         private readonly IFormManager _formManager;
 
+        // Guards against paint field <-> combo box sync loops
+        private bool _syncingPaintFields;
+
         public byte[] Gt5Save;
         public int Moff;
 
@@ -34,6 +37,7 @@ namespace GT5_Car_hack_workshop
             Moff = 0;
             _CarName = "";
             InitializeComponent();
+            InitializePaintComboBoxes();
             Loaded += MainWindow_Loaded;
             Closing += MainWindow_Closing;
         }
@@ -41,8 +45,15 @@ namespace GT5_Car_hack_workshop
         public MainWindow()
         {
             InitializeComponent();
+            InitializePaintComboBoxes();
             Loaded += MainWindow_Loaded;
             Closing += MainWindow_Closing;
+        }
+
+        private void InitializePaintComboBoxes()
+        {
+            BodyPaintComboBox.ItemsSource = PaintDatabase.Entries;
+            WheelsPaintComboBox.ItemsSource = PaintDatabase.Entries;
         }
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -125,6 +136,51 @@ namespace GT5_Car_hack_workshop
             await SaveData();
         }
 
+        // ---- Paint database dropdown <-> hex field syncing ----
+
+        private void BodyPaintComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (_syncingPaintFields) return;
+            if (BodyPaintComboBox.SelectedItem is PaintEntry entry)
+                BodyPaintTextBox.Text = entry.Id.ToString("X4");
+        }
+
+        private void WheelsPaintComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (_syncingPaintFields) return;
+            if (WheelsPaintComboBox.SelectedItem is PaintEntry entry)
+                WheelsPaintTextBox.Text = entry.Id.ToString("X4");
+        }
+
+        private void BodyPaintTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (_syncingPaintFields) return;
+            SyncPaintComboBox(BodyPaintComboBox, BodyPaintTextBox.Text);
+        }
+
+        private void WheelsPaintTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (_syncingPaintFields) return;
+            SyncPaintComboBox(WheelsPaintComboBox, WheelsPaintTextBox.Text);
+        }
+
+        /// <summary>
+        /// Highlights the matching database entry for the hex value currently in a paint text
+        /// box, or deselects the combo box if the value is a custom/unknown colour ID.
+        /// </summary>
+        private void SyncPaintComboBox(ComboBox comboBox, string? text)
+        {
+            var index = uint.TryParse(text?.Replace(" ", ""), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var id)
+                ? PaintDatabase.IndexOf(id)
+                : -1;
+
+            if (comboBox.SelectedIndex == index) return;
+
+            _syncingPaintFields = true;
+            comboBox.SelectedIndex = index;
+            _syncingPaintFields = false;
+        }
+
         private void TorqueSplitTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (!double.TryParse(TorqueSplitTextBox.Text, out var torqueValue))
@@ -197,8 +253,12 @@ namespace GT5_Car_hack_workshop
             // Paint is stored as a single big-endian 32-bit value: (body colour ID << 13) | wheel colour ID,
             // where each ID indexes the game's internal paint database (0x1FFF = unset/default).
             var paintValue = ByteUtils.ConvertBytesToUnsignedInt(new[] { Gt5Save[Moff - 344], Gt5Save[Moff - 343], Gt5Save[Moff - 342], Gt5Save[Moff - 341] }) & 0x03FFFFFF;
+            _syncingPaintFields = true;
             BodyPaintTextBox.Text = (paintValue >> 13).ToString("X4");
             WheelsPaintTextBox.Text = (paintValue & 0x1FFF).ToString("X4");
+            BodyPaintComboBox.SelectedIndex = PaintDatabase.IndexOf(paintValue >> 13);
+            WheelsPaintComboBox.SelectedIndex = PaintDatabase.IndexOf(paintValue & 0x1FFF);
+            _syncingPaintFields = false;
 
             TurboModifierTextBox.Text = $"{Gt5Save[Moff - 171]:X2} {Gt5Save[Moff - 170]:X2} {Gt5Save[Moff - 169]:X2} {Gt5Save[Moff - 168]:X2}";
             HorsepowerMultiplierText.Text = Gt5Save[Moff + 1].ToString();

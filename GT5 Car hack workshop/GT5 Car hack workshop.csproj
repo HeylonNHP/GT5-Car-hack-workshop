@@ -37,6 +37,7 @@
     <ItemGroup>
         <EmbeddedResource Include="Resources\Resources.resources" />
         <EmbeddedResource Include="Resources\Tranny.resources" />
+        <EmbeddedResource Include="Resources\PaintDatabase.tsv" />
     </ItemGroup>
 
     <!-- Exclude old Windows Forms files from compilation -->
