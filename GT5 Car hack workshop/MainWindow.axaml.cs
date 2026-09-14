@@ -194,8 +194,11 @@ namespace GT5_Car_hack_workshop
             TransmissionCodeTextBox.Text = Gt5Save[Moff - 205].ToString("X2") + " " + Gt5Save[Moff - 204].ToString("X2");
             RemoveSpoilerCodeTextBox.Text = Gt5Save[Moff - 88].ToString();
 
-            BodyPaintTextBox.Text = $"{Gt5Save[Moff - 344]:X2} {Gt5Save[Moff - 343]:X2}";
-            WheelsPaintTextBox.Text = $"{Gt5Save[Moff - 342]:X2} {Gt5Save[Moff - 341]:X2}";
+            // Paint is stored as a single big-endian 32-bit value: (body colour ID << 13) | wheel colour ID,
+            // where each ID indexes the game's internal paint database (0x1FFF = unset/default).
+            var paintValue = ByteUtils.ConvertBytesToUnsignedInt(new[] { Gt5Save[Moff - 344], Gt5Save[Moff - 343], Gt5Save[Moff - 342], Gt5Save[Moff - 341] }) & 0x03FFFFFF;
+            BodyPaintTextBox.Text = (paintValue >> 13).ToString("X4");
+            WheelsPaintTextBox.Text = (paintValue & 0x1FFF).ToString("X4");
 
             TurboModifierTextBox.Text = $"{Gt5Save[Moff - 171]:X2} {Gt5Save[Moff - 170]:X2} {Gt5Save[Moff - 169]:X2} {Gt5Save[Moff - 168]:X2}";
             HorsepowerMultiplierText.Text = Gt5Save[Moff + 1].ToString();
@@ -307,13 +310,24 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                var bodyPaint = ByteUtils.HexStringToByteArray(BodyPaintTextBox.Text);
-                var wheelsPaint = ByteUtils.HexStringToByteArray(WheelsPaintTextBox.Text);
+                // Paint is stored as a single 32-bit value: (body colour ID << 13) | wheel colour ID.
+                // Each ID indexes the game's internal colour database and must be 0x1FFF or below
+                // (0x1FFF = unset/default). Community paint codes such as 018BBFFF are exactly this
+                // format: body ID = code >> 13 (C5D), wheel ID = code & 1FFF (1FFF).
+                var bodyPaintId = ByteUtils.HexStringToUint(BodyPaintTextBox.Text);
+                var wheelsPaintId = ByteUtils.HexStringToUint(WheelsPaintTextBox.Text);
 
-                Gt5Save[Moff - 344] = bodyPaint[0];
-                Gt5Save[Moff - 343] = bodyPaint[1];
-                Gt5Save[Moff - 342] = wheelsPaint[0];
-                Gt5Save[Moff - 341] = wheelsPaint[1];
+                if (bodyPaintId > 0x1FFF)
+                    throw new FormatException("Body paint ID must be between 0 and 1FFF. Tip: a full community paint code (e.g. 018BBFFF) packs both IDs - body = code >> 13 (C5D), wheels = code & 1FFF (1FFF).");
+
+                if (wheelsPaintId > 0x1FFF)
+                    throw new FormatException("Wheels paint ID must be between 0 and 1FFF.");
+
+                var paintBytes = ByteUtils.UintToByteArray((bodyPaintId << 13) | wheelsPaintId);
+                Gt5Save[Moff - 344] = paintBytes[0];
+                Gt5Save[Moff - 343] = paintBytes[1];
+                Gt5Save[Moff - 342] = paintBytes[2];
+                Gt5Save[Moff - 341] = paintBytes[3];
             }
             catch (Exception ex)
             {
