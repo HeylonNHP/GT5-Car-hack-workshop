@@ -22,7 +22,7 @@
         <!-- Left Panel -->
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Spacing="4">
             <!-- File and Settings Group -->
-            <Border BorderBrush="Gray" BorderThickness="1" Padding="4">
+            <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="4">
                 <StackPanel Spacing="4">
                     <TextBlock Text="Before and after you start hacking" FontWeight="Bold"/>
 
@@ -93,7 +93,7 @@
                     <StackPanel Spacing="3" Margin="4">
                         <Grid ColumnDefinitions="*,Auto">
                             <TextBlock Text="Custom Samba like performance:" Grid.Column="0" VerticalAlignment="Center"/>
-                            <Button x:Name="Button13" Content="Open" Grid.Column="1" Background="Red" Foreground="White" Height="27" Click="Button13_Click"/>
+                            <Button x:Name="Button13" Content="Open" Grid.Column="1" Background="{DynamicResource OpenEditorBrush}" Foreground="White" Height="27" Click="Button13_Click"/>
                         </Grid>
                         <Button x:Name="Button15" Content="Borrow glitch (Steal car)" FontWeight="Bold" FontStyle="Italic" Height="27" Click="Button15_Click"/>
                         <Button x:Name="Button18" Content="Get 4.2 billion credits ($$$)" Height="27" Click="Button18_Click"/>
@@ -103,7 +103,7 @@
         </StackPanel>
 
         <!-- Right Panel -->
-        <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" BorderBrush="Gray" BorderThickness="1" Padding="4" Margin="4,0,0,0">
+        <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="4" Margin="4,0,0,0">
             <StackPanel Spacing="2">
                 <TextBlock Text="Basic hacks" FontWeight="Bold"/>
 
@@ -117,35 +117,35 @@
                                 <!-- Key Legend and Downforce/Torque side-by-side -->
                                 <Grid ColumnDefinitions="Auto,8,*,8,*">
                                     <!-- Key Legend -->
-                                    <Border Grid.Column="0" BorderBrush="Magenta" BorderThickness="1" Padding="2">
+                                    <Border Grid.Column="0" BorderBrush="{DynamicResource LegendBrush}" BorderThickness="1" Padding="2">
                                         <StackPanel>
-                                            <TextBlock Text="Key" Foreground="Magenta" FontWeight="Bold" FontSize="9"/>
-                                            <TextBlock Text="Hex only" Foreground="Blue" FontWeight="Bold" FontSize="9"/>
-                                            <TextBlock Text="Decimal only" Foreground="Red" FontWeight="Bold" FontSize="9"/>
+                                            <TextBlock Text="Key" Foreground="{DynamicResource LegendBrush}" FontWeight="Bold" FontSize="9"/>
+                                            <TextBlock Text="Hex only" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" FontSize="9"/>
+                                            <TextBlock Text="Decimal only" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" FontSize="9"/>
                                         </StackPanel>
                                     </Border>
 
                                     <!-- Downforce -->
-                                    <Border Grid.Column="2" BorderBrush="Gray" BorderThickness="1" Padding="2">
+                                    <Border Grid.Column="2" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
                                         <StackPanel>
                                             <TextBlock Text="Downforce" FontWeight="Bold"/>
                                             <Grid ColumnDefinitions="Auto,*,Auto,*">
-                                                <TextBlock Text="Aero" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                <TextBlock Text="Aero" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="AeroFrontTextBox" Grid.Column="1" Width="60" Height="20" Margin="0,0,6,0"/>
-                                                <TextBlock Text=":" Grid.Column="2" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                <TextBlock Text=":" Grid.Column="2" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="AeroRearTextBox" Grid.Column="3" Width="60" Height="20"/>
                                             </Grid>
                                         </StackPanel>
                                     </Border>
 
                                     <!-- Torque -->
-                                    <Border Grid.Column="4" BorderBrush="Gray" BorderThickness="1" Padding="2">
+                                    <Border Grid.Column="4" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
                                         <StackPanel>
                                             <TextBlock Text="Torque" FontWeight="Bold"/>
                                             <Grid ColumnDefinitions="Auto,*,Auto,*,Auto">
-                                                <TextBlock Text="Tq. Split" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                <TextBlock Text="Tq. Split" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="TorqueSplitTextBox" Grid.Column="1" Width="60" Height="20" Margin="0,0,4,0" TextChanged="TorqueSplitTextBox_TextChanged"/>
-                                                <TextBlock Text=":" Grid.Column="2" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                <TextBlock Text=":" Grid.Column="2" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="TextBox5" Grid.Column="3" Width="60" Height="20" IsReadOnly="True" Margin="0,0,4,0"/>
                                                 <Button x:Name="Button8" Content="?" Grid.Column="4" Height="25" Click="Button8_Click"/>
                                             </Grid>
@@ -154,12 +154,12 @@
                                 </Grid>
 
                                 <!-- Transmission -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="2">
+                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
                                     <StackPanel>
                                         <TextBlock Text="Transmission" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*">
-                                            <TextBlock Text="Transmission editor" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                            <Button x:Name="Button11" Content="Open" Grid.Column="1" Background="Red" Foreground="White" HorizontalAlignment="Left" Height="27" Click="Button11_Click"/>
+                                            <TextBlock Text="Transmission editor" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <Button x:Name="Button11" Content="Open" Grid.Column="1" Background="{DynamicResource OpenEditorBrush}" Foreground="White" HorizontalAlignment="Left" Height="27" Click="Button11_Click"/>
                                         </Grid>
                                     </StackPanel>
                                 </Border>
@@ -167,51 +167,51 @@
                                 <!-- Visual Mods and Car Parts side-by-side -->
                                 <Grid ColumnDefinitions="*,8,*">
                                     <!-- Visual mods -->
-                                    <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1" Padding="2">
+                                    <Border Grid.Column="0" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
                                         <StackPanel Spacing="2">
                                             <TextBlock Text="Visual mods" FontWeight="Bold"/>
                                             <Grid ColumnDefinitions="Auto,*,Auto,Auto">
-                                                <TextBlock Text="Remove spoiler" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                <TextBlock Text="Remove spoiler" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="RemoveSpoilerCodeTextBox" Grid.Column="1" Width="60" Height="20" Margin="0,0,4,0"/>
                                                 <Button x:Name="Button10" Content="?" Grid.Column="2" Margin="0,0,4,0" Height="25" Click="Button10_Click"/>
                                                 <Button x:Name="Button23" Content="?" Grid.Column="3" Height="25" Click="Button23_Click"/>
                                             </Grid>
-                                            <CheckBox x:Name="RemoveHoodCheckBox" Content="Remove hood" Foreground="DarkViolet" FontWeight="Bold" Margin="0,1"/>
-                                            <CheckBox x:Name="RemoveFrontBumperCheckBox" Content="Remove front bumper" Foreground="DarkViolet" FontWeight="Bold" Margin="0,1"/>
-                                            <CheckBox x:Name="RemoveRearBumperCheckBox" Content="Remove rear bumper" Foreground="DarkViolet" FontWeight="Bold" Margin="0,1"/>
+                                            <CheckBox x:Name="RemoveHoodCheckBox" Content="Remove hood" Foreground="{DynamicResource PartRemovalBrush}" FontWeight="Bold" Margin="0,1"/>
+                                            <CheckBox x:Name="RemoveFrontBumperCheckBox" Content="Remove front bumper" Foreground="{DynamicResource PartRemovalBrush}" FontWeight="Bold" Margin="0,1"/>
+                                            <CheckBox x:Name="RemoveRearBumperCheckBox" Content="Remove rear bumper" Foreground="{DynamicResource PartRemovalBrush}" FontWeight="Bold" Margin="0,1"/>
                                         </StackPanel>
                                     </Border>
 
                                     <!-- Car parts -->
-                                    <Border Grid.Column="2" BorderBrush="Gray" BorderThickness="1" Padding="2">
+                                    <Border Grid.Column="2" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
                                         <StackPanel Spacing="2">
                                             <TextBlock Text="Car parts" FontWeight="Bold"/>
                                             <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
-                                                <TextBlock Text="Car body" Grid.Row="0" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                <TextBlock Text="Car body" Grid.Row="0" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="CarBodyCodeTextBox" Grid.Row="0" Grid.Column="1" Height="20" Margin="0,1"/>
 
-                                                <TextBlock Text="Suspension" Grid.Row="1" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                <TextBlock Text="Suspension" Grid.Row="1" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="SuspensionCodeTextBox" Grid.Row="1" Grid.Column="1" Height="20" Margin="0,1"/>
 
-                                                <TextBlock Text="LSD" Grid.Row="2" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                <TextBlock Text="LSD" Grid.Row="2" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="LsdCodeTextBox" Grid.Row="2" Grid.Column="1" Height="20" Margin="0,1"/>
 
-                                                <TextBlock Text="Horn" Grid.Row="3" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                <TextBlock Text="Horn" Grid.Row="3" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="HornCodeTextBox" Grid.Row="3" Grid.Column="1" Height="20" Margin="0,1"/>
 
-                                                <TextBlock Text="Engine" Grid.Row="4" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                <TextBlock Text="Engine" Grid.Row="4" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal" Spacing="3" Margin="0,1">
                                                     <TextBox x:Name="EngineCodeTextBox" Width="100" Height="20"/>
                                                     <Button x:Name="Button7" Content="?" Height="25" Click="Button7_Click"/>
                                                 </StackPanel>
 
-                                                <TextBlock Text="Transmission" Grid.Row="5" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                <TextBlock Text="Transmission" Grid.Row="5" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="TransmissionCodeTextBox" Grid.Row="5" Grid.Column="1" Height="20" Margin="0,1"/>
 
-                                                <TextBlock Text="Chassis" Grid.Row="6" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                <TextBlock Text="Chassis" Grid.Row="6" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="ChassisCodeTextBox" Grid.Row="6" Grid.Column="1" Height="20" Margin="0,1"/>
 
-                                                <TextBlock Text="Drivetrain" Grid.Row="7" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                <TextBlock Text="Drivetrain" Grid.Row="7" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="DrivetrainCodeTextBox" Grid.Row="7" Grid.Column="1" Height="20" Margin="0,1"/>
                                             </Grid>
                                             <Button x:Name="Button6" Content="Make 4WD" Background="#C0FFFF" HorizontalAlignment="Center" Height="27" Click="Button6_Click"/>
@@ -223,31 +223,31 @@
                                 <!-- Performance Multipliers and Reset Protection side-by-side -->
                                 <Grid ColumnDefinitions="*,8,*">
                                     <!-- Performance multipliers -->
-                                    <Border Grid.Column="0" BorderBrush="Gray" BorderThickness="1" Padding="2">
+                                    <Border Grid.Column="0" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
                                         <StackPanel Spacing="2">
                                             <TextBlock Text="Performance multipliers" FontWeight="Bold"/>
                                             <Grid ColumnDefinitions="Auto,*,Auto">
-                                                <TextBlock Text="Turbo" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                <TextBlock Text="Turbo" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="TurboModifierTextBox" Grid.Column="1" Height="20" Margin="0,0,4,0"/>
                                                 <Button x:Name="Button16" Content="?" Grid.Column="2" Height="25" Click="Button16_Click"/>
                                             </Grid>
                                             <Grid ColumnDefinitions="Auto,*">
-                                                <TextBlock Text="Exhaust" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                <TextBlock Text="Exhaust" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="ExhauseMultiplierTextBox" Grid.Column="1" Height="20"/>
                                             </Grid>
                                             <Grid ColumnDefinitions="Auto,*">
-                                                <TextBlock Text="Horsepower" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                                <TextBlock Text="Horsepower" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="HorsepowerMultiplierText" Grid.Column="1" Height="20"/>
                                             </Grid>
                                             <StackPanel Orientation="Horizontal" Spacing="3">
-                                                <CheckBox x:Name="SambaLikePerformanceCheckbox" Content="Samba-like performance" Foreground="Lime" FontWeight="Bold" FontStyle="Italic" Margin="0,1"/>
+                                                <CheckBox x:Name="SambaLikePerformanceCheckbox" Content="Samba-like performance" Foreground="{DynamicResource SambaBrush}" FontWeight="Bold" FontStyle="Italic" Margin="0,1"/>
                                                 <Button x:Name="Button17" Content="?" Height="25" Click="Button17_Click"/>
                                             </StackPanel>
                                         </StackPanel>
                                     </Border>
 
                                     <!-- Reset protection -->
-                                    <Border Grid.Column="2" BorderBrush="Gray" BorderThickness="1" Padding="2">
+                                    <Border Grid.Column="2" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
                                         <StackPanel Spacing="2">
                                             <TextBlock Text="Reset protection" FontWeight="Bold"/>
                                             <StackPanel Orientation="Horizontal" Spacing="3">
@@ -269,57 +269,57 @@
                         <ScrollViewer>
                             <StackPanel Spacing="6" Margin="3">
                                 <!-- Suspension -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="2">
+                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
                                     <StackPanel Spacing="2">
                                         <TextBlock Text="Suspension" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*,Auto,*">
-                                            <TextBlock Text="Suspension height" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                            <TextBlock Text="Suspension height" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                             <TextBox x:Name="SuspensionHeightFrontTextBox" Grid.Column="1" Width="70" Height="20" Margin="0,0,4,0"/>
-                                            <TextBlock Text=":" Grid.Column="2" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                            <TextBlock Text=":" Grid.Column="2" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                             <TextBox x:Name="SuspensionHeightRearTextBox" Grid.Column="3" Width="70" Height="20"/>
                                         </Grid>
                                         <Grid ColumnDefinitions="Auto,*,Auto,*">
-                                            <TextBlock Text="Spring rate" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                            <TextBlock Text="Spring rate" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                             <TextBox x:Name="SpringRateFrontTextBox" Grid.Column="1" Width="70" Height="20" Margin="0,0,4,0"/>
-                                            <TextBlock Text=":" Grid.Column="2" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                            <TextBlock Text=":" Grid.Column="2" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                             <TextBox x:Name="SpringRateRearTextBox" Grid.Column="3" Width="70" Height="20"/>
                                         </Grid>
-                                        <Button x:Name="Button19" Content="Slam car" Background="#C0FFFF" Foreground="OrangeRed" FontWeight="Bold" HorizontalAlignment="Center" Height="27" Click="Button19_Click"/>
+                                        <Button x:Name="Button19" Content="Slam car" Background="#C0FFFF" Foreground="{DynamicResource SlamCarBrush}" FontWeight="Bold" HorizontalAlignment="Center" Height="27" Click="Button19_Click"/>
                                     </StackPanel>
                                 </Border>
 
                                 <!-- Paint -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="2">
+                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
                                     <StackPanel Spacing="2">
                                         <TextBlock Text="Paint" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*">
-                                            <TextBlock Text="Body" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <TextBlock Text="Body" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                             <TextBox x:Name="BodyPaintTextBox" Grid.Column="1" Height="20"/>
                                         </Grid>
                                         <Grid ColumnDefinitions="Auto,*">
-                                            <TextBlock Text="Wheels" Grid.Column="0" Foreground="Blue" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <TextBlock Text="Wheels" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                             <TextBox x:Name="WheelsPaintTextBox" Grid.Column="1" Height="20"/>
                                         </Grid>
                                     </StackPanel>
                                 </Border>
 
                                 <!-- Other -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="2">
+                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
                                     <StackPanel>
                                         <TextBlock Text="Other" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*">
-                                            <TextBlock Text="Grip" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <TextBlock Text="Grip" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                             <TextBox x:Name="GripTextBox" Grid.Column="1" Width="70" Height="20" HorizontalAlignment="Left"/>
                                         </Grid>
                                     </StackPanel>
                                 </Border>
 
                                 <!-- Weight hack -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="2">
+                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
                                     <StackPanel Spacing="2">
                                         <TextBlock Text="Weight hack" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*">
-                                            <TextBlock Text="Weight multiplier" Grid.Column="0" Foreground="Red" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <TextBlock Text="Weight multiplier" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                             <TextBox x:Name="WeightMultiplierTextBox" Grid.Column="1" Height="20"/>
                                         </Grid>
                                         <CheckBox x:Name="CheckBox4" Content="Install stage 3 weight reduction" Margin="0,1"/>
@@ -327,7 +327,7 @@
                                 </Border>
 
                                 <!-- Experimental -->
-                                <Border BorderBrush="Gray" BorderThickness="1" Padding="2">
+                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
                                     <StackPanel Spacing="2">
                                         <TextBlock Text="Under development (EXPERIMENTAL)" FontWeight="Bold"/>
                                         <TextBlock Text="Transmission"/>

@@ -7,8 +7,7 @@
         Title="Transmission editor"
         Width="500" Height="470"
         CanResize="False"
-        WindowStartupLocation="CenterScreen"
-        Background="#FF808080">
+        WindowStartupLocation="CenterScreen">
 
     <Grid Margin="5">
         <Grid.ColumnDefinitions>
@@ -95,7 +94,7 @@
         </StackPanel>
 
         <!-- Right Panel - Calculate Speed -->
-        <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="1" Margin="5,0,0,0">
+        <Border Grid.Column="1" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Margin="5,0,0,0">
             <StackPanel Margin="10" Spacing="10">
                 <TextBlock Text="Calculate speed" FontWeight="Bold" FontSize="13"/>
 

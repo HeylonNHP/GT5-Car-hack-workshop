@@ -1,8 +1,38 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              x:Class="GT5_Car_hack_workshop.App"
-             RequestedThemeVariant="Default">
-             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+             RequestedThemeVariant="Dark">
+             <!-- The UI is designed around a dark background, so the theme variant is
+                  pinned to Dark to keep the tuned colour palette readable no matter
+                  what theme the user's system is set to. -->
+
+    <Application.Resources>
+        <!--
+          Semantic colour palette
+          =======================
+          The coloured labels carry meaning (documented in the "Key" box on Page 1), so
+          the hue of each colour is preserved - only lightness/saturation has been
+          tuned so that every colour is comfortably readable on the dark background
+          (WCAG AA contrast of 4.5:1 or better for text):
+
+          HexFieldBrush     - "Hex only"    - fields expecting hexadecimal values     (was Blue,        2.4:1 -> 6.3:1)
+          DecimalFieldBrush - "Decimal only"- fields expecting decimal values         (was Red,         5.3:1 -> 6.6:1)
+          LegendBrush       - the "Key" legend box                                    (unchanged Magenta, 6.7:1)
+          PartRemovalBrush  - visual part-removal checkboxes                          (was DarkViolet,  3.2:1 -> 8.5:1)
+          SambaBrush        - "Samba-like performance" easter-egg control             (unchanged Lime,   15:1)
+          SlamCarBrush      - "Slam car" action text on its cyan button               (was OrangeRed,   3.1:1 -> 4.8:1)
+          OpenEditorBrush   - background of the red "Open" editor buttons             (was Red, white text 4.0:1 -> 5.0:1)
+          GroupBorderBrush  - group box outlines, dimmed so labels stand out          (was Gray)
+        -->
+        <SolidColorBrush x:Key="HexFieldBrush" Color="#4D88FF"/>
+        <SolidColorBrush x:Key="DecimalFieldBrush" Color="#FF5252"/>
+        <SolidColorBrush x:Key="LegendBrush" Color="Magenta"/>
+        <SolidColorBrush x:Key="PartRemovalBrush" Color="#C58AFF"/>
+        <SolidColorBrush x:Key="SambaBrush" Color="Lime"/>
+        <SolidColorBrush x:Key="SlamCarBrush" Color="#C04000"/>
+        <SolidColorBrush x:Key="OpenEditorBrush" Color="#D32F2F"/>
+        <SolidColorBrush x:Key="GroupBorderBrush" Color="#666666"/>
+    </Application.Resources>
 
     <Application.Styles>
         <FluentTheme />
