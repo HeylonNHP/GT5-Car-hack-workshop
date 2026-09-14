@@ -54,6 +54,18 @@ namespace GT5_Car_hack_workshop
             return (ushort)((bytes[0] << 8) | bytes[1]);
         }
 
+        public static uint HexStringToUint(string hex)
+        {
+            if (string.IsNullOrWhiteSpace(hex)) throw new ArgumentException("Input hex string cannot be null or empty.");
+
+            // Remove any whitespace from the hex string
+            hex = hex.Replace(" ", "");
+
+            if (hex.Length > 8) throw new FormatException("Hex string must be 8 characters or fewer for a uint value.");
+
+            return uint.Parse(hex, NumberStyles.HexNumber, CultureInfo.InvariantCulture);
+        }
+
         public static string UshortToHexString(ushort value)
         {
             // Convert the ushort to two bytes (big-endian)
