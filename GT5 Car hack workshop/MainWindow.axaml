@@ -51,37 +51,37 @@
                 <TabItem Header="Parts Database">
                     <ScrollViewer>
                         <StackPanel Spacing="3" Margin="4">
-                            <Grid ColumnDefinitions="Auto,*">
+                            <Grid ColumnDefinitions="88,*">
                                 <TextBlock Text="Engine" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="EngineCodeComboBox" Grid.Column="1" Height="22" SelectionChanged="EngineCodeComboBox_SelectionChanged"/>
+                                <ComboBox x:Name="EngineCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch" SelectionChanged="EngineCodeComboBox_SelectionChanged"/>
                             </Grid>
-                            <Grid ColumnDefinitions="Auto,*">
+                            <Grid ColumnDefinitions="88,*">
                                 <TextBlock Text="Drivetrain" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="DrivetrainCodeComboBox" Grid.Column="1" Height="22" SelectionChanged="DrivetrainCodeComboBox_SelectionChanged"/>
+                                <ComboBox x:Name="DrivetrainCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch" SelectionChanged="DrivetrainCodeComboBox_SelectionChanged"/>
                             </Grid>
-                            <Grid ColumnDefinitions="Auto,*">
+                            <Grid ColumnDefinitions="88,*">
                                 <TextBlock Text="Chassis" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="ChassisCodeComboBox" Grid.Column="1" Height="22" SelectionChanged="ChassisCodeComboBox_SelectionChanged"/>
+                                <ComboBox x:Name="ChassisCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch" SelectionChanged="ChassisCodeComboBox_SelectionChanged"/>
                             </Grid>
-                            <Grid ColumnDefinitions="Auto,*">
+                            <Grid ColumnDefinitions="88,*">
                                 <TextBlock Text="Transmission" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="TransmissionCodeComboBox" Grid.Column="1" Height="22" SelectionChanged="TransmissionCodeComboBox_SelectionChanged"/>
+                                <ComboBox x:Name="TransmissionCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch" SelectionChanged="TransmissionCodeComboBox_SelectionChanged"/>
                             </Grid>
-                            <Grid ColumnDefinitions="Auto,*">
+                            <Grid ColumnDefinitions="88,*">
                                 <TextBlock Text="Suspension" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="SuspensionCodeComboBox" Grid.Column="1" Height="22" SelectionChanged="SuspensionCodeComboBox_SelectionChanged"/>
+                                <ComboBox x:Name="SuspensionCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch" SelectionChanged="SuspensionCodeComboBox_SelectionChanged"/>
                             </Grid>
-                            <Grid ColumnDefinitions="Auto,*">
+                            <Grid ColumnDefinitions="88,*">
                                 <TextBlock Text="Body" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="BodyCodeComboBox" Grid.Column="1" Height="22" SelectionChanged="BodyCodeComboBox_SelectionChanged"/>
+                                <ComboBox x:Name="BodyCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch" SelectionChanged="BodyCodeComboBox_SelectionChanged"/>
                             </Grid>
-                            <Grid ColumnDefinitions="Auto,*">
+                            <Grid ColumnDefinitions="88,*">
                                 <TextBlock Text="LSD" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="LsdCodeComboBox" Grid.Column="1" Height="22" SelectionChanged="LsdCodeComboBox_SelectionChanged"/>
+                                <ComboBox x:Name="LsdCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch" SelectionChanged="LsdCodeComboBox_SelectionChanged"/>
                             </Grid>
-                            <Grid ColumnDefinitions="Auto,*">
+                            <Grid ColumnDefinitions="88,*">
                                 <TextBlock Text="Horn" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="HornCodeComboBox" Grid.Column="1" Height="22" SelectionChanged="HornCodeComboBox_SelectionChanged"/>
+                                <ComboBox x:Name="HornCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch" SelectionChanged="HornCodeComboBox_SelectionChanged"/>
                             </Grid>
 
                             <Button x:Name="Button12" Content="Add current car to parts database" Background="#C0FFFF" Classes="pastel" Height="27" Click="Button12_Click"/>
