@@ -37,7 +37,7 @@ namespace GT5_Car_hack_workshop
             Moff = 0;
             _CarName = "";
             InitializeComponent();
-            InitializePaintComboBoxes();
+            InitializePaintSearchBoxes();
             Loaded += MainWindow_Loaded;
             Closing += MainWindow_Closing;
         }
@@ -45,15 +45,20 @@ namespace GT5_Car_hack_workshop
         public MainWindow()
         {
             InitializeComponent();
-            InitializePaintComboBoxes();
+            InitializePaintSearchBoxes();
             Loaded += MainWindow_Loaded;
             Closing += MainWindow_Closing;
         }
 
-        private void InitializePaintComboBoxes()
+        private void InitializePaintSearchBoxes()
         {
-            BodyPaintComboBox.ItemsSource = PaintDatabase.Entries;
-            WheelsPaintComboBox.ItemsSource = PaintDatabase.Entries;
+            BodyPaintAutoCompleteBox.ItemsSource = PaintDatabase.Entries;
+            BodyPaintAutoCompleteBox.ItemFilter = PaintItemFilter;
+            BodyPaintAutoCompleteBox.TextSelector = PaintTextSelector;
+
+            WheelsPaintAutoCompleteBox.ItemsSource = PaintDatabase.Entries;
+            WheelsPaintAutoCompleteBox.ItemFilter = PaintItemFilter;
+            WheelsPaintAutoCompleteBox.TextSelector = PaintTextSelector;
         }
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -136,50 +141,64 @@ namespace GT5_Car_hack_workshop
             await SaveData();
         }
 
-        // ---- Paint database dropdown <-> hex field syncing ----
+        // ---- Paint database search box <-> hex field syncing ----
 
-        private void BodyPaintComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void BodyPaintAutoCompleteBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_syncingPaintFields) return;
-            if (BodyPaintComboBox.SelectedItem is PaintEntry entry)
+            if (BodyPaintAutoCompleteBox.SelectedItem is PaintEntry entry)
                 BodyPaintTextBox.Text = entry.Id.ToString("X4");
         }
 
-        private void WheelsPaintComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void WheelsPaintAutoCompleteBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (_syncingPaintFields) return;
-            if (WheelsPaintComboBox.SelectedItem is PaintEntry entry)
+            if (WheelsPaintAutoCompleteBox.SelectedItem is PaintEntry entry)
                 WheelsPaintTextBox.Text = entry.Id.ToString("X4");
         }
 
         private void BodyPaintTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (_syncingPaintFields) return;
-            SyncPaintComboBox(BodyPaintComboBox, BodyPaintTextBox.Text);
+            SyncPaintSearchBox(BodyPaintAutoCompleteBox, BodyPaintTextBox.Text);
         }
 
         private void WheelsPaintTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (_syncingPaintFields) return;
-            SyncPaintComboBox(WheelsPaintComboBox, WheelsPaintTextBox.Text);
+            SyncPaintSearchBox(WheelsPaintAutoCompleteBox, WheelsPaintTextBox.Text);
         }
 
         /// <summary>
-        /// Highlights the matching database entry for the hex value currently in a paint text
-        /// box, or deselects the combo box if the value is a custom/unknown colour ID.
+        /// Keeps a paint search box in step with the authoritative hex field: shows the matching
+        /// colour's name when the ID is known, or clears it for custom/unknown values.
         /// </summary>
-        private void SyncPaintComboBox(ComboBox comboBox, string? text)
+        private void SyncPaintSearchBox(AutoCompleteBox searchBox, string? text)
         {
-            var index = uint.TryParse(text?.Replace(" ", ""), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var id)
-                ? PaintDatabase.IndexOf(id)
-                : -1;
-
-            if (comboBox.SelectedIndex == index) return;
+            var id = uint.TryParse(text?.Replace(" ", ""), NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var value)
+                ? value
+                : (uint?)null;
 
             _syncingPaintFields = true;
-            comboBox.SelectedIndex = index;
+            searchBox.Text = id.HasValue ? PaintDatabase.Find(id.Value)?.ToString() ?? "" : "";
             _syncingPaintFields = false;
         }
+
+        /// <summary>Matches typed text against a colour's name, maker or hex ID.</summary>
+        private static bool PaintItemFilter(string? search, object? item)
+        {
+            if (item is not PaintEntry entry) return false;
+            if (string.IsNullOrWhiteSpace(search)) return true; // no filter yet - show the whole list
+            var s = search.Trim().ToLowerInvariant();
+            return s.Length != 0 && (
+                entry.Name.ToLowerInvariant().Contains(s) ||
+                entry.MakerName.ToLowerInvariant().Contains(s) ||
+                entry.Id.ToString("X4").ToLowerInvariant().Contains(s));
+        }
+
+        /// <summary>Shows the friendly colour description when an entry is picked.</summary>
+        private static string? PaintTextSelector(string? text, object? item)
+            => item is PaintEntry entry ? entry.ToString() : text;
 
         private void TorqueSplitTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -256,8 +275,8 @@ namespace GT5_Car_hack_workshop
             _syncingPaintFields = true;
             BodyPaintTextBox.Text = (paintValue >> 13).ToString("X4");
             WheelsPaintTextBox.Text = (paintValue & 0x1FFF).ToString("X4");
-            BodyPaintComboBox.SelectedIndex = PaintDatabase.IndexOf(paintValue >> 13);
-            WheelsPaintComboBox.SelectedIndex = PaintDatabase.IndexOf(paintValue & 0x1FFF);
+            BodyPaintAutoCompleteBox.Text = PaintDatabase.Find(paintValue >> 13)?.ToString() ?? "";
+            WheelsPaintAutoCompleteBox.Text = PaintDatabase.Find(paintValue & 0x1FFF)?.ToString() ?? "";
             _syncingPaintFields = false;
 
             TurboModifierTextBox.Text = $"{Gt5Save[Moff - 171]:X2} {Gt5Save[Moff - 170]:X2} {Gt5Save[Moff - 169]:X2} {Gt5Save[Moff - 168]:X2}";

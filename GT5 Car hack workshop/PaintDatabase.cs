@@ -105,5 +105,12 @@ namespace GT5_Car_hack_workshop
                 if (Entries[i].Id == id) return i;
             return -1;
         }
+
+        /// <summary>Returns the colour entry with the given ID, or null if unknown.</summary>
+        public static PaintEntry? Find(uint id)
+        {
+            var index = IndexOf(id);
+            return index >= 0 ? Entries[index] : null;
+        }
     }
 }
