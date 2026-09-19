@@ -292,14 +292,14 @@
                                 <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
                                     <StackPanel Spacing="2">
                                         <TextBlock Text="Paint" FontWeight="Bold"/>
-                                        <Grid ColumnDefinitions="Auto,*,56">
+                                        <Grid ColumnDefinitions="Auto,*,78">
                                             <TextBlock Text="Body" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                            <ComboBox x:Name="BodyPaintComboBox" Grid.Column="1" Height="22" Margin="0,0,4,0" HorizontalAlignment="Stretch" PlaceholderText="Select paint..." SelectionChanged="BodyPaintComboBox_SelectionChanged"/>
+                                            <AutoCompleteBox x:Name="BodyPaintAutoCompleteBox" Grid.Column="1" Height="22" Margin="0,0,4,0" HorizontalAlignment="Stretch" Watermark="Search paint..." MaxDropDownHeight="280" SelectionChanged="BodyPaintAutoCompleteBox_SelectionChanged"/>
                                             <TextBox x:Name="BodyPaintTextBox" Grid.Column="2" Height="20" TextChanged="BodyPaintTextBox_TextChanged"/>
                                         </Grid>
-                                        <Grid ColumnDefinitions="Auto,*,56">
+                                        <Grid ColumnDefinitions="Auto,*,78">
                                             <TextBlock Text="Wheels" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                            <ComboBox x:Name="WheelsPaintComboBox" Grid.Column="1" Height="22" Margin="0,0,4,0" HorizontalAlignment="Stretch" PlaceholderText="Select paint..." SelectionChanged="WheelsPaintComboBox_SelectionChanged"/>
+                                            <AutoCompleteBox x:Name="WheelsPaintAutoCompleteBox" Grid.Column="1" Height="22" Margin="0,0,4,0" HorizontalAlignment="Stretch" Watermark="Search paint..." MaxDropDownHeight="280" SelectionChanged="WheelsPaintAutoCompleteBox_SelectionChanged"/>
                                             <TextBox x:Name="WheelsPaintTextBox" Grid.Column="2" Height="20" TextChanged="WheelsPaintTextBox_TextChanged"/>
                                         </Grid>
                                     </StackPanel>
