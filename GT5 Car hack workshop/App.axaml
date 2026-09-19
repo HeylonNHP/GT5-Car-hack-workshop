@@ -22,7 +22,7 @@
           SambaBrush        - "Samba-like performance" easter-egg control             (unchanged Lime,   15:1)
           SlamCarBrush      - "Slam car" action text on its cyan button               (was OrangeRed,   3.1:1 -> 4.8:1)
           OpenEditorBrush   - background of the red "Open" editor buttons             (was Red, white text 4.0:1 -> 5.0:1)
-          GroupBorderBrush  - group box outlines, dimmed so labels stand out          (was Gray)
+          GroupBorderBrush  - group box outlines, dimmed so labels stand out          (was Gray #666666, retuned for the group box fill below)
         -->
         <SolidColorBrush x:Key="HexFieldBrush" Color="#4D88FF"/>
         <SolidColorBrush x:Key="DecimalFieldBrush" Color="#FF5252"/>
@@ -31,9 +31,38 @@
         <SolidColorBrush x:Key="SambaBrush" Color="Lime"/>
         <SolidColorBrush x:Key="SlamCarBrush" Color="#C04000"/>
         <SolidColorBrush x:Key="OpenEditorBrush" Color="#D32F2F"/>
-        <SolidColorBrush x:Key="GroupBorderBrush" Color="#666666"/>
+        <SolidColorBrush x:Key="GroupBorderBrush" Color="#3E4854"/>
         <!-- Dark text used on the light pastel buttons, which keep white theme text otherwise -->
         <SolidColorBrush x:Key="PastelButtonForegroundBrush" Color="#141414"/>
+
+        <!--
+          Surface palette
+          ===============
+          Fluent's dark theme paints the window, the tab bodies and the group
+          boxes in pure black, so the whole UI reads as one flat black sheet -
+          group boxes have nothing to stand out against and the input fields
+          disappear into them. A three-step palette replaces that flatness:
+
+          #14181D  application canvas            (was #000000)
+          #1F262E  group box fill, one step up   (was transparent)
+          #0D1115  text/combo fields, one down   (was #66000000 over black)
+
+          Every accent colour above keeps at least 4.8:1 contrast against the
+          lightest of these, so the Hex/Decimal/Legend colour coding still reads.
+        -->
+        <SolidColorBrush x:Key="WindowBackgroundBrush" Color="#14181D"/>
+        <SolidColorBrush x:Key="PanelBackgroundBrush" Color="#1F262E"/>
+
+        <!-- The TextBox and ComboBox templates draw their own surfaces from these
+             Fluent resources, so override them to match the palette above. -->
+        <SolidColorBrush x:Key="SystemControlBackgroundAltHighBrush" Color="#14181D"/>
+        <SolidColorBrush x:Key="TextControlBackground" Color="#0D1115"/>
+        <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#161D25"/>
+        <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#131A21"/>
+        <SolidColorBrush x:Key="TextControlBorderBrush" Color="#4A5663"/>
+        <SolidColorBrush x:Key="ComboBoxBackground" Color="#0D1115"/>
+        <SolidColorBrush x:Key="ComboBoxBackgroundPointerOver" Color="#161D25"/>
+        <SolidColorBrush x:Key="ComboBoxBackgroundPressed" Color="#131A21"/>
     </Application.Resources>
 
     <Application.Styles>

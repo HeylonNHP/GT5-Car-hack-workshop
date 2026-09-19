@@ -7,7 +7,8 @@
         Title="GT5 Car hack workshop 2.6 (For GT5 2.14). Created by HeylonNHP"
         Width="1200" Height="900"
         CanResize="False"
-        FontSize="10">
+        FontSize="10"
+        Background="{DynamicResource WindowBackgroundBrush}">
 
     <Grid Margin="4">
         <Grid.RowDefinitions>
@@ -22,7 +23,7 @@
         <!-- Left Panel -->
         <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Spacing="4">
             <!-- File and Settings Group -->
-            <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="4">
+            <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="4">
                 <StackPanel Spacing="4">
                     <TextBlock Text="Before and after you start hacking" FontWeight="Bold"/>
 
@@ -103,7 +104,7 @@
         </StackPanel>
 
         <!-- Right Panel -->
-        <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="4" Margin="4,0,0,0">
+        <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="4" Margin="4,0,0,0">
             <StackPanel Spacing="2">
                 <TextBlock Text="Basic hacks" FontWeight="Bold"/>
 
@@ -117,7 +118,7 @@
                                 <!-- Key Legend and Downforce/Torque side-by-side -->
                                 <Grid ColumnDefinitions="Auto,8,*,8,*">
                                     <!-- Key Legend -->
-                                    <Border Grid.Column="0" BorderBrush="{DynamicResource LegendBrush}" BorderThickness="1" Padding="2">
+                                    <Border Grid.Column="0" BorderBrush="{DynamicResource LegendBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                         <StackPanel>
                                             <TextBlock Text="Key" Foreground="{DynamicResource LegendBrush}" FontWeight="Bold" FontSize="9"/>
                                             <TextBlock Text="Hex only" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" FontSize="9"/>
@@ -126,7 +127,7 @@
                                     </Border>
 
                                     <!-- Downforce -->
-                                    <Border Grid.Column="2" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
+                                    <Border Grid.Column="2" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                         <StackPanel>
                                             <TextBlock Text="Downforce" FontWeight="Bold"/>
                                             <Grid ColumnDefinitions="Auto,*,Auto,*">
@@ -139,7 +140,7 @@
                                     </Border>
 
                                     <!-- Torque -->
-                                    <Border Grid.Column="4" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
+                                    <Border Grid.Column="4" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                         <StackPanel>
                                             <TextBlock Text="Torque" FontWeight="Bold"/>
                                             <Grid ColumnDefinitions="Auto,*,Auto,*,Auto">
@@ -154,7 +155,7 @@
                                 </Grid>
 
                                 <!-- Transmission -->
-                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
+                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                     <StackPanel>
                                         <TextBlock Text="Transmission" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*">
@@ -167,7 +168,7 @@
                                 <!-- Visual Mods and Car Parts side-by-side -->
                                 <Grid ColumnDefinitions="*,8,*">
                                     <!-- Visual mods -->
-                                    <Border Grid.Column="0" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
+                                    <Border Grid.Column="0" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                         <StackPanel Spacing="2">
                                             <TextBlock Text="Visual mods" FontWeight="Bold"/>
                                             <Grid ColumnDefinitions="Auto,*,Auto,Auto">
@@ -183,7 +184,7 @@
                                     </Border>
 
                                     <!-- Car parts -->
-                                    <Border Grid.Column="2" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
+                                    <Border Grid.Column="2" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                         <StackPanel Spacing="2">
                                             <TextBlock Text="Car parts" FontWeight="Bold"/>
                                             <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
@@ -223,7 +224,7 @@
                                 <!-- Performance Multipliers and Reset Protection side-by-side -->
                                 <Grid ColumnDefinitions="*,8,*">
                                     <!-- Performance multipliers -->
-                                    <Border Grid.Column="0" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
+                                    <Border Grid.Column="0" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                         <StackPanel Spacing="2">
                                             <TextBlock Text="Performance multipliers" FontWeight="Bold"/>
                                             <Grid ColumnDefinitions="Auto,*,Auto">
@@ -247,7 +248,7 @@
                                     </Border>
 
                                     <!-- Reset protection -->
-                                    <Border Grid.Column="2" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
+                                    <Border Grid.Column="2" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                         <StackPanel Spacing="2">
                                             <TextBlock Text="Reset protection" FontWeight="Bold"/>
                                             <StackPanel Orientation="Horizontal" Spacing="3">
@@ -269,7 +270,7 @@
                         <ScrollViewer>
                             <StackPanel Spacing="6" Margin="3">
                                 <!-- Suspension -->
-                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
+                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                     <StackPanel Spacing="2">
                                         <TextBlock Text="Suspension" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*,Auto,*">
@@ -289,7 +290,7 @@
                                 </Border>
 
                                 <!-- Paint -->
-                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
+                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                     <StackPanel Spacing="2">
                                         <TextBlock Text="Paint" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*,78">
@@ -306,7 +307,7 @@
                                 </Border>
 
                                 <!-- Other -->
-                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
+                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                     <StackPanel>
                                         <TextBlock Text="Other" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*">
@@ -317,7 +318,7 @@
                                 </Border>
 
                                 <!-- Weight hack -->
-                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
+                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                     <StackPanel Spacing="2">
                                         <TextBlock Text="Weight hack" FontWeight="Bold"/>
                                         <Grid ColumnDefinitions="Auto,*">
@@ -329,7 +330,7 @@
                                 </Border>
 
                                 <!-- Experimental -->
-                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Padding="2">
+                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                     <StackPanel Spacing="2">
                                         <TextBlock Text="Under development (EXPERIMENTAL)" FontWeight="Bold"/>
                                         <TextBlock Text="Transmission"/>
