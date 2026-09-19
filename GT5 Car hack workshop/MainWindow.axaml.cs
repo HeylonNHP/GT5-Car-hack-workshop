@@ -781,8 +781,8 @@ namespace GT5_Car_hack_workshop
 
         private async void Button6_Click(object sender, RoutedEventArgs e)
         {
-            TorqueSplitTextBox.Text = "50";
-            DrivetrainCodeTextBox.Text = "0A 1E";
+            TorqueSplitTextBox.Text = "30";
+            DrivetrainCodeTextBox.Text = "0C E2";
         }
 
         private async void Button4_Click(object sender, RoutedEventArgs e)
