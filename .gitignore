@@ -1,3 +1,10 @@
 ﻿/GT5 Car hack workshop/bin/
 /GT5 Car hack workshop/obj/
 /.idea/
+
+# Per-user state, written at runtime
+GT5CHWsettings.ini
+*.sln.DotSettings.user
+
+# Stray empty file; the real database is tracked in the project folder
+/partsdatabase.db

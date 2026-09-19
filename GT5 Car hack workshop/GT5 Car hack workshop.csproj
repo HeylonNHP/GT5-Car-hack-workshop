@@ -40,6 +40,14 @@
         <EmbeddedResource Include="Resources\PaintDatabase.tsv" />
     </ItemGroup>
 
+    <!-- The app reads and rewrites partsdatabase.db next to the executable, so it
+         must be copied to the output folder and kept up to date there. -->
+    <ItemGroup>
+        <None Update="partsdatabase.db">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
     <!-- Exclude old Windows Forms files from compilation -->
     <ItemGroup>
         <Compile Remove="Components\FormComponents\SearchableComboBox.cs" />
