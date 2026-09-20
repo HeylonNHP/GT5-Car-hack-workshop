@@ -264,12 +264,9 @@ namespace GT5_Car_hack_workshop
                 await ShowMessageBox($"Can't get param.sfo for loading the current car's name.\n{ex.Message}");
             }
 
-            EngineCodeComboBox.Text = Gt5Save[Moff - 213].ToString("X2") + " " + Gt5Save[Moff - 212].ToString("X2");
             TorqueSplitTextBox.Text = Gt5Save[Moff - 46].ToString();
-            DrivetrainCodeComboBox.Text = Gt5Save[Moff - 209].ToString("X2") + " " + Gt5Save[Moff - 208].ToString("X2");
-            ChassisCodeComboBox.Text = Gt5Save[Moff - 217].ToString("X2") + " " + Gt5Save[Moff - 216].ToString("X2");
-            TransmissionCodeComboBox.Text = Gt5Save[Moff - 205].ToString("X2") + " " + Gt5Save[Moff - 204].ToString("X2");
             RemoveSpoilerCodeTextBox.Text = Gt5Save[Moff - 88].ToString();
+            LoadPartsFromSave();
 
             // Paint is stored as a single big-endian 32-bit value: (body colour ID << 13) | wheel colour ID,
             // where each ID indexes the game's internal paint database (0x1FFF = unset/default).
@@ -306,10 +303,6 @@ namespace GT5_Car_hack_workshop
             SpringRateRearTextBox.Text = Gt5Save[Moff - 26].ToString();
 
             ExhauseMultiplierTextBox.Text = $"{Gt5Save[Moff - 155]:X2} {Gt5Save[Moff - 154]:X2} {Gt5Save[Moff - 153]:X2} {Gt5Save[Moff - 152]:X2}";
-            BodyCodeComboBox.Text = $"{Gt5Save[Moff - 262]:X2} {Gt5Save[Moff - 261]:X2}";
-            SuspensionCodeComboBox.Text = $"{Gt5Save[Moff - 201]:X2} {Gt5Save[Moff - 200]:X2}";
-            LsdCodeComboBox.Text = $"{Gt5Save[Moff - 197]:X2} {Gt5Save[Moff - 196]:X2}";
-            HornCodeComboBox.Text = $"{Gt5Save[Moff + 23]:X2} {Gt5Save[Moff + 24]:X2}";
 
             WeightMultiplierTextBox.Text = ByteUtils.ConvertBytesToUnsignedInt(new Byte[]
                 { Gt5Save[Moff - 191], Gt5Save[Moff - 190], Gt5Save[Moff - 189], Gt5Save[Moff - 188] }).ToString();
@@ -727,6 +720,50 @@ namespace GT5_Car_hack_workshop
             }
 
             return text ?? string.Empty;
+        }
+
+        // Fills the parts drop-downs from the loaded save. When a code matches an existing database
+        // entry (or the whole car matches one) the drop-down selects that entry so it shows the
+        // saved name; otherwise the raw hex code is shown as free text.
+        private void LoadPartsFromSave()
+        {
+            var engine = ByteUtils.BytesToUshort(Gt5Save[Moff - 213], Gt5Save[Moff - 212]);
+            var drivetrain = ByteUtils.BytesToUshort(Gt5Save[Moff - 209], Gt5Save[Moff - 208]);
+            var chassis = ByteUtils.BytesToUshort(Gt5Save[Moff - 217], Gt5Save[Moff - 216]);
+            var transmission = ByteUtils.BytesToUshort(Gt5Save[Moff - 205], Gt5Save[Moff - 204]);
+            var suspension = ByteUtils.BytesToUshort(Gt5Save[Moff - 201], Gt5Save[Moff - 200]);
+            var body = ByteUtils.BytesToUshort(Gt5Save[Moff - 262], Gt5Save[Moff - 261]);
+            var lsd = ByteUtils.BytesToUshort(Gt5Save[Moff - 197], Gt5Save[Moff - 196]);
+            var horn = ByteUtils.BytesToUshort(Gt5Save[Moff + 23], Gt5Save[Moff + 24]);
+
+            // Prefer a single entry that matches the whole car so every drop-down agrees on it.
+            var wholeMatch = _CarPartsList?.FirstOrDefault(p =>
+                p.Engine == engine && p.Drivetrain == drivetrain && p.Chassis == chassis &&
+                p.Transmission == transmission && p.Suspension == suspension && p.Body == body &&
+                p.Lsd == lsd && p.Horn == horn);
+
+            SetPartSelection(EngineCodeComboBox, engine, p => p.Engine, wholeMatch);
+            SetPartSelection(DrivetrainCodeComboBox, drivetrain, p => p.Drivetrain, wholeMatch);
+            SetPartSelection(ChassisCodeComboBox, chassis, p => p.Chassis, wholeMatch);
+            SetPartSelection(TransmissionCodeComboBox, transmission, p => p.Transmission, wholeMatch);
+            SetPartSelection(SuspensionCodeComboBox, suspension, p => p.Suspension, wholeMatch);
+            SetPartSelection(BodyCodeComboBox, body, p => p.Body, wholeMatch);
+            SetPartSelection(LsdCodeComboBox, lsd, p => p.Lsd, wholeMatch);
+            SetPartSelection(HornCodeComboBox, horn, p => p.Horn, wholeMatch);
+        }
+
+        /// <summary>
+        /// Points a parts ComboBox at the given value: selects <paramref name="preferred"/>, else the
+        /// first database entry whose matching field equals the value, so the saved car's name is
+        /// shown; if nothing matches, displays the raw hex code instead.
+        /// </summary>
+        private static void SetPartSelection(ComboBox comboBox, ushort value, Func<CarParts, ushort> selector, CarParts? preferred)
+        {
+            var match = preferred ?? (comboBox.ItemsSource as IEnumerable<CarParts>)?.FirstOrDefault(p => selector(p) == value);
+            if (match != null)
+                comboBox.SelectedItem = match;
+            else
+                comboBox.Text = ByteUtils.UshortToHexString(value);
         }
 
         private void LoadParts()
