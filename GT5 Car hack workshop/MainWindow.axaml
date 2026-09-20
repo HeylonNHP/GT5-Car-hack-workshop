@@ -300,6 +300,7 @@
                                             <AutoCompleteBox x:Name="WheelsPaintAutoCompleteBox" Grid.Column="1" Height="22" Margin="0,0,4,0" HorizontalAlignment="Stretch" Watermark="Search paint..." MaxDropDownHeight="280" SelectionChanged="WheelsPaintAutoCompleteBox_SelectionChanged"/>
                                             <TextBox x:Name="WheelsPaintTextBox" Grid.Column="2" Height="20" TextChanged="WheelsPaintTextBox_TextChanged"/>
                                         </Grid>
+                                        <Button x:Name="AddPaintChipsButton" Content="Add paint chips…" Height="26" Margin="0,2,0,0" HorizontalAlignment="Stretch" Click="AddPaintChipsButton_Click"/>
                                     </StackPanel>
                                 </Border>
 
