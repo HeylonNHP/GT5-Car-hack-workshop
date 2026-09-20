@@ -314,6 +314,11 @@
                                             <TextBlock Text="Grip" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                             <TextBox x:Name="GripTextBox" Grid.Column="1" Width="70" Height="20" HorizontalAlignment="Left"/>
                                         </Grid>
+                                        <Grid ColumnDefinitions="Auto,*,Auto" Margin="0,4,0,0">
+                                            <TextBlock Text="Driven km" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <TextBox x:Name="OdometerTextBox" Grid.Column="1" Width="100" Height="20" HorizontalAlignment="Left" PlaceholderText="km"/>
+                                            <Button x:Name="Button24" Content="?" Grid.Column="2" Height="25" Click="Button24_Click"/>
+                                        </Grid>
                                     </StackPanel>
                                 </Border>
 
