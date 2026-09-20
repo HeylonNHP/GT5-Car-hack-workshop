@@ -292,6 +292,14 @@ namespace GT5_Car_hack_workshop
 
             GripTextBox.Text = Gt5Save[Moff + 10].ToString();
 
+            // Driven kilometres of the current car. This is the Odometer field of the car's
+            // MCarParameter condition block (MCarParameter base = Moff - 396, so the odometer
+            // sits at Moff - 384). It is a big-endian 32-bit unsigned value stored in metres,
+            // i.e. km = raw / 1000.
+            var odometerMetres = ByteUtils.ConvertBytesToUnsignedInt(new[]
+                { Gt5Save[Moff - 384], Gt5Save[Moff - 383], Gt5Save[Moff - 382], Gt5Save[Moff - 381] });
+            OdometerTextBox.Text = (odometerMetres / 1000.0).ToString("0.0", CultureInfo.InvariantCulture);
+
             SpringRateFrontTextBox.Text = Gt5Save[Moff - 27].ToString();
             SpringRateRearTextBox.Text = Gt5Save[Moff - 26].ToString();
 
@@ -507,6 +515,27 @@ namespace GT5_Car_hack_workshop
             catch (Exception e)
             {
                 await ShowMessageBox($"Can't save grip to the save file.\n{e.Message}");
+                return;
+            }
+
+            try
+            {
+                // Driven kilometres (odometer) - big-endian 32-bit value at Moff - 384, stored in metres.
+                if (!double.TryParse(OdometerTextBox.Text, NumberStyles.Float | NumberStyles.AllowThousands, CultureInfo.InvariantCulture, out var odometerKm))
+                    throw new FormatException("Driven km must be a number.");
+
+                if (odometerKm < 0 || odometerKm > 4294967.295)
+                    throw new FormatException("Driven km must be between 0 and 4,294,967 km.");
+
+                var odometerBytes = ByteUtils.UintToByteArray((uint)Math.Round(odometerKm * 1000.0));
+                Gt5Save[Moff - 384] = odometerBytes[0];
+                Gt5Save[Moff - 383] = odometerBytes[1];
+                Gt5Save[Moff - 382] = odometerBytes[2];
+                Gt5Save[Moff - 381] = odometerBytes[3];
+            }
+            catch (Exception e)
+            {
+                await ShowMessageBox($"Can't save driven km to the save file.\n{e.Message}");
                 return;
             }
 
@@ -874,6 +903,11 @@ namespace GT5_Car_hack_workshop
         private async void Button23_Click(object sender, RoutedEventArgs e)
         {
             await ShowMessageBox("When you tick this checkbox, you must buy the Rigidity Improvement right before doing anything after loading the hacked save, the Rigidity Improvement is found under Body/Chassis in the tuning shop. The hack wont take proper effect without buying this upgrade.\n\nIf you have already purchased this upgrade, it will be uninstalled when you apply this hack.");
+        }
+
+        private async void Button24_Click(object sender, RoutedEventArgs e)
+        {
+            await ShowMessageBox("This is the total distance the current car has been driven (its odometer).\nEnter a value in kilometres, e.g. 12345.6.\n\nSet it to 0 for a brand-new car. Note: engine/body wear and the 'needs oil' warning are stored in separate fields and are not reset by this; use 'Set good oil' if you also want the car to look freshly serviced.");
         }
 
         private async void BadOilBtn_Click(object sender, RoutedEventArgs e)
