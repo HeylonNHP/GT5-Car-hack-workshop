@@ -26,6 +26,9 @@ namespace GT5_Car_hack_workshop
         // Guards against paint field <-> combo box sync loops
         private bool _syncingPaintFields;
 
+        // Guards against parts database search box <-> hex field sync loops
+        private bool _syncingParts;
+
         public byte[] Gt5Save;
         public int Moff;
 
@@ -38,6 +41,7 @@ namespace GT5_Car_hack_workshop
             _CarName = "";
             InitializeComponent();
             InitializePaintSearchBoxes();
+            InitializePartComboBoxes();
             Loaded += MainWindow_Loaded;
             Closing += MainWindow_Closing;
         }
@@ -46,6 +50,7 @@ namespace GT5_Car_hack_workshop
         {
             InitializeComponent();
             InitializePaintSearchBoxes();
+            InitializePartComboBoxes();
             Loaded += MainWindow_Loaded;
             Closing += MainWindow_Closing;
         }
@@ -679,84 +684,116 @@ namespace GT5_Car_hack_workshop
             File.WriteAllBytes(TextBox1.Text, Gt5Save);
         }
 
+        // Wires up the parts-database ComboBoxes so they behave as an editable "select or type"
+        // control: clicking the drop-down arrow shows the full list of saved cars, while anything
+        // typed (e.g. a custom hex code that is not in the list) is mirrored into the matching hex
+        // field so it is picked up when the car is saved or added to the database.
+        private void InitializePartComboBoxes()
+        {
+            SubscribePartComboBox(EngineCodeComboBox, EngineCodeTextBox);
+            SubscribePartComboBox(DrivetrainCodeComboBox, DrivetrainCodeTextBox);
+            SubscribePartComboBox(ChassisCodeComboBox, ChassisCodeTextBox);
+            SubscribePartComboBox(TransmissionCodeComboBox, TransmissionCodeTextBox);
+            SubscribePartComboBox(SuspensionCodeComboBox, SuspensionCodeTextBox);
+            SubscribePartComboBox(BodyCodeComboBox, CarBodyCodeTextBox);
+            SubscribePartComboBox(LsdCodeComboBox, LsdCodeTextBox);
+            SubscribePartComboBox(HornCodeComboBox, HornCodeTextBox);
+        }
+
+        private void SubscribePartComboBox(ComboBox comboBox, TextBox target)
+        {
+            comboBox.PropertyChanged += (_, e) =>
+            {
+                if (e.Property != ComboBox.TextProperty) return;
+                if (_syncingParts) return;
+
+                // Selecting a saved car is handled by the SelectionChanged handler, which writes
+                // that part's hex code. Here we only mirror free text the user typed themselves.
+                if (comboBox.SelectedItem is CarParts) return;
+
+                target.Text = comboBox.Text ?? string.Empty;
+            };
+        }
+
         private void LoadParts()
         {
-            // Clear all ComboBoxes
+            var sortedList = _CarPartsList?.OrderBy(cp => cp.Name).ToList() ?? new List<CarParts>();
+
             foreach (var comboBox in new[] { EngineCodeComboBox, DrivetrainCodeComboBox, ChassisCodeComboBox,
                 TransmissionCodeComboBox, SuspensionCodeComboBox, BodyCodeComboBox, LsdCodeComboBox, HornCodeComboBox })
             {
-                comboBox.Items.Clear();
-                comboBox.SelectedIndex = -1;
-            }
-
-            if (_CarPartsList != null && _CarPartsList.Count > 0)
-            {
                 try
                 {
-                    var sortedList = _CarPartsList.OrderBy(cp => cp.Name).ToList();
-
-                    foreach (var comboBox in new[] { EngineCodeComboBox, DrivetrainCodeComboBox, ChassisCodeComboBox,
-                        TransmissionCodeComboBox, SuspensionCodeComboBox, BodyCodeComboBox, LsdCodeComboBox, HornCodeComboBox })
-                    {
-                        comboBox.Items.Add("Select...");
-                        foreach (var part in sortedList)
-                        {
-                            comboBox.Items.Add(part);
-                        }
-                        comboBox.SelectedIndex = 0;
-                    }
+                    // The editable ComboBox shows the whole list when its drop-down arrow is clicked
+                    // and also accepts free text typed straight into the box.
+                    _syncingParts = true;
+                    comboBox.ItemsSource = sortedList;
+                    comboBox.SelectedItem = null;
+                    comboBox.Text = string.Empty;
                 }
                 catch (Exception ex)
                 {
                     _ = ShowMessageBox($"An issue occurred while loading the parts database: {ex.Message}");
+                }
+                finally
+                {
+                    _syncingParts = false;
                 }
             }
         }
 
         private void EngineCodeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (_syncingParts) return;
             if (EngineCodeComboBox.SelectedItem is CarParts selectedParts)
                 EngineCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Engine);
         }
 
         private void DrivetrainCodeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (_syncingParts) return;
             if (DrivetrainCodeComboBox.SelectedItem is CarParts selectedParts)
                 DrivetrainCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Drivetrain);
         }
 
         private void ChassisCodeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (_syncingParts) return;
             if (ChassisCodeComboBox.SelectedItem is CarParts selectedParts)
                 ChassisCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Chassis);
         }
 
         private void TransmissionCodeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (_syncingParts) return;
             if (TransmissionCodeComboBox.SelectedItem is CarParts selectedParts)
                 TransmissionCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Transmission);
         }
 
         private void SuspensionCodeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (_syncingParts) return;
             if (SuspensionCodeComboBox.SelectedItem is CarParts selectedParts)
                 SuspensionCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Suspension);
         }
 
         private void BodyCodeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (_syncingParts) return;
             if (BodyCodeComboBox.SelectedItem is CarParts selectedParts)
                 CarBodyCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Body);
         }
 
         private void LsdCodeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (_syncingParts) return;
             if (LsdCodeComboBox.SelectedItem is CarParts selectedParts)
                 LsdCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Lsd);
         }
 
         private void HornCodeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (_syncingParts) return;
             if (HornCodeComboBox.SelectedItem is CarParts selectedParts)
                 HornCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Horn);
         }
