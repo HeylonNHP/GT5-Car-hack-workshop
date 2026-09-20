@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 
 namespace GT5_Car_hack_workshop
@@ -111,6 +112,41 @@ namespace GT5_Car_hack_workshop
         {
             var index = IndexOf(id);
             return index >= 0 ? Entries[index] : null;
+        }
+
+        /// <summary>
+        /// True when a colour matches the text typed into a paint search box. An empty search
+        /// matches everything; otherwise the colour's name, maker or hex id is compared.
+        /// </summary>
+        public static bool MatchesSearch(PaintEntry entry, string? search)
+        {
+            if (string.IsNullOrWhiteSpace(search)) return true;
+            var s = search.Trim().ToLowerInvariant();
+            return entry.Name.ToLowerInvariant().Contains(s)
+                   || entry.MakerName.ToLowerInvariant().Contains(s)
+                   || entry.Id.ToString("X4").ToLowerInvariant().Contains(s);
+        }
+
+        /// <summary>
+        /// Resolves text a user typed into a paint search box to a colour entry: a hex id
+        /// (e.g. "0D1B"), a full description ("White (Daihatsu, Solid) - 08D6") or an exact
+        /// colour name. Returns null when nothing matches.
+        /// </summary>
+        public static PaintEntry? Resolve(string? text)
+        {
+            if (string.IsNullOrWhiteSpace(text)) return null;
+
+            var trimmed = text.Trim();
+            var hex = trimmed.Replace(" ", string.Empty).Replace("0x", string.Empty).Replace("0X", string.Empty);
+            if (hex.Length is > 0 and <= 4
+                && uint.TryParse(hex, NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var id))
+            {
+                var byId = Find(id);
+                if (byId is not null) return byId;
+            }
+
+            return Entries.FirstOrDefault(e => string.Equals(e.ToString(), trimmed, StringComparison.OrdinalIgnoreCase))
+                   ?? Entries.FirstOrDefault(e => string.Equals(e.Name, trimmed, StringComparison.OrdinalIgnoreCase));
         }
     }
 }

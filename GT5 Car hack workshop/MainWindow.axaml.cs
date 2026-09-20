@@ -188,15 +188,7 @@ namespace GT5_Car_hack_workshop
 
         /// <summary>Matches typed text against a colour's name, maker or hex ID.</summary>
         private static bool PaintItemFilter(string? search, object? item)
-        {
-            if (item is not PaintEntry entry) return false;
-            if (string.IsNullOrWhiteSpace(search)) return true; // no filter yet - show the whole list
-            var s = search.Trim().ToLowerInvariant();
-            return s.Length != 0 && (
-                entry.Name.ToLowerInvariant().Contains(s) ||
-                entry.MakerName.ToLowerInvariant().Contains(s) ||
-                entry.Id.ToString("X4").ToLowerInvariant().Contains(s));
-        }
+            => item is PaintEntry entry && PaintDatabase.MatchesSearch(entry, search);
 
         /// <summary>Shows the friendly colour description when an entry is picked.</summary>
         private static string? PaintTextSelector(string? text, object? item)
@@ -875,6 +867,18 @@ namespace GT5_Car_hack_workshop
         private async void Button14_Click(object sender, RoutedEventArgs e)
         {
             await ShowMessageBox("This will override the 74 byte checkbox\nGT5 Editor 1.6 uses this method instead of the 74 byte, I have no idea whether it's more effective. So I've added in this function for testing purposes.");
+        }
+
+        private async void AddPaintChipsButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Gt5Save == null || Gt5Save.Length == 0)
+            {
+                await ShowMessageBox("Load a GT5.0 save before adding paint chips.");
+                return;
+            }
+
+            var paintChipWindow = new PaintChipWindow(_formManager);
+            await paintChipWindow.ShowDialog(this);
         }
 
         private async void Button15_Click(object sender, RoutedEventArgs e)

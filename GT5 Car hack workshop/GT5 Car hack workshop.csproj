@@ -32,6 +32,8 @@
         <PackageReference Include="MessageBox.Avalonia" Version="12.0.0" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="11.0.0-rc.1.26425.128" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="11.0.0-rc.1.26425.128" />
+        <!-- Used to edit the SQLite database embedded inside the save, entirely in memory. -->
+        <PackageReference Include="Microsoft.Data.Sqlite" Version="10.0.12" />
     </ItemGroup>
 
     <ItemGroup>
