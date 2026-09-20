@@ -26,9 +26,6 @@ namespace GT5_Car_hack_workshop
         // Guards against paint field <-> combo box sync loops
         private bool _syncingPaintFields;
 
-        // Guards against parts database search box <-> hex field sync loops
-        private bool _syncingParts;
-
         public byte[] Gt5Save;
         public int Moff;
 
@@ -267,11 +264,11 @@ namespace GT5_Car_hack_workshop
                 await ShowMessageBox($"Can't get param.sfo for loading the current car's name.\n{ex.Message}");
             }
 
-            EngineCodeTextBox.Text = Gt5Save[Moff - 213].ToString("X2") + " " + Gt5Save[Moff - 212].ToString("X2");
+            EngineCodeComboBox.Text = Gt5Save[Moff - 213].ToString("X2") + " " + Gt5Save[Moff - 212].ToString("X2");
             TorqueSplitTextBox.Text = Gt5Save[Moff - 46].ToString();
-            DrivetrainCodeTextBox.Text = Gt5Save[Moff - 209].ToString("X2") + " " + Gt5Save[Moff - 208].ToString("X2");
-            ChassisCodeTextBox.Text = Gt5Save[Moff - 217].ToString("X2") + " " + Gt5Save[Moff - 216].ToString("X2");
-            TransmissionCodeTextBox.Text = Gt5Save[Moff - 205].ToString("X2") + " " + Gt5Save[Moff - 204].ToString("X2");
+            DrivetrainCodeComboBox.Text = Gt5Save[Moff - 209].ToString("X2") + " " + Gt5Save[Moff - 208].ToString("X2");
+            ChassisCodeComboBox.Text = Gt5Save[Moff - 217].ToString("X2") + " " + Gt5Save[Moff - 216].ToString("X2");
+            TransmissionCodeComboBox.Text = Gt5Save[Moff - 205].ToString("X2") + " " + Gt5Save[Moff - 204].ToString("X2");
             RemoveSpoilerCodeTextBox.Text = Gt5Save[Moff - 88].ToString();
 
             // Paint is stored as a single big-endian 32-bit value: (body colour ID << 13) | wheel colour ID,
@@ -309,10 +306,10 @@ namespace GT5_Car_hack_workshop
             SpringRateRearTextBox.Text = Gt5Save[Moff - 26].ToString();
 
             ExhauseMultiplierTextBox.Text = $"{Gt5Save[Moff - 155]:X2} {Gt5Save[Moff - 154]:X2} {Gt5Save[Moff - 153]:X2} {Gt5Save[Moff - 152]:X2}";
-            CarBodyCodeTextBox.Text = $"{Gt5Save[Moff - 262]:X2} {Gt5Save[Moff - 261]:X2}";
-            SuspensionCodeTextBox.Text = $"{Gt5Save[Moff - 201]:X2} {Gt5Save[Moff - 200]:X2}";
-            LsdCodeTextBox.Text = $"{Gt5Save[Moff - 197]:X2} {Gt5Save[Moff - 196]:X2}";
-            HornCodeTextBox.Text = $"{Gt5Save[Moff + 23]:X2} {Gt5Save[Moff + 24]:X2}";
+            BodyCodeComboBox.Text = $"{Gt5Save[Moff - 262]:X2} {Gt5Save[Moff - 261]:X2}";
+            SuspensionCodeComboBox.Text = $"{Gt5Save[Moff - 201]:X2} {Gt5Save[Moff - 200]:X2}";
+            LsdCodeComboBox.Text = $"{Gt5Save[Moff - 197]:X2} {Gt5Save[Moff - 196]:X2}";
+            HornCodeComboBox.Text = $"{Gt5Save[Moff + 23]:X2} {Gt5Save[Moff + 24]:X2}";
 
             WeightMultiplierTextBox.Text = ByteUtils.ConvertBytesToUnsignedInt(new Byte[]
                 { Gt5Save[Moff - 191], Gt5Save[Moff - 190], Gt5Save[Moff - 189], Gt5Save[Moff - 188] }).ToString();
@@ -322,7 +319,7 @@ namespace GT5_Car_hack_workshop
         {
             try
             {
-                var engineByteValues = ByteUtils.HexStringToByteArray(EngineCodeTextBox.Text);
+                var engineByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(EngineCodeComboBox, p => p.Engine));
                 Gt5Save[Moff - 213] = engineByteValues[0];
                 Gt5Save[Moff - 212] = engineByteValues[1];
             }
@@ -350,7 +347,7 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                var drivetrainByteValues = ByteUtils.HexStringToByteArray(DrivetrainCodeTextBox.Text);
+                var drivetrainByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(DrivetrainCodeComboBox, p => p.Drivetrain));
                 Gt5Save[Moff - 209] = drivetrainByteValues[0];
                 Gt5Save[Moff - 208] = drivetrainByteValues[1];
             }
@@ -362,7 +359,7 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                var chassisByteValues = ByteUtils.HexStringToByteArray(ChassisCodeTextBox.Text);
+                var chassisByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(ChassisCodeComboBox, p => p.Chassis));
                 Gt5Save[Moff - 217] = chassisByteValues[0];
                 Gt5Save[Moff - 216] = chassisByteValues[1];
             }
@@ -374,7 +371,7 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                var transmissionByteValues = ByteUtils.HexStringToByteArray(TransmissionCodeTextBox.Text);
+                var transmissionByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(TransmissionCodeComboBox, p => p.Transmission));
                 Gt5Save[Moff - 205] = transmissionByteValues[0];
                 Gt5Save[Moff - 204] = transmissionByteValues[1];
             }
@@ -584,7 +581,7 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                var carBodyCode = ByteUtils.HexStringToByteArray(CarBodyCodeTextBox.Text);
+                var carBodyCode = ByteUtils.HexStringToByteArray(ResolvePartHex(BodyCodeComboBox, p => p.Body));
                 Gt5Save[Moff - 262] = carBodyCode[0];
                 Gt5Save[Moff - 261] = carBodyCode[1];
             }
@@ -596,7 +593,7 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                var suspensionCode = ByteUtils.HexStringToByteArray(SuspensionCodeTextBox.Text);
+                var suspensionCode = ByteUtils.HexStringToByteArray(ResolvePartHex(SuspensionCodeComboBox, p => p.Suspension));
                 Gt5Save[Moff - 201] = suspensionCode[0];
                 Gt5Save[Moff - 200] = suspensionCode[1];
             }
@@ -608,7 +605,7 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                var lsdCode = ByteUtils.HexStringToByteArray(LsdCodeTextBox.Text);
+                var lsdCode = ByteUtils.HexStringToByteArray(ResolvePartHex(LsdCodeComboBox, p => p.Lsd));
                 Gt5Save[Moff - 197] = lsdCode[0];
                 Gt5Save[Moff - 196] = lsdCode[1];
             }
@@ -620,7 +617,7 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                var hornCode = ByteUtils.HexStringToByteArray(HornCodeTextBox.Text);
+                var hornCode = ByteUtils.HexStringToByteArray(ResolvePartHex(HornCodeComboBox, p => p.Horn));
                 Gt5Save[Moff + 23] = hornCode[0];
                 Gt5Save[Moff + 24] = hornCode[1];
             }
@@ -684,35 +681,52 @@ namespace GT5_Car_hack_workshop
             File.WriteAllBytes(TextBox1.Text, Gt5Save);
         }
 
-        // Wires up the parts-database ComboBoxes so they behave as an editable "select or type"
-        // control: clicking the drop-down arrow shows the full list of saved cars, while anything
-        // typed (e.g. a custom hex code that is not in the list) is mirrored into the matching hex
-        // field so it is picked up when the car is saved or added to the database.
+        // Wires up the parts-database ComboBoxes. Each one is now the single source of truth for its
+        // car-part code: pick a saved car from the drop-down to load that car's value, or type a hex
+        // code directly. The small label beside each box always shows the resolved hex.
         private void InitializePartComboBoxes()
         {
-            SubscribePartComboBox(EngineCodeComboBox, EngineCodeTextBox);
-            SubscribePartComboBox(DrivetrainCodeComboBox, DrivetrainCodeTextBox);
-            SubscribePartComboBox(ChassisCodeComboBox, ChassisCodeTextBox);
-            SubscribePartComboBox(TransmissionCodeComboBox, TransmissionCodeTextBox);
-            SubscribePartComboBox(SuspensionCodeComboBox, SuspensionCodeTextBox);
-            SubscribePartComboBox(BodyCodeComboBox, CarBodyCodeTextBox);
-            SubscribePartComboBox(LsdCodeComboBox, LsdCodeTextBox);
-            SubscribePartComboBox(HornCodeComboBox, HornCodeTextBox);
+            WirePartComboBox(EngineCodeComboBox, EngineHexLabel, p => p.Engine);
+            WirePartComboBox(DrivetrainCodeComboBox, DrivetrainHexLabel, p => p.Drivetrain);
+            WirePartComboBox(ChassisCodeComboBox, ChassisHexLabel, p => p.Chassis);
+            WirePartComboBox(TransmissionCodeComboBox, TransmissionHexLabel, p => p.Transmission);
+            WirePartComboBox(SuspensionCodeComboBox, SuspensionHexLabel, p => p.Suspension);
+            WirePartComboBox(BodyCodeComboBox, BodyHexLabel, p => p.Body);
+            WirePartComboBox(LsdCodeComboBox, LsdHexLabel, p => p.Lsd);
+            WirePartComboBox(HornCodeComboBox, HornHexLabel, p => p.Horn);
         }
 
-        private void SubscribePartComboBox(ComboBox comboBox, TextBox target)
+        private static void WirePartComboBox(ComboBox comboBox, TextBlock hexLabel, Func<CarParts, ushort> selector)
         {
+            // Picking a car sets Text to that car's name, and typing changes Text directly, so
+            // watching Text covers both. ResolvePartHex turns either one into the hex to display.
             comboBox.PropertyChanged += (_, e) =>
             {
-                if (e.Property != ComboBox.TextProperty) return;
-                if (_syncingParts) return;
-
-                // Selecting a saved car is handled by the SelectionChanged handler, which writes
-                // that part's hex code. Here we only mirror free text the user typed themselves.
-                if (comboBox.SelectedItem is CarParts) return;
-
-                target.Text = comboBox.Text ?? string.Empty;
+                if (e.Property == ComboBox.TextProperty)
+                    hexLabel.Text = ResolvePartHex(comboBox, selector);
             };
+        }
+
+        /// <summary>
+        /// Resolves the hex code a parts ComboBox currently represents: the chosen car's value when
+        /// an entry is selected, otherwise the raw text the user typed. If the box is still showing
+        /// a car name (e.g. just after the drop-down list was reloaded and the selection cleared)
+        /// that name is looked up again so the correct code is still used.
+        /// </summary>
+        private static string ResolvePartHex(ComboBox comboBox, Func<CarParts, ushort> selector)
+        {
+            if (comboBox.SelectedItem is CarParts selected)
+                return ByteUtils.UshortToHexString(selector(selected));
+
+            var text = comboBox.Text;
+            if (!string.IsNullOrWhiteSpace(text) && comboBox.ItemsSource is IEnumerable<CarParts> parts)
+            {
+                var named = parts.FirstOrDefault(p => p.Name.Equals(text, StringComparison.OrdinalIgnoreCase));
+                if (named != null)
+                    return ByteUtils.UshortToHexString(selector(named));
+            }
+
+            return text ?? string.Empty;
         }
 
         private void LoadParts()
@@ -724,78 +738,15 @@ namespace GT5_Car_hack_workshop
             {
                 try
                 {
-                    // The editable ComboBox shows the whole list when its drop-down arrow is clicked
-                    // and also accepts free text typed straight into the box.
-                    _syncingParts = true;
+                    // Refreshing ItemsSource updates the drop-down list while leaving whatever value
+                    // is currently in the box untouched.
                     comboBox.ItemsSource = sortedList;
-                    comboBox.SelectedItem = null;
-                    comboBox.Text = string.Empty;
                 }
                 catch (Exception ex)
                 {
                     _ = ShowMessageBox($"An issue occurred while loading the parts database: {ex.Message}");
                 }
-                finally
-                {
-                    _syncingParts = false;
-                }
             }
-        }
-
-        private void EngineCodeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (_syncingParts) return;
-            if (EngineCodeComboBox.SelectedItem is CarParts selectedParts)
-                EngineCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Engine);
-        }
-
-        private void DrivetrainCodeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (_syncingParts) return;
-            if (DrivetrainCodeComboBox.SelectedItem is CarParts selectedParts)
-                DrivetrainCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Drivetrain);
-        }
-
-        private void ChassisCodeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (_syncingParts) return;
-            if (ChassisCodeComboBox.SelectedItem is CarParts selectedParts)
-                ChassisCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Chassis);
-        }
-
-        private void TransmissionCodeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (_syncingParts) return;
-            if (TransmissionCodeComboBox.SelectedItem is CarParts selectedParts)
-                TransmissionCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Transmission);
-        }
-
-        private void SuspensionCodeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (_syncingParts) return;
-            if (SuspensionCodeComboBox.SelectedItem is CarParts selectedParts)
-                SuspensionCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Suspension);
-        }
-
-        private void BodyCodeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (_syncingParts) return;
-            if (BodyCodeComboBox.SelectedItem is CarParts selectedParts)
-                CarBodyCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Body);
-        }
-
-        private void LsdCodeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (_syncingParts) return;
-            if (LsdCodeComboBox.SelectedItem is CarParts selectedParts)
-                LsdCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Lsd);
-        }
-
-        private void HornCodeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (_syncingParts) return;
-            if (HornCodeComboBox.SelectedItem is CarParts selectedParts)
-                HornCodeTextBox.Text = ByteUtils.UshortToHexString(selectedParts.Horn);
         }
 
         private async void Button12_Click(object sender, RoutedEventArgs e)
@@ -812,14 +763,14 @@ namespace GT5_Car_hack_workshop
                 var newCarParts = new CarParts
                 {
                     Name = carName,
-                    Engine = ByteUtils.HexStringToUshort(EngineCodeTextBox.Text),
-                    Drivetrain = ByteUtils.HexStringToUshort(DrivetrainCodeTextBox.Text),
-                    Chassis = ByteUtils.HexStringToUshort(ChassisCodeTextBox.Text),
-                    Transmission = ByteUtils.HexStringToUshort(TransmissionCodeTextBox.Text),
-                    Body = ByteUtils.HexStringToUshort(CarBodyCodeTextBox.Text),
-                    Suspension = ByteUtils.HexStringToUshort(SuspensionCodeTextBox.Text),
-                    Lsd = ByteUtils.HexStringToUshort(LsdCodeTextBox.Text),
-                    Horn = ByteUtils.HexStringToUshort(HornCodeTextBox.Text)
+                    Engine = ByteUtils.HexStringToUshort(ResolvePartHex(EngineCodeComboBox, p => p.Engine)),
+                    Drivetrain = ByteUtils.HexStringToUshort(ResolvePartHex(DrivetrainCodeComboBox, p => p.Drivetrain)),
+                    Chassis = ByteUtils.HexStringToUshort(ResolvePartHex(ChassisCodeComboBox, p => p.Chassis)),
+                    Transmission = ByteUtils.HexStringToUshort(ResolvePartHex(TransmissionCodeComboBox, p => p.Transmission)),
+                    Body = ByteUtils.HexStringToUshort(ResolvePartHex(BodyCodeComboBox, p => p.Body)),
+                    Suspension = ByteUtils.HexStringToUshort(ResolvePartHex(SuspensionCodeComboBox, p => p.Suspension)),
+                    Lsd = ByteUtils.HexStringToUshort(ResolvePartHex(LsdCodeComboBox, p => p.Lsd)),
+                    Horn = ByteUtils.HexStringToUshort(ResolvePartHex(HornCodeComboBox, p => p.Horn))
                 };
 
                 if (_CarPartsList.Any(cp => cp.Name.Equals(carName, StringComparison.OrdinalIgnoreCase)))
@@ -848,7 +799,7 @@ namespace GT5_Car_hack_workshop
         private async void Button6_Click(object sender, RoutedEventArgs e)
         {
             TorqueSplitTextBox.Text = "30";
-            DrivetrainCodeTextBox.Text = "0C E2";
+            DrivetrainCodeComboBox.Text = "0C E2";
         }
 
         private async void Button4_Click(object sender, RoutedEventArgs e)
@@ -860,7 +811,7 @@ namespace GT5_Car_hack_workshop
 
         private async void Button7_Click(object sender, RoutedEventArgs e)
         {
-            await ShowMessageBox("Copy the hex values in this box, this is your current cars engine\n\nIf you paste your copied engine values back in while editing another car, that car will have the engine of the car you copied it from.");
+            await ShowMessageBox("This is your current car's engine code. Copy the hex value from the Engine box (or read it off the label beside it).\n\nIf you paste your copied engine values back in while editing another car, that car will have the engine of the car you copied it from.");
         }
 
         private async void Button8_Click(object sender, RoutedEventArgs e)
