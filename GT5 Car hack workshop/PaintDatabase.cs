@@ -63,6 +63,7 @@ namespace GT5_Car_hack_workshop
     public static class PaintDatabase
     {
         private static List<PaintEntry>? _entries;
+        private static Dictionary<uint, PaintEntry>? _byId;
 
         public static IReadOnlyList<PaintEntry> Entries => _entries ??= Load();
 
@@ -110,8 +111,19 @@ namespace GT5_Car_hack_workshop
         /// <summary>Returns the colour entry with the given ID, or null if unknown.</summary>
         public static PaintEntry? Find(uint id)
         {
-            var index = IndexOf(id);
-            return index >= 0 ? Entries[index] : null;
+            // The catalogue holds thousands of rows and Find is called once per owned colour when
+            // the owned-chips list refreshes, so look the entry up rather than scanning each time.
+            _byId ??= BuildIdLookup();
+            return _byId.TryGetValue(id, out var entry) ? entry : null;
+        }
+
+        private static Dictionary<uint, PaintEntry> BuildIdLookup()
+        {
+            var lookup = new Dictionary<uint, PaintEntry>(Entries.Count);
+            foreach (var entry in Entries)
+                if (!lookup.ContainsKey(entry.Id)) // first entry wins, matching IndexOf
+                    lookup.Add(entry.Id, entry);
+            return lookup;
         }
 
         /// <summary>

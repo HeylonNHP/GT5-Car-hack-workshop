@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Text;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using GT5_Car_hack_workshop.Models;
 using GT5_Car_hack_workshop.Services;
 
 namespace GT5_Car_hack_workshop
@@ -57,6 +57,7 @@ namespace GT5_Car_hack_workshop
                 _openError = "Load a GT5.0 save in the main window first, then reopen this dialog.";
                 AddButton.IsEnabled = false;
                 SetStatus(_openError);
+                UpdateOwnedChipsList();
                 return;
             }
 
@@ -65,10 +66,11 @@ namespace GT5_Car_hack_workshop
                 _openError = "Could not open the save's item database: " + error;
                 AddButton.IsEnabled = false;
                 SetStatus(_openError);
+                UpdateOwnedChipsList();
                 return;
             }
 
-            SetStatus($"Save loaded. The item box currently holds {_store!.GetOwnedColourIds().Count} paint chip colour(s).");
+            SetStatus($"Save loaded. Owned: {UpdateOwnedChipsList()}.");
         }
 
         /// <summary>
@@ -126,15 +128,56 @@ namespace GT5_Car_hack_workshop
 
                 var ownedNow = _store.GetOwnedCount(entry.Id);
                 SetStatus($"Added {added} x \"{entry.Name}\" ({entry.MakerName}, {entry.CategoryName}) - id {entry.Id:X4}. " +
-                          $"You now own {ownedNow} chip(s) of this colour. Remember to save to write the changes to disk.");
+                          $"This colour now has {ownedNow} chip(s); {UpdateOwnedChipsList()}. " +
+                          "Remember to save to write the changes to disk.");
             }
             catch (Exception ex)
             {
                 // Keep the store in step with the save: discard the un-written changes and reopen
                 // from the (unchanged) in-memory save so a later Add cannot silently resurface them.
                 TryOpenStore(_mainForm.Gt5Save, out _);
+                UpdateOwnedChipsList();
                 SetStatus("Could not add the chips: " + ex.Message);
             }
+        }
+
+        /// <summary>
+        /// Rebuilds the "owned paint chips" list from the save, one row per colour with its
+        /// quantity, and returns a short summary of what is owned.
+        /// </summary>
+        private string UpdateOwnedChipsList()
+        {
+            if (_store is null)
+            {
+                OwnedChipsList.ItemsSource = null;
+                OwnedSummaryText.Text = "Owned paint chips";
+                return "nothing owned";
+            }
+
+            var rows = new List<OwnedPaintChipRow>();
+            var total = 0;
+            foreach (var chip in _store.GetOwnedChips())
+            {
+                var entry = PaintDatabase.Find(chip.ColourId);
+                rows.Add(new OwnedPaintChipRow
+                {
+                    Name = entry?.Name ?? $"(unknown colour {chip.ColourId:X4})",
+                    Maker = entry?.MakerName ?? string.Empty,
+                    Quantity = chip.Quantity
+                });
+                total += chip.Quantity;
+            }
+
+            rows.Sort((a, b) =>
+            {
+                var byName = string.Compare(a.Name, b.Name, StringComparison.CurrentCultureIgnoreCase);
+                return byName != 0
+                    ? byName
+                    : string.Compare(a.Maker, b.Maker, StringComparison.CurrentCultureIgnoreCase);
+            });
+            OwnedChipsList.ItemsSource = rows;
+            OwnedSummaryText.Text = $"Owned paint chips — {rows.Count} colour(s), {total} chip(s)";
+            return $"{rows.Count} colour(s), {total} chip(s) in total";
         }
 
         private void CloseButton_Click(object? sender, RoutedEventArgs e) => Close();
