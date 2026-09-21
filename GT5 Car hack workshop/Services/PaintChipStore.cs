@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using GT5_Car_hack_workshop.Models;
 
 namespace GT5_Car_hack_workshop.Services
 {
@@ -124,6 +125,28 @@ namespace GT5_Car_hack_workshop.Services
                     if (!reader.IsDBNull(0)) owned.Add((uint)reader.GetInt64(0));
                 });
             return owned;
+        }
+
+        /// <summary>
+        /// Returns every owned paint colour together with how many chips of it the player holds.
+        /// Colours are grouped so each appears once, whatever the quantity, ordered by colour id.
+        /// <para>
+        /// Every chip row in the save is counted (the item box only uses status 1 for paint chips
+        /// anyway). Should in-game testing ever show the game hiding non-visible chips, add
+        /// <c>AND status = {VisibleStatus}</c> here to match it.
+        /// </para>
+        /// </summary>
+        public IReadOnlyList<OwnedPaintChip> GetOwnedChips()
+        {
+            var chips = new List<OwnedPaintChip>();
+            _database.Query(
+                $"SELECT argument1, COUNT(*) FROM t_itembox_user WHERE type_id = {GtAutoTypeId} AND category_id = {ColorPaintCategoryId} AND argument1 IS NOT NULL GROUP BY argument1 ORDER BY argument1",
+                reader =>
+                {
+                    if (!reader.IsDBNull(0))
+                        chips.Add(new OwnedPaintChip((uint)reader.GetInt64(0), (int)reader.GetInt64(1)));
+                });
+            return chips;
         }
 
         /// <summary>Returns how many chips of the given colour are already owned.</summary>
