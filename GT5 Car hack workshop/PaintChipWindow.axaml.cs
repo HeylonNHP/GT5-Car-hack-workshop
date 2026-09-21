@@ -1,8 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Input;
 using Avalonia.Interactivity;
+using Avalonia.VisualTree;
 using GT5_Car_hack_workshop.Models;
 using GT5_Car_hack_workshop.Services;
 
@@ -44,7 +48,9 @@ namespace GT5_Car_hack_workshop
         {
             PaintSearchBox.ItemsSource = PaintDatabase.Entries;
             PaintSearchBox.ItemFilter = PaintItemFilter;
-            PaintSearchBox.TextSelector = PaintTextSelector;
+            // Deliberately no TextSelector: Avalonia hands a text selector the already-formatted
+            // string rather than the entry, and the default formatting already shows the colour's
+            // friendly description (PaintEntry.ToString()).
         }
 
         private void OnOpened(object? sender, EventArgs e)
@@ -161,6 +167,7 @@ namespace GT5_Car_hack_workshop
                 var entry = PaintDatabase.Find(chip.ColourId);
                 rows.Add(new OwnedPaintChipRow
                 {
+                    ColourId = chip.ColourId,
                     Name = entry?.Name ?? $"(unknown colour {chip.ColourId:X4})",
                     Maker = entry?.MakerName ?? string.Empty,
                     Quantity = chip.Quantity
@@ -180,15 +187,60 @@ namespace GT5_Car_hack_workshop
             return $"{rows.Count} colour(s), {total} chip(s) in total";
         }
 
+        /// <summary>
+        /// Puts the double-clicked colour into the "Paint colour" search box so the user can set a
+        /// quantity and press Add to get more of the same chip. A double-click never adds chips by
+        /// itself.
+        /// </summary>
+        private void OwnedChipsList_DoubleTapped(object? sender, TappedEventArgs e)
+        {
+            // The list box also raises this for its own background and for its scroll bar, so only
+            // act when the double-click really landed inside a row (i.e. on a ListBoxItem).
+            var row = (e.Source as Visual)?
+                .GetSelfAndVisualAncestors()
+                .OfType<ListBoxItem>()
+                .Select(item => item.DataContext)
+                .OfType<OwnedPaintChipRow>()
+                .FirstOrDefault();
+
+            if (row is null) return;
+
+            if (SelectOwnedChip(row))
+                e.Handled = true;
+        }
+
+        /// <summary>
+        /// Selects <paramref name="row"/>'s colour in the "Paint colour" search box and moves focus
+        /// to the quantity box so a number can be typed straight away. Nothing is added here.
+        /// Returns whether a colour was actually selected.
+        /// </summary>
+        private bool SelectOwnedChip(OwnedPaintChipRow row)
+        {
+            var entry = PaintDatabase.Find(row.ColourId);
+            if (entry is null)
+            {
+                // The save owns a colour this build's catalogue does not know about, so there is no
+                // PaintEntry to hand to the search box.
+                SetStatus($"\"{row.Name}\" is not in the paint catalogue, so it cannot be selected here.");
+                return false;
+            }
+
+            // Find returns the very instance held in PaintSearchBox.ItemsSource, so this is a real
+            // selection rather than just some text. The text is set explicitly too, because setting
+            // the selection programmatically does not update the box's text on its own.
+            PaintSearchBox.SelectedItem = entry;
+            PaintSearchBox.Text = entry.ToString();
+            QuantityBox.Focus();
+            SetStatus($"Selected \"{entry.Name}\" ({entry.MakerName}, {entry.CategoryName}) - id {entry.Id:X4}. " +
+                      "Set a quantity and press Add to get more of this chip.");
+            return true;
+        }
+
         private void CloseButton_Click(object? sender, RoutedEventArgs e) => Close();
 
         /// <summary>Matches typed text against a colour's name, maker or hex id.</summary>
         private static bool PaintItemFilter(string? search, object? item)
             => item is PaintEntry entry && PaintDatabase.MatchesSearch(entry, search);
-
-        /// <summary>Shows the friendly colour description when an entry is picked.</summary>
-        private static string? PaintTextSelector(string? text, object? item)
-            => item is PaintEntry entry ? entry.ToString() : text;
 
         /// <summary>Shows <paramref name="message"/> at the top of the status log.</summary>
         private void SetStatus(string message)

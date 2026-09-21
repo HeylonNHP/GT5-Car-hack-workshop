@@ -6,6 +6,9 @@ namespace GT5_Car_hack_workshop.Models
     /// </summary>
     public class OwnedPaintChipRow
     {
+        /// <summary>The colour's id in the paint database, used to select it again in a search box.</summary>
+        public uint ColourId { get; init; }
+
         public string Name { get; init; } = "";
 
         public string Maker { get; init; } = "";

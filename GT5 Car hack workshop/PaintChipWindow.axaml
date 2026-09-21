@@ -82,6 +82,7 @@
                              x:Name="OwnedChipsList"
                              Background="Transparent"
                              BorderThickness="0"
+                             DoubleTapped="OwnedChipsList_DoubleTapped"
                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
                         <ListBox.Styles>
                             <Style Selector="ListBoxItem">
