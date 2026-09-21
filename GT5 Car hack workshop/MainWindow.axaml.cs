@@ -56,11 +56,12 @@ namespace GT5_Car_hack_workshop
         {
             BodyPaintAutoCompleteBox.ItemsSource = PaintDatabase.Entries;
             BodyPaintAutoCompleteBox.ItemFilter = PaintItemFilter;
-            BodyPaintAutoCompleteBox.TextSelector = PaintTextSelector;
 
             WheelsPaintAutoCompleteBox.ItemsSource = PaintDatabase.Entries;
             WheelsPaintAutoCompleteBox.ItemFilter = PaintItemFilter;
-            WheelsPaintAutoCompleteBox.TextSelector = PaintTextSelector;
+            // Deliberately no TextSelector: Avalonia hands a text selector the already-formatted
+            // string rather than the entry, and the default formatting already shows the colour's
+            // friendly description (PaintEntry.ToString()).
         }
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
@@ -172,8 +173,23 @@ namespace GT5_Car_hack_workshop
         }
 
         /// <summary>
+        /// Shows a paint colour in one of the paint search boxes: the colour's description when the
+        /// id is in the catalogue, otherwise the raw id, so the box always reflects what the car
+        /// currently has rather than going blank. That matters because the "unset" marker
+        /// (0x1FFF) has no catalogue entry, and it is what most cars store for their paint.
+        /// </summary>
+        private static void SetPaintSearchBox(AutoCompleteBox searchBox, uint id)
+        {
+            // Find returns the very instance held in the box's ItemsSource, which is what makes
+            // this a genuine selection rather than just some text.
+            var entry = PaintDatabase.Find(id);
+            searchBox.SelectedItem = entry;
+            searchBox.Text = entry?.ToString() ?? id.ToString("X4");
+        }
+
+        /// <summary>
         /// Keeps a paint search box in step with the authoritative hex field: shows the matching
-        /// colour's name when the ID is known, or clears it for custom/unknown values.
+        /// colour's description when the ID is known, or the raw id for custom/unknown values.
         /// </summary>
         private void SyncPaintSearchBox(AutoCompleteBox searchBox, string? text)
         {
@@ -182,17 +198,21 @@ namespace GT5_Car_hack_workshop
                 : (uint?)null;
 
             _syncingPaintFields = true;
-            searchBox.Text = id.HasValue ? PaintDatabase.Find(id.Value)?.ToString() ?? "" : "";
+            if (id.HasValue)
+            {
+                SetPaintSearchBox(searchBox, id.Value);
+            }
+            else
+            {
+                searchBox.SelectedItem = null;
+                searchBox.Text = "";
+            }
             _syncingPaintFields = false;
         }
 
         /// <summary>Matches typed text against a colour's name, maker or hex ID.</summary>
         private static bool PaintItemFilter(string? search, object? item)
             => item is PaintEntry entry && PaintDatabase.MatchesSearch(entry, search);
-
-        /// <summary>Shows the friendly colour description when an entry is picked.</summary>
-        private static string? PaintTextSelector(string? text, object? item)
-            => item is PaintEntry entry ? entry.ToString() : text;
 
         private void TorqueSplitTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -266,8 +286,8 @@ namespace GT5_Car_hack_workshop
             _syncingPaintFields = true;
             BodyPaintTextBox.Text = (paintValue >> 13).ToString("X4");
             WheelsPaintTextBox.Text = (paintValue & 0x1FFF).ToString("X4");
-            BodyPaintAutoCompleteBox.Text = PaintDatabase.Find(paintValue >> 13)?.ToString() ?? "";
-            WheelsPaintAutoCompleteBox.Text = PaintDatabase.Find(paintValue & 0x1FFF)?.ToString() ?? "";
+            SetPaintSearchBox(BodyPaintAutoCompleteBox, paintValue >> 13);
+            SetPaintSearchBox(WheelsPaintAutoCompleteBox, paintValue & 0x1FFF);
             _syncingPaintFields = false;
 
             TurboModifierTextBox.Text = $"{Gt5Save[Moff - 171]:X2} {Gt5Save[Moff - 170]:X2} {Gt5Save[Moff - 169]:X2} {Gt5Save[Moff - 168]:X2}";
