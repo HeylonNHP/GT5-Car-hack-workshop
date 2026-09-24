@@ -710,18 +710,30 @@ namespace GT5_Car_hack_workshop
         /// </summary>
         private static string ResolvePartHex(ComboBox comboBox, Func<CarParts, ushort> selector)
         {
+            // The box text is the value: it holds either a car name (chosen from the list) or a raw
+            // hex code the user typed, and SetPartSelection keeps it in step with any selection.
+            // Resolve from the text and fall back to the selected entry only when the box is empty,
+            // so this no longer relies on Avalonia clearing SelectedItem when Text is set.
+            var text = comboBox.Text;
+            if (!string.IsNullOrWhiteSpace(text))
+            {
+                // A car name in the box means "use that car's code".
+                if (comboBox.ItemsSource is IEnumerable<CarParts> parts)
+                {
+                    var named = parts.FirstOrDefault(p => p.Name.Equals(text, StringComparison.OrdinalIgnoreCase));
+                    if (named != null)
+                        return ByteUtils.UshortToHexString(selector(named));
+                }
+
+                // Otherwise the box holds the code itself.
+                return text;
+            }
+
+            // Empty box: fall back to whatever entry is selected (e.g. right after a list reload).
             if (comboBox.SelectedItem is CarParts selected)
                 return ByteUtils.UshortToHexString(selector(selected));
 
-            var text = comboBox.Text;
-            if (!string.IsNullOrWhiteSpace(text) && comboBox.ItemsSource is IEnumerable<CarParts> parts)
-            {
-                var named = parts.FirstOrDefault(p => p.Name.Equals(text, StringComparison.OrdinalIgnoreCase));
-                if (named != null)
-                    return ByteUtils.UshortToHexString(selector(named));
-            }
-
-            return text ?? string.Empty;
+            return string.Empty;
         }
 
         // Fills the parts drop-downs from the loaded save. When a code matches an existing database
@@ -783,9 +795,24 @@ namespace GT5_Car_hack_workshop
         {
             var match = preferred ?? (comboBox.ItemsSource as IEnumerable<CarParts>)?.FirstOrDefault(p => selector(p) == value);
             if (match != null)
+            {
                 comboBox.SelectedItem = match;
+                comboBox.Text = match.Name; // keep the text (the authoritative value) in step
+            }
             else
-                comboBox.Text = ByteUtils.UshortToHexString(value);
+            {
+                SetPartHexText(comboBox, ByteUtils.UshortToHexString(value));
+            }
+        }
+
+        /// <summary>
+        /// Shows a raw hex code in a parts combo box, clearing any car selection first so the code -
+        /// not a previously chosen car - is what ResolvePartHex (and therefore the save) uses.
+        /// </summary>
+        private static void SetPartHexText(ComboBox comboBox, string hex)
+        {
+            comboBox.SelectedItem = null;
+            comboBox.Text = hex;
         }
 
         private void LoadParts()
@@ -862,7 +889,9 @@ namespace GT5_Car_hack_workshop
         private async void Button6_Click(object sender, RoutedEventArgs e)
         {
             TorqueSplitTextBox.Text = "30";
-            DrivetrainCodeComboBox.Text = "0C E2";
+            // Clear any selected car first: a stale selection would otherwise shadow the code and
+            // the 4WD hack would silently not be applied.
+            SetPartHexText(DrivetrainCodeComboBox, "0C E2");
         }
 
         private async void Button4_Click(object sender, RoutedEventArgs e)
