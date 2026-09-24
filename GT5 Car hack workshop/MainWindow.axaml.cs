@@ -70,7 +70,7 @@ namespace GT5_Car_hack_workshop
             if (!Directory.Exists(backupPath)) Directory.CreateDirectory(backupPath);
 
             _ProgramSettings = SettingsFileClass.LoadSettings("GT5CHWsettings.ini", 1);
-            _CarPartsList = SettingsFileClass.LoadCarParts(PARTS_DATABASE_FILENAME);
+            _CarPartsList = PartsDatabaseStore.LoadAll();
 
             // Safely access settings with bounds checking
             if (_ProgramSettings != null && _ProgramSettings.Length > 0)
@@ -86,7 +86,7 @@ namespace GT5_Car_hack_workshop
             _ProgramSettings[0] = TextBox1.Text;
             _ProgramSettings[1] = TextBox2.Text;
             SettingsFileClass.SaveSettings(_ProgramSettings, "GT5CHWsettings.ini");
-            SettingsFileClass.SaveCarParts(_CarPartsList, PARTS_DATABASE_FILENAME);
+            PartsDatabaseStore.SaveAll(_CarPartsList);
         }
 
         private async void Button1_Click(object sender, RoutedEventArgs e)
@@ -290,7 +290,6 @@ namespace GT5_Car_hack_workshop
             SetPaintSearchBox(WheelsPaintAutoCompleteBox, paintValue & 0x1FFF);
             _syncingPaintFields = false;
 
-            TurboModifierTextBox.Text = $"{Gt5Save[Moff - 171]:X2} {Gt5Save[Moff - 170]:X2} {Gt5Save[Moff - 169]:X2} {Gt5Save[Moff - 168]:X2}";
             HorsepowerMultiplierText.Text = Gt5Save[Moff + 1].ToString();
 
             AeroFrontTextBox.Text = Gt5Save[Moff - 43].ToString();
@@ -314,10 +313,7 @@ namespace GT5_Car_hack_workshop
             SpringRateFrontTextBox.Text = Gt5Save[Moff - 27].ToString();
             SpringRateRearTextBox.Text = Gt5Save[Moff - 26].ToString();
 
-            ExhauseMultiplierTextBox.Text = $"{Gt5Save[Moff - 155]:X2} {Gt5Save[Moff - 154]:X2} {Gt5Save[Moff - 153]:X2} {Gt5Save[Moff - 152]:X2}";
-
-            WeightMultiplierTextBox.Text = ByteUtils.ConvertBytesToUnsignedInt(new Byte[]
-                { Gt5Save[Moff - 191], Gt5Save[Moff - 190], Gt5Save[Moff - 189], Gt5Save[Moff - 188] }).ToString();
+            // Turbo/Exhaust/Weight are set by LoadPartsFromSave() via their parts-database drop-downs.
         }
 
         private async System.Threading.Tasks.Task SaveData()
@@ -431,15 +427,13 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                var turboModifier = ByteUtils.HexStringToByteArray(TurboModifierTextBox.Text);
-                Gt5Save[Moff - 171] = turboModifier[0];
-                Gt5Save[Moff - 170] = turboModifier[1];
-                Gt5Save[Moff - 169] = turboModifier[2];
-                Gt5Save[Moff - 168] = turboModifier[3];
+                var turboCode = ByteUtils.HexStringToByteArray(ResolvePartHex(TurboCodeComboBox, p => p.Turbo));
+                Gt5Save[Moff - 169] = turboCode[0];
+                Gt5Save[Moff - 168] = turboCode[1];
             }
             catch (Exception e)
             {
-                await ShowMessageBox($"Can't save turbo modifier to the save file.\n{e.Message}");
+                await ShowMessageBox($"Can't save turbo (turbine kit) code to the save file.\n{e.Message}");
                 return;
             }
 
@@ -572,15 +566,13 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                var exhauseMultiplier = ByteUtils.HexStringToByteArray(ExhauseMultiplierTextBox.Text);
-                Gt5Save[Moff - 155] = exhauseMultiplier[0];
-                Gt5Save[Moff - 154] = exhauseMultiplier[1];
-                Gt5Save[Moff - 153] = exhauseMultiplier[2];
-                Gt5Save[Moff - 152] = exhauseMultiplier[3];
+                var exhaustCode = ByteUtils.HexStringToByteArray(ResolvePartHex(ExhaustCodeComboBox, p => p.Exhaust));
+                Gt5Save[Moff - 153] = exhaustCode[0];
+                Gt5Save[Moff - 152] = exhaustCode[1];
             }
             catch (Exception e)
             {
-                await ShowMessageBox($"Can't save exhause multiplier to the save file.\n{e.Message}");
+                await ShowMessageBox($"Can't save exhaust (muffler) code to the save file.\n{e.Message}");
                 return;
             }
 
@@ -634,18 +626,13 @@ namespace GT5_Car_hack_workshop
 
             try
             {
-                if (uint.TryParse(WeightMultiplierTextBox.Text, out var weightMultiplierInt))
-                {
-                    var weightMultiplierBytes = ByteUtils.UintToByteArray(weightMultiplierInt);
-                    Gt5Save[Moff - 191] = weightMultiplierBytes[0];
-                    Gt5Save[Moff - 190] = weightMultiplierBytes[1];
-                    Gt5Save[Moff - 189] = weightMultiplierBytes[2];
-                    Gt5Save[Moff - 188] = weightMultiplierBytes[3];
-                }
+                var weightCode = ByteUtils.HexStringToByteArray(ResolvePartHex(WeightCodeComboBox, p => p.Weight));
+                Gt5Save[Moff - 189] = weightCode[0];
+                Gt5Save[Moff - 188] = weightCode[1];
             }
             catch (Exception e)
             {
-                await ShowMessageBox($"Can't save weight multiplier to the save file.\n{e.Message}");
+                await ShowMessageBox($"Can't save weight (lightweight) code to the save file.\n{e.Message}");
                 return;
             }
 
@@ -699,6 +686,9 @@ namespace GT5_Car_hack_workshop
             WirePartComboBox(BodyCodeComboBox, BodyHexLabel, p => p.Body);
             WirePartComboBox(LsdCodeComboBox, LsdHexLabel, p => p.Lsd);
             WirePartComboBox(HornCodeComboBox, HornHexLabel, p => p.Horn);
+            WirePartComboBox(TurboCodeComboBox, TurboHexLabel, p => p.Turbo);
+            WirePartComboBox(ExhaustCodeComboBox, ExhaustHexLabel, p => p.Exhaust);
+            WirePartComboBox(WeightCodeComboBox, WeightHexLabel, p => p.Weight);
         }
 
         private static void WirePartComboBox(ComboBox comboBox, TextBlock hexLabel, Func<CarParts, ushort> selector)
@@ -747,12 +737,18 @@ namespace GT5_Car_hack_workshop
             var body = ByteUtils.BytesToUshort(Gt5Save[Moff - 262], Gt5Save[Moff - 261]);
             var lsd = ByteUtils.BytesToUshort(Gt5Save[Moff - 197], Gt5Save[Moff - 196]);
             var horn = ByteUtils.BytesToUshort(Gt5Save[Moff + 23], Gt5Save[Moff + 24]);
+            // Turbo = TurbineKit part id (low 2 bytes of the int32 at Moff-171),
+            // Exhaust = Muffler (Moff-155), Weight = Lightweight (Moff-191).
+            var turbo = ByteUtils.BytesToUshort(Gt5Save[Moff - 169], Gt5Save[Moff - 168]);
+            var exhaust = ByteUtils.BytesToUshort(Gt5Save[Moff - 153], Gt5Save[Moff - 152]);
+            var weight = ByteUtils.BytesToUshort(Gt5Save[Moff - 189], Gt5Save[Moff - 188]);
 
             // Prefer a single entry that matches the whole car so every drop-down agrees on it.
             var wholeMatch = _CarPartsList?.FirstOrDefault(p =>
                 p.Engine == engine && p.Drivetrain == drivetrain && p.Chassis == chassis &&
                 p.Transmission == transmission && p.Suspension == suspension && p.Body == body &&
-                p.Lsd == lsd && p.Horn == horn);
+                p.Lsd == lsd && p.Horn == horn &&
+                p.Turbo == turbo && p.Exhaust == exhaust && p.Weight == weight);
 
             SetPartSelection(EngineCodeComboBox, engine, p => p.Engine, wholeMatch);
             SetPartSelection(DrivetrainCodeComboBox, drivetrain, p => p.Drivetrain, wholeMatch);
@@ -762,6 +758,20 @@ namespace GT5_Car_hack_workshop
             SetPartSelection(BodyCodeComboBox, body, p => p.Body, wholeMatch);
             SetPartSelection(LsdCodeComboBox, lsd, p => p.Lsd, wholeMatch);
             SetPartSelection(HornCodeComboBox, horn, p => p.Horn, wholeMatch);
+            SetPartSelection(TurboCodeComboBox, turbo, p => p.Turbo, wholeMatch);
+            SetPartSelection(ExhaustCodeComboBox, exhaust, p => p.Exhaust, wholeMatch);
+            SetPartSelection(WeightCodeComboBox, weight, p => p.Weight, wholeMatch);
+        }
+
+        /// <summary>
+        /// Re-reads the part-id fields from the in-memory save and re-points the parts drop-downs
+        /// at the matching values, so a child dialog that edited the save (e.g. Custom
+        /// Performance) leaves the drop-downs showing what the car now actually has.
+        /// </summary>
+        public void RefreshPartSelections()
+        {
+            if (Gt5Save == null || Gt5Save.Length == 0) return;
+            LoadPartsFromSave();
         }
 
         /// <summary>
@@ -783,7 +793,8 @@ namespace GT5_Car_hack_workshop
             var sortedList = _CarPartsList?.OrderBy(cp => cp.Name).ToList() ?? new List<CarParts>();
 
             foreach (var comboBox in new[] { EngineCodeComboBox, DrivetrainCodeComboBox, ChassisCodeComboBox,
-                TransmissionCodeComboBox, SuspensionCodeComboBox, BodyCodeComboBox, LsdCodeComboBox, HornCodeComboBox })
+                TransmissionCodeComboBox, SuspensionCodeComboBox, BodyCodeComboBox, LsdCodeComboBox, HornCodeComboBox,
+                TurboCodeComboBox, ExhaustCodeComboBox, WeightCodeComboBox })
             {
                 try
                 {
@@ -819,7 +830,10 @@ namespace GT5_Car_hack_workshop
                     Body = ByteUtils.HexStringToUshort(ResolvePartHex(BodyCodeComboBox, p => p.Body)),
                     Suspension = ByteUtils.HexStringToUshort(ResolvePartHex(SuspensionCodeComboBox, p => p.Suspension)),
                     Lsd = ByteUtils.HexStringToUshort(ResolvePartHex(LsdCodeComboBox, p => p.Lsd)),
-                    Horn = ByteUtils.HexStringToUshort(ResolvePartHex(HornCodeComboBox, p => p.Horn))
+                    Horn = ByteUtils.HexStringToUshort(ResolvePartHex(HornCodeComboBox, p => p.Horn)),
+                    Turbo = ByteUtils.HexStringToUshort(ResolvePartHex(TurboCodeComboBox, p => p.Turbo)),
+                    Exhaust = ByteUtils.HexStringToUshort(ResolvePartHex(ExhaustCodeComboBox, p => p.Exhaust)),
+                    Weight = ByteUtils.HexStringToUshort(ResolvePartHex(WeightCodeComboBox, p => p.Weight))
                 };
 
                 if (_CarPartsList.Any(cp => cp.Name.Equals(carName, StringComparison.OrdinalIgnoreCase)))
@@ -829,7 +843,7 @@ namespace GT5_Car_hack_workshop
                 }
 
                 _CarPartsList.Add(newCarParts);
-                SettingsFileClass.SaveCarParts(_CarPartsList, PARTS_DATABASE_FILENAME);
+                PartsDatabaseStore.Upsert(newCarParts);
                 LoadParts();
                 await ShowMessageBox($"Successfully added {carName} to the database");
             }
@@ -906,11 +920,6 @@ namespace GT5_Car_hack_workshop
             Gt5Save[Moff + 248] = byte.MaxValue;
             await ShowMessageBox("The car is now yours, you can now either hack it, or click encrypt and save then return the data to the PS3");
             await SaveData();
-        }
-
-        private async void Button16_Click(object sender, RoutedEventArgs e)
-        {
-            await ShowMessageBox("This is the performance multiplier of the exhaust and turbo. Increasing these will increase the effectiveness of these performance parts on the engines performance");
         }
 
         private async void Button17_Click(object sender, RoutedEventArgs e)
