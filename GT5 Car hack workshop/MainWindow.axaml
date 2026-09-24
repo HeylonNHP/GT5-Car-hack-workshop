@@ -48,7 +48,9 @@
             </Border>
 
             <!-- Parts Database TabControl -->
-            <TabControl Height="380">
+            <!-- Parts Database TabControl. Height must fit all 11 part drop-downs + the
+                 "Add current car" button without the tab's ScrollViewer showing a bar. -->
+            <TabControl Height="505">
                 <TabItem Header="Parts Database">
                     <ScrollViewer>
                         <StackPanel Spacing="3" Margin="4">
@@ -106,6 +108,27 @@
                                 <ComboBox x:Name="HornCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
                                           IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
                                 <TextBlock x:Name="HornHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
+                                           Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
+                            </Grid>
+                            <Grid ColumnDefinitions="88,*,48">
+                                <TextBlock Text="Turbo" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <ComboBox x:Name="TurboCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <TextBlock x:Name="TurboHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
+                                           Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
+                            </Grid>
+                            <Grid ColumnDefinitions="88,*,48">
+                                <TextBlock Text="Exhaust" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <ComboBox x:Name="ExhaustCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <TextBlock x:Name="ExhaustHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
+                                           Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
+                            </Grid>
+                            <Grid ColumnDefinitions="88,*,48">
+                                <TextBlock Text="Weight" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <ComboBox x:Name="WeightCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <TextBlock x:Name="WeightHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
 
@@ -224,15 +247,7 @@
                                     <Border Grid.Column="0" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                         <StackPanel Spacing="2">
                                             <TextBlock Text="Performance multipliers" FontWeight="Bold"/>
-                                            <Grid ColumnDefinitions="Auto,*,Auto">
-                                                <TextBlock Text="Turbo" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
-                                                <TextBox x:Name="TurboModifierTextBox" Grid.Column="1" Height="20" Margin="0,0,4,0"/>
-                                                <Button x:Name="Button16" Content="?" Grid.Column="2" Height="25" Click="Button16_Click"/>
-                                            </Grid>
-                                            <Grid ColumnDefinitions="Auto,*">
-                                                <TextBlock Text="Exhaust" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
-                                                <TextBox x:Name="ExhauseMultiplierTextBox" Grid.Column="1" Height="20"/>
-                                            </Grid>
+                                            <!-- Turbo and Exhaust are now part-id drop-downs in the Parts Database tab. -->
                                             <Grid ColumnDefinitions="Auto,*">
                                                 <TextBlock Text="Horsepower" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="HorsepowerMultiplierText" Grid.Column="1" Height="20"/>
@@ -324,10 +339,7 @@
                                 <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                     <StackPanel Spacing="2">
                                         <TextBlock Text="Weight hack" FontWeight="Bold"/>
-                                        <Grid ColumnDefinitions="Auto,*">
-                                            <TextBlock Text="Weight multiplier" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                            <TextBox x:Name="WeightMultiplierTextBox" Grid.Column="1" Height="20"/>
-                                        </Grid>
+                                        <!-- Weight is now a part-id drop-down in the Parts Database tab. -->
                                         <CheckBox x:Name="CheckBox4" Content="Install stage 3 weight reduction" Margin="0,1"/>
                                     </StackPanel>
                                 </Border>

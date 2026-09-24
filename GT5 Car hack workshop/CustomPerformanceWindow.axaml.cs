@@ -134,18 +134,9 @@ namespace GT5_Car_hack_workshop
                 return;
             }
 
-            // Update main form text boxes
-            _formManager.MainForm.TurboModifierTextBox.Text = string.Concat(
-                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 171].ToString("X2"), " ",
-                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 170].ToString("X2"), " ",
-                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 169].ToString("X2"), " ",
-                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 168].ToString("X2"));
-
-            _formManager.MainForm.ExhauseMultiplierTextBox.Text = string.Concat(
-                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 155].ToString("X2"), " ",
-                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 154].ToString("X2"), " ",
-                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 153].ToString("X2"), " ",
-                _formManager.MainForm.Gt5Save[_formManager.MainForm.Moff - 152].ToString("X2"));
+            // Turbo/Exhaust/Weight are now part-database drop-downs on the main window, so
+            // refresh them from the values we just wrote instead of the old raw multiplier boxes.
+            _formManager.MainForm.RefreshPartSelections();
 
             Close();
         }

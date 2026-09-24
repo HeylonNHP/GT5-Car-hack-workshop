@@ -1,9 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using GT5_Car_hack_workshop.Models;
 
 namespace GT5_Car_hack_workshop
 {
@@ -66,74 +64,6 @@ namespace GT5_Car_hack_workshop
             }
 
             return lines.ToArray();
-        }
-
-        public static List<CarParts> LoadCarParts(string file){
-            var carPartsList = new List<CarParts>();
-            var filePath = Path.Combine(AppContext.BaseDirectory, file);
-
-            if (!File.Exists(filePath))
-            {
-                return carPartsList;
-            }
-
-            var lines = LoadFileToArray(filePath);
-            foreach (var line in lines)
-            {
-                if (string.IsNullOrWhiteSpace(line) || line == " ")
-                    continue;
-
-                try
-                {
-                    var parts = line.Split(',');
-                    if (parts.Length >= 9) // Ensure we have all required fields
-                    {
-                        var carPart = new CarParts
-                        {
-                            Name = parts[0],
-                            Engine = ByteUtils.HexStringToUshort(parts[1]),
-                            Drivetrain = ByteUtils.HexStringToUshort(parts[2]),
-                            Chassis = ByteUtils.HexStringToUshort(parts[3]),
-                            Transmission = ByteUtils.HexStringToUshort(parts[4]),
-                            Body = ByteUtils.HexStringToUshort(parts[5]),
-                            Suspension = ByteUtils.HexStringToUshort(parts[6]),
-                            Lsd = ByteUtils.HexStringToUshort(parts[7]),
-                            Horn = ByteUtils.HexStringToUshort(parts[8])
-                        };
-                        carPartsList.Add(carPart);
-                    }
-                }
-                catch (Exception)
-                {
-                    // Skip invalid entries
-                    continue;
-                }
-            }
-
-            return carPartsList;
-        }
-
-        public static void SaveCarParts(List<CarParts> carParts, string file)
-        {
-            var lines = new List<string>();
-
-            foreach (var part in carParts)
-            {
-                var line = $"{part.Name}," +
-                          $"{ByteUtils.UshortToHexString(part.Engine)}," +
-                          $"{ByteUtils.UshortToHexString(part.Drivetrain)}," +
-                          $"{ByteUtils.UshortToHexString(part.Chassis)}," +
-                          $"{ByteUtils.UshortToHexString(part.Transmission)}," +
-                          $"{ByteUtils.UshortToHexString(part.Body)}," +
-                          $"{ByteUtils.UshortToHexString(part.Suspension)}," +
-                          $"{ByteUtils.UshortToHexString(part.Lsd)}," +
-                          $"{ByteUtils.UshortToHexString(part.Horn)}";
-                lines.Add(line);
-            }
-
-            var filePath = Path.Combine(AppContext.BaseDirectory, file);
-            if (File.Exists(filePath)) File.Delete(filePath);
-            File.WriteAllLines(filePath, lines);
         }
     }
 }

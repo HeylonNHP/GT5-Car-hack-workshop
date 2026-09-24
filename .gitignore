@@ -8,3 +8,16 @@ GT5CHWsettings.ini
 
 # Stray empty file; the real database is tracked in the project folder
 /partsdatabase.db
+
+# Legacy CSV migration artifact + temp db
+partsdatabase.legacy.csv
+partsdatabase.db.tmp
+
+# SQLite journal / WAL sidecar files (created while a database is open)
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Generated paint-database reports and backups (scratch, not shipped/embedded)
+GT5 Car hack workshop/Resources/PaintDatabase_missing_*.tsv
+GT5 Car hack workshop/Resources/*.bak
