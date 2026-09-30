@@ -4,6 +4,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using Avalonia.Media;
+using Avalonia.Media.Immutable;
 using GT5_Car_hack_workshop.Services;
 
 namespace GT5_Car_hack_workshop
@@ -17,6 +19,22 @@ namespace GT5_Car_hack_workshop
         public int Category { get; set; }
         public string Name { get; set; } = "";
         public string Maker { get; set; } = "";
+
+        /// <summary>The colour's RGB value (0xRRGGBB), or null when the game data has no colour.</summary>
+        public uint? Rgb { get; set; }
+
+        private IBrush? _swatchBrush;
+
+        /// <summary>The colour a swatch should show: the game's colour, else a neutral grey.</summary>
+        public Color SwatchColor => Rgb is { } rgb
+            ? Color.FromRgb((byte)(rgb >> 16), (byte)(rgb >> 8), (byte)rgb)
+            : Colors.Gray;
+
+        /// <summary>A cached brush for <see cref="SwatchColor"/>, for the UI swatches.</summary>
+        public IBrush SwatchBrush => _swatchBrush ??= new ImmutableSolidColorBrush(SwatchColor);
+
+        /// <summary>The friendly description, so XAML item templates can bind to it.</summary>
+        public string Display => ToString();
 
         public string CategoryName => Category switch
         {
@@ -57,6 +75,26 @@ namespace GT5_Car_hack_workshop
     }
 
     /// <summary>
+    /// One selectable finish (colour category) in a paint picker's filter, so the list can be
+    /// narrowed to a single finish such as Metallic or Chrome.
+    /// </summary>
+    public sealed class PaintFinish
+    {
+        public PaintFinish(string name, int? category)
+        {
+            Name = name;
+            Category = category;
+        }
+
+        public string Name { get; }
+
+        /// <summary>The category this finish matches, or null for "any finish".</summary>
+        public int? Category { get; }
+
+        public override string ToString() => Name;
+    }
+
+    /// <summary>
     /// Provides access to GT5's paint colour database. The catalogue is stored as an embedded
     /// SQLite database (converted from the community dump - the t_colour table of the GT5 Garage
     /// Editor 1.3.1 colour database, via the gt5GarageEditor project). Colour IDs index the game's
@@ -69,6 +107,26 @@ namespace GT5_Car_hack_workshop
 
         public static IReadOnlyList<PaintEntry> Entries => _entries ??= Load();
 
+        /// <summary>The finishes a paint picker can be filtered by, "Any finish" first.</summary>
+        public static IReadOnlyList<PaintFinish> Finishes { get; } = new List<PaintFinish>
+        {
+            new("Any finish", null),
+            new("Solid", 0),
+            new("Metallic", 1),
+            new("Pearl", 2),
+            new("Iridescent", 3),
+            new("Matte", 4),
+            new("Chrome", 5),
+            new("Other", 99),
+        };
+
+        /// <summary>
+        /// The catalogue entries of one finish, or every entry when <paramref name="category"/> is
+        /// null. Used to narrow a picker's item list to a single finish.
+        /// </summary>
+        public static IReadOnlyList<PaintEntry> ByFinish(int? category)
+            => category is null ? Entries : Entries.Where(e => e.Category == category).ToList();
+
         /// <summary>Resource name of the embedded SQLite catalogue.</summary>
         private const string ResourceName = "GT5_Car_hack_workshop.Resources.PaintDatabase.db";
 
@@ -76,7 +134,9 @@ namespace GT5_Car_hack_workshop
         {
             var entries = new List<PaintEntry>
             {
-                // Colour ID 0 is the game's default (black) colour and is not part of the dump.
+                // Colour id 0 is the game's default and is also present in the dump; this entry is
+                // kept so id 0 always resolves even if the dump is missing. It has no colour of its
+                // own, so its swatch stays neutral.
                 new PaintEntry { Id = 0, Category = 0, Name = "Default Colour (Black)", Maker = "polyphony" }
             };
 
@@ -93,14 +153,19 @@ namespace GT5_Car_hack_workshop
                 // text dump listed them in, so the palette and its search ordering are unchanged.
                 using var db = EmbeddedSqliteDb.OpenFromBytes(database);
                 db.Query(
-                    "SELECT Id, Category, Maker, Name FROM PaintColours ORDER BY Ord",
-                    reader => entries.Add(new PaintEntry
+                    "SELECT Id, Category, Maker, Name, Rgb FROM PaintColours ORDER BY Ord",
+                    reader =>
                     {
-                        Id = (uint)reader.GetInt64(0),
-                        Category = reader.GetInt32(1),
-                        Maker = reader.GetString(2),
-                        Name = reader.GetString(3)
-                    }));
+                        var rgb = reader.IsDBNull(4) ? -1 : reader.GetInt64(4);
+                        entries.Add(new PaintEntry
+                        {
+                            Id = (uint)reader.GetInt64(0),
+                            Category = reader.GetInt32(1),
+                            Maker = reader.GetString(2),
+                            Name = reader.GetString(3),
+                            Rgb = rgb is >= 0 and <= 0xFFFFFF ? (uint)rgb : null
+                        });
+                    });
             }
             catch (Exception)
             {

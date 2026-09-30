@@ -6,6 +6,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
+using Avalonia.Media;
 using Avalonia.VisualTree;
 using GT5_Car_hack_workshop.Models;
 using GT5_Car_hack_workshop.Services;
@@ -46,12 +47,26 @@ namespace GT5_Car_hack_workshop
 
         private void InitializeSearchBox()
         {
-            PaintSearchBox.ItemsSource = PaintDatabase.Entries;
             PaintSearchBox.ItemFilter = PaintItemFilter;
             // Deliberately no TextSelector: Avalonia hands a text selector the already-formatted
             // string rather than the entry, and the default formatting already shows the colour's
             // friendly description (PaintEntry.ToString()).
+
+            // Finish filter: narrows the list to one finish (Metallic, Chrome, ...).
+            PaintFinishBox.ItemsSource = PaintDatabase.Finishes;
+            PaintFinishBox.SelectedIndex = 0;
+            RefreshPaintList();
         }
+
+        private void PaintFinishBox_SelectionChanged(object sender, SelectionChangedEventArgs e) => RefreshPaintList();
+
+        /// <summary>
+        /// Points the search box at the colours of the chosen finish (every colour for "Any
+        /// finish"). Replacing ItemsSource is what makes the drop-down, and its search, show only
+        /// that finish.
+        /// </summary>
+        private void RefreshPaintList()
+            => PaintSearchBox.ItemsSource = PaintDatabase.ByFinish((PaintFinishBox.SelectedItem as PaintFinish)?.Category);
 
         private void OnOpened(object? sender, EventArgs e)
         {
@@ -170,7 +185,9 @@ namespace GT5_Car_hack_workshop
                     ColourId = chip.ColourId,
                     Name = entry?.Name ?? $"(unknown colour {chip.ColourId:X4})",
                     Maker = entry?.MakerName ?? string.Empty,
-                    Quantity = chip.Quantity
+                    Quantity = chip.Quantity,
+                    // Grey when the catalogue has no colour for this id, so the column stays aligned.
+                    SwatchBrush = entry?.SwatchBrush ?? Brushes.Gray
                 });
                 total += chip.Quantity;
             }
@@ -224,6 +241,10 @@ namespace GT5_Car_hack_workshop
                 SetStatus($"\"{row.Name}\" is not in the paint catalogue, so it cannot be selected here.");
                 return false;
             }
+
+            // Make sure the entry is in the current (finish-filtered) list before selecting it.
+            var finish = PaintDatabase.Finishes.FirstOrDefault(f => f.Category == entry.Category);
+            if (finish is not null) PaintFinishBox.SelectedItem = finish;
 
             // Find returns the very instance held in PaintSearchBox.ItemsSource, so this is a real
             // selection rather than just some text. The text is set explicitly too, because setting
