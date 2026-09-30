@@ -2,6 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="using:GT5_Car_hack_workshop"
         mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="900"
         x:Class="GT5_Car_hack_workshop.MainWindow"
         Title="GT5 Car hack workshop 2.6 (For GT5 2.14). Created by HeylonNHP"
@@ -305,15 +306,57 @@
                                 <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                     <StackPanel Spacing="2">
                                         <TextBlock Text="Paint" FontWeight="Bold"/>
-                                        <Grid ColumnDefinitions="Auto,*,78">
+                                        <Grid ColumnDefinitions="Auto,Auto,*,Auto,78">
                                             <TextBlock Text="Body" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                            <AutoCompleteBox x:Name="BodyPaintAutoCompleteBox" Grid.Column="1" Height="22" Margin="0,0,4,0" HorizontalAlignment="Stretch" Watermark="Search paint..." MaxDropDownHeight="280" SelectionChanged="BodyPaintAutoCompleteBox_SelectionChanged"/>
-                                            <TextBox x:Name="BodyPaintTextBox" Grid.Column="2" Height="20" TextChanged="BodyPaintTextBox_TextChanged"/>
+                                            <ContentControl Grid.Column="1" Width="18" Height="18" Margin="0,0,6,0" VerticalAlignment="Center"
+                                                            Content="{Binding #BodyPaintAutoCompleteBox.SelectedItem}">
+                                                <ContentControl.ContentTemplate>
+                                                    <DataTemplate x:DataType="local:PaintEntry">
+                                                        <Border Width="18" Height="18" CornerRadius="3" BorderThickness="1"
+                                                                BorderBrush="#40000000" Background="{Binding SwatchBrush}"/>
+                                                    </DataTemplate>
+                                                </ContentControl.ContentTemplate>
+                                            </ContentControl>
+                                            <AutoCompleteBox x:Name="BodyPaintAutoCompleteBox" Grid.Column="2" Height="22" Margin="0,0,4,0" HorizontalAlignment="Stretch" Watermark="Search paint..." MaxDropDownHeight="280" SelectionChanged="BodyPaintAutoCompleteBox_SelectionChanged">
+                                                <AutoCompleteBox.ItemTemplate>
+                                                    <DataTemplate x:DataType="local:PaintEntry">
+                                                        <Grid ColumnDefinitions="Auto,*">
+                                                            <Border Grid.Column="0" Width="16" Height="16" Margin="0,0,6,0" VerticalAlignment="Center"
+                                                                    CornerRadius="3" BorderThickness="1" BorderBrush="#40000000" Background="{Binding SwatchBrush}"/>
+                                                            <TextBlock Grid.Column="1" Text="{Binding Display}" VerticalAlignment="Center"/>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </AutoCompleteBox.ItemTemplate>
+                                            </AutoCompleteBox>
+                                            <ComboBox x:Name="BodyFinishComboBox" Grid.Column="3" Width="112" Height="22" Margin="4,0,0,0" HorizontalAlignment="Left"
+                                                      VerticalAlignment="Center" SelectionChanged="BodyFinishComboBox_SelectionChanged"/>
+                                            <TextBox x:Name="BodyPaintTextBox" Grid.Column="4" Height="20" TextChanged="BodyPaintTextBox_TextChanged"/>
                                         </Grid>
-                                        <Grid ColumnDefinitions="Auto,*,78">
+                                        <Grid ColumnDefinitions="Auto,Auto,*,Auto,78">
                                             <TextBlock Text="Wheels" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                            <AutoCompleteBox x:Name="WheelsPaintAutoCompleteBox" Grid.Column="1" Height="22" Margin="0,0,4,0" HorizontalAlignment="Stretch" Watermark="Search paint..." MaxDropDownHeight="280" SelectionChanged="WheelsPaintAutoCompleteBox_SelectionChanged"/>
-                                            <TextBox x:Name="WheelsPaintTextBox" Grid.Column="2" Height="20" TextChanged="WheelsPaintTextBox_TextChanged"/>
+                                            <ContentControl Grid.Column="1" Width="18" Height="18" Margin="0,0,6,0" VerticalAlignment="Center"
+                                                            Content="{Binding #WheelsPaintAutoCompleteBox.SelectedItem}">
+                                                <ContentControl.ContentTemplate>
+                                                    <DataTemplate x:DataType="local:PaintEntry">
+                                                        <Border Width="18" Height="18" CornerRadius="3" BorderThickness="1"
+                                                                BorderBrush="#40000000" Background="{Binding SwatchBrush}"/>
+                                                    </DataTemplate>
+                                                </ContentControl.ContentTemplate>
+                                            </ContentControl>
+                                            <AutoCompleteBox x:Name="WheelsPaintAutoCompleteBox" Grid.Column="2" Height="22" Margin="0,0,4,0" HorizontalAlignment="Stretch" Watermark="Search paint..." MaxDropDownHeight="280" SelectionChanged="WheelsPaintAutoCompleteBox_SelectionChanged">
+                                                <AutoCompleteBox.ItemTemplate>
+                                                    <DataTemplate x:DataType="local:PaintEntry">
+                                                        <Grid ColumnDefinitions="Auto,*">
+                                                            <Border Grid.Column="0" Width="16" Height="16" Margin="0,0,6,0" VerticalAlignment="Center"
+                                                                    CornerRadius="3" BorderThickness="1" BorderBrush="#40000000" Background="{Binding SwatchBrush}"/>
+                                                            <TextBlock Grid.Column="1" Text="{Binding Display}" VerticalAlignment="Center"/>
+                                                        </Grid>
+                                                    </DataTemplate>
+                                                </AutoCompleteBox.ItemTemplate>
+                                            </AutoCompleteBox>
+                                            <ComboBox x:Name="WheelsFinishComboBox" Grid.Column="3" Width="112" Height="22" Margin="4,0,0,0" HorizontalAlignment="Left"
+                                                      VerticalAlignment="Center" SelectionChanged="WheelsFinishComboBox_SelectionChanged"/>
+                                            <TextBox x:Name="WheelsPaintTextBox" Grid.Column="4" Height="20" TextChanged="WheelsPaintTextBox_TextChanged"/>
                                         </Grid>
                                         <Button x:Name="AddPaintChipsButton" Content="Add paint chips…" Height="26" Margin="0,2,0,0" HorizontalAlignment="Stretch" Click="AddPaintChipsButton_Click"/>
                                     </StackPanel>

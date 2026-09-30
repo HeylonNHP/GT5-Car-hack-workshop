@@ -54,15 +54,34 @@ namespace GT5_Car_hack_workshop
 
         private void InitializePaintSearchBoxes()
         {
-            BodyPaintAutoCompleteBox.ItemsSource = PaintDatabase.Entries;
             BodyPaintAutoCompleteBox.ItemFilter = PaintItemFilter;
-
-            WheelsPaintAutoCompleteBox.ItemsSource = PaintDatabase.Entries;
             WheelsPaintAutoCompleteBox.ItemFilter = PaintItemFilter;
             // Deliberately no TextSelector: Avalonia hands a text selector the already-formatted
             // string rather than the entry, and the default formatting already shows the colour's
             // friendly description (PaintEntry.ToString()).
+
+            // Finish filter: narrows each picker to one finish (Metallic, Chrome, ...).
+            BodyFinishComboBox.ItemsSource = PaintDatabase.Finishes;
+            WheelsFinishComboBox.ItemsSource = PaintDatabase.Finishes;
+            BodyFinishComboBox.SelectedIndex = 0;
+            WheelsFinishComboBox.SelectedIndex = 0;
+            RefreshPaintFinish(BodyPaintAutoCompleteBox, BodyFinishComboBox);
+            RefreshPaintFinish(WheelsPaintAutoCompleteBox, WheelsFinishComboBox);
         }
+
+        private void BodyFinishComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+            => RefreshPaintFinish(BodyPaintAutoCompleteBox, BodyFinishComboBox);
+
+        private void WheelsFinishComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+            => RefreshPaintFinish(WheelsPaintAutoCompleteBox, WheelsFinishComboBox);
+
+        /// <summary>
+        /// Points a paint picker at the colours of the finish chosen in its filter (every colour for
+        /// "Any finish"). Replacing ItemsSource is what makes the drop-down, and its search, show
+        /// only that finish.
+        /// </summary>
+        private static void RefreshPaintFinish(AutoCompleteBox searchBox, ComboBox finishBox)
+            => searchBox.ItemsSource = PaintDatabase.ByFinish((finishBox.SelectedItem as PaintFinish)?.Category);
 
         private async void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
@@ -283,6 +302,9 @@ namespace GT5_Car_hack_workshop
             // Paint is stored as a single big-endian 32-bit value: (body colour ID << 13) | wheel colour ID,
             // where each ID indexes the game's internal paint database (0x1FFF = unset/default).
             var paintValue = ByteUtils.ConvertBytesToUnsignedInt(new[] { Gt5Save[Moff - 344], Gt5Save[Moff - 343], Gt5Save[Moff - 342], Gt5Save[Moff - 341] }) & 0x03FFFFFF;
+            // Show the car's real paints, so clear any finish filter left over from browsing.
+            BodyFinishComboBox.SelectedIndex = 0;
+            WheelsFinishComboBox.SelectedIndex = 0;
             _syncingPaintFields = true;
             BodyPaintTextBox.Text = (paintValue >> 13).ToString("X4");
             WheelsPaintTextBox.Text = (paintValue & 0x1FFF).ToString("X4");

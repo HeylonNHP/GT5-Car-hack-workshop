@@ -1,3 +1,5 @@
+using Avalonia.Media;
+
 namespace GT5_Car_hack_workshop.Models
 {
     /// <summary>
@@ -14,6 +16,9 @@ namespace GT5_Car_hack_workshop.Models
         public string Maker { get; init; } = "";
 
         public int Quantity { get; init; }
+
+        /// <summary>A brush for the colour's swatch, so the list can show the colour itself.</summary>
+        public IBrush? SwatchBrush { get; init; }
 
         /// <summary>The colour's name, with its maker when known, for display in the list.</summary>
         public string Display => string.IsNullOrEmpty(Maker) ? Name : $"{Name} ({Maker})";
