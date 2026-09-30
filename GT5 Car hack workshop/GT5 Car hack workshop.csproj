@@ -39,7 +39,7 @@
     <ItemGroup>
         <EmbeddedResource Include="Resources\Resources.resources" />
         <EmbeddedResource Include="Resources\Tranny.resources" />
-        <EmbeddedResource Include="Resources\PaintDatabase.tsv" />
+        <EmbeddedResource Include="Resources\PaintDatabase.db" />
     </ItemGroup>
 
     <!-- The app reads and rewrites partsdatabase.db next to the executable, so it

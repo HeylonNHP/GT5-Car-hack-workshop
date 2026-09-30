@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using GT5_Car_hack_workshop.Services;
 
 namespace GT5_Car_hack_workshop
 {
@@ -56,9 +57,10 @@ namespace GT5_Car_hack_workshop
     }
 
     /// <summary>
-    /// Provides access to GT5's paint colour database, embedded from the community dump
-    /// (t_colour table of the GT5 Garage Editor 1.3.1 colour database, via the
-    /// gt5GarageEditor project). Colour IDs index the game's internal paint database.
+    /// Provides access to GT5's paint colour database. The catalogue is stored as an embedded
+    /// SQLite database (converted from the community dump - the t_colour table of the GT5 Garage
+    /// Editor 1.3.1 colour database, via the gt5GarageEditor project). Colour IDs index the game's
+    /// internal paint database.
     /// </summary>
     public static class PaintDatabase
     {
@@ -66,6 +68,9 @@ namespace GT5_Car_hack_workshop
         private static Dictionary<uint, PaintEntry>? _byId;
 
         public static IReadOnlyList<PaintEntry> Entries => _entries ??= Load();
+
+        /// <summary>Resource name of the embedded SQLite catalogue.</summary>
+        private const string ResourceName = "GT5_Car_hack_workshop.Resources.PaintDatabase.db";
 
         private static List<PaintEntry> Load()
         {
@@ -75,26 +80,32 @@ namespace GT5_Car_hack_workshop
                 new PaintEntry { Id = 0, Category = 0, Name = "Default Colour (Black)", Maker = "polyphony" }
             };
 
-            var assembly = Assembly.GetExecutingAssembly();
-            using var stream = assembly.GetManifestResourceStream("GT5_Car_hack_workshop.Resources.PaintDatabase.tsv");
-            if (stream == null) return entries; // Database missing - text boxes still work as normal
-
-            using var reader = new StreamReader(stream);
-            string? line;
-            while ((line = reader.ReadLine()) != null)
+            try
             {
-                if (line.Length == 0 || line[0] == '#') continue;
+                var assembly = Assembly.GetExecutingAssembly();
+                using var stream = assembly.GetManifestResourceStream(ResourceName);
+                if (stream == null) return entries; // Database missing - text boxes still work as normal
 
-                var parts = line.Split('\t');
-                if (parts.Length < 3 || !uint.TryParse(parts[0], NumberStyles.Integer, CultureInfo.InvariantCulture, out var id)) continue;
+                var database = new byte[stream.Length];
+                stream.ReadExactly(database);
 
-                entries.Add(new PaintEntry
-                {
-                    Id = id,
-                    Category = int.TryParse(parts[1], out var category) ? category : 0,
-                    Maker = parts.Length > 2 ? parts[2] : "",
-                    Name = parts.Length > 3 ? parts[3] : ""
-                });
+                // Read the colours in their stored order (Ord), which matches the order the old
+                // text dump listed them in, so the palette and its search ordering are unchanged.
+                using var db = EmbeddedSqliteDb.OpenFromBytes(database);
+                db.Query(
+                    "SELECT Id, Category, Maker, Name FROM PaintColours ORDER BY Ord",
+                    reader => entries.Add(new PaintEntry
+                    {
+                        Id = (uint)reader.GetInt64(0),
+                        Category = reader.GetInt32(1),
+                        Maker = reader.GetString(2),
+                        Name = reader.GetString(3)
+                    }));
+            }
+            catch (Exception)
+            {
+                // Never let a bad catalogue stop the app from starting: fall back to just the
+                // default colour. Painting by raw id in the text boxes still works.
             }
 
             return entries;
