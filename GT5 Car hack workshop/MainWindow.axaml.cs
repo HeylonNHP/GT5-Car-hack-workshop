@@ -332,6 +332,11 @@ namespace GT5_Car_hack_workshop
                 { Gt5Save[Moff - 384], Gt5Save[Moff - 383], Gt5Save[Moff - 382], Gt5Save[Moff - 381] });
             OdometerTextBox.Text = (odometerMetres / 1000.0).ToString("0.0", CultureInfo.InvariantCulture);
 
+            // Credits, a big-endian 32-bit value.
+            var credits = ByteUtils.ConvertBytesToUnsignedInt(new[]
+                { Gt5Save[Moff + 2282], Gt5Save[Moff + 2283], Gt5Save[Moff + 2284], Gt5Save[Moff + 2285] });
+            CreditsTextBox.Text = credits.ToString(CultureInfo.InvariantCulture);
+
             SpringRateFrontTextBox.Text = Gt5Save[Moff - 27].ToString();
             SpringRateRearTextBox.Text = Gt5Save[Moff - 26].ToString();
 
@@ -978,12 +983,27 @@ namespace GT5_Car_hack_workshop
             await ShowMessageBox("Samba like performance installs the performance parts out of a samba bus onto your current car.\nThe samba bus parts increase the engines performance a lot more than the performance parts for most other cars.\nEG: a 300hp (When stock) engine with samba bus parts installed can increase to about 1,000 - 1,800hp");
         }
 
-        private async void Button18_Click(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Credits are a big-endian 32-bit value. Whatever is typed here is written straight into the
+        /// save in memory, like the other fields, so use Save only or Save and encrypt to persist it.
+        /// </summary>
+        private void CreditsTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Gt5Save[Moff + 2282] = byte.MaxValue; Gt5Save[Moff + 2283] = byte.MaxValue;
-            Gt5Save[Moff + 2284] = byte.MaxValue; Gt5Save[Moff + 2285] = byte.MaxValue;
-            await ShowMessageBox("You now have 4,294,967,295 cr");
-            await SaveData();
+            if (Gt5Save == null || Moff < 1) return;
+
+            var text = (CreditsTextBox.Text ?? string.Empty).Replace(",", string.Empty).Replace(" ", string.Empty);
+            if (!uint.TryParse(text, out var credits)) return;
+
+            // Avalonia raises TextChanged when the box is filled in from a save too, so skip when the
+            // save already holds this value rather than writing it back.
+            var current = ByteUtils.ConvertBytesToUnsignedInt(new[]
+                { Gt5Save[Moff + 2282], Gt5Save[Moff + 2283], Gt5Save[Moff + 2284], Gt5Save[Moff + 2285] });
+            if (current == credits) return;
+
+            Gt5Save[Moff + 2282] = (byte)(credits >> 24);
+            Gt5Save[Moff + 2283] = (byte)(credits >> 16);
+            Gt5Save[Moff + 2284] = (byte)(credits >> 8);
+            Gt5Save[Moff + 2285] = (byte)credits;
         }
 
         private async void Button19_Click(object sender, RoutedEventArgs e)
