@@ -6,6 +6,7 @@ using System.Linq;
 using System.Reflection;
 using Avalonia.Media;
 using Avalonia.Media.Immutable;
+using GT5_Car_hack_workshop.Models;
 using GT5_Car_hack_workshop.Services;
 
 namespace GT5_Car_hack_workshop
@@ -23,11 +24,24 @@ namespace GT5_Car_hack_workshop
         /// <summary>The colour's RGB value (0xRRGGBB), or null when the game data has no colour.</summary>
         public uint? Rgb { get; set; }
 
+        private PaintColour? _colour;
+
+        /// <summary>This colour as a value type, which is where every colour calculation lives.</summary>
+        public PaintColour Colour => _colour ??= PaintColour.FromPacked(Rgb);
+
+        private double? _luminance;
+
+        /// <summary>
+        /// How bright the colour looks, for the "Luminance" sort. Cached, because a sort asks for it
+        /// far more often than once per colour (a comparer runs about n log n times).
+        /// </summary>
+        public double Luminance => _luminance ??= Colour.RelativeLuminance;
+
         private IBrush? _swatchBrush;
 
         /// <summary>The colour a swatch should show: the game's colour, else a neutral grey.</summary>
         public Color SwatchColor => Rgb is { } rgb
-            ? Color.FromRgb((byte)(rgb >> 16), (byte)(rgb >> 8), (byte)rgb)
+            ? PaintColour.FromPacked(rgb).ToColor()
             : Colors.Gray;
 
         /// <summary>A cached brush for <see cref="SwatchColor"/>, for the UI swatches.</summary>

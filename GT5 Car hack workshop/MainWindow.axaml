@@ -312,7 +312,7 @@
                                 <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                     <StackPanel Spacing="2">
                                         <TextBlock Text="Paint" FontWeight="Bold"/>
-                                        <Grid ColumnDefinitions="Auto,Auto,*,Auto,78">
+                                        <Grid ColumnDefinitions="Auto,Auto,*,Auto,Auto,78">
                                             <TextBlock Text="Body" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                             <ContentControl Grid.Column="1" Width="18" Height="18" Margin="0,0,6,0" VerticalAlignment="Center"
                                                             Content="{Binding #BodyPaintAutoCompleteBox.SelectedItem}">
@@ -334,11 +334,13 @@
                                                     </DataTemplate>
                                                 </AutoCompleteBox.ItemTemplate>
                                             </AutoCompleteBox>
-                                            <ComboBox x:Name="BodyFinishComboBox" Grid.Column="3" Width="112" Height="22" Margin="4,0,0,0" HorizontalAlignment="Left"
+                                            <Button x:Name="BodyBrowseButton" Grid.Column="3" Content="Browse…" Width="66" Height="22" Margin="4,0,0,0"
+                                                    VerticalAlignment="Center" Click="BodyBrowseButton_Click"/>
+                                            <ComboBox x:Name="BodyFinishComboBox" Grid.Column="4" Width="112" Height="22" Margin="4,0,0,0" HorizontalAlignment="Left"
                                                       VerticalAlignment="Center" SelectionChanged="BodyFinishComboBox_SelectionChanged"/>
-                                            <TextBox x:Name="BodyPaintTextBox" Grid.Column="4" Height="20" TextChanged="BodyPaintTextBox_TextChanged"/>
+                                            <TextBox x:Name="BodyPaintTextBox" Grid.Column="5" Height="20" TextChanged="BodyPaintTextBox_TextChanged"/>
                                         </Grid>
-                                        <Grid ColumnDefinitions="Auto,Auto,*,Auto,78">
+                                        <Grid ColumnDefinitions="Auto,Auto,*,Auto,Auto,78">
                                             <TextBlock Text="Wheels" Grid.Column="0" Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                             <ContentControl Grid.Column="1" Width="18" Height="18" Margin="0,0,6,0" VerticalAlignment="Center"
                                                             Content="{Binding #WheelsPaintAutoCompleteBox.SelectedItem}">
@@ -360,9 +362,11 @@
                                                     </DataTemplate>
                                                 </AutoCompleteBox.ItemTemplate>
                                             </AutoCompleteBox>
-                                            <ComboBox x:Name="WheelsFinishComboBox" Grid.Column="3" Width="112" Height="22" Margin="4,0,0,0" HorizontalAlignment="Left"
+                                            <Button x:Name="WheelsBrowseButton" Grid.Column="3" Content="Browse…" Width="66" Height="22" Margin="4,0,0,0"
+                                                    VerticalAlignment="Center" Click="WheelsBrowseButton_Click"/>
+                                            <ComboBox x:Name="WheelsFinishComboBox" Grid.Column="4" Width="112" Height="22" Margin="4,0,0,0" HorizontalAlignment="Left"
                                                       VerticalAlignment="Center" SelectionChanged="WheelsFinishComboBox_SelectionChanged"/>
-                                            <TextBox x:Name="WheelsPaintTextBox" Grid.Column="4" Height="20" TextChanged="WheelsPaintTextBox_TextChanged"/>
+                                            <TextBox x:Name="WheelsPaintTextBox" Grid.Column="5" Height="20" TextChanged="WheelsPaintTextBox_TextChanged"/>
                                         </Grid>
                                         <Button x:Name="AddPaintChipsButton" Content="Add paint chips…" Height="26" Margin="0,2,0,0" HorizontalAlignment="Stretch" Click="AddPaintChipsButton_Click"/>
                                     </StackPanel>

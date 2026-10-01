@@ -1,0 +1,155 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:models="using:GT5_Car_hack_workshop.Models"
+        x:Class="GT5_Car_hack_workshop.PaintBrowserWindow"
+        Title="Choose a paint colour"
+        Width="900" Height="640"
+        MinWidth="820" MinHeight="400"
+        CanResize="True"
+        WindowStartupLocation="CenterOwner"
+        ShowInTaskbar="False"
+        Background="{DynamicResource WindowBackgroundBrush}">
+
+    <Window.Resources>
+        <!-- One colour. Lives here so the row template and the grid stay in step. -->
+        <DataTemplate x:Key="PaintTileTemplate" x:DataType="models:PaintTile">
+            <Border Width="206"
+                    Margin="2"
+                    Padding="3"
+                    CornerRadius="3"
+                    BorderThickness="2"
+                    BorderBrush="{Binding SelectionBrush}"
+                    PointerPressed="ColourTile_PointerPressed"
+                    DoubleTapped="ColourTile_DoubleTapped">
+                <Grid ColumnDefinitions="Auto,*">
+                    <Border Grid.Column="0"
+                            Width="22" Height="22"
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            CornerRadius="3"
+                            BorderThickness="1"
+                            BorderBrush="#40000000"
+                            Background="{Binding SwatchBrush}"/>
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                        <TextBlock Text="{Binding Name}" TextTrimming="CharacterEllipsis"/>
+                        <TextBlock Text="{Binding Detail}"
+                                   FontSize="9"
+                                   Opacity="0.7"
+                                   TextTrimming="CharacterEllipsis"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="PaintRowTemplate" x:DataType="models:PaintRow">
+            <ItemsControl ItemsSource="{Binding Tiles}" ItemTemplate="{StaticResource PaintTileTemplate}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid Margin="14" RowDefinitions="Auto,Auto,*,Auto">
+
+        <TextBlock Grid.Row="0"
+                   TextWrapping="Wrap"
+                   Margin="0,0,0,10"
+                   Text="Pick a colour from the list, then click Use this colour. Narrow the list with the search box or the finish filter. This dialog only chooses a colour - whatever opened it decides where the colour goes."/>
+
+        <Grid Grid.Row="1" ColumnDefinitions="Auto,*,Auto,Auto" Margin="0,0,0,10">
+            <TextBlock Grid.Column="0"
+                       Text="Search"
+                       FontWeight="Bold"
+                       VerticalAlignment="Center"
+                       Margin="0,0,8,0"/>
+            <TextBox Grid.Column="1"
+                     x:Name="BrowserSearchBox"
+                     Height="24"
+                     PlaceholderText="Search by name, maker or hex id..."
+                     TextChanged="BrowserSearchBox_TextChanged"/>
+            <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="10,0,0,0">
+                <TextBlock Text="Finish"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           Margin="0,0,8,0"/>
+                <ComboBox x:Name="BrowserFinishBox"
+                          Width="130"
+                          Height="24"
+                          VerticalAlignment="Center"
+                          SelectionChanged="BrowserFinishBox_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Grid.Column="3" Orientation="Horizontal" Margin="10,0,0,0">
+                <TextBlock Text="Sort"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center"
+                           Margin="0,0,8,0"/>
+                <ComboBox x:Name="BrowserSortBox"
+                          Width="118"
+                          Height="24"
+                          VerticalAlignment="Center"
+                          SelectionChanged="BrowserSortBox_SelectionChanged"/>
+                <CheckBox x:Name="BrowserDescendingCheckBox"
+                          Content="Descending"
+                          Margin="8,0,0,0"
+                          VerticalAlignment="Center"
+                          IsCheckedChanged="BrowserDescendingCheckBox_IsCheckedChanged"/>
+            </StackPanel>
+        </Grid>
+
+        <Border Grid.Row="2"
+                BorderBrush="{DynamicResource GroupBorderBrush}"
+                BorderThickness="1"
+                Background="{DynamicResource PanelBackgroundBrush}"
+                Padding="4">
+            <ListBox x:Name="ColourList"
+                     Background="Transparent"
+                     BorderThickness="0"
+                     Padding="0"
+                     ItemTemplate="{StaticResource PaintRowTemplate}">
+                <ListBox.Styles>
+                    <!-- The grid row is not itself selectable; the tiles show the selection, so
+                         neutralise the row's own hover/selected highlight. -->
+                    <Style Selector="ListBoxItem">
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="Margin" Value="0"/>
+                        <Setter Property="MinHeight" Value="0"/>
+                    </Style>
+                    <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Style>
+                    <Style Selector="ListBoxItem:selected /template/ ContentPresenter#PART_ContentPresenter">
+                        <Setter Property="Background" Value="Transparent"/>
+                    </Style>
+                </ListBox.Styles>
+            </ListBox>
+        </Border>
+
+        <Grid Grid.Row="3" ColumnDefinitions="*,Auto,Auto" Margin="0,10,0,0">
+            <TextBlock Grid.Column="0"
+                       x:Name="SelectionSummaryText"
+                       VerticalAlignment="Center"
+                       TextTrimming="CharacterEllipsis"
+                       Text="Click a colour to select it."/>
+            <Button Grid.Column="1"
+                    x:Name="UseColourButton"
+                    Content="Use this colour"
+                    Width="132"
+                    Height="30"
+                    Margin="8,0,0,0"
+                    FontWeight="Bold"
+                    Background="#C0FFFF"
+                    Classes="pastel"
+                    IsEnabled="False"
+                    Click="UseColourButton_Click"/>
+            <Button Grid.Column="2"
+                    Content="Close"
+                    Width="90"
+                    Height="30"
+                    Margin="8,0,0,0"
+                    Click="CloseButton_Click"/>
+        </Grid>
+    </Grid>
+</Window>

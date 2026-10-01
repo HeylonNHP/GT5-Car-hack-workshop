@@ -102,9 +102,10 @@ namespace GT5_Car_hack_workshop
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            _ProgramSettings[0] = TextBox1.Text;
-            _ProgramSettings[1] = TextBox2.Text;
-            SettingsFileClass.SaveSettings(_ProgramSettings, "GT5CHWsettings.ini");
+            // Save line by line, so settings this window does not own (the paint browser's sort
+            // choice, on later lines) are left exactly as they are.
+            SettingsFileClass.SaveSetting("GT5CHWsettings.ini", 0, TextBox1.Text ?? " ");
+            SettingsFileClass.SaveSetting("GT5CHWsettings.ini", 1, TextBox2.Text ?? " ");
             PartsDatabaseStore.SaveAll(_CarPartsList);
         }
 
@@ -232,6 +233,25 @@ namespace GT5_Car_hack_workshop
         /// <summary>Matches typed text against a colour's name, maker or hex ID.</summary>
         private static bool PaintItemFilter(string? search, object? item)
             => item is PaintEntry entry && PaintDatabase.MatchesSearch(entry, search);
+
+        private async void BodyBrowseButton_Click(object? sender, RoutedEventArgs e)
+            => await BrowseForColour(BodyPaintTextBox);
+
+        private async void WheelsBrowseButton_Click(object? sender, RoutedEventArgs e)
+            => await BrowseForColour(WheelsPaintTextBox);
+
+        /// <summary>
+        /// Opens the colour browser and, if a colour is chosen, puts it in the given hex field. The
+        /// hex field is what SaveData writes and what the paint search box follows, so setting it
+        /// keeps the box, the swatch and the save in step. The browser itself only returns a colour.
+        /// </summary>
+        private async System.Threading.Tasks.Task BrowseForColour(TextBox hexBox)
+        {
+            var chosen = await new PaintBrowserWindow().ShowDialog<PaintEntry?>(this);
+            if (chosen is null) return;
+
+            hexBox.Text = chosen.Id.ToString("X4");
+        }
 
         private void TorqueSplitTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
