@@ -145,7 +145,13 @@
                             <Button x:Name="Button13" Content="Open" Grid.Column="1" Background="{DynamicResource OpenEditorBrush}" Foreground="White" Height="27" Click="Button13_Click"/>
                         </Grid>
                         <Button x:Name="Button15" Content="Borrow glitch (Steal car)" FontWeight="Bold" FontStyle="Italic" Height="27" Click="Button15_Click"/>
-                        <Button x:Name="Button18" Content="Get 4.2 billion credits ($$$)" Height="27" Click="Button18_Click"/>
+                        <Grid ColumnDefinitions="Auto,*">
+                            <TextBlock Grid.Column="0" Text="Credits:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                            <TextBox Grid.Column="1" x:Name="CreditsTextBox" Height="27"
+                                     PlaceholderText="Enter an amount (0 - 4,294,967,295)"
+                                     ToolTip.Tip="Type the number of credits you want, then use Save only or Save and encrypt."
+                                     TextChanged="CreditsTextBox_TextChanged"/>
+                        </Grid>
                     </StackPanel>
                 </TabItem>
             </TabControl>
