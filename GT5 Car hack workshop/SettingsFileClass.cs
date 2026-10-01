@@ -15,6 +15,21 @@ namespace GT5_Car_hack_workshop
             File.WriteAllLines(filePath, settings);
         }
 
+        /// <summary>
+        /// Replaces one setting and leaves every other line in the file exactly as it is. Saving this
+        /// way means one part of the app cannot clobber settings owned by another part of it.
+        /// </summary>
+        public static void SaveSetting(string file, int index, string value)
+        {
+            var filePath = Path.Combine(AppContext.BaseDirectory, file);
+            var lines = File.Exists(filePath) ? File.ReadAllLines(filePath).ToList() : new List<string>();
+
+            while (lines.Count <= index) lines.Add(" ");
+            lines[index] = value;
+
+            SaveSettings(lines.ToArray(), file);
+        }
+
         public static string[] LoadSettings(string file, int arraySize)
         {
             var requiredSize = arraySize + 1;

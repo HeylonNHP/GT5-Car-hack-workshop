@@ -18,7 +18,7 @@
                    TextWrapping="Wrap"
                    Text="Search the paint database for a colour, choose how many chips of that colour to add, then click Add. Chips are written into the save that is open in memory — use Save only or Save and encrypt on the main window when you are ready to write them to disk."/>
 
-        <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto,*,Auto" Margin="0,12,0,0">
+        <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto,*,Auto,Auto" Margin="0,12,0,0">
             <TextBlock Grid.Column="0"
                        Text="Paint colour"
                        FontWeight="Bold"
@@ -59,11 +59,19 @@
                     </DataTemplate>
                 </AutoCompleteBox.ItemTemplate>
             </AutoCompleteBox>
-            <ComboBox Grid.Column="3"
+            <Button Grid.Column="3"
+                    x:Name="PaintBrowseButton"
+                    Content="Browse…"
+                    Width="66"
+                    Height="24"
+                    Margin="8,0,0,0"
+                    VerticalAlignment="Center"
+                    Click="PaintBrowseButton_Click"/>
+            <ComboBox Grid.Column="4"
                       x:Name="PaintFinishBox"
                       Width="130"
                       Height="24"
-                      Margin="10,0,0,0"
+                      Margin="8,0,0,0"
                       VerticalAlignment="Center"
                       SelectionChanged="PaintFinishBox_SelectionChanged"/>
         </Grid>

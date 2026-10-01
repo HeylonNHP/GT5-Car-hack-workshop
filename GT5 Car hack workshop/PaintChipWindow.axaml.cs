@@ -68,6 +68,24 @@ namespace GT5_Car_hack_workshop
         private void RefreshPaintList()
             => PaintSearchBox.ItemsSource = PaintDatabase.ByFinish((PaintFinishBox.SelectedItem as PaintFinish)?.Category);
 
+        /// <summary>
+        /// Opens the colour browser and, if a colour is chosen, shows it in the search box ready to
+        /// be added. The browser only returns a colour; this dialog decides what it is for.
+        /// </summary>
+        private async void PaintBrowseButton_Click(object? sender, RoutedEventArgs e)
+        {
+            var chosen = await new PaintBrowserWindow().ShowDialog<PaintEntry?>(this);
+            if (chosen is null) return;
+
+            // Make sure the colour is in the finish-filtered list before selecting it, then show it
+            // (the same order SelectOwnedChip uses).
+            var finish = PaintDatabase.Finishes.FirstOrDefault(f => f.Category == chosen.Category);
+            if (finish is not null) PaintFinishBox.SelectedItem = finish;
+
+            PaintSearchBox.SelectedItem = chosen;
+            PaintSearchBox.Text = chosen.ToString();
+        }
+
         private void OnOpened(object? sender, EventArgs e)
         {
             _mainForm = _formManager?.MainForm;
