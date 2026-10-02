@@ -42,11 +42,56 @@ namespace GT5_Car_hack_workshop.Services
             "Horn INTEGER NOT NULL DEFAULT 65535, " +
             "Turbo INTEGER NOT NULL DEFAULT 65535, " +
             "Exhaust INTEGER NOT NULL DEFAULT 65535, " +
-            "Weight INTEGER NOT NULL DEFAULT 65535);";
+            "Weight INTEGER NOT NULL DEFAULT 65535, " +
+            "Brake INTEGER NOT NULL DEFAULT 65535, " +
+            "BrakeController INTEGER NOT NULL DEFAULT 65535, " +
+            "Displacement INTEGER NOT NULL DEFAULT 65535, " +
+            "Computer INTEGER NOT NULL DEFAULT 65535, " +
+            "Natune INTEGER NOT NULL DEFAULT 65535, " +
+            "Flywheel INTEGER NOT NULL DEFAULT 65535, " +
+            "Clutch INTEGER NOT NULL DEFAULT 65535, " +
+            "PropellerShaft INTEGER NOT NULL DEFAULT 65535, " +
+            "Intercooler INTEGER NOT NULL DEFAULT 65535, " +
+            "Supercharger INTEGER NOT NULL DEFAULT 65535, " +
+            "IntakeManifold INTEGER NOT NULL DEFAULT 65535, " +
+            "ExhaustManifold INTEGER NOT NULL DEFAULT 65535, " +
+            "Catalyst INTEGER NOT NULL DEFAULT 65535, " +
+            "AirCleaner INTEGER NOT NULL DEFAULT 65535, " +
+            "Nos INTEGER NOT NULL DEFAULT 65535);";
 
         private const string InsertSql =
-            "INSERT INTO CarParts (Name, Engine, Drivetrain, Chassis, Transmission, Suspension, Body, Lsd, Horn, Turbo, Exhaust, Weight) " +
-            "VALUES (@name, @engine, @drivetrain, @chassis, @transmission, @suspension, @body, @lsd, @horn, @turbo, @exhaust, @weight)";
+            "INSERT INTO CarParts (Name, Engine, Drivetrain, Chassis, Transmission, Suspension, Body, Lsd, Horn, Turbo, Exhaust, Weight, " +
+            "Brake, " +
+            "BrakeController, " +
+            "Displacement, " +
+            "Computer, " +
+            "Natune, " +
+            "Flywheel, " +
+            "Clutch, " +
+            "PropellerShaft, " +
+            "Intercooler, " +
+            "Supercharger, " +
+            "IntakeManifold, " +
+            "ExhaustManifold, " +
+            "Catalyst, " +
+            "AirCleaner, " +
+            "Nos) " +
+            "VALUES (@name, @engine, @drivetrain, @chassis, @transmission, @suspension, @body, @lsd, @horn, @turbo, @exhaust, @weight, " +
+            "@brake, " +
+            "@brakeController, " +
+            "@displacement, " +
+            "@computer, " +
+            "@natune, " +
+            "@flywheel, " +
+            "@clutch, " +
+            "@propellerShaft, " +
+            "@intercooler, " +
+            "@supercharger, " +
+            "@intakeManifold, " +
+            "@exhaustManifold, " +
+            "@catalyst, " +
+            "@airCleaner, " +
+            "@nos)";
 
         /// <summary>
         /// Returns every car in the catalogue, ordered by name. Missing databases are created
@@ -64,7 +109,22 @@ namespace GT5_Car_hack_workshop.Services
 
             using var command = connection.CreateCommand();
             command.CommandText =
-                "SELECT Name, Engine, Drivetrain, Chassis, Transmission, Suspension, Body, Lsd, Horn, Turbo, Exhaust, Weight " +
+                "SELECT Name, Engine, Drivetrain, Chassis, Transmission, Suspension, Body, Lsd, Horn, Turbo, Exhaust, Weight, " +
+                "Brake, " +
+                "BrakeController, " +
+                "Displacement, " +
+                "Computer, " +
+                "Natune, " +
+                "Flywheel, " +
+                "Clutch, " +
+                "PropellerShaft, " +
+                "Intercooler, " +
+                "Supercharger, " +
+                "IntakeManifold, " +
+                "ExhaustManifold, " +
+                "Catalyst, " +
+                "AirCleaner, " +
+                "Nos " +
                 "FROM CarParts ORDER BY Name";
             using var reader = command.ExecuteReader();
             while (reader.Read()) cars.Add(ReadCar(reader));
@@ -126,7 +186,22 @@ namespace GT5_Car_hack_workshop.Services
                 "Engine = excluded.Engine, Drivetrain = excluded.Drivetrain, Chassis = excluded.Chassis, " +
                 "Transmission = excluded.Transmission, Suspension = excluded.Suspension, Body = excluded.Body, " +
                 "Lsd = excluded.Lsd, Horn = excluded.Horn, Turbo = excluded.Turbo, " +
-                "Exhaust = excluded.Exhaust, Weight = excluded.Weight";
+                "Exhaust = excluded.Exhaust, Weight = excluded.Weight, " +
+                "Brake = excluded.Brake, " +
+                "BrakeController = excluded.BrakeController, " +
+                "Displacement = excluded.Displacement, " +
+                "Computer = excluded.Computer, " +
+                "Natune = excluded.Natune, " +
+                "Flywheel = excluded.Flywheel, " +
+                "Clutch = excluded.Clutch, " +
+                "PropellerShaft = excluded.PropellerShaft, " +
+                "Intercooler = excluded.Intercooler, " +
+                "Supercharger = excluded.Supercharger, " +
+                "IntakeManifold = excluded.IntakeManifold, " +
+                "ExhaustManifold = excluded.ExhaustManifold, " +
+                "Catalyst = excluded.Catalyst, " +
+                "AirCleaner = excluded.AirCleaner, " +
+                "Nos = excluded.Nos";
             BindCar(command, car);
             command.ExecuteNonQuery();
         }
@@ -252,11 +327,59 @@ namespace GT5_Car_hack_workshop.Services
             return connection;
         }
 
+        /// <summary>
+        /// The part columns the table is expected to have, in the order they are stored. Kept here
+        /// so that a database created by an older build can be brought up to date - "CREATE TABLE
+        /// IF NOT EXISTS" leaves an existing table exactly as it was, so new columns have to be
+        /// added separately.
+        /// </summary>
+        private static readonly string[] PartColumns =
+        {
+            "Engine", "Drivetrain", "Chassis", "Transmission", "Suspension", "Body", "Lsd", "Horn",
+            "Turbo", "Exhaust", "Weight",
+            "Brake",
+            "BrakeController",
+            "Displacement",
+            "Computer",
+            "Natune",
+            "Flywheel",
+            "Clutch",
+            "PropellerShaft",
+            "Intercooler",
+            "Supercharger",
+            "IntakeManifold",
+            "ExhaustManifold",
+            "Catalyst",
+            "AirCleaner",
+            "Nos"
+        };
+
         private static void EnsureSchema(SqliteConnection connection)
         {
-            using var command = connection.CreateCommand();
-            command.CommandText = SchemaSql;
-            command.ExecuteNonQuery();
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = SchemaSql;
+                command.ExecuteNonQuery();
+            }
+
+            // Add any column this database is missing, so an older parts database keeps working
+            // instead of failing when a newer part is read or written.
+            var existing = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "PRAGMA table_info(CarParts)";
+                using var reader = command.ExecuteReader();
+                while (reader.Read()) existing.Add(reader.GetString(1));
+            }
+
+            foreach (var column in PartColumns)
+            {
+                if (existing.Contains(column)) continue;
+
+                using var command = connection.CreateCommand();
+                command.CommandText = $"ALTER TABLE CarParts ADD COLUMN {column} INTEGER NOT NULL DEFAULT {DefaultPartId}";
+                command.ExecuteNonQuery();
+            }
         }
 
         private static SqliteCommand CreateInsertCommand(SqliteConnection connection, SqliteTransaction? transaction)
@@ -276,6 +399,21 @@ namespace GT5_Car_hack_workshop.Services
             command.Parameters.Add("@turbo", SqliteType.Integer);
             command.Parameters.Add("@exhaust", SqliteType.Integer);
             command.Parameters.Add("@weight", SqliteType.Integer);
+            command.Parameters.Add("@brake", SqliteType.Integer);
+            command.Parameters.Add("@brakeController", SqliteType.Integer);
+            command.Parameters.Add("@displacement", SqliteType.Integer);
+            command.Parameters.Add("@computer", SqliteType.Integer);
+            command.Parameters.Add("@natune", SqliteType.Integer);
+            command.Parameters.Add("@flywheel", SqliteType.Integer);
+            command.Parameters.Add("@clutch", SqliteType.Integer);
+            command.Parameters.Add("@propellerShaft", SqliteType.Integer);
+            command.Parameters.Add("@intercooler", SqliteType.Integer);
+            command.Parameters.Add("@supercharger", SqliteType.Integer);
+            command.Parameters.Add("@intakeManifold", SqliteType.Integer);
+            command.Parameters.Add("@exhaustManifold", SqliteType.Integer);
+            command.Parameters.Add("@catalyst", SqliteType.Integer);
+            command.Parameters.Add("@airCleaner", SqliteType.Integer);
+            command.Parameters.Add("@nos", SqliteType.Integer);
             return command;
         }
 
@@ -293,6 +431,21 @@ namespace GT5_Car_hack_workshop.Services
             command.Parameters["@turbo"].Value = (int)car.Turbo;
             command.Parameters["@exhaust"].Value = (int)car.Exhaust;
             command.Parameters["@weight"].Value = (int)car.Weight;
+            command.Parameters["@brake"].Value = (int)car.Brake;
+            command.Parameters["@brakeController"].Value = (int)car.BrakeController;
+            command.Parameters["@displacement"].Value = (int)car.Displacement;
+            command.Parameters["@computer"].Value = (int)car.Computer;
+            command.Parameters["@natune"].Value = (int)car.Natune;
+            command.Parameters["@flywheel"].Value = (int)car.Flywheel;
+            command.Parameters["@clutch"].Value = (int)car.Clutch;
+            command.Parameters["@propellerShaft"].Value = (int)car.PropellerShaft;
+            command.Parameters["@intercooler"].Value = (int)car.Intercooler;
+            command.Parameters["@supercharger"].Value = (int)car.Supercharger;
+            command.Parameters["@intakeManifold"].Value = (int)car.IntakeManifold;
+            command.Parameters["@exhaustManifold"].Value = (int)car.ExhaustManifold;
+            command.Parameters["@catalyst"].Value = (int)car.Catalyst;
+            command.Parameters["@airCleaner"].Value = (int)car.AirCleaner;
+            command.Parameters["@nos"].Value = (int)car.Nos;
         }
 
         private static CarParts ReadCar(SqliteDataReader reader) => new CarParts
@@ -308,7 +461,22 @@ namespace GT5_Car_hack_workshop.Services
             Horn = Part(reader, 8),
             Turbo = Part(reader, 9),
             Exhaust = Part(reader, 10),
-            Weight = Part(reader, 11)
+            Weight = Part(reader, 11),
+            Brake = Part(reader, 12),
+            BrakeController = Part(reader, 13),
+            Displacement = Part(reader, 14),
+            Computer = Part(reader, 15),
+            Natune = Part(reader, 16),
+            Flywheel = Part(reader, 17),
+            Clutch = Part(reader, 18),
+            PropellerShaft = Part(reader, 19),
+            Intercooler = Part(reader, 20),
+            Supercharger = Part(reader, 21),
+            IntakeManifold = Part(reader, 22),
+            ExhaustManifold = Part(reader, 23),
+            Catalyst = Part(reader, 24),
+            AirCleaner = Part(reader, 25),
+            Nos = Part(reader, 26)
         };
 
         private static ushort Part(SqliteDataReader reader, int ordinal) =>
