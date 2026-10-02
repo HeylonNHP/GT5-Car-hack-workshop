@@ -979,11 +979,11 @@ namespace GT5_Car_hack_workshop
             await ShowMessageBox("This will override the 74 byte checkbox\nGT5 Editor 1.6 uses this method instead of the 74 byte, I have no idea whether it's more effective. So I've added in this function for testing purposes.");
         }
 
-        private async void AddPaintChipsButton_Click(object sender, RoutedEventArgs e)
+        private async void ManagePaintChipsButton_Click(object sender, RoutedEventArgs e)
         {
             if (Gt5Save == null || Gt5Save.Length == 0)
             {
-                await ShowMessageBox("Load a GT5.0 save before adding paint chips.");
+                await ShowMessageBox("Load a GT5.0 save before managing paint chips.");
                 return;
             }
 

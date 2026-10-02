@@ -3,7 +3,7 @@
         xmlns:models="using:GT5_Car_hack_workshop.Models"
         xmlns:local="using:GT5_Car_hack_workshop"
         x:Class="GT5_Car_hack_workshop.PaintChipWindow"
-        Title="Add Paint Chips"
+        Title="Manage Paint Chips"
         Width="860"
         Height="580"
         MinWidth="660"
@@ -16,7 +16,7 @@
 
         <TextBlock Grid.Row="0"
                    TextWrapping="Wrap"
-                   Text="Search the paint database for a colour, choose how many chips of that colour to add, then click Add. Chips are written into the save that is open in memory — use Save only or Save and encrypt on the main window when you are ready to write them to disk."/>
+                   Text="Search the paint database for a colour, choose how many chips of that colour to add, then click Add. Right-click a colour in the list below to add more of it or to delete chips from it, using the Quantity above as the amount. Changes go into the save that is open in memory — use Save only or Save and encrypt on the main window when you are ready to write them to disk."/>
 
         <Grid Grid.Row="1" ColumnDefinitions="Auto,Auto,*,Auto,Auto" Margin="0,12,0,0">
             <TextBlock Grid.Column="0"
@@ -128,7 +128,18 @@
                              Background="Transparent"
                              BorderThickness="0"
                              DoubleTapped="OwnedChipsList_DoubleTapped"
+                             ContextRequested="OwnedChipsList_ContextRequested"
                              ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                        <ListBox.ContextMenu>
+                            <!-- Headers carrying counts are set when the menu is about to open. -->
+                            <ContextMenu>
+                                <MenuItem x:Name="AddOneMenuItem" Header="Add 1 chip" Click="AddOneMenuItem_Click"/>
+                                <MenuItem x:Name="AddMoreMenuItem" Header="Add more chips" Click="AddMoreMenuItem_Click"/>
+                                <Separator/>
+                                <MenuItem x:Name="DeleteOneMenuItem" Header="Delete 1 chip" Click="DeleteOneMenuItem_Click"/>
+                                <MenuItem x:Name="DeleteColourMenuItem" Header="Delete this colour…" Click="DeleteColourMenuItem_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
                         <ListBox.Styles>
                             <Style Selector="ListBoxItem">
                                 <Setter Property="Padding" Value="6,2"/>
