@@ -27,8 +27,8 @@ namespace GT5_Car_hack_workshop
         /// <summary>The tile's outer margin plus a little slack, used when working out the column count.</summary>
         private const double TileGap = 8;
 
-        // Where this dialog remembers its sort in the app's settings file (the save path and PSN
-        // own the first two lines, so they are left alone).
+        // Where this dialog remembers its sort in the app's settings file. Line 1 is the save path
+        // and line 2 is unused (it used to hold the PSN name), so both are left alone.
         private const string SettingsName = "GT5CHWsettings.ini";
         private const int SortSettingIndex = 2;
         private const int DirectionSettingIndex = 3;

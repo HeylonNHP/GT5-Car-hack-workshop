@@ -34,11 +34,6 @@
                         <Button x:Name="Button1" Content="Browse" Grid.Column="1" Background="#FFFFE0C0" Classes="pastel" Height="27" Click="Button1_Click"/>
                     </Grid>
 
-                    <Grid ColumnDefinitions="Auto,*">
-                        <TextBlock Text="PSN name" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                        <TextBox x:Name="TextBox2" Grid.Column="1" Height="22"/>
-                    </Grid>
-
                     <Grid ColumnDefinitions="*,*,*,Auto">
                         <Button x:Name="LoadButton" Content="Load data" Grid.Column="0" Background="#FFC0C0" Classes="pastel" Margin="0,0,4,0" Height="27" Click="LoadButton_Click"/>
                         <Button x:Name="SaveAndEncryptButton" Content="Save and encrypt" Grid.Column="1" Background="#C0FFC0" Classes="pastel" Margin="0,0,4,0" Height="27" Click="SaveAndEncrypt_Click"/>

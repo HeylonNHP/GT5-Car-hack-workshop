@@ -94,8 +94,6 @@ namespace GT5_Car_hack_workshop
             // Safely access settings with bounds checking
             if (_ProgramSettings != null && _ProgramSettings.Length > 0)
                 TextBox1.Text = _ProgramSettings[0];
-            if (_ProgramSettings != null && _ProgramSettings.Length > 1)
-                TextBox2.Text = _ProgramSettings[1];
 
             LoadParts();
         }
@@ -103,9 +101,9 @@ namespace GT5_Car_hack_workshop
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             // Save line by line, so settings this window does not own (the paint browser's sort
-            // choice, on later lines) are left exactly as they are.
+            // choice, on later lines) are left exactly as they are. Line 2 is no longer used: it
+            // held the PSN name.
             SettingsFileClass.SaveSetting("GT5CHWsettings.ini", 0, TextBox1.Text ?? " ");
-            SettingsFileClass.SaveSetting("GT5CHWsettings.ini", 1, TextBox2.Text ?? " ");
             PartsDatabaseStore.SaveAll(_CarPartsList);
         }
 
@@ -270,23 +268,20 @@ namespace GT5_Car_hack_workshop
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(TextBox2.Text))
-            {
-                await ShowMessageBox("You left the PSN name empty! We need this to load up your data!");
-                return;
-            }
-
             Gt5Save = LoadData.Load(TextBox1.Text);
 
-            var psnUserCharacterArray = TextBox2.Text.ToCharArray();
-            var psnUserCharacterByteArray = psnUserCharacterArray.Select(c => (byte)c).ToArray();
-
-            Moff = LoadData.FindSequence(Gt5Save, psnUserCharacterByteArray) - 306;
-            if (Moff < 1)
+            // Find the current car from the save's own structure. No PSN name is needed (and it could
+            // never be relied on anyway - it appears three times in every save).
+            var anchor = SaveAnchor.Locate(Gt5Save);
+            if (!anchor.Found)
             {
-                await ShowMessageBox("PSN name is incorrect or data is corrupt\nRemember, the PSN name is CASE sensitive.");
+                await ShowMessageBox(
+                    $"Couldn't find the current car's data in this save:\n{anchor.FailureReason}\n\n" +
+                    "Nothing was changed, because writing at the wrong place would corrupt the save.");
                 return;
             }
+
+            Moff = anchor.Moff;
 
             // Grab current car's name from PARAM.SFO
             try
