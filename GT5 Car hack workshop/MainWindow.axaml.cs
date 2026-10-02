@@ -262,6 +262,8 @@ namespace GT5_Car_hack_workshop
 
         private async System.Threading.Tasks.Task ProcessData()
         {
+            PsnNameTextBox.Text = "";
+
             if (!File.Exists(TextBox1.Text))
             {
                 await ShowMessageBox("GT5.0 file doesn't exist!");
@@ -282,6 +284,9 @@ namespace GT5_Car_hack_workshop
             }
 
             Moff = anchor.Moff;
+
+            // The player's name is part of the same record, so it can simply be read and shown.
+            PsnNameTextBox.Text = SaveAnchor.ReadPlayerName(Gt5Save, Moff) ?? "";
 
             // Grab current car's name from PARAM.SFO
             try

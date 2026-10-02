@@ -1,4 +1,5 @@
 using System;
+using System.Text;
 
 namespace GT5_Car_hack_workshop.Services
 {
@@ -58,6 +59,9 @@ namespace GT5_Car_hack_workshop.Services
         /// <summary>A serialisation tag that sits just before the current car's record.</summary>
         private static readonly byte[] CarTag = { 0x07, 0x81, 0x8D };
 
+        /// <summary>The serialisation tag in front of the player's name (their PSN).</summary>
+        private static readonly byte[] NameTag = { 0x07, 0x1A, 0x06 };
+
         /// <summary>How far into the car's record the anchor sits (it lands near the end of it).</summary>
         private const int MoffFromBlock = 396;
 
@@ -66,6 +70,15 @@ namespace GT5_Car_hack_workshop.Services
 
         /// <summary>Where the database header sits relative to the anchor.</summary>
         private const int DatabaseHeaderFromMoff = 11851;
+
+        /// <summary>Where the player's name starts, relative to the anchor.</summary>
+        private const int PlayerNameFromMoff = 306;
+
+        /// <summary>Where <see cref="NameTag"/> sits relative to the anchor.</summary>
+        private const int NameTagFromMoff = 289;
+
+        /// <summary>The name lives in a fixed-width, null-padded field of this many bytes.</summary>
+        private const int PlayerNameFieldLength = 160;
 
         /// <summary>
         /// Locates the current car in <paramref name="save"/>, or explains why it could not be.
@@ -95,6 +108,35 @@ namespace GT5_Car_hack_workshop.Services
                 return SaveAnchorResult.Failure("the car record is not the expected distance from the car database.");
 
             return SaveAnchorResult.Success(moff);
+        }
+
+        /// <summary>
+        /// Reads the player's name (their PSN) out of the save. Nothing has to be typed: the name sits
+        /// at a fixed place behind the current car, so it can be read once the car has been located.
+        ///
+        /// Returns null when it cannot be read - a missing tag, an empty field, or bytes that are not
+        /// plain text - so the caller can show nothing rather than show something wrong.
+        /// </summary>
+        public static string? ReadPlayerName(byte[]? save, int moff)
+        {
+            if (save is null || moff < 0) return null;
+            if (!MatchesAt(save, moff + NameTagFromMoff, NameTag)) return null;
+
+            var start = moff + PlayerNameFromMoff;
+            if (start >= save.Length) return null;
+
+            var limit = Math.Min(start + PlayerNameFieldLength, save.Length);
+            var end = start;
+            while (end < limit && save[end] != 0) end++;
+
+            if (end == start) return null;
+
+            // Only plain text is shown; anything else means the field is not where we think it is.
+            for (var i = start; i < end; i++)
+                if (save[i] < 0x20 || save[i] > 0x7E)
+                    return null;
+
+            return Encoding.ASCII.GetString(save, start, end - start);
         }
 
         /// <summary>The first index at or after <paramref name="from"/> holding <paramref name="pattern"/>, or -1.</summary>
