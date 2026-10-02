@@ -294,19 +294,20 @@
                                 <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                     <StackPanel Spacing="2">
                                         <TextBlock Text="Suspension" FontWeight="Bold"/>
-                                        <Grid ColumnDefinitions="Auto,*,Auto,*">
-                                            <TextBlock Text="Suspension height" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
-                                            <TextBox x:Name="SuspensionHeightFrontTextBox" Grid.Column="1" Width="70" Height="20" Margin="0,0,4,0"/>
-                                            <TextBlock Text=":" Grid.Column="2" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
-                                            <TextBox x:Name="SuspensionHeightRearTextBox" Grid.Column="3" Width="70" Height="20"/>
+                                        <!-- Both rows share one grid, so the columns line up; every value
+                                             column is Auto so the text sits at the left, next to its label. -->
+                                        <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,*" RowDefinitions="Auto,Auto" RowSpacing="4">
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Suspension height" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <TextBox Grid.Row="0" Grid.Column="1" x:Name="SuspensionHeightFrontTextBox" Width="70" Height="20" Margin="0,0,4,0"/>
+                                            <TextBlock Grid.Row="0" Grid.Column="2" Text=":" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                            <TextBox Grid.Row="0" Grid.Column="3" x:Name="SuspensionHeightRearTextBox" Width="70" Height="20"/>
+
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Spring rate" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="SpringRateFrontTextBox" Width="70" Height="20" Margin="0,0,4,0"/>
+                                            <TextBlock Grid.Row="1" Grid.Column="2" Text=":" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                            <TextBox Grid.Row="1" Grid.Column="3" x:Name="SpringRateRearTextBox" Width="70" Height="20"/>
                                         </Grid>
-                                        <Grid ColumnDefinitions="Auto,*,Auto,*">
-                                            <TextBlock Text="Spring rate" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
-                                            <TextBox x:Name="SpringRateFrontTextBox" Grid.Column="1" Width="70" Height="20" Margin="0,0,4,0"/>
-                                            <TextBlock Text=":" Grid.Column="2" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
-                                            <TextBox x:Name="SpringRateRearTextBox" Grid.Column="3" Width="70" Height="20"/>
-                                        </Grid>
-                                        <Button x:Name="Button19" Content="Slam car" Background="#C0FFFF" Classes="pastel" Foreground="{DynamicResource SlamCarBrush}" FontWeight="Bold" HorizontalAlignment="Center" Height="27" Click="Button19_Click"/>
+                                        <Button x:Name="Button19" Content="Slam car" Background="#C0FFFF" Classes="pastel" Foreground="{DynamicResource SlamCarBrush}" FontWeight="Bold" HorizontalAlignment="Left" Height="27" Click="Button19_Click"/>
                                     </StackPanel>
                                 </Border>
 
