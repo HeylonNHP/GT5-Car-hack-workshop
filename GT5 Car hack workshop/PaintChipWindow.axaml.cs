@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
@@ -25,7 +24,10 @@ namespace GT5_Car_hack_workshop
     public partial class PaintChipWindow : Window
     {
         private readonly IFormManager? _formManager;
-        private readonly StringBuilder _log = new();
+
+        /// <summary>Status-line colours: ordinary text, and red for anything that went wrong.</summary>
+        private static readonly IBrush NormalStatusBrush = new SolidColorBrush(Color.Parse("#C8CDD4"));
+        private static readonly IBrush ErrorStatusBrush = new SolidColorBrush(Color.Parse("#FF8A8A"));
 
         private MainWindow? _mainForm;
         private PaintChipStore? _store;
@@ -102,7 +104,7 @@ namespace GT5_Car_hack_workshop
             {
                 _openError = "Load a GT5.0 save in the main window first, then reopen this dialog.";
                 AddButton.IsEnabled = false;
-                SetStatus(_openError);
+                SetStatus(_openError, isError: true);
                 UpdateOwnedChipsList();
                 return;
             }
@@ -111,12 +113,12 @@ namespace GT5_Car_hack_workshop
             {
                 _openError = "Could not open the save's item database: " + error;
                 AddButton.IsEnabled = false;
-                SetStatus(_openError);
+                SetStatus(_openError, isError: true);
                 UpdateOwnedChipsList();
                 return;
             }
 
-            SetStatus($"Save loaded. Owned: {UpdateOwnedChipsList()}.");
+            ShowOwnedSummary();
         }
 
         /// <summary>
@@ -150,7 +152,7 @@ namespace GT5_Car_hack_workshop
         {
             if (_openError is not null)
             {
-                SetStatus(_openError);
+                SetStatus(_openError, isError: true);
                 return;
             }
 
@@ -159,7 +161,7 @@ namespace GT5_Car_hack_workshop
             var entry = PaintSearchBox.SelectedItem as PaintEntry ?? PaintDatabase.Resolve(PaintSearchBox.Text);
             if (entry is null)
             {
-                SetStatus("Pick a paint colour from the search list first.");
+                SetStatus("Pick a paint colour from the search list first.", isError: true);
                 return;
             }
 
@@ -183,7 +185,7 @@ namespace GT5_Car_hack_workshop
                 // from the (unchanged) in-memory save so a later Add cannot silently resurface them.
                 TryOpenStore(_mainForm.Gt5Save, out _);
                 UpdateOwnedChipsList();
-                SetStatus("Could not add the chips: " + ex.Message);
+                SetStatus("Could not add the chips: " + ex.Message, isError: true);
             }
         }
 
@@ -271,7 +273,7 @@ namespace GT5_Car_hack_workshop
             var entry = PaintDatabase.Find(_contextRow.ColourId);
             if (entry is null)
             {
-                SetStatus($"\"{_contextRow.Display}\" is not in this build's paint catalogue, so more chips of it cannot be added.");
+                SetStatus($"\"{_contextRow.Display}\" is not in this build's paint catalogue, so more chips of it cannot be added.", isError: true);
                 return;
             }
 
@@ -291,7 +293,7 @@ namespace GT5_Car_hack_workshop
             {
                 TryOpenStore(_mainForm.Gt5Save, out _);
                 UpdateOwnedChipsList();
-                SetStatus("Could not add the chips: " + ex.Message);
+                SetStatus("Could not add the chips: " + ex.Message, isError: true);
             }
         }
 
@@ -325,7 +327,7 @@ namespace GT5_Car_hack_workshop
             {
                 TryOpenStore(_mainForm.Gt5Save, out _);
                 UpdateOwnedChipsList();
-                SetStatus("Could not delete the chips: " + ex.Message);
+                SetStatus("Could not delete the chips: " + ex.Message, isError: true);
             }
         }
 
@@ -345,7 +347,6 @@ namespace GT5_Car_hack_workshop
             if (_store is null)
             {
                 OwnedChipsList.ItemsSource = null;
-                OwnedSummaryText.Text = "Owned paint chips";
                 return "nothing owned";
             }
 
@@ -374,7 +375,6 @@ namespace GT5_Car_hack_workshop
                     : string.Compare(a.Maker, b.Maker, StringComparison.CurrentCultureIgnoreCase);
             });
             OwnedChipsList.ItemsSource = rows;
-            OwnedSummaryText.Text = $"Owned paint chips — {rows.Count} colour(s), {total} chip(s)";
             return $"{rows.Count} colour(s), {total} chip(s) in total";
         }
 
@@ -412,7 +412,7 @@ namespace GT5_Car_hack_workshop
             {
                 // The save owns a colour this build's catalogue does not know about, so there is no
                 // PaintEntry to hand to the search box.
-                SetStatus($"\"{row.Name}\" is not in the paint catalogue, so it cannot be selected here.");
+                SetStatus($"\"{row.Name}\" is not in the paint catalogue, so it cannot be selected here.", isError: true);
                 return false;
             }
 
@@ -437,11 +437,25 @@ namespace GT5_Car_hack_workshop
         private static bool PaintItemFilter(string? search, object? item)
             => item is PaintEntry entry && PaintDatabase.MatchesSearch(entry, search);
 
-        /// <summary>Shows <paramref name="message"/> at the top of the status log.</summary>
-        private void SetStatus(string message)
+        /// <summary>
+        /// Shows <paramref name="message"/> on the single status line at the bottom of the dialog.
+        /// Each message replaces the last one, so the newest - including any failure - is always
+        /// the one on screen. <see cref="ShowOwnedSummary"/> puts the owned totals back.
+        /// </summary>
+        private void SetStatus(string message, bool isError = false)
         {
-            _log.Insert(0, message + Environment.NewLine);
-            StatusText.Text = _log.ToString().TrimEnd();
+            StatusText.Text = message;
+            StatusText.Foreground = isError ? ErrorStatusBrush : NormalStatusBrush;
+        }
+
+        /// <summary>Shows the owned totals on the status line, or a hint when nothing is owned.</summary>
+        private void ShowOwnedSummary()
+        {
+            var summary = UpdateOwnedChipsList();
+
+            SetStatus(summary == "nothing owned" || summary.StartsWith("0 ")
+                ? "No paint chips owned yet - pick a colour above and click Add."
+                : $"Owned: {summary}.");
         }
     }
 }

@@ -4,10 +4,10 @@
         xmlns:local="using:GT5_Car_hack_workshop"
         x:Class="GT5_Car_hack_workshop.PaintChipWindow"
         Title="Manage Paint Chips"
-        Width="860"
-        Height="580"
-        MinWidth="660"
-        MinHeight="460"
+        Width="700"
+        Height="540"
+        MinWidth="560"
+        MinHeight="420"
         CanResize="True"
         WindowStartupLocation="CenterOwner"
         ShowInTaskbar="False"
@@ -102,17 +102,15 @@
                     Click="AddButton_Click"/>
         </Grid>
 
-        <Grid Grid.Row="3" ColumnDefinitions="3*,2*" ColumnSpacing="10" Margin="0,12,0,0">
-
-            <!-- Colours the save currently owns -->
-            <Border Grid.Column="0"
-                    BorderBrush="{DynamicResource GroupBorderBrush}"
+        <!-- Colours the save currently owns -->
+        <Border Grid.Row="3"
+                Margin="0,12,0,0"
+                BorderBrush="{DynamicResource GroupBorderBrush}"
                     BorderThickness="1"
                     Background="{DynamicResource PanelBackgroundBrush}"
                     Padding="8">
                 <Grid RowDefinitions="Auto,Auto,*">
                     <TextBlock Grid.Row="0"
-                               x:Name="OwnedSummaryText"
                                Text="Owned paint chips"
                                FontWeight="Bold"/>
                     <Grid Grid.Row="1" ColumnDefinitions="*,Auto" Margin="6,6,6,4">
@@ -171,34 +169,24 @@
                 </Grid>
             </Border>
 
-            <!-- What has been done in this dialog -->
-            <Border Grid.Column="1"
-                    BorderBrush="{DynamicResource GroupBorderBrush}"
-                    BorderThickness="1"
-                    Background="{DynamicResource PanelBackgroundBrush}"
-                    Padding="8">
-                <Grid RowDefinitions="Auto,*">
-                    <TextBlock Grid.Row="0" Text="Activity" FontWeight="Bold"/>
-                    <ScrollViewer Grid.Row="1" Margin="0,6,0,0">
-                        <TextBlock x:Name="StatusText"
-                                   TextWrapping="Wrap"
-                                   Text="Opening the save's item database..."/>
-                    </ScrollViewer>
-                </Grid>
-            </Border>
-        </Grid>
-
-        <StackPanel Grid.Row="4"
-                    Orientation="Horizontal"
-                    HorizontalAlignment="Right"
-                    Spacing="10"
-                    Margin="0,12,0,0">
-            <Button x:Name="CloseButton"
+        <!-- One line of status: the owned totals, or whatever just happened. -->
+        <Grid Grid.Row="4" ColumnDefinitions="*,Auto" Margin="0,12,0,0">
+            <TextBlock Grid.Column="0"
+                       x:Name="StatusText"
+                       TextWrapping="Wrap"
+                       MaxLines="2"
+                       TextTrimming="CharacterEllipsis"
+                       VerticalAlignment="Center"
+                       Margin="0,0,12,0"
+                       Text="Opening the save's item database..."/>
+            <Button Grid.Column="1"
+                    x:Name="CloseButton"
                     Content="Close"
                     Width="90"
                     Height="30"
+                    VerticalAlignment="Center"
                     Click="CloseButton_Click"
                     IsCancel="True"/>
-        </StackPanel>
+        </Grid>
     </Grid>
 </Window>
