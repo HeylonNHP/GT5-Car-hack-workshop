@@ -3,10 +3,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="using:GT5_Car_hack_workshop"
-        mc:Ignorable="d" d:DesignWidth="1200" d:DesignHeight="900"
+        mc:Ignorable="d"
+        d:DesignWidth="1200" d:DesignHeight="680"
         x:Class="GT5_Car_hack_workshop.MainWindow"
         Title="GT5 Car hack workshop 2.6 (For GT5 2.14). Created by HeylonNHP"
-        Width="1200" Height="900"
+        Width="1200" Height="680"
         CanResize="False"
         FontSize="10"
         Background="{DynamicResource WindowBackgroundBrush}">
