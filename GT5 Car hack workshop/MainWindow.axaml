@@ -371,7 +371,7 @@
                                                       VerticalAlignment="Center" SelectionChanged="WheelsFinishComboBox_SelectionChanged"/>
                                             <TextBox x:Name="WheelsPaintTextBox" Grid.Column="5" Height="20" TextChanged="WheelsPaintTextBox_TextChanged"/>
                                         </Grid>
-                                        <Button x:Name="AddPaintChipsButton" Content="Add paint chips…" Height="26" Margin="0,2,0,0" HorizontalAlignment="Stretch" Click="AddPaintChipsButton_Click"/>
+                                        <Button x:Name="ManagePaintChipsButton" Content="Manage paint chips…" Height="26" Margin="0,2,0,0" HorizontalAlignment="Stretch" Click="ManagePaintChipsButton_Click"/>
                                     </StackPanel>
                                 </Border>
 

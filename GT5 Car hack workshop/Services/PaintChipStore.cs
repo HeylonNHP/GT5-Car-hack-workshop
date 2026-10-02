@@ -83,6 +83,17 @@ namespace GT5_Car_hack_workshop.Services
                 return false;
             }
 
+            // The container records the database size it expects. Checking that here rejects a decoy
+            // header - say, the magic quoted inside a text field - whose neighbours would not agree,
+            // and so stops anything being written at the wrong offset.
+            if (ReadUInt32BigEndian(save, 0x0C) != (uint)(databaseLength + 11) ||
+                ReadUInt32BigEndian(save, offset - 9) != (uint)(databaseLength + 10) ||
+                ReadUInt32BigEndian(save, offset - 4) != (uint)databaseLength)
+            {
+                error = "The embedded item database is not where this save's layout says it should be.";
+                return false;
+            }
+
             var databaseBytes = new byte[databaseLength];
             Array.Copy(save, offset, databaseBytes, 0, databaseLength);
 
@@ -224,6 +235,36 @@ namespace GT5_Car_hack_workshop.Services
         }
 
         /// <summary>
+        /// Removes up to <paramref name="count"/> paint chips of the given colour and returns how
+        /// many were actually removed, which is fewer than asked for when the colour holds fewer.
+        /// Chips are one row each, so removing chips means deleting rows.
+        /// </summary>
+        public int RemoveChips(uint colourId, int count)
+        {
+            if (count <= 0) return 0;
+
+            return _database.Execute(
+                "DELETE FROM t_itembox_user WHERE itembox_id IN (" +
+                $"SELECT itembox_id FROM t_itembox_user WHERE type_id = {GtAutoTypeId} " +
+                $"AND category_id = {ColorPaintCategoryId} AND argument1 = @colour " +
+                "ORDER BY itembox_id LIMIT @count)",
+                bind =>
+                {
+                    bind.AddWithValue("@colour", (long)colourId);
+                    bind.AddWithValue("@count", count);
+                });
+        }
+
+        /// <summary>
+        /// Removes every paint chip of the given colour and returns how many were removed, or 0
+        /// when the colour is not owned.
+        /// </summary>
+        public int RemoveAllOfColour(uint colourId) =>
+            _database.Execute(
+                $"DELETE FROM t_itembox_user WHERE type_id = {GtAutoTypeId} AND category_id = {ColorPaintCategoryId} AND argument1 = @colour",
+                bind => bind.AddWithValue("@colour", (long)colourId));
+
+        /// <summary>
         /// Returns a copy of <paramref name="save"/> with the edited database written back into
         /// it. The binary section is preserved and the three size fields the container keeps for
         /// the database are updated for the new page count.
@@ -232,7 +273,11 @@ namespace GT5_Car_hack_workshop.Services
         {
             ArgumentNullException.ThrowIfNull(save);
 
-            if (DatabaseOffset <= 8 || save.Length < DatabaseOffset)
+            // The three size fields must not overlap each other, and none may land inside the
+            // database header that gets copied: the first sits at a fixed 0x0C (bytes 12-15) and
+            // the other two immediately before the database (offset-9 and offset-4). So the
+            // database must start at 25 or later, or those writes would overwrite each other.
+            if (DatabaseOffset < 25 || save.Length < DatabaseOffset)
                 throw new InvalidOperationException("The save layout is not supported.");
 
             var database = _database.Serialize();
@@ -285,6 +330,15 @@ namespace GT5_Car_hack_workshop.Services
         {
             var raw = (save[offset + 16] << 8) | save[offset + 17];
             return raw == 1 ? 65536 : raw;
+        }
+
+        /// <summary>Reads a big-endian 32-bit value, or 0 when it would fall outside the buffer.</summary>
+        private static uint ReadUInt32BigEndian(byte[] buffer, int offset)
+        {
+            if (offset < 0 || offset + 4 > buffer.Length) return 0;
+
+            return ((uint)buffer[offset] << 24) | ((uint)buffer[offset + 1] << 16) |
+                   ((uint)buffer[offset + 2] << 8) | buffer[offset + 3];
         }
 
         private static void WriteUInt32BigEndian(byte[] buffer, int offset, uint value)
