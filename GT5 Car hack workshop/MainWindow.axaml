@@ -57,38 +57,51 @@
                 <TabItem Header="Parts Database">
                     <ScrollViewer>
                         <StackPanel Spacing="3" Margin="4">
+                            <!-- Known tunes: the save file's own preset list (pt_gt5_*), each one a full set
+                                 of parts for one car. Picking one and pressing "Apply tune" fills in every
+                                 part drop-down that the tune defines. -->
+                            <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="3">
+                                <Grid ColumnDefinitions="64,*,Auto" RowDefinitions="Auto,Auto">
+                                    <TextBlock Text="Known tune" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                    <AutoCompleteBox x:Name="PresetSearchBox" Grid.Row="0" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                     PlaceholderText="Search a saved tune (pt_gt5_...)" MaxDropDownHeight="240" IsTextCompletionEnabled="False"/>
+                                    <Button x:Name="ApplyPresetButton" Grid.Row="0" Grid.Column="2" Content="Apply tune" Background="#C0FFFF" Classes="pastel" Height="27" Margin="4,0,0,0"/>
+                                    <TextBlock x:Name="PresetInfoText" Grid.Row="1" Grid.ColumnSpan="3" Margin="0,3,0,0" TextWrapping="Wrap"
+                                               Foreground="{DynamicResource HexFieldBrush}"/>
+                                </Grid>
+                            </Border>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Engine" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="EngineCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="EngineCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="EngineHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Drivetrain" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="DrivetrainCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="DrivetrainCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="DrivetrainHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Chassis" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="ChassisCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="ChassisCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="ChassisHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Transmission" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="TransmissionCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="TransmissionCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="TransmissionHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Suspension" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="SuspensionCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="SuspensionCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="SuspensionHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
@@ -101,8 +114,8 @@
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="LSD" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="LsdCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="LsdCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="LsdHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
@@ -115,132 +128,133 @@
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Turbo" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="TurboCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="TurboCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="TurboHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Exhaust" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="ExhaustCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="ExhaustCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="ExhaustHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Weight" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="WeightCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="WeightCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="WeightHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
 
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Brake" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="BrakeCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="BrakeCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="BrakeHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Brake controller" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="BrakeControllerCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="BrakeControllerCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="BrakeControllerHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Displacement" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="DisplacementCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="DisplacementCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="DisplacementHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Computer (ECU)" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="ComputerCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="ComputerCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="ComputerHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="NA tune" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="NatuneCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="NatuneCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="NatuneHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Flywheel" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="FlywheelCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="FlywheelCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="FlywheelHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Clutch" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="ClutchCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="ClutchCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="ClutchHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Propeller shaft" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="PropellerShaftCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="PropellerShaftCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="PropellerShaftHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Intercooler" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="IntercoolerCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="IntercoolerCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="IntercoolerHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Supercharger" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="SuperchargerCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="SuperchargerCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="SuperchargerHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Intake manifold" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="IntakeManifoldCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="IntakeManifoldCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="IntakeManifoldHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Exhaust manifold" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="ExhaustManifoldCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="ExhaustManifoldCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="ExhaustManifoldHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Catalyst" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="CatalystCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="CatalystCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="CatalystHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="Air cleaner" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="AirCleanerCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="AirCleanerCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="AirCleanerHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,48">
                                 <TextBlock Text="NOS" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <ComboBox x:Name="NosCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
-                                          IsEditable="True" IsTextSearchEnabled="False" PlaceholderText="Select..."/>
+                                <AutoCompleteBox x:Name="NosCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="NosHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Button x:Name="Button12" Content="Add current car to parts database" Background="#C0FFFF" Classes="pastel" Height="27" Click="Button12_Click"/>
+                            <TextBlock x:Name="PartsCatalogueInfoText" TextWrapping="Wrap" Foreground="{DynamicResource HexFieldBrush}"/>
                         </StackPanel>
                     </ScrollViewer>
                 </TabItem>

@@ -26,6 +26,10 @@ namespace GT5_Car_hack_workshop
         // Guards against paint field <-> combo box sync loops
         private bool _syncingPaintFields;
 
+        // The last code each part drop-down stood for, so that a box a platform clears on losing
+        // focus cannot blank a save (HexStringToUshort throws on empty input).
+        private readonly Dictionary<AutoCompleteBox, ushort> _lastPartCodes = new();
+
         public byte[] Gt5Save;
         public int Moff;
 
@@ -39,6 +43,7 @@ namespace GT5_Car_hack_workshop
             InitializeComponent();
             InitializePaintSearchBoxes();
             InitializePartComboBoxes();
+            InitializePresetControls();
             Loaded += MainWindow_Loaded;
             Closing += MainWindow_Closing;
         }
@@ -48,6 +53,7 @@ namespace GT5_Car_hack_workshop
             InitializeComponent();
             InitializePaintSearchBoxes();
             InitializePartComboBoxes();
+            InitializePresetControls();
             Loaded += MainWindow_Loaded;
             Closing += MainWindow_Closing;
         }
@@ -365,182 +371,24 @@ namespace GT5_Car_hack_workshop
 
         private async System.Threading.Tasks.Task SaveData()
         {
-            try
+            // Every part field is written from PartCatalogue's list: the same two big-endian bytes at
+            // the same offsets as the per-field blocks that used to sit here, so the 4WD hack and the
+            // other byte-level hacks see exactly the bytes they saw before.
+            foreach (var (category, box, _) in PartFieldBindings())
             {
-                var engineByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(EngineCodeComboBox, p => p.Engine));
-                Gt5Save[Moff - 213] = engineByteValues[0];
-                Gt5Save[Moff - 212] = engineByteValues[1];
+                try
+                {
+                    var partBytes = ByteUtils.HexStringToByteArray(ResolvePartHex(box, category));
+                    Gt5Save[Moff + category.SaveOffset] = partBytes[0];
+                    Gt5Save[Moff + category.SaveOffset + 1] = partBytes[1];
+                }
+                catch (Exception ex)
+                {
+                    await ShowMessageBox($"Can't save {category.Label.ToLowerInvariant()} code to the save file.\n{ex.Message}");
+                    return;
+                }
             }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save engine code to the save file. {ex.Message}");
-                return;
-            }
-            try
-            {
-                var brakeByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(BrakeCodeComboBox, p => p.Brake));
-                Gt5Save[Moff -225] = brakeByteValues[0];
-                Gt5Save[Moff -224] = brakeByteValues[1];
-            }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save brake code to the save file.\n{ex.Message}");
-                return;
-            }
-            try
-            {
-                var brakeControllerByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(BrakeControllerCodeComboBox, p => p.BrakeController));
-                Gt5Save[Moff -221] = brakeControllerByteValues[0];
-                Gt5Save[Moff -220] = brakeControllerByteValues[1];
-            }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save brake controller code to the save file.\n{ex.Message}");
-                return;
-            }
-            try
-            {
-                var displacementByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(DisplacementCodeComboBox, p => p.Displacement));
-                Gt5Save[Moff -181] = displacementByteValues[0];
-                Gt5Save[Moff -180] = displacementByteValues[1];
-            }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save displacement code to the save file.\n{ex.Message}");
-                return;
-            }
-            try
-            {
-                var computerByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(ComputerCodeComboBox, p => p.Computer));
-                Gt5Save[Moff -177] = computerByteValues[0];
-                Gt5Save[Moff -176] = computerByteValues[1];
-            }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save computer (ecu) code to the save file.\n{ex.Message}");
-                return;
-            }
-            try
-            {
-                var natuneByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(NatuneCodeComboBox, p => p.Natune));
-                Gt5Save[Moff -173] = natuneByteValues[0];
-                Gt5Save[Moff -172] = natuneByteValues[1];
-            }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save na tune code to the save file.\n{ex.Message}");
-                return;
-            }
-            try
-            {
-                var flywheelByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(FlywheelCodeComboBox, p => p.Flywheel));
-                Gt5Save[Moff -165] = flywheelByteValues[0];
-                Gt5Save[Moff -164] = flywheelByteValues[1];
-            }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save flywheel code to the save file.\n{ex.Message}");
-                return;
-            }
-            try
-            {
-                var clutchByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(ClutchCodeComboBox, p => p.Clutch));
-                Gt5Save[Moff -161] = clutchByteValues[0];
-                Gt5Save[Moff -160] = clutchByteValues[1];
-            }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save clutch code to the save file.\n{ex.Message}");
-                return;
-            }
-            try
-            {
-                var propellerShaftByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(PropellerShaftCodeComboBox, p => p.PropellerShaft));
-                Gt5Save[Moff -157] = propellerShaftByteValues[0];
-                Gt5Save[Moff -156] = propellerShaftByteValues[1];
-            }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save propeller shaft code to the save file.\n{ex.Message}");
-                return;
-            }
-            try
-            {
-                var intercoolerByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(IntercoolerCodeComboBox, p => p.Intercooler));
-                Gt5Save[Moff -149] = intercoolerByteValues[0];
-                Gt5Save[Moff -148] = intercoolerByteValues[1];
-            }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save intercooler code to the save file.\n{ex.Message}");
-                return;
-            }
-            try
-            {
-                var superchargerByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(SuperchargerCodeComboBox, p => p.Supercharger));
-                Gt5Save[Moff -133] = superchargerByteValues[0];
-                Gt5Save[Moff -132] = superchargerByteValues[1];
-            }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save supercharger code to the save file.\n{ex.Message}");
-                return;
-            }
-            try
-            {
-                var intakeManifoldByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(IntakeManifoldCodeComboBox, p => p.IntakeManifold));
-                Gt5Save[Moff -129] = intakeManifoldByteValues[0];
-                Gt5Save[Moff -128] = intakeManifoldByteValues[1];
-            }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save intake manifold code to the save file.\n{ex.Message}");
-                return;
-            }
-            try
-            {
-                var exhaustManifoldByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(ExhaustManifoldCodeComboBox, p => p.ExhaustManifold));
-                Gt5Save[Moff -125] = exhaustManifoldByteValues[0];
-                Gt5Save[Moff -124] = exhaustManifoldByteValues[1];
-            }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save exhaust manifold code to the save file.\n{ex.Message}");
-                return;
-            }
-            try
-            {
-                var catalystByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(CatalystCodeComboBox, p => p.Catalyst));
-                Gt5Save[Moff -121] = catalystByteValues[0];
-                Gt5Save[Moff -120] = catalystByteValues[1];
-            }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save catalyst code to the save file.\n{ex.Message}");
-                return;
-            }
-            try
-            {
-                var airCleanerByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(AirCleanerCodeComboBox, p => p.AirCleaner));
-                Gt5Save[Moff -117] = airCleanerByteValues[0];
-                Gt5Save[Moff -116] = airCleanerByteValues[1];
-            }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save air cleaner code to the save file.\n{ex.Message}");
-                return;
-            }
-            try
-            {
-                var nosByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(NosCodeComboBox, p => p.Nos));
-                Gt5Save[Moff -113] = nosByteValues[0];
-                Gt5Save[Moff -112] = nosByteValues[1];
-            }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save nos code to the save file.\n{ex.Message}");
-                return;
-            }
+
 
             try
             {
@@ -558,41 +406,8 @@ namespace GT5_Car_hack_workshop
                 return;
             }
 
-            try
-            {
-                var drivetrainByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(DrivetrainCodeComboBox, p => p.Drivetrain));
-                Gt5Save[Moff - 209] = drivetrainByteValues[0];
-                Gt5Save[Moff - 208] = drivetrainByteValues[1];
-            }
-            catch (Exception ex)
-            {
-                await ShowMessageBox($"Can't save drivetrain code to the save file.\n{ex.Message}");
-                return;
-            }
 
-            try
-            {
-                var chassisByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(ChassisCodeComboBox, p => p.Chassis));
-                Gt5Save[Moff - 217] = chassisByteValues[0];
-                Gt5Save[Moff - 216] = chassisByteValues[1];
-            }
-            catch (Exception e)
-            {
-                await ShowMessageBox($"Can't save chassis code to the save file.\n{e.Message}");
-                return;
-            }
 
-            try
-            {
-                var transmissionByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(TransmissionCodeComboBox, p => p.Transmission));
-                Gt5Save[Moff - 205] = transmissionByteValues[0];
-                Gt5Save[Moff - 204] = transmissionByteValues[1];
-            }
-            catch (Exception e)
-            {
-                await ShowMessageBox($"Can't save transmission code to the save file.\n{e.Message}");
-                return;
-            }
 
             try
             {
@@ -637,17 +452,6 @@ namespace GT5_Car_hack_workshop
                 return;
             }
 
-            try
-            {
-                var turboCode = ByteUtils.HexStringToByteArray(ResolvePartHex(TurboCodeComboBox, p => p.Turbo));
-                Gt5Save[Moff - 169] = turboCode[0];
-                Gt5Save[Moff - 168] = turboCode[1];
-            }
-            catch (Exception e)
-            {
-                await ShowMessageBox($"Can't save turbo (turbine kit) code to the save file.\n{e.Message}");
-                return;
-            }
 
             if (SambaLikePerformanceCheckbox.IsChecked == true)
             {
@@ -656,7 +460,9 @@ namespace GT5_Car_hack_workshop
                 Gt5Save[Moff - 179] = 0; Gt5Save[Moff - 178] = 0; Gt5Save[Moff - 177] = 5; Gt5Save[Moff - 176] = 81;
                 Gt5Save[Moff - 175] = 0; Gt5Save[Moff - 174] = 0; Gt5Save[Moff - 173] = 14; Gt5Save[Moff - 172] = 242;
                 Gt5Save[Moff - 171] = 0; Gt5Save[Moff - 170] = 0; Gt5Save[Moff - 169] = 21; Gt5Save[Moff - 168] = 39;
-                Gt5Save[Moff - 155] = 0; Gt5Save[Moff - 154] = 0; Gt5Save[Moff - 153] = 20; Gt5Save[Moff - 152] = 60;
+                // Moff-153/-152 (the muffler code) used to be set here too, but the exhaust field's own
+                // write always ran afterwards and overwrote it, so the field keeps writing those bytes.
+                Gt5Save[Moff - 155] = 0; Gt5Save[Moff - 154] = 0;
                 Gt5Save[Moff - 131] = 0; Gt5Save[Moff - 130] = 0; Gt5Save[Moff - 129] = 3; Gt5Save[Moff - 128] = 88;
                 Gt5Save[Moff - 127] = 0; Gt5Save[Moff - 126] = 0; Gt5Save[Moff - 125] = 3; Gt5Save[Moff - 124] = 88;
                 Gt5Save[Moff - 123] = 0; Gt5Save[Moff - 122] = 0; Gt5Save[Moff - 121] = 3; Gt5Save[Moff - 120] = 56;
@@ -776,17 +582,6 @@ namespace GT5_Car_hack_workshop
                 return;
             }
 
-            try
-            {
-                var exhaustCode = ByteUtils.HexStringToByteArray(ResolvePartHex(ExhaustCodeComboBox, p => p.Exhaust));
-                Gt5Save[Moff - 153] = exhaustCode[0];
-                Gt5Save[Moff - 152] = exhaustCode[1];
-            }
-            catch (Exception e)
-            {
-                await ShowMessageBox($"Can't save exhaust (muffler) code to the save file.\n{e.Message}");
-                return;
-            }
 
             try
             {
@@ -800,29 +595,7 @@ namespace GT5_Car_hack_workshop
                 return;
             }
 
-            try
-            {
-                var suspensionCode = ByteUtils.HexStringToByteArray(ResolvePartHex(SuspensionCodeComboBox, p => p.Suspension));
-                Gt5Save[Moff - 201] = suspensionCode[0];
-                Gt5Save[Moff - 200] = suspensionCode[1];
-            }
-            catch (Exception e)
-            {
-                await ShowMessageBox($"Can't save suspension code to the save file.\n{e.Message}");
-                return;
-            }
 
-            try
-            {
-                var lsdCode = ByteUtils.HexStringToByteArray(ResolvePartHex(LsdCodeComboBox, p => p.Lsd));
-                Gt5Save[Moff - 197] = lsdCode[0];
-                Gt5Save[Moff - 196] = lsdCode[1];
-            }
-            catch (Exception e)
-            {
-                await ShowMessageBox($"Can't save LSD code to the save file.\n{e.Message}");
-                return;
-            }
 
             try
             {
@@ -836,17 +609,6 @@ namespace GT5_Car_hack_workshop
                 return;
             }
 
-            try
-            {
-                var weightCode = ByteUtils.HexStringToByteArray(ResolvePartHex(WeightCodeComboBox, p => p.Weight));
-                Gt5Save[Moff - 189] = weightCode[0];
-                Gt5Save[Moff - 188] = weightCode[1];
-            }
-            catch (Exception e)
-            {
-                await ShowMessageBox($"Can't save weight (lightweight) code to the save file.\n{e.Message}");
-                return;
-            }
 
             if (Add74ByteCheckBox.IsChecked == true) Gt5Save[Moff - 260] = 116;
 
@@ -885,88 +647,168 @@ namespace GT5_Car_hack_workshop
             File.WriteAllBytes(TextBox1.Text, Gt5Save);
         }
 
-        // Wires up the parts-database ComboBoxes. Each one is now the single source of truth for its
-        // car-part code: pick a saved car from the drop-down to load that car's value, or type a hex
-        // code directly. The small label beside each box always shows the resolved hex.
+        // ---- The generated parts catalogue drives every part field ------------------------------
+        //
+        // Everything below works from PartCatalogue.Categories: the combo-box wiring, the catalogue
+        // load, reading a save and writing a save all walk that one list, so a part field is named in
+        // exactly one place instead of in five. Body and Horn are deliberately not in the list: they
+        // are not game part keys, so they keep the hand-built CarParts catalogue and their own boxes.
+
+        /// <summary>
+        /// The one place where the named controls meet <see cref="PartCatalogue.Categories"/>.
+        /// </summary>
+        private IEnumerable<(PartCategory Category, AutoCompleteBox Box, TextBlock HexLabel)> PartFieldBindings() => new[]
+        {
+            (PartCatalogue.Get(13), EngineCodeComboBox, EngineHexLabel),
+            (PartCatalogue.Get(7), ChassisCodeComboBox, ChassisHexLabel),
+            (PartCatalogue.Get(11), DrivetrainCodeComboBox, DrivetrainHexLabel),
+            (PartCatalogue.Get(12), TransmissionCodeComboBox, TransmissionHexLabel),
+            (PartCatalogue.Get(4), SuspensionCodeComboBox, SuspensionHexLabel),
+            (PartCatalogue.Get(23), LsdCodeComboBox, LsdHexLabel),
+            (PartCatalogue.Get(2), BrakeCodeComboBox, BrakeHexLabel),
+            (PartCatalogue.Get(3), BrakeControllerCodeComboBox, BrakeControllerHexLabel),
+            (PartCatalogue.Get(9), WeightCodeComboBox, WeightHexLabel),
+            (PartCatalogue.Get(15), TurboCodeComboBox, TurboHexLabel),
+            (PartCatalogue.Get(19), ExhaustCodeComboBox, ExhaustHexLabel),
+            (PartCatalogue.Get(20), ClutchCodeComboBox, ClutchHexLabel),
+            (PartCatalogue.Get(21), FlywheelCodeComboBox, FlywheelHexLabel),
+            (PartCatalogue.Get(22), PropellerShaftCodeComboBox, PropellerShaftHexLabel),
+            (PartCatalogue.Get(14), NatuneCodeComboBox, NatuneHexLabel),
+            (PartCatalogue.Get(16), DisplacementCodeComboBox, DisplacementHexLabel),
+            (PartCatalogue.Get(17), ComputerCodeComboBox, ComputerHexLabel),
+            (PartCatalogue.Get(18), IntercoolerCodeComboBox, IntercoolerHexLabel),
+            (PartCatalogue.Get(27), SuperchargerCodeComboBox, SuperchargerHexLabel),
+            (PartCatalogue.Get(28), IntakeManifoldCodeComboBox, IntakeManifoldHexLabel),
+            (PartCatalogue.Get(29), ExhaustManifoldCodeComboBox, ExhaustManifoldHexLabel),
+            (PartCatalogue.Get(30), CatalystCodeComboBox, CatalystHexLabel),
+            (PartCatalogue.Get(31), AirCleanerCodeComboBox, AirCleanerHexLabel),
+            (PartCatalogue.Get(26), NosCodeComboBox, NosHexLabel),
+        };
+
         private void InitializePartComboBoxes()
         {
-            WirePartComboBox(EngineCodeComboBox, EngineHexLabel, p => p.Engine);
-            WirePartComboBox(DrivetrainCodeComboBox, DrivetrainHexLabel, p => p.Drivetrain);
-            WirePartComboBox(ChassisCodeComboBox, ChassisHexLabel, p => p.Chassis);
-            WirePartComboBox(TransmissionCodeComboBox, TransmissionHexLabel, p => p.Transmission);
-            WirePartComboBox(SuspensionCodeComboBox, SuspensionHexLabel, p => p.Suspension);
-            WirePartComboBox(BodyCodeComboBox, BodyHexLabel, p => p.Body);
-            WirePartComboBox(LsdCodeComboBox, LsdHexLabel, p => p.Lsd);
-            WirePartComboBox(HornCodeComboBox, HornHexLabel, p => p.Horn);
-            WirePartComboBox(TurboCodeComboBox, TurboHexLabel, p => p.Turbo);
-            WirePartComboBox(ExhaustCodeComboBox, ExhaustHexLabel, p => p.Exhaust);
-            WirePartComboBox(WeightCodeComboBox, WeightHexLabel, p => p.Weight);
-            WirePartComboBox(BrakeCodeComboBox, BrakeHexLabel, p => p.Brake);
-            WirePartComboBox(BrakeControllerCodeComboBox, BrakeControllerHexLabel, p => p.BrakeController);
-            WirePartComboBox(DisplacementCodeComboBox, DisplacementHexLabel, p => p.Displacement);
-            WirePartComboBox(ComputerCodeComboBox, ComputerHexLabel, p => p.Computer);
-            WirePartComboBox(NatuneCodeComboBox, NatuneHexLabel, p => p.Natune);
-            WirePartComboBox(FlywheelCodeComboBox, FlywheelHexLabel, p => p.Flywheel);
-            WirePartComboBox(ClutchCodeComboBox, ClutchHexLabel, p => p.Clutch);
-            WirePartComboBox(PropellerShaftCodeComboBox, PropellerShaftHexLabel, p => p.PropellerShaft);
-            WirePartComboBox(IntercoolerCodeComboBox, IntercoolerHexLabel, p => p.Intercooler);
-            WirePartComboBox(SuperchargerCodeComboBox, SuperchargerHexLabel, p => p.Supercharger);
-            WirePartComboBox(IntakeManifoldCodeComboBox, IntakeManifoldHexLabel, p => p.IntakeManifold);
-            WirePartComboBox(ExhaustManifoldCodeComboBox, ExhaustManifoldHexLabel, p => p.ExhaustManifold);
-            WirePartComboBox(CatalystCodeComboBox, CatalystHexLabel, p => p.Catalyst);
-            WirePartComboBox(AirCleanerCodeComboBox, AirCleanerHexLabel, p => p.AirCleaner);
-            WirePartComboBox(NosCodeComboBox, NosHexLabel, p => p.Nos);
-
-        }
-
-        private static void WirePartComboBox(ComboBox comboBox, TextBlock hexLabel, Func<CarParts, ushort> selector)
-        {
-            // Picking a car sets Text to that car's name, and typing changes Text directly, so
-            // watching Text covers both. ResolvePartHex turns either one into the hex to display.
-            comboBox.PropertyChanged += (_, e) =>
-            {
-                if (e.Property == ComboBox.TextProperty)
-                    hexLabel.Text = ResolvePartHex(comboBox, selector);
-            };
+            foreach (var (category, box, hexLabel) in PartFieldBindings())
+                WirePartComboBox(box, hexLabel, category);
         }
 
         /// <summary>
-        /// Resolves the hex code a parts ComboBox currently represents: the chosen car's value when
-        /// an entry is selected, otherwise the raw text the user typed. If the box is still showing
-        /// a car name (e.g. just after the drop-down list was reloaded and the selection cleared)
-        /// that name is looked up again so the correct code is still used.
+        /// Turns a part box into a filtered picker. Its list is a whole catalogue category - every
+        /// car's own variant of the part, thousands of entries for some - the typed text filters it,
+        /// and the small label beside the box always shows the code the box currently stands for.
         /// </summary>
-        private static string ResolvePartHex(ComboBox comboBox, Func<CarParts, ushort> selector)
+        private void WirePartComboBox(AutoCompleteBox box, TextBlock hexLabel, PartCategory category)
         {
-            // The box text is the value: it holds either a car name (chosen from the list) or a raw
-            // hex code the user typed, and SetPartSelection keeps it in step with any selection.
-            // Resolve from the text and fall back to the selected entry only when the box is empty,
-            // so this no longer relies on Avalonia clearing SelectedItem when Text is set.
-            var text = comboBox.Text;
-            if (!string.IsNullOrWhiteSpace(text))
+            box.ItemFilter = PartItemFilter;
+
+            // The box's text is the value: it holds either an entry's label (picked from the list) or
+            // a raw hex code the user typed, exactly as the old editable combo box did.
+            box.PropertyChanged += (_, e) =>
             {
-                // A car name in the box means "use that car's code".
-                if (comboBox.ItemsSource is IEnumerable<CarParts> parts)
-                {
-                    var named = parts.FirstOrDefault(p => p.Name.Equals(text, StringComparison.OrdinalIgnoreCase));
-                    if (named != null)
-                        return ByteUtils.UshortToHexString(selector(named));
-                }
+                if (e.Property != AutoCompleteBox.TextProperty) return;
+                RememberPartCode(box, category);
+                hexLabel.Text = ResolvePartHex(box, category);
+            };
 
-                // Otherwise the box holds the code itself.
-                return text;
-            }
+            // A box whose text matches no item can be cleared when it loses focus. A blank box aborts
+            // the whole save (HexStringToUshort throws on empty input), so put back the code the box
+            // last stood for rather than leave the user with a silent failure.
+            box.LostFocus += (_, _) =>
+            {
+                if (!string.IsNullOrWhiteSpace(box.Text)) return;
+                if (!_lastPartCodes.TryGetValue(box, out var code)) return;
 
-            // Empty box: fall back to whatever entry is selected (e.g. right after a list reload).
-            if (comboBox.SelectedItem is CarParts selected)
-                return ByteUtils.UshortToHexString(selector(selected));
-
-            return string.Empty;
+                box.Text = ByteUtils.UshortToHexString(code);
+                hexLabel.Text = ResolvePartHex(box, category);
+            };
         }
 
-        // Fills the parts drop-downs from the loaded save. When a code matches an existing database
-        // entry (or the whole car matches one) the drop-down selects that entry so it shows the
-        // saved name; otherwise the raw hex code is shown as free text.
+        /// <summary>Matches typed text against an entry's label, car, upgrade name or hex code.</summary>
+        private static bool PartItemFilter(string? search, object? item)
+            => item is PartEntry entry && PartCatalogueStore.MatchesSearch(entry, search);
+
+        /// <summary>
+        /// Remembers the code a box currently stands for, so a box that gets emptied (see above) can
+        /// be put back instead of left blank.
+        /// </summary>
+        private void RememberPartCode(AutoCompleteBox box, PartCategory category)
+        {
+            var text = box.Text;
+            if (string.IsNullOrWhiteSpace(text)) return;
+
+            var entry = PartCatalogueStore.FindByLabel(category.TableId, text);
+            if (entry != null)
+            {
+                _lastPartCodes[box] = entry.PartKey;
+                return;
+            }
+
+            try
+            {
+                _lastPartCodes[box] = ByteUtils.HexStringToUshort(text);
+            }
+            catch (Exception)
+            {
+                // Neither a catalogue entry nor a code: remember nothing, so a genuine mistake still
+                // surfaces as the save error it always was.
+            }
+        }
+
+        /// <summary>
+        /// Resolves the code a part box currently stands for: the catalogue entry whose label is the
+        /// box's text, otherwise the raw text itself, which is a hex code (possibly one the user
+        /// deliberately copied from another category). That is what keeps manual hex editing - and the
+        /// 4WD hack - working.
+        /// </summary>
+        private string ResolvePartHex(AutoCompleteBox box, PartCategory category)
+        {
+            var text = box.Text;
+            if (!string.IsNullOrWhiteSpace(text))
+            {
+                var entry = PartCatalogueStore.FindByLabel(category.TableId, text);
+                return entry?.Hex ?? text;
+            }
+
+            // Empty box: fall back to the last code it stood for, so a wiped box cannot blank a save.
+            return _lastPartCodes.TryGetValue(box, out var remembered)
+                ? ByteUtils.UshortToHexString(remembered)
+                : string.Empty;
+        }
+
+        /// <summary>
+        /// Points a part box at a code: selects the catalogue entry carrying it, preferring the car
+        /// the save belongs to so the car's own variant is the one shown, and falls back to the raw
+        /// hex code (exactly as the editor always did) when the catalogue has no such entry.
+        /// </summary>
+        private void SetPartSelection(AutoCompleteBox box, PartCategory category, ushort value, int preferredCarId)
+        {
+            var match = PartCatalogueStore.Find(category.TableId, value, preferredCarId);
+            if (match != null)
+            {
+                box.SelectedItem = match;
+                box.Text = match.Label; // keep the text (the authoritative value) in step
+                return;
+            }
+
+            SetPartHexText(box, ByteUtils.UshortToHexString(value));
+        }
+
+        /// <summary>
+        /// Shows a raw hex code in a part box, clearing any selection first so the code - not a
+        /// previously chosen entry - is what ResolvePartHex (and therefore the save) uses.
+        /// </summary>
+        private static void SetPartHexText(AutoCompleteBox box, string hex)
+        {
+            box.SelectedItem = null;
+            box.Text = hex;
+        }
+
+        /// <summary>The two bytes of a part field in the save, big-endian, at its declared offset.</summary>
+        private ushort ReadPartValue(PartCategory category)
+            => ByteUtils.BytesToUshort(Gt5Save[Moff + category.SaveOffset], Gt5Save[Moff + category.SaveOffset + 1]);
+
+        // Fills the parts drop-downs from the loaded save. Each code is looked up in the catalogue so
+        // the box shows the part's name and car; when the catalogue has no such entry the raw code is
+        // shown as free text, which is what a hand-edited or unknown part needs.
         private void LoadPartsFromSave()
         {
             var engine = ByteUtils.BytesToUshort(Gt5Save[Moff - 213], Gt5Save[Moff - 212]);
@@ -998,8 +840,8 @@ namespace GT5_Car_hack_workshop
             var airCleaner = ByteUtils.BytesToUshort(Gt5Save[Moff -117], Gt5Save[Moff -116]);
             var nos = ByteUtils.BytesToUshort(Gt5Save[Moff -113], Gt5Save[Moff -112]);
 
-
-            // Prefer a single entry that matches the whole car so every drop-down agrees on it.
+            // Body and Horn keep their old behaviour: prefer a single CarParts entry that matches the
+            // whole car, so both boxes agree on it, and show a raw code when nothing matches.
             var wholeMatch = _CarPartsList?.FirstOrDefault(p =>
                 p.Engine == engine && p.Drivetrain == drivetrain && p.Chassis == chassis &&
                 p.Transmission == transmission && p.Suspension == suspension && p.Body == body &&
@@ -1021,34 +863,15 @@ namespace GT5_Car_hack_workshop
                 p.AirCleaner == airCleaner &&
                 p.Nos == nos);
 
+            // The catalogue is per car, so find the car this save is: its engine, chassis and drivetrain
+            // ids only belong to one car each. That car's own part variants are then shown first.
+            var preferredCarId = PartCatalogueStore.FindCarId(engine, chassis, drivetrain);
 
-            SetPartSelection(EngineCodeComboBox, engine, p => p.Engine, wholeMatch);
-            SetPartSelection(DrivetrainCodeComboBox, drivetrain, p => p.Drivetrain, wholeMatch);
-            SetPartSelection(ChassisCodeComboBox, chassis, p => p.Chassis, wholeMatch);
-            SetPartSelection(TransmissionCodeComboBox, transmission, p => p.Transmission, wholeMatch);
-            SetPartSelection(SuspensionCodeComboBox, suspension, p => p.Suspension, wholeMatch);
+            foreach (var (category, box, _) in PartFieldBindings())
+                SetPartSelection(box, category, ReadPartValue(category), preferredCarId);
+
             SetPartSelection(BodyCodeComboBox, body, p => p.Body, wholeMatch);
-            SetPartSelection(LsdCodeComboBox, lsd, p => p.Lsd, wholeMatch);
             SetPartSelection(HornCodeComboBox, horn, p => p.Horn, wholeMatch);
-            SetPartSelection(TurboCodeComboBox, turbo, p => p.Turbo, wholeMatch);
-            SetPartSelection(ExhaustCodeComboBox, exhaust, p => p.Exhaust, wholeMatch);
-            SetPartSelection(WeightCodeComboBox, weight, p => p.Weight, wholeMatch);
-            SetPartSelection(BrakeCodeComboBox, brake, p => p.Brake, wholeMatch);
-            SetPartSelection(BrakeControllerCodeComboBox, brakeController, p => p.BrakeController, wholeMatch);
-            SetPartSelection(DisplacementCodeComboBox, displacement, p => p.Displacement, wholeMatch);
-            SetPartSelection(ComputerCodeComboBox, computer, p => p.Computer, wholeMatch);
-            SetPartSelection(NatuneCodeComboBox, natune, p => p.Natune, wholeMatch);
-            SetPartSelection(FlywheelCodeComboBox, flywheel, p => p.Flywheel, wholeMatch);
-            SetPartSelection(ClutchCodeComboBox, clutch, p => p.Clutch, wholeMatch);
-            SetPartSelection(PropellerShaftCodeComboBox, propellerShaft, p => p.PropellerShaft, wholeMatch);
-            SetPartSelection(IntercoolerCodeComboBox, intercooler, p => p.Intercooler, wholeMatch);
-            SetPartSelection(SuperchargerCodeComboBox, supercharger, p => p.Supercharger, wholeMatch);
-            SetPartSelection(IntakeManifoldCodeComboBox, intakeManifold, p => p.IntakeManifold, wholeMatch);
-            SetPartSelection(ExhaustManifoldCodeComboBox, exhaustManifold, p => p.ExhaustManifold, wholeMatch);
-            SetPartSelection(CatalystCodeComboBox, catalyst, p => p.Catalyst, wholeMatch);
-            SetPartSelection(AirCleanerCodeComboBox, airCleaner, p => p.AirCleaner, wholeMatch);
-            SetPartSelection(NosCodeComboBox, nos, p => p.Nos, wholeMatch);
-
         }
 
         /// <summary>
@@ -1063,9 +886,9 @@ namespace GT5_Car_hack_workshop
         }
 
         /// <summary>
-        /// Points a parts ComboBox at the given value: selects <paramref name="preferred"/>, else the
-        /// first database entry whose matching field equals the value, so the saved car's name is
-        /// shown; if nothing matches, displays the raw hex code instead.
+        /// Points one of the two CarParts-backed boxes (Body, Horn) at a value: selects
+        /// <paramref name="preferred"/>, else the first catalogue entry whose matching field equals the
+        /// value, so the saved car's name is shown; if nothing matches, displays the raw hex code.
         /// </summary>
         private static void SetPartSelection(ComboBox comboBox, ushort value, Func<CarParts, ushort> selector, CarParts? preferred)
         {
@@ -1082,8 +905,36 @@ namespace GT5_Car_hack_workshop
         }
 
         /// <summary>
-        /// Shows a raw hex code in a parts combo box, clearing any car selection first so the code -
-        /// not a previously chosen car - is what ResolvePartHex (and therefore the save) uses.
+        /// Resolves the hex code one of the two CarParts-backed boxes (Body, Horn) currently stands
+        /// for: the chosen car's value when an entry is selected, otherwise the raw text the user
+        /// typed. If the box is still showing a car name that name is looked up again so the correct
+        /// code is still used.
+        /// </summary>
+        private static string ResolvePartHex(ComboBox comboBox, Func<CarParts, ushort> selector)
+        {
+            var text = comboBox.Text;
+            if (!string.IsNullOrWhiteSpace(text))
+            {
+                if (comboBox.ItemsSource is IEnumerable<CarParts> parts)
+                {
+                    var named = parts.FirstOrDefault(p => p.Name.Equals(text, StringComparison.OrdinalIgnoreCase));
+                    if (named != null)
+                        return ByteUtils.UshortToHexString(selector(named));
+                }
+
+                return text;
+            }
+
+            if (comboBox.SelectedItem is CarParts selected)
+                return ByteUtils.UshortToHexString(selector(selected));
+
+            return string.Empty;
+        }
+
+        /// <summary>
+        /// Shows a raw hex code in one of the two CarParts-backed boxes, clearing any car selection
+        /// first so the code, not a previously chosen car, is what ResolvePartHex (and therefore the
+        /// save) uses.
         /// </summary>
         private static void SetPartHexText(ComboBox comboBox, string hex)
         {
@@ -1091,41 +942,132 @@ namespace GT5_Car_hack_workshop
             comboBox.Text = hex;
         }
 
+        /// <summary>
+        /// Fills every part drop-down from the generated catalogue, and the Body and Horn drop-downs
+        /// from the hand-built CarParts catalogue.
+        /// </summary>
         private void LoadParts()
         {
-            var sortedList = _CarPartsList?.OrderBy(cp => cp.Name).ToList() ?? new List<CarParts>();
+            try
+            {
+                var sortedList = _CarPartsList?.OrderBy(cp => cp.Name).ToList() ?? new List<CarParts>();
+                BodyCodeComboBox.ItemsSource = sortedList;
+                HornCodeComboBox.ItemsSource = sortedList;
+            }
+            catch (Exception ex)
+            {
+                _ = ShowMessageBox($"An issue occurred while loading the parts database: {ex.Message}");
+            }
 
-            foreach (var comboBox in new[] { EngineCodeComboBox, DrivetrainCodeComboBox, ChassisCodeComboBox,
-                TransmissionCodeComboBox, SuspensionCodeComboBox, BodyCodeComboBox, LsdCodeComboBox, HornCodeComboBox,
-                TurboCodeComboBox, ExhaustCodeComboBox, WeightCodeComboBox,
-                BrakeCodeComboBox,
-                BrakeControllerCodeComboBox,
-                DisplacementCodeComboBox,
-                ComputerCodeComboBox,
-                NatuneCodeComboBox,
-                FlywheelCodeComboBox,
-                ClutchCodeComboBox,
-                PropellerShaftCodeComboBox,
-                IntercoolerCodeComboBox,
-                SuperchargerCodeComboBox,
-                IntakeManifoldCodeComboBox,
-                ExhaustManifoldCodeComboBox,
-                CatalystCodeComboBox,
-                AirCleanerCodeComboBox,
-                NosCodeComboBox })
-
+            var total = 0;
+            var empty = 0;
+            foreach (var (category, box, _) in PartFieldBindings())
             {
                 try
                 {
-                    // Refreshing ItemsSource updates the drop-down list while leaving whatever value
-                    // is currently in the box untouched.
-                    comboBox.ItemsSource = sortedList;
+                    var entries = PartCatalogueStore.Entries(category.TableId);
+                    total += entries.Count;
+                    if (entries.Count == 0) empty++;
+
+                    // Replacing the list updates the drop-down but must leave whatever value is
+                    // currently in the box untouched.
+                    var text = box.Text;
+                    box.ItemsSource = entries;
+                    if (!string.IsNullOrWhiteSpace(text) && string.IsNullOrWhiteSpace(box.Text)) box.Text = text;
+
+                    // A category the catalogue has no parts for (NOS) would leave the box blank, and a
+                    // blank box aborts the whole save, so start it on the "stock/none" code instead.
+                    if (entries.Count == 0 && string.IsNullOrWhiteSpace(box.Text))
+                        SetPartHexText(box, ByteUtils.UshortToHexString(ushort.MaxValue));
                 }
                 catch (Exception ex)
                 {
-                    _ = ShowMessageBox($"An issue occurred while loading the parts database: {ex.Message}");
+                    _ = ShowMessageBox($"An issue occurred while loading the parts catalogue: {ex.Message}");
                 }
             }
+
+            PartsCatalogueInfoText.Text = DescribeCatalogue(total, empty);
+        }
+
+        /// <summary>A one-line summary of what the generated catalogue supplied, shown on the tab.</summary>
+        private static string DescribeCatalogue(int total, int emptyCategories)
+        {
+            if (!PartCatalogueStore.Exists)
+                return "partscatalogue.db was not found next to the program, so the part lists are empty. " +
+                       "Typing a hex code into any box still works.";
+
+            var text = $"{total:n0} parts in the drop-downs, over {PartCatalogue.Categories.Count - emptyCategories} part categories.";
+            if (emptyCategories > 0)
+                text += $" {emptyCategories} part category has no shop parts in the game data (NOS): its box starts on FF FF and takes a typed code.";
+            return text;
+        }
+
+        // ---- Known tunes: the save file's own preset list (pt_gt5_*) -----------------------------
+
+        /// <summary>Wires the "known tune" picker: a filtered list of the catalogue's preset names.</summary>
+        private void InitializePresetControls()
+        {
+            PresetSearchBox.ItemFilter = (search, item) => item is string name && PartCatalogueStore.MatchesPreset(name, search);
+            PresetSearchBox.ItemsSource = PartCatalogueStore.PresetNames;
+            PresetSearchBox.SelectionChanged += PresetSearchBox_SelectionChanged;
+            ApplyPresetButton.Click += ApplyPresetButton_Click;
+
+            PresetInfoText.Text = PartCatalogueStore.PresetNames.Count == 0
+                ? "No known tunes: the catalogue's preset list could not be read."
+                : $"{PartCatalogueStore.PresetNames.Count:n0} known tunes, each one a full set of parts for one car. " +
+                  "Pick one and press \"Apply tune\".";
+        }
+
+        private void PresetSearchBox_SelectionChanged(object? sender, SelectionChangedEventArgs e)
+        {
+            if (PresetSearchBox.SelectedItem is not string name) return;
+
+            var car = PartCatalogueStore.PresetCar(name);
+            var count = PartCatalogueStore.ResolvePreset(name).Count;
+
+            PresetInfoText.Text = string.IsNullOrEmpty(car)
+                ? $"{name}: sets {count} part fields. Press \"Apply tune\" to fill them in."
+                : $"{name}: sets {count} part fields, and is the saved tune of {car}.";
+        }
+
+        /// <summary>
+        /// Fills in every part drop-down a known tune defines. The tune is a full set of parts for one
+        /// car, so a category it sets - including the car's engine, chassis and drivetrain - is applied
+        /// to the drop-down; categories it says nothing about are left exactly as they are, and nothing
+        /// reaches the save file until the user saves.
+        /// </summary>
+        private async void ApplyPresetButton_Click(object? sender, RoutedEventArgs e)
+        {
+            var name = (PresetSearchBox.SelectedItem as string) ?? PresetSearchBox.Text?.Trim();
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                await ShowMessageBox("Pick a known tune from the list first.");
+                return;
+            }
+
+            var entries = PartCatalogueStore.ResolvePreset(name);
+            if (entries.Count == 0)
+            {
+                await ShowMessageBox($"\"{name}\" does not set any part this editor has a field for.");
+                return;
+            }
+
+            var byCategory = new Dictionary<int, PartEntry>();
+            foreach (var entry in entries) byCategory[entry.Category] = entry.Part;
+
+            var applied = 0;
+            foreach (var (category, box, _) in PartFieldBindings())
+            {
+                if (!byCategory.TryGetValue(category.TableId, out var part)) continue;
+                SetPartSelection(box, category, part.PartKey, part.CarId);
+                applied++;
+            }
+
+            var car = PartCatalogueStore.PresetCar(name);
+            await ShowMessageBox(
+                $"Filled in {applied} of the {entries.Count} parts of \"{name}\"" +
+                (string.IsNullOrEmpty(car) ? "" : $" (the saved tune of {car})") +
+                ".\n\nYour save file is not touched until you save, and part fields the tune does not set are left alone.");
         }
 
         private async void Button12_Click(object sender, RoutedEventArgs e)
@@ -1142,32 +1084,32 @@ namespace GT5_Car_hack_workshop
                 var newCarParts = new CarParts
                 {
                     Name = carName,
-                    Engine = ByteUtils.HexStringToUshort(ResolvePartHex(EngineCodeComboBox, p => p.Engine)),
-                    Drivetrain = ByteUtils.HexStringToUshort(ResolvePartHex(DrivetrainCodeComboBox, p => p.Drivetrain)),
-                    Chassis = ByteUtils.HexStringToUshort(ResolvePartHex(ChassisCodeComboBox, p => p.Chassis)),
-                    Transmission = ByteUtils.HexStringToUshort(ResolvePartHex(TransmissionCodeComboBox, p => p.Transmission)),
+                    Engine = ByteUtils.HexStringToUshort(ResolvePartHex(EngineCodeComboBox, PartCatalogue.Get(13))),
+                    Drivetrain = ByteUtils.HexStringToUshort(ResolvePartHex(DrivetrainCodeComboBox, PartCatalogue.Get(11))),
+                    Chassis = ByteUtils.HexStringToUshort(ResolvePartHex(ChassisCodeComboBox, PartCatalogue.Get(7))),
+                    Transmission = ByteUtils.HexStringToUshort(ResolvePartHex(TransmissionCodeComboBox, PartCatalogue.Get(12))),
                     Body = ByteUtils.HexStringToUshort(ResolvePartHex(BodyCodeComboBox, p => p.Body)),
-                    Suspension = ByteUtils.HexStringToUshort(ResolvePartHex(SuspensionCodeComboBox, p => p.Suspension)),
-                    Lsd = ByteUtils.HexStringToUshort(ResolvePartHex(LsdCodeComboBox, p => p.Lsd)),
+                    Suspension = ByteUtils.HexStringToUshort(ResolvePartHex(SuspensionCodeComboBox, PartCatalogue.Get(4))),
+                    Lsd = ByteUtils.HexStringToUshort(ResolvePartHex(LsdCodeComboBox, PartCatalogue.Get(23))),
                     Horn = ByteUtils.HexStringToUshort(ResolvePartHex(HornCodeComboBox, p => p.Horn)),
-                    Turbo = ByteUtils.HexStringToUshort(ResolvePartHex(TurboCodeComboBox, p => p.Turbo)),
-                    Exhaust = ByteUtils.HexStringToUshort(ResolvePartHex(ExhaustCodeComboBox, p => p.Exhaust)),
-                    Weight = ByteUtils.HexStringToUshort(ResolvePartHex(WeightCodeComboBox, p => p.Weight)),
-                    Brake = ByteUtils.HexStringToUshort(ResolvePartHex(BrakeCodeComboBox, p => p.Brake)),
-                    BrakeController = ByteUtils.HexStringToUshort(ResolvePartHex(BrakeControllerCodeComboBox, p => p.BrakeController)),
-                    Displacement = ByteUtils.HexStringToUshort(ResolvePartHex(DisplacementCodeComboBox, p => p.Displacement)),
-                    Computer = ByteUtils.HexStringToUshort(ResolvePartHex(ComputerCodeComboBox, p => p.Computer)),
-                    Natune = ByteUtils.HexStringToUshort(ResolvePartHex(NatuneCodeComboBox, p => p.Natune)),
-                    Flywheel = ByteUtils.HexStringToUshort(ResolvePartHex(FlywheelCodeComboBox, p => p.Flywheel)),
-                    Clutch = ByteUtils.HexStringToUshort(ResolvePartHex(ClutchCodeComboBox, p => p.Clutch)),
-                    PropellerShaft = ByteUtils.HexStringToUshort(ResolvePartHex(PropellerShaftCodeComboBox, p => p.PropellerShaft)),
-                    Intercooler = ByteUtils.HexStringToUshort(ResolvePartHex(IntercoolerCodeComboBox, p => p.Intercooler)),
-                    Supercharger = ByteUtils.HexStringToUshort(ResolvePartHex(SuperchargerCodeComboBox, p => p.Supercharger)),
-                    IntakeManifold = ByteUtils.HexStringToUshort(ResolvePartHex(IntakeManifoldCodeComboBox, p => p.IntakeManifold)),
-                    ExhaustManifold = ByteUtils.HexStringToUshort(ResolvePartHex(ExhaustManifoldCodeComboBox, p => p.ExhaustManifold)),
-                    Catalyst = ByteUtils.HexStringToUshort(ResolvePartHex(CatalystCodeComboBox, p => p.Catalyst)),
-                    AirCleaner = ByteUtils.HexStringToUshort(ResolvePartHex(AirCleanerCodeComboBox, p => p.AirCleaner)),
-                    Nos = ByteUtils.HexStringToUshort(ResolvePartHex(NosCodeComboBox, p => p.Nos))
+                    Turbo = ByteUtils.HexStringToUshort(ResolvePartHex(TurboCodeComboBox, PartCatalogue.Get(15))),
+                    Exhaust = ByteUtils.HexStringToUshort(ResolvePartHex(ExhaustCodeComboBox, PartCatalogue.Get(19))),
+                    Weight = ByteUtils.HexStringToUshort(ResolvePartHex(WeightCodeComboBox, PartCatalogue.Get(9))),
+                    Brake = ByteUtils.HexStringToUshort(ResolvePartHex(BrakeCodeComboBox, PartCatalogue.Get(2))),
+                    BrakeController = ByteUtils.HexStringToUshort(ResolvePartHex(BrakeControllerCodeComboBox, PartCatalogue.Get(3))),
+                    Displacement = ByteUtils.HexStringToUshort(ResolvePartHex(DisplacementCodeComboBox, PartCatalogue.Get(16))),
+                    Computer = ByteUtils.HexStringToUshort(ResolvePartHex(ComputerCodeComboBox, PartCatalogue.Get(17))),
+                    Natune = ByteUtils.HexStringToUshort(ResolvePartHex(NatuneCodeComboBox, PartCatalogue.Get(14))),
+                    Flywheel = ByteUtils.HexStringToUshort(ResolvePartHex(FlywheelCodeComboBox, PartCatalogue.Get(21))),
+                    Clutch = ByteUtils.HexStringToUshort(ResolvePartHex(ClutchCodeComboBox, PartCatalogue.Get(20))),
+                    PropellerShaft = ByteUtils.HexStringToUshort(ResolvePartHex(PropellerShaftCodeComboBox, PartCatalogue.Get(22))),
+                    Intercooler = ByteUtils.HexStringToUshort(ResolvePartHex(IntercoolerCodeComboBox, PartCatalogue.Get(18))),
+                    Supercharger = ByteUtils.HexStringToUshort(ResolvePartHex(SuperchargerCodeComboBox, PartCatalogue.Get(27))),
+                    IntakeManifold = ByteUtils.HexStringToUshort(ResolvePartHex(IntakeManifoldCodeComboBox, PartCatalogue.Get(28))),
+                    ExhaustManifold = ByteUtils.HexStringToUshort(ResolvePartHex(ExhaustManifoldCodeComboBox, PartCatalogue.Get(29))),
+                    Catalyst = ByteUtils.HexStringToUshort(ResolvePartHex(CatalystCodeComboBox, PartCatalogue.Get(30))),
+                    AirCleaner = ByteUtils.HexStringToUshort(ResolvePartHex(AirCleanerCodeComboBox, PartCatalogue.Get(31))),
+                    Nos = ByteUtils.HexStringToUshort(ResolvePartHex(NosCodeComboBox, PartCatalogue.Get(26)))
 
                 };
 

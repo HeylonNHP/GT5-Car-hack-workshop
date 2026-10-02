@@ -50,6 +50,15 @@
         </None>
     </ItemGroup>
 
+    <!-- The generated parts catalogue (built from the game's own data files). It is read-only at
+         runtime, so it is copied to the output folder but never modified there. It is a separate
+         file from partsdatabase.db so nothing the editor already ships is replaced. -->
+    <ItemGroup>
+        <None Update="partscatalogue.db">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
     <!-- Exclude old Windows Forms files from compilation -->
     <ItemGroup>
         <Compile Remove="Components\FormComponents\SearchableComboBox.cs" />
