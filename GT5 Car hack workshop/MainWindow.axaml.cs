@@ -376,6 +376,171 @@ namespace GT5_Car_hack_workshop
                 await ShowMessageBox($"Can't save engine code to the save file. {ex.Message}");
                 return;
             }
+            try
+            {
+                var brakeByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(BrakeCodeComboBox, p => p.Brake));
+                Gt5Save[Moff -225] = brakeByteValues[0];
+                Gt5Save[Moff -224] = brakeByteValues[1];
+            }
+            catch (Exception ex)
+            {
+                await ShowMessageBox($"Can't save brake code to the save file.\n{ex.Message}");
+                return;
+            }
+            try
+            {
+                var brakeControllerByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(BrakeControllerCodeComboBox, p => p.BrakeController));
+                Gt5Save[Moff -221] = brakeControllerByteValues[0];
+                Gt5Save[Moff -220] = brakeControllerByteValues[1];
+            }
+            catch (Exception ex)
+            {
+                await ShowMessageBox($"Can't save brake controller code to the save file.\n{ex.Message}");
+                return;
+            }
+            try
+            {
+                var displacementByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(DisplacementCodeComboBox, p => p.Displacement));
+                Gt5Save[Moff -181] = displacementByteValues[0];
+                Gt5Save[Moff -180] = displacementByteValues[1];
+            }
+            catch (Exception ex)
+            {
+                await ShowMessageBox($"Can't save displacement code to the save file.\n{ex.Message}");
+                return;
+            }
+            try
+            {
+                var computerByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(ComputerCodeComboBox, p => p.Computer));
+                Gt5Save[Moff -177] = computerByteValues[0];
+                Gt5Save[Moff -176] = computerByteValues[1];
+            }
+            catch (Exception ex)
+            {
+                await ShowMessageBox($"Can't save computer (ecu) code to the save file.\n{ex.Message}");
+                return;
+            }
+            try
+            {
+                var natuneByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(NatuneCodeComboBox, p => p.Natune));
+                Gt5Save[Moff -173] = natuneByteValues[0];
+                Gt5Save[Moff -172] = natuneByteValues[1];
+            }
+            catch (Exception ex)
+            {
+                await ShowMessageBox($"Can't save na tune code to the save file.\n{ex.Message}");
+                return;
+            }
+            try
+            {
+                var flywheelByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(FlywheelCodeComboBox, p => p.Flywheel));
+                Gt5Save[Moff -165] = flywheelByteValues[0];
+                Gt5Save[Moff -164] = flywheelByteValues[1];
+            }
+            catch (Exception ex)
+            {
+                await ShowMessageBox($"Can't save flywheel code to the save file.\n{ex.Message}");
+                return;
+            }
+            try
+            {
+                var clutchByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(ClutchCodeComboBox, p => p.Clutch));
+                Gt5Save[Moff -161] = clutchByteValues[0];
+                Gt5Save[Moff -160] = clutchByteValues[1];
+            }
+            catch (Exception ex)
+            {
+                await ShowMessageBox($"Can't save clutch code to the save file.\n{ex.Message}");
+                return;
+            }
+            try
+            {
+                var propellerShaftByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(PropellerShaftCodeComboBox, p => p.PropellerShaft));
+                Gt5Save[Moff -157] = propellerShaftByteValues[0];
+                Gt5Save[Moff -156] = propellerShaftByteValues[1];
+            }
+            catch (Exception ex)
+            {
+                await ShowMessageBox($"Can't save propeller shaft code to the save file.\n{ex.Message}");
+                return;
+            }
+            try
+            {
+                var intercoolerByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(IntercoolerCodeComboBox, p => p.Intercooler));
+                Gt5Save[Moff -149] = intercoolerByteValues[0];
+                Gt5Save[Moff -148] = intercoolerByteValues[1];
+            }
+            catch (Exception ex)
+            {
+                await ShowMessageBox($"Can't save intercooler code to the save file.\n{ex.Message}");
+                return;
+            }
+            try
+            {
+                var superchargerByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(SuperchargerCodeComboBox, p => p.Supercharger));
+                Gt5Save[Moff -133] = superchargerByteValues[0];
+                Gt5Save[Moff -132] = superchargerByteValues[1];
+            }
+            catch (Exception ex)
+            {
+                await ShowMessageBox($"Can't save supercharger code to the save file.\n{ex.Message}");
+                return;
+            }
+            try
+            {
+                var intakeManifoldByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(IntakeManifoldCodeComboBox, p => p.IntakeManifold));
+                Gt5Save[Moff -129] = intakeManifoldByteValues[0];
+                Gt5Save[Moff -128] = intakeManifoldByteValues[1];
+            }
+            catch (Exception ex)
+            {
+                await ShowMessageBox($"Can't save intake manifold code to the save file.\n{ex.Message}");
+                return;
+            }
+            try
+            {
+                var exhaustManifoldByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(ExhaustManifoldCodeComboBox, p => p.ExhaustManifold));
+                Gt5Save[Moff -125] = exhaustManifoldByteValues[0];
+                Gt5Save[Moff -124] = exhaustManifoldByteValues[1];
+            }
+            catch (Exception ex)
+            {
+                await ShowMessageBox($"Can't save exhaust manifold code to the save file.\n{ex.Message}");
+                return;
+            }
+            try
+            {
+                var catalystByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(CatalystCodeComboBox, p => p.Catalyst));
+                Gt5Save[Moff -121] = catalystByteValues[0];
+                Gt5Save[Moff -120] = catalystByteValues[1];
+            }
+            catch (Exception ex)
+            {
+                await ShowMessageBox($"Can't save catalyst code to the save file.\n{ex.Message}");
+                return;
+            }
+            try
+            {
+                var airCleanerByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(AirCleanerCodeComboBox, p => p.AirCleaner));
+                Gt5Save[Moff -117] = airCleanerByteValues[0];
+                Gt5Save[Moff -116] = airCleanerByteValues[1];
+            }
+            catch (Exception ex)
+            {
+                await ShowMessageBox($"Can't save air cleaner code to the save file.\n{ex.Message}");
+                return;
+            }
+            try
+            {
+                var nosByteValues = ByteUtils.HexStringToByteArray(ResolvePartHex(NosCodeComboBox, p => p.Nos));
+                Gt5Save[Moff -113] = nosByteValues[0];
+                Gt5Save[Moff -112] = nosByteValues[1];
+            }
+            catch (Exception ex)
+            {
+                await ShowMessageBox($"Can't save nos code to the save file.\n{ex.Message}");
+                return;
+            }
 
             try
             {
@@ -736,6 +901,22 @@ namespace GT5_Car_hack_workshop
             WirePartComboBox(TurboCodeComboBox, TurboHexLabel, p => p.Turbo);
             WirePartComboBox(ExhaustCodeComboBox, ExhaustHexLabel, p => p.Exhaust);
             WirePartComboBox(WeightCodeComboBox, WeightHexLabel, p => p.Weight);
+            WirePartComboBox(BrakeCodeComboBox, BrakeHexLabel, p => p.Brake);
+            WirePartComboBox(BrakeControllerCodeComboBox, BrakeControllerHexLabel, p => p.BrakeController);
+            WirePartComboBox(DisplacementCodeComboBox, DisplacementHexLabel, p => p.Displacement);
+            WirePartComboBox(ComputerCodeComboBox, ComputerHexLabel, p => p.Computer);
+            WirePartComboBox(NatuneCodeComboBox, NatuneHexLabel, p => p.Natune);
+            WirePartComboBox(FlywheelCodeComboBox, FlywheelHexLabel, p => p.Flywheel);
+            WirePartComboBox(ClutchCodeComboBox, ClutchHexLabel, p => p.Clutch);
+            WirePartComboBox(PropellerShaftCodeComboBox, PropellerShaftHexLabel, p => p.PropellerShaft);
+            WirePartComboBox(IntercoolerCodeComboBox, IntercoolerHexLabel, p => p.Intercooler);
+            WirePartComboBox(SuperchargerCodeComboBox, SuperchargerHexLabel, p => p.Supercharger);
+            WirePartComboBox(IntakeManifoldCodeComboBox, IntakeManifoldHexLabel, p => p.IntakeManifold);
+            WirePartComboBox(ExhaustManifoldCodeComboBox, ExhaustManifoldHexLabel, p => p.ExhaustManifold);
+            WirePartComboBox(CatalystCodeComboBox, CatalystHexLabel, p => p.Catalyst);
+            WirePartComboBox(AirCleanerCodeComboBox, AirCleanerHexLabel, p => p.AirCleaner);
+            WirePartComboBox(NosCodeComboBox, NosHexLabel, p => p.Nos);
+
         }
 
         private static void WirePartComboBox(ComboBox comboBox, TextBlock hexLabel, Func<CarParts, ushort> selector)
@@ -801,13 +982,45 @@ namespace GT5_Car_hack_workshop
             var turbo = ByteUtils.BytesToUshort(Gt5Save[Moff - 169], Gt5Save[Moff - 168]);
             var exhaust = ByteUtils.BytesToUshort(Gt5Save[Moff - 153], Gt5Save[Moff - 152]);
             var weight = ByteUtils.BytesToUshort(Gt5Save[Moff - 189], Gt5Save[Moff - 188]);
+            var brake = ByteUtils.BytesToUshort(Gt5Save[Moff -225], Gt5Save[Moff -224]);
+            var brakeController = ByteUtils.BytesToUshort(Gt5Save[Moff -221], Gt5Save[Moff -220]);
+            var displacement = ByteUtils.BytesToUshort(Gt5Save[Moff -181], Gt5Save[Moff -180]);
+            var computer = ByteUtils.BytesToUshort(Gt5Save[Moff -177], Gt5Save[Moff -176]);
+            var natune = ByteUtils.BytesToUshort(Gt5Save[Moff -173], Gt5Save[Moff -172]);
+            var flywheel = ByteUtils.BytesToUshort(Gt5Save[Moff -165], Gt5Save[Moff -164]);
+            var clutch = ByteUtils.BytesToUshort(Gt5Save[Moff -161], Gt5Save[Moff -160]);
+            var propellerShaft = ByteUtils.BytesToUshort(Gt5Save[Moff -157], Gt5Save[Moff -156]);
+            var intercooler = ByteUtils.BytesToUshort(Gt5Save[Moff -149], Gt5Save[Moff -148]);
+            var supercharger = ByteUtils.BytesToUshort(Gt5Save[Moff -133], Gt5Save[Moff -132]);
+            var intakeManifold = ByteUtils.BytesToUshort(Gt5Save[Moff -129], Gt5Save[Moff -128]);
+            var exhaustManifold = ByteUtils.BytesToUshort(Gt5Save[Moff -125], Gt5Save[Moff -124]);
+            var catalyst = ByteUtils.BytesToUshort(Gt5Save[Moff -121], Gt5Save[Moff -120]);
+            var airCleaner = ByteUtils.BytesToUshort(Gt5Save[Moff -117], Gt5Save[Moff -116]);
+            var nos = ByteUtils.BytesToUshort(Gt5Save[Moff -113], Gt5Save[Moff -112]);
+
 
             // Prefer a single entry that matches the whole car so every drop-down agrees on it.
             var wholeMatch = _CarPartsList?.FirstOrDefault(p =>
                 p.Engine == engine && p.Drivetrain == drivetrain && p.Chassis == chassis &&
                 p.Transmission == transmission && p.Suspension == suspension && p.Body == body &&
                 p.Lsd == lsd && p.Horn == horn &&
-                p.Turbo == turbo && p.Exhaust == exhaust && p.Weight == weight);
+                p.Turbo == turbo && p.Exhaust == exhaust && p.Weight == weight &&
+                p.Brake == brake &&
+                p.BrakeController == brakeController &&
+                p.Displacement == displacement &&
+                p.Computer == computer &&
+                p.Natune == natune &&
+                p.Flywheel == flywheel &&
+                p.Clutch == clutch &&
+                p.PropellerShaft == propellerShaft &&
+                p.Intercooler == intercooler &&
+                p.Supercharger == supercharger &&
+                p.IntakeManifold == intakeManifold &&
+                p.ExhaustManifold == exhaustManifold &&
+                p.Catalyst == catalyst &&
+                p.AirCleaner == airCleaner &&
+                p.Nos == nos);
+
 
             SetPartSelection(EngineCodeComboBox, engine, p => p.Engine, wholeMatch);
             SetPartSelection(DrivetrainCodeComboBox, drivetrain, p => p.Drivetrain, wholeMatch);
@@ -820,6 +1033,22 @@ namespace GT5_Car_hack_workshop
             SetPartSelection(TurboCodeComboBox, turbo, p => p.Turbo, wholeMatch);
             SetPartSelection(ExhaustCodeComboBox, exhaust, p => p.Exhaust, wholeMatch);
             SetPartSelection(WeightCodeComboBox, weight, p => p.Weight, wholeMatch);
+            SetPartSelection(BrakeCodeComboBox, brake, p => p.Brake, wholeMatch);
+            SetPartSelection(BrakeControllerCodeComboBox, brakeController, p => p.BrakeController, wholeMatch);
+            SetPartSelection(DisplacementCodeComboBox, displacement, p => p.Displacement, wholeMatch);
+            SetPartSelection(ComputerCodeComboBox, computer, p => p.Computer, wholeMatch);
+            SetPartSelection(NatuneCodeComboBox, natune, p => p.Natune, wholeMatch);
+            SetPartSelection(FlywheelCodeComboBox, flywheel, p => p.Flywheel, wholeMatch);
+            SetPartSelection(ClutchCodeComboBox, clutch, p => p.Clutch, wholeMatch);
+            SetPartSelection(PropellerShaftCodeComboBox, propellerShaft, p => p.PropellerShaft, wholeMatch);
+            SetPartSelection(IntercoolerCodeComboBox, intercooler, p => p.Intercooler, wholeMatch);
+            SetPartSelection(SuperchargerCodeComboBox, supercharger, p => p.Supercharger, wholeMatch);
+            SetPartSelection(IntakeManifoldCodeComboBox, intakeManifold, p => p.IntakeManifold, wholeMatch);
+            SetPartSelection(ExhaustManifoldCodeComboBox, exhaustManifold, p => p.ExhaustManifold, wholeMatch);
+            SetPartSelection(CatalystCodeComboBox, catalyst, p => p.Catalyst, wholeMatch);
+            SetPartSelection(AirCleanerCodeComboBox, airCleaner, p => p.AirCleaner, wholeMatch);
+            SetPartSelection(NosCodeComboBox, nos, p => p.Nos, wholeMatch);
+
         }
 
         /// <summary>
@@ -868,7 +1097,23 @@ namespace GT5_Car_hack_workshop
 
             foreach (var comboBox in new[] { EngineCodeComboBox, DrivetrainCodeComboBox, ChassisCodeComboBox,
                 TransmissionCodeComboBox, SuspensionCodeComboBox, BodyCodeComboBox, LsdCodeComboBox, HornCodeComboBox,
-                TurboCodeComboBox, ExhaustCodeComboBox, WeightCodeComboBox })
+                TurboCodeComboBox, ExhaustCodeComboBox, WeightCodeComboBox,
+                BrakeCodeComboBox,
+                BrakeControllerCodeComboBox,
+                DisplacementCodeComboBox,
+                ComputerCodeComboBox,
+                NatuneCodeComboBox,
+                FlywheelCodeComboBox,
+                ClutchCodeComboBox,
+                PropellerShaftCodeComboBox,
+                IntercoolerCodeComboBox,
+                SuperchargerCodeComboBox,
+                IntakeManifoldCodeComboBox,
+                ExhaustManifoldCodeComboBox,
+                CatalystCodeComboBox,
+                AirCleanerCodeComboBox,
+                NosCodeComboBox })
+
             {
                 try
                 {
@@ -907,7 +1152,23 @@ namespace GT5_Car_hack_workshop
                     Horn = ByteUtils.HexStringToUshort(ResolvePartHex(HornCodeComboBox, p => p.Horn)),
                     Turbo = ByteUtils.HexStringToUshort(ResolvePartHex(TurboCodeComboBox, p => p.Turbo)),
                     Exhaust = ByteUtils.HexStringToUshort(ResolvePartHex(ExhaustCodeComboBox, p => p.Exhaust)),
-                    Weight = ByteUtils.HexStringToUshort(ResolvePartHex(WeightCodeComboBox, p => p.Weight))
+                    Weight = ByteUtils.HexStringToUshort(ResolvePartHex(WeightCodeComboBox, p => p.Weight)),
+                    Brake = ByteUtils.HexStringToUshort(ResolvePartHex(BrakeCodeComboBox, p => p.Brake)),
+                    BrakeController = ByteUtils.HexStringToUshort(ResolvePartHex(BrakeControllerCodeComboBox, p => p.BrakeController)),
+                    Displacement = ByteUtils.HexStringToUshort(ResolvePartHex(DisplacementCodeComboBox, p => p.Displacement)),
+                    Computer = ByteUtils.HexStringToUshort(ResolvePartHex(ComputerCodeComboBox, p => p.Computer)),
+                    Natune = ByteUtils.HexStringToUshort(ResolvePartHex(NatuneCodeComboBox, p => p.Natune)),
+                    Flywheel = ByteUtils.HexStringToUshort(ResolvePartHex(FlywheelCodeComboBox, p => p.Flywheel)),
+                    Clutch = ByteUtils.HexStringToUshort(ResolvePartHex(ClutchCodeComboBox, p => p.Clutch)),
+                    PropellerShaft = ByteUtils.HexStringToUshort(ResolvePartHex(PropellerShaftCodeComboBox, p => p.PropellerShaft)),
+                    Intercooler = ByteUtils.HexStringToUshort(ResolvePartHex(IntercoolerCodeComboBox, p => p.Intercooler)),
+                    Supercharger = ByteUtils.HexStringToUshort(ResolvePartHex(SuperchargerCodeComboBox, p => p.Supercharger)),
+                    IntakeManifold = ByteUtils.HexStringToUshort(ResolvePartHex(IntakeManifoldCodeComboBox, p => p.IntakeManifold)),
+                    ExhaustManifold = ByteUtils.HexStringToUshort(ResolvePartHex(ExhaustManifoldCodeComboBox, p => p.ExhaustManifold)),
+                    Catalyst = ByteUtils.HexStringToUshort(ResolvePartHex(CatalystCodeComboBox, p => p.Catalyst)),
+                    AirCleaner = ByteUtils.HexStringToUshort(ResolvePartHex(AirCleanerCodeComboBox, p => p.AirCleaner)),
+                    Nos = ByteUtils.HexStringToUshort(ResolvePartHex(NosCodeComboBox, p => p.Nos))
+
                 };
 
                 if (_CarPartsList.Any(cp => cp.Name.Equals(carName, StringComparison.OrdinalIgnoreCase)))
