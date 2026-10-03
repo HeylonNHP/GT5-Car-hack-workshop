@@ -1,68 +1,82 @@
-﻿# Gran Turismo 5 Car hack workshop - Save Editor
+# Gran Turismo 5 Car Hack Workshop
 
-A Windows desktop application for editing game save files for Gran Turismo 5.
+A save editor for **Gran Turismo 5 (2.14)**.
 
-This tool provides a simple graphical interface to modify various aspects of your save data, including equipped car parts and other vehicle attributes.
+Open a save, change what you want, write it back. Works with saves copied from a
+real PS3 and with RPCS3, which stores saves unencrypted.
 
-## Downloads
+## Download
 
-To download the latest build for Windows, please visit the **[Releases](https://github.com/HeylonNHP/GT5-Car-hack-workshop/releases)** page of this repository.
+Grab the latest **[Release](https://github.com/HeylonNHP/GT5-Car-hack-workshop/releases)**
+for Windows. Unzip it and run `GT5 Car hack workshop.exe` — it is self-contained,
+so there is nothing to install first.
 
-## Running on Linux (via Wine)
+## What you can change
 
-This application is built with Windows Forms and targets `net10.0-windows`, so it cannot run natively on Linux. However, you can run it on Linux using Wine (or Proton). Two options are provided below:
+- **Parts** — drop-downs for every part category, each entry showing which car it
+  came from, so you can fit any car's part to any other car. Plus a list of known
+  tunes that fill in a whole setup at once.
+- **Paint chips** — add and remove chips, and browse all 3,400 colours with
+  search, finish filtering and sorting.
+- **Credits, odometer, horsepower multiplier, grip.**
+- **Hacks** — remove the spoiler, hood or bumpers; make the car 4WD with an
+  adjustable torque split; set bad or good oil; the borrow glitch; downforce,
+  aero and ride height; a transmission editor; and a custom performance editor.
+- **Save only**, or **Save and encrypt**.
 
-### Quick start with helper script
+## Using it
 
-Prerequisites:
-- .NET SDK 10 or newer installed (`dotnet --info`)
-- Wine installed (`wine --version`)
+1. Point the app at your save file and press **Load data**.
+2. Change whatever you like.
+3. Press **Save and encrypt** to write it back.
 
-Steps:
-1. Make the script executable: `chmod +x scripts/run-on-linux-with-wine.sh`
-2. Run it: `./scripts/run-on-linux-with-wine.sh`
+**Back up your save first.** The app makes a timestamped copy in its `Backups`
+folder every time you load, but it is not a substitute for doing it yourself.
 
-By default, this publishes a 32‑bit Windows build (more compatible under Wine) and launches it. Options:
-- `--x64` publish as 64‑bit
-- `--self-contained` publish with the .NET runtime included
-- `--single-file` publish as a single executable (implies self‑contained)
-- `--clean` cleans previous build outputs first
+Where the save lives:
 
-Examples:
-- 64‑bit framework‑dependent: `./scripts/run-on-linux-with-wine.sh --x64`
-- 32‑bit self‑contained single file: `./scripts/run-on-linux-with-wine.sh --single-file`
+- **RPCS3** — `~/.config/rpcs3/dev_hdd0/home/<user>/savedata/BCES00569-GAME/GT5.0`
+- **Real PS3** — copy the `BCES00569-GAME` folder off the console with a
+  file manager or FTP, then point the app at the `GT5.0` inside it.
 
-### Manual steps
+## Requirements
 
-1) Install prerequisites
-- .NET SDK: https://learn.microsoft.com/dotnet/core/install/linux
-- Wine: use your distro package manager (e.g., `sudo apt install wine` or `sudo dnf install wine`)
+- Gran Turismo 5 version 2.14 (title id `BCES00569`).
+- **Windows**: nothing beyond the release download.
+- **Linux**: runs natively — this is an Avalonia app, not a Windows-only one, so
+  Wine is not needed. Build it from source with the .NET 10 SDK.
 
-2) Publish a Windows build on Linux
+No extra tools are required. Save decryption and encryption are built in.
 
-You can build the Windows target from Linux (cross‑compile):
+## Building from source
 
-```
+```bash
+dotnet build "GT5 Car hack workshop.sln" -c Debug
+
+# a Windows build
 dotnet publish "GT5 Car hack workshop/GT5 Car hack workshop.csproj" \
-  -c Release -r win-x86 --self-contained false
+  -c Release -r win-x64 --self-contained true
 ```
 
-This produces output under:
-`GT5 Car hack workshop/bin/Release/net10.0-windows/win-x86/publish/`
+Everything targets `net10.0` and builds on Linux, Windows or macOS. Pushing to
+`master` builds and publishes a Windows release automatically.
 
-Optional variations:
-- 64‑bit: replace `win-x86` with `win-x64`
-- Self‑contained: add `--self-contained true`
-- Single file: add `-p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true --self-contained true`
+## What's in the repository
 
-3) Run with Wine
+| | |
+|---|---|
+| `GT5 Car hack workshop/` | the app — Avalonia, .NET 10, cross-platform |
+| `PS3Pfd/` | save decryption and encryption, in process |
+| `PS3Pfd/README.md` | how the save format works, and what is verified |
+| `partscatalogue.db` | parts and tunes, generated from the game's own files |
+| `partsdatabase.db` | the app's parts data |
+| `Backups/`, next to the app | timestamped copies made on load |
 
-```
-wine "GT5 Car hack workshop/bin/Release/net10.0-windows/win-x86/publish/GT5 Car hack workshop.exe"
-```
+## Caveats
 
-### Notes and troubleshooting
-- If UI fonts look off, install core fonts in Wine (e.g., `winetricks corefonts`), or enable font smoothing in Wine.
-- If you encounter issues with 64‑bit builds under Wine, prefer the 32‑bit target (`win-x86`).
-- Proton (Steam) can also run the .exe; place the published folder somewhere accessible and create a non‑Steam game pointing to the exe, enabling Proton.
-- Native Linux support would require porting the UI to a cross‑platform framework (e.g., Avalonia). The current WinForms app will continue to require Wine on Linux.
+Editing a save is at your own risk, and changes that the game considers invalid
+can corrupt a save or a car. Keep the backups.
+
+The save crypto is well tested but has never been verified against a save written
+by real console hardware — see `PS3Pfd/README.md` for exactly what has and has
+not been proven.
