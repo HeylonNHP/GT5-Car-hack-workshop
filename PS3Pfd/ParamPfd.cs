@@ -104,13 +104,22 @@ internal sealed class ParamPfd
 
     internal void RebuildHashes(string directory, byte[] expandedHashKey)
     {
+        RebuildFileHashes(directory, expandedHashKey);
+        RebuildTableHashes();
+    }
+
+    private void RebuildFileHashes(string directory, byte[] expandedHashKey)
+    {
         for (var index = 0; index < (int)numUsed; index++)
         {
             var entry = EntryAt(index);
             if (entry.IsParamSfo) continue;
             entry.SetFileHash(0, PfdCipher.Hmac(expandedHashKey, SaveFileBody.Read(directory, entry.Name)));
         }
+    }
 
+    private void RebuildTableHashes()
+    {
         var defaultHash = PfdCipher.Hmac(realHashKey, ReadOnlySpan<byte>.Empty);
         for (var bucket = 0; bucket < (int)capacity; bucket++)
             if (HeadAt(bucket) >= capacity)
@@ -142,14 +151,39 @@ internal sealed class ParamPfd
     internal PfdValidation Validate(string directory, byte[] expandedHashKey)
     {
         var mirror = new ParamPfd((byte[])container.Clone(), capacity, numReserved, numUsed, entryTableStart, realHashKey);
-        mirror.RebuildHashes(directory, expandedHashKey);
+        var missing = MissingFiles(directory);
+        if (missing.Count > 0)
+        {
+            mirror.RebuildTableHashes();
+            return new PfdValidation(
+                SaveFormat.Ps3Container,
+                Matches(mirror, PfdLayout.TopHashOffset, PfdLayout.HashSize),
+                Matches(mirror, PfdLayout.BottomHashOffset, PfdLayout.HashSize),
+                Matches(mirror, signatureTableStart, (int)capacity * PfdLayout.HashSize),
+                false,
+                $"{missing[0]} is listed in the parameter file but is missing from the savedata folder.");
+        }
 
+        mirror.RebuildHashes(directory, expandedHashKey);
         return new PfdValidation(
             SaveFormat.Ps3Container,
             Matches(mirror, PfdLayout.TopHashOffset, PfdLayout.HashSize),
             Matches(mirror, PfdLayout.BottomHashOffset, PfdLayout.HashSize),
             Matches(mirror, signatureTableStart, (int)capacity * PfdLayout.HashSize),
-            FileHashesMatch(mirror));
+            FileHashesMatch(mirror),
+            null);
+    }
+
+    private List<string> MissingFiles(string directory)
+    {
+        var missing = new List<string>();
+        for (var index = 0; index < (int)numUsed; index++)
+        {
+            var entry = EntryAt(index);
+            if (entry.IsParamSfo) continue;
+            if (!File.Exists(System.IO.Path.Combine(directory, entry.Name))) missing.Add(entry.Name);
+        }
+        return missing;
     }
 
     private BodyState DirectoryState(string directory)

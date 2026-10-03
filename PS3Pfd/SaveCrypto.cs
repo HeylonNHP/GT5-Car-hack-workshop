@@ -2,8 +2,8 @@ namespace PS3Pfd;
 
 public static class SaveCrypto
 {
-    public static SaveFormat Detect(string savedataDirectory) =>
-        File.Exists(ContainerPath(savedataDirectory)) ? SaveFormat.Ps3Container : SaveFormat.EmulatorPlaintext;
+    public static bool HasContainer(string savedataDirectory) =>
+        File.Exists(ContainerPath(savedataDirectory));
 
     public static SaveBodies DetectBodies(string savedataDirectory)
     {
@@ -37,9 +37,17 @@ public static class SaveCrypto
 
     public static PfdValidation Validate(string savedataDirectory, SaveKeys? keys = null)
     {
-        var pfd = Open(savedataDirectory);
-        if (pfd is null) return new PfdValidation(SaveFormat.EmulatorPlaintext, false, false, false, false);
-        return pfd.Validate(savedataDirectory, (keys ?? SaveKeys.Gt5).HashKey());
+        if (!HasContainer(savedataDirectory))
+            return new PfdValidation(SaveFormat.EmulatorPlaintext, null, null, null, null, null);
+
+        try
+        {
+            return Open(savedataDirectory)!.Validate(savedataDirectory, (keys ?? SaveKeys.Gt5).HashKey());
+        }
+        catch (SaveCryptoException error)
+        {
+            return new PfdValidation(SaveFormat.Ps3Container, null, null, null, null, error.Message);
+        }
     }
 
     public static string SavedataDirectoryOf(string saveFilePath) =>
