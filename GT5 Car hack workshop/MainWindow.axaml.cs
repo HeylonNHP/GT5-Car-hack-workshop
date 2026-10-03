@@ -365,22 +365,23 @@ namespace GT5_Car_hack_workshop
 
             SpringRateFrontTextBox.Text = Gt5Save[Moff - 27].ToString();
             SpringRateRearTextBox.Text = Gt5Save[Moff - 26].ToString();
+            CamberFrontTextBox.Text = Gt5Save[Moff - 35].ToString();
+            CamberRearTextBox.Text = Gt5Save[Moff - 34].ToString();
 
             // Turbo/Exhaust/Weight are set by LoadPartsFromSave() via their parts-database drop-downs.
         }
 
         private async System.Threading.Tasks.Task SaveData()
         {
-            // Every part field is written from PartCatalogue's list: the same two big-endian bytes at
-            // the same offsets as the per-field blocks that used to sit here, so the 4WD hack and the
-            // other byte-level hacks see exactly the bytes they saw before.
+            // Every part field is written through PartFieldCodec: upgrade parts keep exactly the two
+            // big-endian bytes at the same offsets as the per-field blocks that used to sit here (so
+            // the 4WD hack and the other byte-level hacks see exactly the bytes they saw before), and
+            // tyres write the slot byte of their 8-byte key or the whole canonical key.
             foreach (var (category, box, _) in PartFieldBindings())
             {
                 try
                 {
-                    var partBytes = ByteUtils.HexStringToByteArray(ResolvePartHex(box, category));
-                    Gt5Save[Moff + category.SaveOffset] = partBytes[0];
-                    Gt5Save[Moff + category.SaveOffset + 1] = partBytes[1];
+                    PartFieldCodec.Write(Gt5Save, Moff, category, ResolvePartValue(box, category));
                 }
                 catch (Exception ex)
                 {
@@ -582,6 +583,30 @@ namespace GT5_Car_hack_workshop
                 return;
             }
 
+            try
+            {
+                if (!byte.TryParse(CamberFrontTextBox.Text, out var camberFront))
+                    throw new FormatException("Camber front value must be a byte value (0-255).");
+                Gt5Save[Moff - 35] = camberFront;
+            }
+            catch (Exception e)
+            {
+                await ShowMessageBox($"Can't save camber front to the save file.\n{e.Message}");
+                return;
+            }
+
+            try
+            {
+                if (!byte.TryParse(CamberRearTextBox.Text, out var camberRear))
+                    throw new FormatException("Camber rear value must be a byte value (0-255).");
+                Gt5Save[Moff - 34] = camberRear;
+            }
+            catch (Exception e)
+            {
+                await ShowMessageBox($"Can't save camber rear to the save file.\n{e.Message}");
+                return;
+            }
+
 
             try
             {
@@ -683,6 +708,8 @@ namespace GT5_Car_hack_workshop
             (PartCatalogue.Get(30), CatalystCodeComboBox, CatalystHexLabel),
             (PartCatalogue.Get(31), AirCleanerCodeComboBox, AirCleanerHexLabel),
             (PartCatalogue.Get(26), NosCodeComboBox, NosHexLabel),
+            (PartCatalogue.Get(51), FrontTyreCodeComboBox, FrontTyreHexLabel),
+            (PartCatalogue.Get(52), RearTyreCodeComboBox, RearTyreHexLabel),
         };
 
         private void InitializePartComboBoxes()
@@ -706,7 +733,7 @@ namespace GT5_Car_hack_workshop
             {
                 if (e.Property != AutoCompleteBox.TextProperty) return;
                 RememberPartCode(box, category);
-                hexLabel.Text = ResolvePartHex(box, category);
+                hexLabel.Text = DescribePartField(box, category);
             };
 
             // A box whose text matches no item can be cleared when it loses focus. A blank box aborts
@@ -717,8 +744,8 @@ namespace GT5_Car_hack_workshop
                 if (!string.IsNullOrWhiteSpace(box.Text)) return;
                 if (!_lastPartCodes.TryGetValue(box, out var code)) return;
 
-                box.Text = ByteUtils.UshortToHexString(code);
-                hexLabel.Text = ResolvePartHex(box, category);
+                box.Text = PartFieldCodec.FormatCode(category, code);
+                hexLabel.Text = PartFieldCodec.DisplayHex(Gt5Save, Moff, category, code);
             };
         }
 
@@ -754,6 +781,23 @@ namespace GT5_Car_hack_workshop
         }
 
         /// <summary>
+        /// The hex to show beside a part box: the two bytes of its code, or the whole 8-byte key for a
+        /// tyre. Text that is not yet a usable code - the user is still typing it - is shown as it is,
+        /// so watching the box can never fail.
+        /// </summary>
+        private string DescribePartField(AutoCompleteBox box, PartCategory category)
+        {
+            try
+            {
+                return PartFieldCodec.DisplayHex(Gt5Save, Moff, category, ResolvePartValue(box, category));
+            }
+            catch (Exception)
+            {
+                return box.Text ?? string.Empty;
+            }
+        }
+
+        /// <summary>
         /// Resolves the code a part box currently stands for: the catalogue entry whose label is the
         /// box's text, otherwise the raw text itself, which is a hex code (possibly one the user
         /// deliberately copied from another category). That is what keeps manual hex editing - and the
@@ -770,9 +814,17 @@ namespace GT5_Car_hack_workshop
 
             // Empty box: fall back to the last code it stood for, so a wiped box cannot blank a save.
             return _lastPartCodes.TryGetValue(box, out var remembered)
-                ? ByteUtils.UshortToHexString(remembered)
+                ? PartFieldCodec.FormatCode(category, remembered)
                 : string.Empty;
         }
+
+        /// <summary>
+        /// The value a part box currently stands for, ready for the save field: a catalogue entry's
+        /// code, or the hex the user typed (see <see cref="ResolvePartHex"/>), parsed according to how
+        /// the field is laid out.
+        /// </summary>
+        private ushort ResolvePartValue(AutoCompleteBox box, PartCategory category)
+            => PartFieldCodec.ParseCode(category, ResolvePartHex(box, category));
 
         /// <summary>
         /// Points a part box at a code: selects the catalogue entry carrying it, preferring the car
@@ -789,7 +841,7 @@ namespace GT5_Car_hack_workshop
                 return;
             }
 
-            SetPartHexText(box, ByteUtils.UshortToHexString(value));
+            SetPartHexText(box, PartFieldCodec.FormatCode(category, value));
         }
 
         /// <summary>
@@ -802,9 +854,9 @@ namespace GT5_Car_hack_workshop
             box.Text = hex;
         }
 
-        /// <summary>The two bytes of a part field in the save, big-endian, at its declared offset.</summary>
+        /// <summary>The field's value in the save, read according to how the field is laid out.</summary>
         private ushort ReadPartValue(PartCategory category)
-            => ByteUtils.BytesToUshort(Gt5Save[Moff + category.SaveOffset], Gt5Save[Moff + category.SaveOffset + 1]);
+            => PartFieldCodec.Read(Gt5Save, Moff, category);
 
         // Fills the parts drop-downs from the loaded save. Each code is looked up in the catalogue so
         // the box shows the part's name and car; when the catalogue has no such entry the raw code is
@@ -978,7 +1030,7 @@ namespace GT5_Car_hack_workshop
                     // A category the catalogue has no parts for (NOS) would leave the box blank, and a
                     // blank box aborts the whole save, so start it on the "stock/none" code instead.
                     if (entries.Count == 0 && string.IsNullOrWhiteSpace(box.Text))
-                        SetPartHexText(box, ByteUtils.UshortToHexString(ushort.MaxValue));
+                        SetPartHexText(box, PartFieldCodec.FormatCode(category, ushort.MaxValue));
                 }
                 catch (Exception ex)
                 {

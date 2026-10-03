@@ -39,13 +39,28 @@ namespace GT5_Car_hack_workshop.Services
     /// <para>
     /// Everything is loaded once, lazily, on first use (about 116 000 part rows over 30 categories,
     /// 3 000 tune names and 1 150 bodies). A missing or broken catalogue is never fatal: the
-    /// drop-downs just come back empty and typing a code by hand keeps working.
+    /// drop-downs just come back empty and typing a code by hand keeps working. The tyre drop-downs
+    /// are the one exception - their 15 universal grades are built in code, so they work either way.
     /// </para>
     /// </summary>
     public static class PartCatalogueStore
     {
         /// <summary>The catalogue file name, resolved next to the executable.</summary>
         public const string FileName = "partscatalogue.db";
+
+        /// <summary>
+        /// The game's 15 tyre grades, in slot order. The save stores a gear slot, not a part key, and
+        /// every grade fits every car, so the game's part tables have no rows to read: this list is the
+        /// tyre catalogue.
+        /// </summary>
+        public static readonly IReadOnlyList<string> TyreGrades = new[]
+        {
+            "Comfort Hard", "Comfort Medium", "Comfort Soft",
+            "Sports Hard", "Sports Medium", "Sports Soft", "Sports Super Soft",
+            "Racing Hard", "Racing Medium", "Racing Soft", "Racing Super Soft",
+            "Racing Intermediate", "Racing Rain",
+            "Dirt", "Snow"
+        };
 
         private static bool _loadAttempted;
         private static Dictionary<int, List<PartEntry>> _byCategory = new();
@@ -302,6 +317,47 @@ namespace GT5_Car_hack_workshop.Services
                 // drop-downs stay empty (the caller pre-fills those fields with the "stock/none"
                 // code) and every bit of manual hex editing keeps working.
             }
+
+            // Tyres need nothing from the catalogue file: their grades are universal and built here, so
+            // they are added whatever happened above.
+            AddTyreGrades();
+        }
+
+        /// <summary>
+        /// Adds the game's 15 tyre grades to each tyre category as catalogue-style entries. They are
+        /// built rather than read because the save stores a grade slot in an 8-byte key instead of a
+        /// part id, and because no car owns a grade: the label is the grade's plain name.
+        /// </summary>
+        private static void AddTyreGrades()
+        {
+            foreach (var category in PartCatalogue.Categories)
+            {
+                if (category.FieldKind != PartFieldKind.TyreSlotKey) continue;
+
+                var entries = new List<PartEntry>(TyreGrades.Count);
+                var labels = new Dictionary<string, PartEntry>(StringComparer.OrdinalIgnoreCase);
+
+                for (var slot = 0; slot < TyreGrades.Count; slot++)
+                {
+                    var entry = new PartEntry
+                    {
+                        Category = category.TableId,
+                        PartKey = (ushort)slot,
+                        Level = slot,
+                        CarId = 0,     // tyres are car-independent, so no car is preferred
+                        CarName = "",
+                        PartName = TyreGrades[slot]
+                    };
+
+                    entry.Label = BuildLabel(category, entry, new Dictionary<(int, int), string>(),
+                        new Dictionary<int, int>());
+                    entries.Add(entry);
+                    labels[entry.Label] = entry;
+                }
+
+                _byCategory[category.TableId] = entries;
+                _byLabel[category.TableId] = labels;
+            }
         }
 
         private static void Load()
@@ -395,11 +451,15 @@ namespace GT5_Car_hack_workshop.Services
         /// <summary>
         /// The display text of one entry: the game's upgrade name followed by the part's car for an
         /// upgrade, or just the car's name for a part that is the car's own identity. A catalogue row
-        /// no car references (CarId 0) is called "generic".
+        /// no car references (CarId 0) is called "generic". A tyre is neither: it carries no car at
+        /// all, so its label is the grade's plain name.
         /// </summary>
         private static string BuildLabel(PartCategory? category, PartEntry entry,
             Dictionary<(int, int), string> items, Dictionary<int, int> firstLevel)
         {
+            if (category is { Mode: PartLabelMode.Tyre })
+                return string.IsNullOrWhiteSpace(entry.PartName) ? $"{category.Label} {entry.PartKey}" : entry.PartName;
+
             var car = string.IsNullOrWhiteSpace(entry.CarName) ? "generic" : entry.CarName;
 
             if (category is { Mode: PartLabelMode.Car }) return car;

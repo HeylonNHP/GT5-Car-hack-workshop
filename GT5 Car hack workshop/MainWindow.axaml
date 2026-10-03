@@ -255,6 +255,27 @@
                                 <TextBlock x:Name="NosHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
+
+                            <!-- Tyres. A tyre is not a two-byte part code but an 8-byte grade key whose last
+                                 byte is the slot, so the box holds the grade's name and the label beside it
+                                 shows the whole key. Every grade fits every car, hence the plain names. The
+                                 hex column is wider than the part rows': the full key is 8 bytes long. -->
+                            <TextBlock Text="Tyres" Margin="0,8,0,0" FontWeight="Bold"/>
+                            <Grid ColumnDefinitions="108,*,170">
+                                <TextBlock Text="Front tyres" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <AutoCompleteBox x:Name="FrontTyreCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
+                                <TextBlock x:Name="FrontTyreHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
+                                           Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
+                            </Grid>
+                            <Grid ColumnDefinitions="108,*,170">
+                                <TextBlock Text="Rear tyres" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                <AutoCompleteBox x:Name="RearTyreCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                                 PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
+                                <TextBlock x:Name="RearTyreHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
+                                           Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
+                            </Grid>
+
                             <Button x:Name="Button12" Content="Add current car to parts database" Background="#C0FFFF" Classes="pastel" Height="27" Click="Button12_Click"/>
                             <TextBlock x:Name="PartsCatalogueInfoText" TextWrapping="Wrap" Foreground="{DynamicResource HexFieldBrush}"/>
                         </StackPanel>
@@ -417,7 +438,7 @@
                                         <TextBlock Text="Suspension" FontWeight="Bold"/>
                                         <!-- Both rows share one grid, so the columns line up; every value
                                              column is Auto so the text sits at the left, next to its label. -->
-                                        <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,*" RowDefinitions="Auto,Auto" RowSpacing="4">
+                                        <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,*" RowDefinitions="Auto,Auto,Auto" RowSpacing="4">
                                             <TextBlock Grid.Row="0" Grid.Column="0" Text="Suspension height" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
                                             <TextBox Grid.Row="0" Grid.Column="1" x:Name="SuspensionHeightFrontTextBox" Width="70" Height="20" Margin="0,0,4,0"/>
                                             <TextBlock Grid.Row="0" Grid.Column="2" Text=":" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
@@ -427,6 +448,11 @@
                                             <TextBox Grid.Row="1" Grid.Column="1" x:Name="SpringRateFrontTextBox" Width="70" Height="20" Margin="0,0,4,0"/>
                                             <TextBlock Grid.Row="1" Grid.Column="2" Text=":" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                             <TextBox Grid.Row="1" Grid.Column="3" x:Name="SpringRateRearTextBox" Width="70" Height="20"/>
+
+                                            <TextBlock Grid.Row="2" Grid.Column="0" Text="Camber" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="CamberFrontTextBox" Width="70" Height="20" Margin="0,0,4,0"/>
+                                            <TextBlock Grid.Row="2" Grid.Column="2" Text=":" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                            <TextBox Grid.Row="2" Grid.Column="3" x:Name="CamberRearTextBox" Width="70" Height="20"/>
                                         </Grid>
                                         <Button x:Name="Button19" Content="Slam car" Background="#C0FFFF" Classes="pastel" Foreground="{DynamicResource SlamCarBrush}" FontWeight="Bold" HorizontalAlignment="Left" Height="27" Click="Button19_Click"/>
                                     </StackPanel>

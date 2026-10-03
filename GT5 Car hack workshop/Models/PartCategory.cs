@@ -19,22 +19,55 @@ namespace GT5_Car_hack_workshop.Models
         /// The part identifies a whole car (its engine, chassis or drivetrain), so the car's name is
         /// the label. The game's item name would be the same for every car and would only mislead.
         /// </summary>
-        Car
+        Car,
+
+        /// <summary>
+        /// The part is a tyre grade. Every grade fits every car, so a car suffix would be a lie: the
+        /// label is just the grade's plain name, e.g. <c>Racing Soft</c>.
+        /// </summary>
+        Tyre
+    }
+
+    /// <summary>
+    /// How a field's value is laid out in the save, which decides how the editor reads and writes it.
+    /// </summary>
+    public enum PartFieldKind
+    {
+        /// <summary>
+        /// A 16-bit part key: two big-endian bytes at <see cref="PartCategory.SaveOffset"/>. The
+        /// default, and what all the upgrade parts use.
+        /// </summary>
+        UshortKey,
+
+        /// <summary>
+        /// A tyre grade: an 8-byte big-endian key (<c>00 00 00 27 00 33 00 &lt;slot&gt;</c>) whose last
+        /// byte is the grade slot (0..14). The first seven bytes say which tyre field it is (front or
+        /// rear) and never move. The parts of the key that identify the field are what
+        /// <see cref="PartCategory.CanonicalKey"/> holds.
+        /// </summary>
+        TyreSlotKey
     }
 
     /// <summary>
     /// One car-part field the editor edits: which game table its value indexes (and therefore which
-    /// <c>Parts</c> category of the generated catalogue it lists), where its two bytes live in the
-    /// save, and how its entries should be labelled.
+    /// <c>Parts</c> category of the generated catalogue it lists), where its bytes live in the save,
+    /// how they are laid out, and how its entries should be labelled.
     /// </summary>
     /// <param name="TableId">The game table / catalogue category id (the <c>Parts.Category</c> value).</param>
     /// <param name="Label">The field's name, used in the UI and in save error messages.</param>
     /// <param name="SaveOffset">
-    /// Offset of the FIRST (high) byte of the big-endian 16-bit value, relative to the car record
-    /// start (<c>Moff</c>). These are the offsets the editor has always used, so they are fixed.
+    /// Offset of the FIRST (high) byte of the field, relative to the car record start (<c>Moff</c>).
+    /// These are the offsets the editor has always used, so they are fixed.
     /// </param>
     /// <param name="Mode">Whether the entry is labelled by its car or by its upgrade name.</param>
-    public sealed record PartCategory(int TableId, string Label, int SaveOffset, PartLabelMode Mode);
+    /// <param name="FieldKind">How the field is laid out in the save (a 16-bit key, or a tyre slot key).</param>
+    /// <param name="CanonicalKey">
+    /// For a tyre field, the seven fixed bytes of its key - the slot byte is not part of it - given as
+    /// hex (<c>00 00 00 27 00 33 00</c>). It is the shape the field is restored to when it is not
+    /// already intact. Null for every other field.
+    /// </param>
+    public sealed record PartCategory(int TableId, string Label, int SaveOffset, PartLabelMode Mode,
+        PartFieldKind FieldKind = PartFieldKind.UshortKey, string? CanonicalKey = null);
 
     /// <summary>
     /// THE list of part fields the editor edits. Combo-box wiring, catalogue loading, the save-file
@@ -74,6 +107,12 @@ namespace GT5_Car_hack_workshop.Models
             new(30, "Catalyst",         -121, PartLabelMode.Item), // CATALYST
             new(31, "Air cleaner",      -117, PartLabelMode.Item), // AIR_CLEANER
             new(26, "NOS",              -113, PartLabelMode.Item), // NOS - no shop parts exist in the catalogue
+
+            // Tyres are not game part keys: the save holds an 8-byte key whose last byte is the grade
+            // slot. The 15 grades fit every car, so their entries are built in code (PartCatalogueStore)
+            // rather than read from the game's part tables, which have no rows for them.
+            new(51, "Front tyres",     -243, PartLabelMode.Tyre, PartFieldKind.TyreSlotKey, "00 00 00 27 00 33 00"), // TYRE_FRONT
+            new(52, "Rear tyres",      -235, PartLabelMode.Tyre, PartFieldKind.TyreSlotKey, "00 00 00 27 00 34 00"), // TYRE_REAR
         };
 
         /// <summary>The descriptor for a game table / catalogue category, or null when unknown.</summary>
