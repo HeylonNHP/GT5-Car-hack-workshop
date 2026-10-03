@@ -6,7 +6,7 @@
         mc:Ignorable="d"
         d:DesignWidth="1200" d:DesignHeight="680"
         x:Class="GT5_Car_hack_workshop.MainWindow"
-        Title="GT5 Car hack workshop 2.6 (For GT5 2.14). Created by HeylonNHP"
+        Title="GT5 Car hack workshop 2.7 (For GT5 2.14). Created by HeylonNHP"
         Width="1200" Height="680" MinWidth="1000" MinHeight="520"
         CanResize="True"
         FontSize="10"
