@@ -7,8 +7,8 @@
         d:DesignWidth="1200" d:DesignHeight="680"
         x:Class="GT5_Car_hack_workshop.MainWindow"
         Title="GT5 Car hack workshop 2.6 (For GT5 2.14). Created by HeylonNHP"
-        Width="1200" Height="680"
-        CanResize="False"
+        Width="1200" Height="680" MinWidth="1000" MinHeight="520"
+        CanResize="True"
         FontSize="10"
         Background="{DynamicResource WindowBackgroundBrush}">
 
@@ -22,10 +22,12 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Left Panel -->
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Spacing="4">
+        <!-- Left Panel. A Grid rather than a StackPanel: a StackPanel measures its children
+             with unlimited height, so the ScrollViewer inside the parts tab would report its
+             full content height and never scroll - and the window would size to it. -->
+        <Grid Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" RowDefinitions="Auto,*" RowSpacing="4">
             <!-- File and Settings Group -->
-            <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="4">
+            <Border Grid.Row="0" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="4">
                 <StackPanel Spacing="4">
                     <TextBlock Text="Before and after you start hacking" FontWeight="Bold"/>
 
@@ -50,10 +52,10 @@
                 </StackPanel>
             </Border>
 
-            <!-- Parts Database TabControl -->
-            <!-- Parts Database TabControl. Height must fit all 11 part drop-downs + the
-                 "Add current car" button without the tab's ScrollViewer showing a bar. -->
-            <TabControl Height="505">
+            <!-- Parts Database TabControl. It fills whatever height is left (no fixed height),
+                 so a taller window shows more of the part rows and the list scrolls only when
+                 the rows still do not fit. -->
+            <TabControl Grid.Row="1">
                 <TabItem Header="Parts Database">
                     <ScrollViewer>
                         <StackPanel Spacing="3" Margin="4">
@@ -276,14 +278,14 @@
                     </StackPanel>
                 </TabItem>
             </TabControl>
-        </StackPanel>
+        </Grid>
 
         <!-- Right Panel -->
         <Border Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="4" Margin="4,0,0,0">
-            <StackPanel Spacing="2">
-                <TextBlock Text="Basic hacks" FontWeight="Bold"/>
+            <Grid RowDefinitions="Auto,*" RowSpacing="2">
+                <TextBlock Grid.Row="0" Text="Basic hacks" FontWeight="Bold"/>
 
-                <TabControl>
+                <TabControl Grid.Row="1">
                     <TabItem Header="Page 1">
                         <ScrollViewer>
                             <StackPanel Spacing="6" Margin="3">
@@ -305,7 +307,7 @@
                                     <Border Grid.Column="2" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                         <StackPanel>
                                             <TextBlock Text="Downforce" FontWeight="Bold"/>
-                                            <Grid ColumnDefinitions="Auto,*,Auto,*">
+                                            <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,*" HorizontalAlignment="Left">
                                                 <TextBlock Text="Aero" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="AeroFrontTextBox" Grid.Column="1" Width="60" Height="20" Margin="0,0,6,0"/>
                                                 <TextBlock Text=":" Grid.Column="2" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
@@ -318,7 +320,7 @@
                                     <Border Grid.Column="4" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                         <StackPanel>
                                             <TextBlock Text="Torque" FontWeight="Bold"/>
-                                            <Grid ColumnDefinitions="Auto,*,Auto,*,Auto">
+                                            <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,Auto,*" HorizontalAlignment="Left">
                                                 <TextBlock Text="Tq. Split" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="TorqueSplitTextBox" Grid.Column="1" Width="60" Height="20" Margin="0,0,4,0" TextChanged="TorqueSplitTextBox_TextChanged"/>
                                                 <TextBlock Text=":" Grid.Column="2" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
@@ -346,7 +348,7 @@
                                     <Border Grid.Column="0" BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
                                         <StackPanel Spacing="2">
                                             <TextBlock Text="Visual mods" FontWeight="Bold"/>
-                                            <Grid ColumnDefinitions="Auto,*,Auto,Auto">
+                                            <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,*" HorizontalAlignment="Left">
                                                 <TextBlock Text="Remove spoiler" Grid.Column="0" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
                                                 <TextBox x:Name="RemoveSpoilerCodeTextBox" Grid.Column="1" Width="60" Height="20" Margin="0,0,4,0"/>
                                                 <Button x:Name="Button10" Content="?" Grid.Column="2" Margin="0,0,4,0" Height="25" Click="Button10_Click"/>
@@ -538,7 +540,7 @@
                         </ScrollViewer>
                     </TabItem>
                 </TabControl>
-            </StackPanel>
+            </Grid>
         </Border>
     </Grid>
 </Window>
