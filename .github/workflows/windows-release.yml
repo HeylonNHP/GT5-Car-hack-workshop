@@ -47,24 +47,6 @@ jobs:
           -p:DebugType=none
           --output publish
 
-      # The app shells out to pfdtool.exe beside its own executable for decrypt
-      # and encrypt. It is a third-party binary and is NOT in this repository, so
-      # if it has not been committed the build still succeeds but the released
-      # app cannot open or encrypt save files. Ship it, and this picks it up.
-      - name: Include pfdtool.exe if the repository has it
-        id: pfdtool
-        shell: pwsh
-        run: |
-          $src = "GT5 Car hack workshop/pfdtool.exe"
-          if (Test-Path $src) {
-            Copy-Item $src "publish/pfdtool.exe"
-            "included=true" >> $env:GITHUB_OUTPUT
-            Write-Host "pfdtool.exe included from the repository"
-          } else {
-            "included=false" >> $env:GITHUB_OUTPUT
-            Write-Warning "pfdtool.exe is not in the repository; the release will not be able to decrypt or encrypt saves"
-          }
-
       # Fail loudly here rather than shipping a release that is missing a file the
       # app needs at runtime. partscatalogue.db in particular is 8.8 MB and is
       # copied by a csproj rule rather than being compiled in, so it is worth
@@ -103,9 +85,5 @@ jobs:
             **${{ github.event.head_commit.message }}**
 
             Unzip and run `GT5 Car hack workshop.exe`. This build is self-contained,
-            so no separate .NET installation is needed.
-
-            ### pfdtool
-            ${{ steps.pfdtool.outputs.included == 'true'
-                && 'pfdtool.exe is bundled in this archive.'
-                || 'pfdtool.exe is **not** bundled - it is a third-party tool that is not in the repository. Place `pfdtool.exe` next to `GT5 Car hack workshop.exe` to enable loading and encrypting save files. Without it the app runs but cannot open or save a save file.' }}
+            so no separate .NET installation is needed. Save decryption and
+            encryption are built in, so nothing else is required.

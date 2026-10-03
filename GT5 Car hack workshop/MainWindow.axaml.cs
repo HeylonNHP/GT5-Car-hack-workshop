@@ -1249,7 +1249,7 @@ namespace GT5_Car_hack_workshop
 
         private async void Button22_Click(object sender, RoutedEventArgs e)
         {
-            await ShowMessageBox("-----------------GT5 car hack workshop-----------------\nCreated by HeylonNHP\nSpecial thanks to:\nflatz for the pfdtool\naldotools.org for games.conf/global.conf\nTo the guys at http://gt5dragracing.com/ for daring to beta test my first version");
+            await ShowMessageBox("-----------------GT5 car hack workshop-----------------\nCreated by HeylonNHP\nSpecial thanks to:\nTo the guys at http://gt5dragracing.com/ for daring to beta test my first version");
         }
 
         private async void Button23_Click(object sender, RoutedEventArgs e)

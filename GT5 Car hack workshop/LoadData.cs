@@ -1,87 +1,20 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
-using System.Runtime.InteropServices;
 using PS3Pfd;
 
 namespace GT5_Car_hack_workshop
 {
     public static class LoadData
     {
-        /// <summary>
-        ///     Which of the two crypto paths Load and Encrypt use. The built in path needs no
-        ///     pfdtool.exe and reports failures instead of ignoring them, but it stays off until
-        ///     the PS3Pfd library has been reviewed.
-        /// </summary>
-        public static bool UseBuiltInCrypto { get; set; } = true;
 	    /// <summary>
-	    ///     Determines if the current platform is Linux
-	    /// </summary>
-	    private static bool IsLinux => RuntimeInformation.IsOSPlatform(OSPlatform.Linux);
-
-	    /// <summary>
-	    ///     Converts a Unix path to a Windows path using winepath
-	    /// </summary>
-	    private static string ConvertToWindowsPath(string unixPath)
-        {
-            var proc = new Process();
-            proc.StartInfo.FileName = "winepath";
-            proc.StartInfo.Arguments = $"-w \"{unixPath}\"";
-            proc.StartInfo.RedirectStandardOutput = true;
-            proc.StartInfo.UseShellExecute = false;
-            proc.StartInfo.CreateNoWindow = true;
-            proc.Start();
-            var windowsPath = proc.StandardOutput.ReadToEnd().Trim();
-            proc.WaitForExit();
-            return windowsPath;
-        }
-
-	    /// <summary>
-	    ///     Creates a process configured to run pfdtool with the given arguments
-	    /// </summary>
-	    private static Process CreatePfdToolProcess(string directory, string fileName, string operation)
-        {
-            var proc = new Process();
-            var executableDir = AppDomain.CurrentDomain.BaseDirectory;
-            var pfdtoolPath = Path.Combine(executableDir, "pfdtool.exe");
-            
-            if (IsLinux)
-            {
-                // On Linux, use Wine to run pfdtool with converted paths
-                var winDirectory = ConvertToWindowsPath(directory);
-                var winPfdtoolPath = ConvertToWindowsPath(pfdtoolPath);
-                proc.StartInfo.FileName = "wine";
-                proc.StartInfo.Arguments = $"\"{winPfdtoolPath}\" -g BCES00569 {operation} \"{winDirectory}\" {fileName}";
-            }
-            else
-            {
-                // On Windows, run pfdtool directly
-                proc.StartInfo.FileName = pfdtoolPath;
-                proc.StartInfo.Arguments = $"-g BCES00569 {operation} \"{directory}\" {fileName}";
-            }
-            
-            proc.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-            return proc;
-        }
-
-	    /// <summary>
-	    ///     Unencrypt and load GT5.0 file into byte array which is then returned
+	    ///     Decrypt and load GT5.0 file into byte array which is then returned
 	    /// </summary>
 	    /// <param name="path">Path to GT5.0 file</param>
-	    /// <returns>Unencrypted GT5 save file</returns>
+	    /// <returns>Decrypted GT5 save file</returns>
 	    public static byte[] Load(string path)
         {
-            if (UseBuiltInCrypto)
-            {
-                SaveCrypto.Decrypt(SaveCrypto.SavedataDirectoryOf(path));
-                return File.ReadAllBytes(path);
-            }
-
-            var gt5File = new FileInfo(path);
-            var proc = CreatePfdToolProcess(gt5File.Directory.FullName, gt5File.Name, "-d");
-            proc.Start();
-            proc.WaitForExit();
-            return File.ReadAllBytes(gt5File.FullName);
+            SaveCrypto.Decrypt(SaveCrypto.SavedataDirectoryOf(path));
+            return File.ReadAllBytes(path);
         }
 
 	    /// <summary>
@@ -90,16 +23,7 @@ namespace GT5_Car_hack_workshop
 	    /// <param name="path">Path to the GT5.0 file to be encrypted</param>
 	    public static void Encrypt(string path)
         {
-            if (UseBuiltInCrypto)
-            {
-                SaveCrypto.Encrypt(SaveCrypto.SavedataDirectoryOf(path));
-                return;
-            }
-
-            var gt5File = new FileInfo(path);
-            var proc = CreatePfdToolProcess(gt5File.Directory.FullName, gt5File.Name, "-e");
-            proc.Start();
-            proc.WaitForExit();
+            SaveCrypto.Encrypt(SaveCrypto.SavedataDirectoryOf(path));
         }
 
 	    /// <summary>
