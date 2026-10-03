@@ -42,6 +42,10 @@
         <EmbeddedResource Include="Resources\PaintDatabase.db" />
     </ItemGroup>
 
+    <ItemGroup>
+        <ProjectReference Include="..\PS3Pfd\PS3Pfd.csproj" />
+    </ItemGroup>
+
     <!-- The app reads and rewrites partsdatabase.db next to the executable, so it
          must be copied to the output folder and kept up to date there. -->
     <ItemGroup>

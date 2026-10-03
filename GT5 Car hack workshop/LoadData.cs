@@ -2,11 +2,18 @@
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
+using PS3Pfd;
 
 namespace GT5_Car_hack_workshop
 {
     public static class LoadData
     {
+        /// <summary>
+        ///     Which of the two crypto paths Load and Encrypt use. The built in path needs no
+        ///     pfdtool.exe and reports failures instead of ignoring them, but it stays off until
+        ///     the PS3Pfd library has been reviewed.
+        /// </summary>
+        public static bool UseBuiltInCrypto { get; set; } = true;
 	    /// <summary>
 	    ///     Determines if the current platform is Linux
 	    /// </summary>
@@ -64,6 +71,12 @@ namespace GT5_Car_hack_workshop
 	    /// <returns>Unencrypted GT5 save file</returns>
 	    public static byte[] Load(string path)
         {
+            if (UseBuiltInCrypto)
+            {
+                SaveCrypto.Decrypt(SaveCrypto.SavedataDirectoryOf(path));
+                return File.ReadAllBytes(path);
+            }
+
             var gt5File = new FileInfo(path);
             var proc = CreatePfdToolProcess(gt5File.Directory.FullName, gt5File.Name, "-d");
             proc.Start();
@@ -77,6 +90,12 @@ namespace GT5_Car_hack_workshop
 	    /// <param name="path">Path to the GT5.0 file to be encrypted</param>
 	    public static void Encrypt(string path)
         {
+            if (UseBuiltInCrypto)
+            {
+                SaveCrypto.Encrypt(SaveCrypto.SavedataDirectoryOf(path));
+                return;
+            }
+
             var gt5File = new FileInfo(path);
             var proc = CreatePfdToolProcess(gt5File.Directory.FullName, gt5File.Name, "-e");
             proc.Start();
