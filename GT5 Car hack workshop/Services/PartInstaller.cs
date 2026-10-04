@@ -40,9 +40,6 @@ namespace GT5_Car_hack_workshop.Services
         /// <summary>Where the mask starts, relative to <c>Moff</c> (it runs to Moff-273).</summary>
         public const int PurchaseBitFromMoff = -336;
 
-        /// <summary>The SUSPENSION table id, the one family whose catalogue levels are offset.</summary>
-        private const int SuspensionTableId = 4;
-
         /// <summary>The game's purchase-bit base for a family (0 when it owns no bit at all).</summary>
         public static int PurchaseBitBaseOf(PartCategory category) => category.PurchaseBitBase;
 
@@ -50,39 +47,38 @@ namespace GT5_Car_hack_workshop.Services
         public static bool SetsLowerTiers(PartCategory category) => category.SetsLowerTiers;
 
         /// <summary>
-        /// The game's purchase ordinal for a catalogue level.
+        /// The game's purchase ordinal for a part: the offset its ownership bit sits at inside the
+        /// family's bit range. The true ordinal is the part's SpecDB type byte - the 'category'
+        /// byte each SpecDB part table carries per row (the published <c>PARTS_*</c> enum values),
+        /// loaded as <c>Parts.PartType</c> by <c>tools/patch_part_types.py</c>. The catalogue Level
+        /// is only a FALLBACK now, used when that column is null: the families whose SpecDB tables
+        /// the JP3010 build does not ship (brake controller, displacement, intercooler), and any
+        /// unresolvable row. Engine and chassis are typed 0 and own no bit at all, so the fallback
+        /// can never fire a ghost bit for them.
         /// <para>
-        /// Every family but one uses the catalogue level verbatim. SUSPENSION IS OFF BY ONE: the live
-        /// record and 140 <c>carparameter</c> blobs (the game's own three copies per car) show a
-        /// catalogue Level 3 part (<c>su_..._d</c>) landing on ordinal <b>4</b> - bit 8+4 = 12 is the
-        /// bit actually set - while ordinal 3 is never exercised by any car. So suspension maps
-        /// Level 0 -> 0 and Level >= 1 -> Level + 1.
-        /// </para>
-        /// <para>
-        /// This is inferred from limited data: only Level 3 was observed fitted, so the mapping for
-        /// Levels 1 and 2 is an extrapolation. It is isolated here so this is the single place to
-        /// revisit if a wider sample of suspension-fitted cars ever contradicts it.
+        /// The old SUSPENSION Level+1 exception, deleted here, was this type rule seen through a
+        /// Level rule: a suspension part's SpecDB type byte sits one above its stock-relative
+        /// catalogue level (the live save's Level 3 part is type 4, bit 8+4 = 12), which read as
+        /// "suspension is off by one". With the type byte in hand the exception has no work to do.
         /// </para>
         /// </summary>
-        public static int TierOrdinal(PartCategory category, int catalogueLevel)
-        {
-            if (category.TableId == SuspensionTableId)
-                return catalogueLevel <= 0 ? 0 : catalogueLevel + 1;
-
-            return catalogueLevel;
-        }
+        public static int TierOrdinal(PartCategory category, int? partType, int catalogueLevel)
+            => partType ?? catalogueLevel;
 
         /// <summary>
         /// Every purchase bit a part of this family and tier owns. Empty for a family with no bit
         /// (engine's sentinel, chassis, NOS, tyres) and for a stock part of a progressive family; the
         /// progressive families own <c>base+1 .. base+ordinal</c>, every other family owns only
-        /// <c>base+ordinal</c>.
+        /// <c>base+ordinal</c>. The ordinal is the part's SpecDB type byte
+        /// (<see cref="PartEntry.PartType"/>, falling back to the catalogue Level when null).
         /// </summary>
-        public static IReadOnlyList<int> PurchaseBitsOf(PartCategory category, int catalogueLevel)
+        public static IReadOnlyList<int> PurchaseBitsOf(PartCategory category, PartEntry part)
+            => PurchaseBitsOf(category, TierOrdinal(category, part.PartType, part.Level));
+
+        /// <summary>The same rule keyed by the purchase ordinal directly, for callers that already resolved it.</summary>
+        public static IReadOnlyList<int> PurchaseBitsOf(PartCategory category, int ordinal)
         {
             if (!category.HasPurchaseBit) return Array.Empty<int>();
-
-            var ordinal = TierOrdinal(category, catalogueLevel);
 
             if (category.SetsLowerTiers)
             {
@@ -125,7 +121,7 @@ namespace GT5_Car_hack_workshop.Services
                 throw new ArgumentOutOfRangeException(nameof(moff),
                     $"The {category.Label} field does not fit in the save at Moff{category.SaveOffset:+0;-0}.");
 
-            var bits = PurchaseBitsOf(category, part.Level);
+            var bits = PurchaseBitsOf(category, part);
             var bitBase = moff + PurchaseBitFromMoff;
             if (bits.Count > 0 && (bitBase < 0 || bitBase + PurchaseBitLength > save.Length))
                 throw new ArgumentOutOfRangeException(nameof(moff),

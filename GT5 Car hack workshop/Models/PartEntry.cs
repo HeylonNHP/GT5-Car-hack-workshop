@@ -21,6 +21,17 @@ namespace GT5_Car_hack_workshop.Models
         /// <summary>The part's tier (0 = what the car came with, 1..n = fitted upgrade levels).</summary>
         public int Level { get; init; }
 
+        /// <summary>
+        /// The part's real game type - the 'category' byte the SpecDB part tables carry per row
+        /// (the published <c>PARTS_*</c> enum values, e.g. <c>PARTS_CATALYST {SPORTS=1, RACING=2}</c>),
+        /// copied into the catalogue's Parts rows by <c>tools/patch_part_types.py</c>. Null when
+        /// the catalogue cannot resolve a row: the families whose SpecDB tables this build does
+        /// not ship (brake controller, displacement, intercooler), NOS, and every unresolvable
+        /// key. Never 0-vs-null ambiguous - 0 is a real, resolvable type (engine and chassis are
+        /// typed 0), while null strictly means "no type known, fall back to Level".
+        /// </summary>
+        public int? PartType { get; init; }
+
         /// <summary>The car this variant belongs to (0 for a catalogue row no car references).</summary>
         public int CarId { get; init; }
 

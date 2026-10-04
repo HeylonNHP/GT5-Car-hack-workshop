@@ -123,7 +123,7 @@ namespace GT5_Car_hack_workshop.Models
             new(7,  "Chassis",          -217, PartLabelMode.Car),  // CHASSIS     - no purchase bit exists
             new(11, "Drivetrain",       -209, PartLabelMode.Car,   PartFieldKind.UshortKey, null, 27),  // DRIVETRAIN
             new(12, "Transmission",     -205, PartLabelMode.Item,  PartFieldKind.UshortKey, null, 30),  // GEAR
-            new(4,  "Suspension",       -201, PartLabelMode.Item,  PartFieldKind.UshortKey, null, 8),   // SUSPENSION  (offsets shifted one - see PartInstaller.TierOrdinal)
+            new(4,  "Suspension",       -201, PartLabelMode.Item,  PartFieldKind.UshortKey, null, 8),   // SUSPENSION  (the old \"+1 level\" offset rule is gone: TierOrdinal reads the SpecDB type byte)
             new(23, "LSD",              -197, PartLabelMode.Item,  PartFieldKind.UshortKey, null, 72),  // LSD
             new(2,  "Brake",            -225, PartLabelMode.Item,  PartFieldKind.UshortKey, null, 1),   // BRAKE
             new(3,  "Brake controller", -221, PartLabelMode.Item,  PartFieldKind.UshortKey, null, 6),   // BRAKECONTROLLER

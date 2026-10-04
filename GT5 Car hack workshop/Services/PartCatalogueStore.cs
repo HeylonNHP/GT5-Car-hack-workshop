@@ -349,6 +349,23 @@ namespace GT5_Car_hack_workshop.Services
             return connection;
         }
 
+        /// <summary>
+        /// Whether a table has a named column, read through the schema: the catalogue gains
+        /// columns over time (PartType, added by tools/patch_part_types.py) and an older file
+        /// must still load rather than fail the parts SELECT.
+        /// </summary>
+        private static bool HasColumn(SqliteConnection connection, string table, string column)
+        {
+            using var command = connection.CreateCommand();
+            command.CommandText = $"PRAGMA table_info({table})";
+            using var reader = command.ExecuteReader();
+            while (reader.Read())
+                if (string.Equals(reader.GetString(1), column, StringComparison.OrdinalIgnoreCase))
+                    return true;
+
+            return false;
+        }
+
         private static void EnsureLoaded()
         {
             if (_loadAttempted) return;
@@ -433,8 +450,13 @@ namespace GT5_Car_hack_workshop.Services
             _byCategory = new Dictionary<int, List<PartEntry>>();
             using (var command = connection.CreateCommand())
             {
+                // PartType is the part's real SpecDB type byte (see PartEntry). A stale, unpatched
+                // catalogue must still load, so the column is checked through the schema here and a
+                // constant NULL takes its slot when the column is absent - those rows then read
+                // exactly like the pre-type catalogue (the installer falls back to Level).
+                var partTypeColumn = HasColumn(connection, "Parts", "PartType") ? "p.PartType" : "NULL";
                 command.CommandText =
-                    "SELECT p.Category, p.PartKey, p.Level, p.CarId, COALESCE(c.Name, ''), COALESCE(i.Name, '') " +
+                    $"SELECT p.Category, p.PartKey, p.Level, p.CarId, {partTypeColumn}, COALESCE(c.Name, ''), COALESCE(i.Name, '') " +
                     "FROM Parts p " +
                     "LEFT JOIN Cars c ON c.Id = p.CarId " +
                     "LEFT JOIN Items i ON i.Category = p.Category AND i.Level = p.Level " +
@@ -453,8 +475,9 @@ namespace GT5_Car_hack_workshop.Services
                         PartKey = (ushort)reader.GetInt32(1),
                         Level = reader.GetInt32(2),
                         CarId = reader.GetInt32(3),
-                        CarName = reader.GetString(4),
-                        PartName = reader.GetString(5)
+                        PartType = reader.IsDBNull(4) ? null : reader.GetInt32(4),
+                        CarName = reader.GetString(5),
+                        PartName = reader.GetString(6)
                     });
                 }
             }

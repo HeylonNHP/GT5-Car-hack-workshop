@@ -187,7 +187,7 @@ namespace GT5_Car_hack_workshop
                 currentKey = 0;
             }
 
-            var bits = PartInstaller.PurchaseBitsOf(category, entry.Level);
+            var bits = PartInstaller.PurchaseBitsOf(category, entry);
             var topBit = bits.Count > 0 ? bits[^1] : (int?)null;
 
             var bitSet = false;
