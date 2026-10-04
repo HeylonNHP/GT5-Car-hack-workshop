@@ -67,6 +67,7 @@ namespace GT5_Car_hack_workshop.Services
         private static Dictionary<int, Dictionary<string, PartEntry>> _byLabel = new();
         private static readonly List<string> _presetNames = new();
         private static readonly List<CarBody> _bodies = new();
+        private static readonly List<TuningSourceCar> _cars = new();
 
         // Resolving a tune or a save's car touches the database, so remember the answers.
         private static readonly Dictionary<string, List<PresetEntry>> PresetCache = new(StringComparer.OrdinalIgnoreCase);
@@ -136,6 +137,52 @@ namespace GT5_Car_hack_workshop.Services
         public static IReadOnlyList<CarBody> Bodies
         {
             get { EnsureLoaded(); return _bodies; }
+        }
+
+        /// <summary>
+        /// Every car the catalogue knows (its <c>Cars</c> table), ordered by name. This is the tuning
+        /// shop's "parts from car" picker: borrowing another car's parts is the point of that dialog,
+        /// so it lists all of them rather than only the current car.
+        /// </summary>
+        public static IReadOnlyList<TuningSourceCar> Cars
+        {
+            get { EnsureLoaded(); return _cars; }
+        }
+
+        /// <summary>The catalogue car with the given id, or null when the catalogue has none.</summary>
+        public static TuningSourceCar? FindCar(int id)
+        {
+            EnsureLoaded();
+            foreach (var car in _cars)
+                if (car.Id == id)
+                    return car;
+
+            return null;
+        }
+
+        /// <summary>Matches typed text against a car's name, for the source-car picker.</summary>
+        public static bool MatchesCar(TuningSourceCar car, string? search)
+            => string.IsNullOrWhiteSpace(search)
+               || car.Name.Contains(search.Trim(), StringComparison.OrdinalIgnoreCase);
+
+        /// <summary>
+        /// The parts of one category that belong to one car: the car's own variants, which is what the
+        /// tuning shop lists for its chosen source car. Empty when the catalogue has no such car or the
+        /// car has no variant of that part (e.g. it has no supercharger option), so the dialog can say
+        /// so honestly rather than show another car's parts.
+        /// </summary>
+        public static IReadOnlyList<PartEntry> EntriesForCar(int category, int carId)
+        {
+            EnsureLoaded();
+            if (carId == 0 || !_byCategory.TryGetValue(category, out var entries))
+                return Array.Empty<PartEntry>();
+
+            var matches = new List<PartEntry>();
+            foreach (var entry in entries)
+                if (entry.CarId == carId)
+                    matches.Add(entry);
+
+            return matches;
         }
 
         /// <summary>The car a known tune belongs to, or null when it cannot be worked out.</summary>
@@ -445,6 +492,14 @@ namespace GT5_Car_hack_workshop.Services
                 using var reader = command.ExecuteReader();
                 while (reader.Read())
                     _bodies.Add(new CarBody { Code = reader.GetInt32(0), Name = reader.GetString(1) });
+            }
+
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "SELECT Id, Name FROM Cars ORDER BY Name";
+                using var reader = command.ExecuteReader();
+                while (reader.Read())
+                    _cars.Add(new TuningSourceCar { Id = reader.GetInt32(0), Name = reader.GetString(1) });
             }
         }
 

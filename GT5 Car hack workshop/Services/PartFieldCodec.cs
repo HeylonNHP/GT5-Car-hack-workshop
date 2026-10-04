@@ -65,6 +65,32 @@ namespace GT5_Car_hack_workshop.Services
         }
 
         /// <summary>
+        /// Zeroes the flag half of a part field - the two bytes that follow the two-byte key of an
+        /// upgrade part (<c>SaveOffset+2 .. SaveOffset+3</c>). The game's own records keep that half at
+        /// <c>0x0000</c>; several fields this editor wrote earlier left it at <c>0xFFFF</c>, which stops
+        /// the part reading as cleanly installed. Because part fields sit four bytes apart, the flag
+        /// half belongs to the same field, so clearing it never touches a neighbouring field.
+        /// <para>
+        /// This is deliberately separate from <see cref="Write"/>: that method must keep writing
+        /// exactly the two key bytes it always has, because other hacks bit-compare those bytes.
+        /// </para>
+        /// </summary>
+        public static void ClearFlag(byte[] save, int moff, PartCategory category)
+        {
+            if (category.FieldKind == PartFieldKind.TyreSlotKey)
+                throw new InvalidOperationException(
+                    $"The {category.Label} field is a tyre key, which has no separate flag half to clear.");
+
+            var offset = moff + category.SaveOffset;
+            if (save == null || offset < 0 || offset + 4 > save.Length)
+                throw new ArgumentOutOfRangeException(nameof(category),
+                    $"The {category.Label} field does not fit in the save at Moff{category.SaveOffset:+0;-0}.");
+
+            save[offset + 2] = 0;
+            save[offset + 3] = 0;
+        }
+
+        /// <summary>
         /// The hex a field shows beside its box: the two bytes of the part key, or the whole 8-byte
         /// tyre key (<c>00 00 00 27 00 33 00 09</c>) as it will read once <paramref name="value"/> is
         /// written. Works before a save is loaded: the field's own canonical shape is shown then.

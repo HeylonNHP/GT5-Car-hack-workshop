@@ -277,6 +277,7 @@
                             </Grid>
 
                             <Button x:Name="Button12" Content="Add current car to parts database" Background="#C0FFFF" Classes="pastel" Height="27" Click="Button12_Click"/>
+                            <Button x:Name="OpenTuningShopButton" Content="Open tuning shop..." Background="#C0FFFF" Classes="pastel" Height="27" Click="OpenTuningShopButton_Click"/>
                             <TextBlock x:Name="PartsCatalogueInfoText" TextWrapping="Wrap" Foreground="{DynamicResource HexFieldBrush}"/>
                         </StackPanel>
                     </ScrollViewer>

@@ -33,6 +33,12 @@ namespace GT5_Car_hack_workshop
         public byte[] Gt5Save;
         public int Moff;
 
+        /// <summary>
+        /// The catalogue car id of the loaded save's current car, resolved from its engine / chassis /
+        /// drivetrain keys (0 when unknown). The tuning shop defaults its source-car picker to this.
+        /// </summary>
+        public int CurrentCarId { get; private set; }
+
         // Avalonia's source generator will automatically create properties for x:Name controls
 
         public MainWindow(IFormManager formManager)
@@ -960,6 +966,7 @@ namespace GT5_Car_hack_workshop
             // The catalogue is per car, so find the car this save is: its engine, chassis and drivetrain
             // ids only belong to one car each. That car's own part variants are then shown first.
             var preferredCarId = PartCatalogueStore.FindCarId(engine, chassis, drivetrain);
+            CurrentCarId = preferredCarId;
 
             foreach (var (category, box, _) in PartFieldBindings())
                 SetPartSelection(box, category, ReadPartValue(category), preferredCarId);
@@ -1286,6 +1293,22 @@ namespace GT5_Car_hack_workshop
 
             var paintChipWindow = new PaintChipWindow(_formManager);
             await paintChipWindow.ShowDialog(this);
+        }
+
+        private async void OpenTuningShopButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (Gt5Save == null || Gt5Save.Length == 0)
+            {
+                await ShowMessageBox("Load a GT5.0 save before opening the tuning shop.");
+                return;
+            }
+
+            var tuningShopWindow = new TuningShopWindow(_formManager);
+            await tuningShopWindow.ShowDialog(this);
+
+            // The dialog refits the car's parts and ownership bits in the in-memory save; refresh the
+            // drop-downs here too so nothing can revert them on the next save.
+            RefreshPartSelections();
         }
 
         private async void Button15_Click(object sender, RoutedEventArgs e)
