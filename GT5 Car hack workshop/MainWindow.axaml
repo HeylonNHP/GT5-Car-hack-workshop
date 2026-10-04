@@ -263,14 +263,14 @@
                             <TextBlock Text="Tyres" Margin="0,8,0,0" FontWeight="Bold"/>
                             <Grid ColumnDefinitions="108,*,170">
                                 <TextBlock Text="Front tyres" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <AutoCompleteBox x:Name="FrontTyreCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                <AutoCompleteBox x:Name="FrontTyreCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch" ToolTip.Tip="Any slot from 0 to 255. The 15 named grades are 0 to 14."
                                                  PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="FrontTyreHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
                             </Grid>
                             <Grid ColumnDefinitions="108,*,170">
                                 <TextBlock Text="Rear tyres" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                <AutoCompleteBox x:Name="RearTyreCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch"
+                                <AutoCompleteBox x:Name="RearTyreCodeComboBox" Grid.Column="1" Height="22" HorizontalAlignment="Stretch" ToolTip.Tip="Any slot from 0 to 255. The 15 named grades are 0 to 14."
                                                  PlaceholderText="Filter, pick, or type a code..." MaxDropDownHeight="320" IsTextCompletionEnabled="False"/>
                                 <TextBlock x:Name="RearTyreHexLabel" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="8,0,0,0"
                                            Foreground="{DynamicResource HexFieldBrush}" FontWeight="Bold"/>
@@ -450,11 +450,27 @@
                                             <TextBox Grid.Row="1" Grid.Column="3" x:Name="SpringRateRearTextBox" Width="70" Height="20"/>
 
                                             <TextBlock Grid.Row="2" Grid.Column="0" Text="Camber" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="CamberFrontTextBox" Width="70" Height="20" Margin="0,0,4,0"/>
+                                            <TextBox Grid.Row="2" Grid.Column="1" x:Name="CamberFrontTextBox" Width="70" Height="20" Margin="0,0,4,0" ToolTip.Tip="Accepts 0 to 255. The game's own camber setting is 0 to 20."/>
                                             <TextBlock Grid.Row="2" Grid.Column="2" Text=":" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
-                                            <TextBox Grid.Row="2" Grid.Column="3" x:Name="CamberRearTextBox" Width="70" Height="20"/>
+                                            <TextBox Grid.Row="2" Grid.Column="3" x:Name="CamberRearTextBox" Width="70" Height="20" ToolTip.Tip="Accepts 0 to 255. The game's own camber setting is 0 to 20."/>
                                         </Grid>
                                         <Button x:Name="Button19" Content="Slam car" Background="#C0FFFF" Classes="pastel" Foreground="{DynamicResource SlamCarBrush}" FontWeight="Bold" HorizontalAlignment="Left" Height="27" Click="Button19_Click"/>
+                                    </StackPanel>
+                                </Border>
+
+                                <!-- Handling -->
+                                <Border BorderBrush="{DynamicResource GroupBorderBrush}" BorderThickness="1" Background="{DynamicResource PanelBackgroundBrush}" Padding="2">
+                                    <StackPanel Spacing="2">
+                                        <TextBlock Text="Handling" FontWeight="Bold"/>
+                                        <Grid ColumnDefinitions="Auto,Auto,Auto,Auto,*" RowDefinitions="Auto,Auto" RowSpacing="4">
+                                            <TextBlock Grid.Row="0" Grid.Column="0" Text="Brake balance" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <TextBox Grid.Row="0" Grid.Column="1" x:Name="BrakeBalanceFrontTextBox" Width="70" Height="20" Margin="0,0,4,0" ToolTip.Tip="Accepts 0 to 255. The game's default is 5."/>
+                                            <TextBlock Grid.Row="0" Grid.Column="2" Text=":" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,4,0"/>
+                                            <TextBox Grid.Row="0" Grid.Column="3" x:Name="BrakeBalanceRearTextBox" Width="70" Height="20" ToolTip.Tip="Accepts 0 to 255. The game's default is 5."/>
+
+                                            <TextBlock Grid.Row="1" Grid.Column="0" Text="Power limiter" Foreground="{DynamicResource DecimalFieldBrush}" FontWeight="Bold" VerticalAlignment="Center" Margin="0,0,8,0"/>
+                                            <TextBox Grid.Row="1" Grid.Column="1" x:Name="PowerLimiterTextBox" Width="70" Height="20" HorizontalAlignment="Left" ToolTip.Tip="Accepts 0 to 65535. Stored as percent x 10, so 1000 is 100%."/>
+                                        </Grid>
                                     </StackPanel>
                                 </Border>
 

@@ -367,6 +367,10 @@ namespace GT5_Car_hack_workshop
             SpringRateRearTextBox.Text = Gt5Save[Moff - 26].ToString();
             CamberFrontTextBox.Text = Gt5Save[Moff - 35].ToString();
             CamberRearTextBox.Text = Gt5Save[Moff - 34].ToString();
+            BrakeBalanceFrontTextBox.Text = Gt5Save[Moff + 11].ToString();
+            BrakeBalanceRearTextBox.Text = Gt5Save[Moff + 12].ToString();
+            var powerLimiter = ByteUtils.ConvertBytesToUnsignedInt(new[] { Gt5Save[Moff + 19], Gt5Save[Moff + 20] });
+            PowerLimiterTextBox.Text = powerLimiter.ToString();
 
             // Turbo/Exhaust/Weight are set by LoadPartsFromSave() via their parts-database drop-downs.
         }
@@ -604,6 +608,44 @@ namespace GT5_Car_hack_workshop
             catch (Exception e)
             {
                 await ShowMessageBox($"Can't save camber rear to the save file.\n{e.Message}");
+                return;
+            }
+
+            try
+            {
+                if (!byte.TryParse(BrakeBalanceFrontTextBox.Text, out var brakeBalanceFront))
+                    throw new FormatException("Brake balance front value must be a byte value (0-255).");
+                Gt5Save[Moff + 11] = brakeBalanceFront;
+            }
+            catch (Exception e)
+            {
+                await ShowMessageBox($"Can't save brake balance front to the save file.\n{e.Message}");
+                return;
+            }
+
+            try
+            {
+                if (!byte.TryParse(BrakeBalanceRearTextBox.Text, out var brakeBalanceRear))
+                    throw new FormatException("Brake balance rear value must be a byte value (0-255).");
+                Gt5Save[Moff + 12] = brakeBalanceRear;
+            }
+            catch (Exception e)
+            {
+                await ShowMessageBox($"Can't save brake balance rear to the save file.\n{e.Message}");
+                return;
+            }
+
+            try
+            {
+                if (!ushort.TryParse(PowerLimiterTextBox.Text, out var powerLimiter))
+                    throw new FormatException("Power limiter value must be a number.");
+                var powerLimiterBytes = ByteUtils.UshortToByteArray(powerLimiter);
+                Gt5Save[Moff + 19] = powerLimiterBytes[0];
+                Gt5Save[Moff + 20] = powerLimiterBytes[1];
+            }
+            catch (Exception e)
+            {
+                await ShowMessageBox($"Can't save the power limiter to the save file.\n{e.Message}");
                 return;
             }
 
